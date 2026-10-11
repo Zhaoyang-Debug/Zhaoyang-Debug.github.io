@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="pageTitle">闽台交流之城 · 活态泉州</title>
+        <style>/* 导航栏列表重置 */.nav-links, .nav-links li { list-style: none !important; margin: 0; padding: 0; } .nav a, .nav-logo, .nav-links a { text-decoration: none !important; } /* ============================================================
+   【全局变量与重置】
+   ============================================================ */:root { --color-brick: #B5493B; --color-brick-dark: #8E372C; --color-ocean: #1B4965; --color-ocean-light: #5FA8D3; --color-gold: #C9A961; --color-paper: #F5F0E8; --color-paper-dark: #EDE6D8; --color-ink: #2C2416; --color-ink-faint: #6B5D4D; --font-serif-zh: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; --font-sans-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif-en: 'Playfair Display', Georgia, serif; --font-sans-en: 'Inter', 'Helvetica Neue', Arial, sans-serif; --nav-height: 72px; --fs-nav: 14px; --color-ink-light: #5C5040; } * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: var(--font-sans-zh), var(--font-sans-en); background: var(--color-paper); color: var(--color-ink); line-height: 1.8; overflow-x: hidden; } /* 双语切换：英文时隐藏中文，中文时隐藏英文 */body:not(.lang-en) [data-en] { display: none !important; } body.lang-en [data-zh] { display: none !important; } body.lang-en { font-family: var(--font-sans-en), var(--font-sans-zh); } /* ============================================================
+   【导航栏】
+   ============================================================ */.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-height); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; background: transparent; } .nav.scrolled { background: rgba(245,240,232,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(44,36,22,0.08); } .nav-logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; } .nav-logo-icon { width: 36px; height: 36px; border: 2px solid var(--color-brick); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; } .nav-logo-icon::after { content: ''; position: absolute; width: 18px; height: 2px; background: var(--color-brick); } .nav-logo-text { font-family: var(--font-serif-zh); font-size: 17px; font-weight: 700; letter-spacing: 2px; color: var(--color-ink); } body.en .nav-logo-text { font-family: var(--font-serif-en); letter-spacing: 1px; font-size: 15px; } .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; list-style: none; } .nav-links li { position: relative; list-style: none; } .nav-links a { display: block; padding: 8px 12px; font-size: var(--fs-nav); font-weight: 500; letter-spacing: 1px; color: var(--color-ink-light); transition: all 0.3s; white-space: nowrap; border-radius: 4px; } .nav-links a:hover { color: var(--color-brick); background: rgba(181,73,59,0.06); } .nav-links a.active { color: var(--color-brick); font-weight: 100; } .lang-toggle { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--color-ink-faint); border-radius: 20px; cursor: pointer; background: transparent; font-size: 13px; font-weight: 500; color: var(--color-ink-light); transition: all 0.3s; flex-shrink: 0; } .lang-toggle:hover { border-color: var(--color-brick); color: var(--color-brick); } .lang-toggle .active-lang { color: var(--color-brick); font-weight: 700; } .lang-toggle .divider { color: var(--color-ink-faint); } .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; } .nav-hamburger span { width: 24px; height: 2px; background: var(--color-ink); transition: all 0.3s; } .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 40px 80px; position: relative; background: linear-gradient(180deg, var(--color-paper) 0%, var(--color-paper-dark) 100%); overflow: hidden; } .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 30%, rgba(27,73,101,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(181,73,59,0.06) 0%, transparent 50%); pointer-events: none; } .hero-dimension { font-size: 13px; letter-spacing: 6px; color: var(--color-ocean); text-transform: uppercase; margin-bottom: 24px; font-weight: 600; position: relative; } body.lang-en .hero-dimension { font-family: var(--font-sans-en); } .hero-title { font-family: var(--font-serif-zh); font-size: clamp(42px, 6vw, 72px); font-weight: 900; line-height: 1.2; margin-bottom: 20px; position: relative; } body.lang-en .hero-title { font-family: var(--font-serif-en); } .hero-title .highlight { color: var(--color-brick); } .hero-subtitle { font-family: var(--font-serif-zh); font-size: clamp(18px, 2.2vw, 26px); color: var(--color-ink-faint); margin-bottom: 40px; font-weight: 400; position: relative; } body.lang-en .hero-subtitle { font-family: var(--font-serif-en); } .hero-desc { max-width: 720px; font-size: 16px; color: var(--color-ink-faint); line-height: 2; position: relative; } body.lang-en .hero-desc { font-family: var(--font-sans-en); font-size: 15px; } .hero-scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--color-ink-faint); font-size: 12px; letter-spacing: 2px; animation: bounce 2s infinite; } @keyframes bounce { 0%, 100% {  transform: translateX(-50%) translateY(0); }  50% {  transform: translateX(-50%) translateY(8px); } } /* ============================================================
+   【数据总览条】
+   ============================================================ */.stats { background: linear-gradient(135deg, var(--color-ocean) 0%, #2a5f7a 100%); padding: 50px 40px; display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; } .stat-item { text-align: center; color: #fff; } .stat-number { font-family: var(--font-serif-zh); font-size: 42px; font-weight: 900; color: var(--color-gold); line-height: 1; margin-bottom: 8px; } body.lang-en .stat-number { font-family: var(--font-serif-en); } .stat-label { font-size: 13px; opacity: 0.85; letter-spacing: 1px; } /* ============================================================
+   【通用区块样式】
+   ============================================================ */.section { padding: 100px 60px; max-width: 1280px; margin: 0 auto; } .section-label { text-align: center; font-size: 13px; letter-spacing: 4px; color: var(--color-ocean); text-transform: uppercase; margin-bottom: 16px; font-weight: 600; } body.lang-en .section-label { font-family: var(--font-sans-en); } .section-title { text-align: center; font-family: var(--font-serif-zh); font-size: clamp(28px, 3.5vw, 40px); font-weight: 900; margin-bottom: px; color: var(--color-ink); } body.lang-en .section-title { font-family: var(--font-serif-en); } .section-subtitle { text-align: center; font-size: 15px; color: var(--color-ink-faint); max-width: 700px; margin: 0 auto 20px; line-height: 1.9; } /* ============================================================
+   【图片占位容器 —— 用户加图说明】
+   使用方法：把下面 <img> 标签的 src 换成你的图片URL即可，
+   占位图标会自动消失，图片会自动填充容器。
+   ============================================================ */.img-placeholder { position: relative; width: 100%; aspect-ratio: 16 / 10; background: var(--color-paper-dark); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; } /* 占位图标 */.img-placeholder::before { content: '🖼️'; font-size: 36px; opacity: 0.3; position: absolute; } /* 占位文字提示 */.img-placeholder::after { content: '图片位置'; position: absolute; bottom: 12px; font-size: 11px; color: var(--color-ink-faint); opacity: 0.5; letter-spacing: 2px; } body.lang-en .img-placeholder::after { content: 'Image Placeholder'; } /* 当img有src时，隐藏占位图标和文字，显示图片 */.img-placeholder img { display: none; width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; } .img-placeholder img[src]:not([src=""]) { display: block; } .img-placeholder img[src]:not([src=""]) ~ * { display: none; } /* ============================================================
+   【模块一：移民历史时间轴】
+   ============================================================ */.timeline-section { background: var(--color-paper-dark); } .timeline { position: relative; max-width: 900px; margin: 0 auto; padding-left: 40px; } .timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, var(--color-brick), var(--color-ocean)); } .timeline-item { position: relative; margin-bottom: 50px; padding-left: 30px; } .timeline-item:last-child { margin-bottom: 0; } .timeline-dot { position: absolute; left: -34px; top: 6px; width: 18px; height: 18px; border-radius: 50%; background: var(--color-brick); border: 3px solid var(--color-paper); box-shadow: 0 0 0 2px var(--color-brick); } .timeline-period { font-family: var(--font-serif-zh); font-size: 14px; color: var(--color-brick); font-weight: 700; letter-spacing: 1px; margin-bottom: px; } body.lang-en .timeline-period { font-family: var(--font-serif-en); } .timeline-title { font-family: var(--font-serif-zh); font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--color-ink); } body.lang-en .timeline-title { font-family: var(--font-serif-en); } .timeline-content { font-size: 15px; color: var(--color-ink-faint); line-height: 1.9; margin-bottom: 16px; } .timeline-img-wrap { max-width: 700px; margin-top: 12px; display: flex; gap: 14px; } .timeline-img-wrap .img-placeholder { flex: 1; min-width: 0; aspect-ratio: 4 / 3; } /* ============================================================
+   【模块二：文化同源四维度】
+   ============================================================ */.culture-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; } .culture-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(44,36,22,0.06); transition: transform 0.3s, box-shadow 0.3s; border-left: 4px solid var(--color-ocean); } .culture-card:nth-child(2) { border-left-color: var(--color-brick); } .culture-card:nth-child(3) { border-left-color: var(--color-gold); } .culture-card:nth-child(4) { border-left-color: var(--color-ocean-light); }  .culture-card-body { padding: 28px; } .culture-card-icon { font-size: 32px; margin-bottom: 12px; } .culture-card-title { font-family: var(--font-serif-zh); font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--color-ink); } body.lang-en .culture-card-title { font-family: var(--font-serif-en); } .culture-card-desc { font-size: 14px; color: var(--color-ink-faint); line-height: 1.9; margin-bottom: 16px; } .culture-card-extra { font-size: 13px; color: var(--color-ocean); padding-top: 12px; border-top: 1px dashed rgba(44,36,22,0.1); } /* ============================================================
+   【模块三：闽台缘博物馆】
+   ============================================================ */.museum-section { background: var(--color-paper-dark); } .museum-intro { max-width: 800px; margin: 0 auto 30px; text-align: center; font-size: 15px; color: var(--color-ink-faint); line-height: 2; } .museum-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; } .museum-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(44,36,22,0.06); transition: transform 0.3s; }  .museum-card-body { padding: 22px; } .museum-card-num { display: inline-block; font-family: var(--font-serif-en); font-size: 13px; color: var(--color-gold); font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; } .museum-card-title { font-family: var(--font-serif-zh); font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--color-ink); } body.lang-en .museum-card-title { font-family: var(--font-serif-en); font-size: 16px; } .museum-card-desc { font-size: 13px; color: var(--color-ink-faint); line-height: 1.8; } /* ============================================================
+   【模块四：当代交流案例】
+   ============================================================ */.case-list { display: flex; flex-direction: column; gap: 40px; max-width: 1000px; margin: 0 auto; } .case-item { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: #fff; border-radius: 14px; padding: 36px; box-shadow: 0 4px 20px rgba(44,36,22,0.06); } .case-item:nth-child(even) { direction: rtl; } .case-item:nth-child(even) > * { direction: ltr; } .case-content { } .case-tag { display: inline-block; padding: 4px 14px; background: rgba(181,73,59,0.1); color: var(--color-brick); border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 14px; letter-spacing: 1px; } .case-title { font-family: var(--font-serif-zh); font-size: 24px; font-weight: 700; margin-bottom: 14px; color: var(--color-ink); } body.lang-en .case-title { font-family: var(--font-serif-en); } .case-desc { font-size: 14px; color: var(--color-ink-faint); line-height: 2; } /* ============================================================
+   【模块五：价值升华】
+   ============================================================ */.closing { background: linear-gradient(135deg, var(--color-ocean) 0%, var(--color-brick-dark) 100%); padding: 100px 40px; text-align: center; color: #fff; position: relative; overflow: hidden; } .closing::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%); } .closing-quote { font-family: var(--font-serif-zh); font-size: clamp(18px, 2.2vw, 24px); line-height: 2.2; max-width: 700px; margin: 0 auto; position: relative; } body.lang-en .closing-quote { font-family: var(--font-serif-en); font-size: 20px; line-height: 2; } .closing-quote .gold { color: var(--color-gold); } /* ============================================================
+   【页脚】
+   ============================================================ */.footer { background: var(--color-ink); color: rgba(255,255,255,0.6); padding: 50px 40px; text-align: center; } .footer-title { font-family: var(--font-serif-zh); font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 8px; } body.lang-en .footer-title { font-family: var(--font-serif-en); } .footer-sub { font-size: 13px; margin-bottom: 16px; } .footer-sources { font-size: 12px; opacity: 0.6; line-height: 1.8; } /* ============================================================
+   【响应式】
+   ============================================================ */@media (max-width: 900px) { .nav {  padding: 14px 24px; }  .nav-links {  display: none; }  .section {  padding: 60px 24px; }  .culture-grid {  grid-template-columns: 1fr; }  .museum-grid {  grid-template-columns: 1fr; }  .case-item {  grid-template-columns: 1fr;  padding: 24px; }  .case-item:nth-child(even) {  direction: ltr; }  .stats {  gap: 30px;  padding: 36px 24px; }  .stat-number {  font-size: 32px; } }
+/* ===== 标准页脚样式 ===== */
+.footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); }
+.footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 0px; }
+.footer-title[data-en] { font-family: var(--font-serif-en); }
+.footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: 0px; }
+.footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0; }
+@media (max-width: 768px) {
+  .footer { padding: 32px 20px; }
+}
+</style>
+    </head>
+    <body>
+        <!-- ============================================================
+     【导航栏】
+     ============================================================ -->
+        <nav class="nav" id="nav" style="background-color: #B5493B; height: 50px;"> 
+            <a href="index.html" class="nav-logo"> <span class="nav-logo-text" data-zh style="color: #fdfcfc; font-size: 27px; margin-left: 0;">活态泉州</span> <span class="nav-logo-text" data-en>Living Quanzhou</span> </a> 
+            <ul class="nav-links"> 
+                <li>
+                    <a href="index.html" data-zh style="color: #ffffff; font-size: 20px; font-family: 'Noto Serif SC'; padding-right: 40px;">首页</a>
+                    <a href="index.html" data-en>Home</a>
+                </li>                 
+                <li>
+                    <a href="海上丝绸之路.html" data-zh style="font-size: 20px; width: 180px; font-family: 'Noto Serif SC'; color: #ffffff;">海上丝绸之路</a>
+                    <a href="海上丝绸之路.html" data-en>Maritime Silk Road</a>
+                </li>                 
+                <li>
+                    <a href="世界非遗之城.html" data-zh style="font-size: 20px; color: #ffffff; width: 180px; font-family: 'Noto Serif SC';">世界非遗之城</a>
+                    <a href="世界非遗之城.html" data-en>World Heritage</a>
+                </li>                 
+                <li>
+                    <a href="超级工业之城.html" data-zh style="font-size: 20px; color: #fdfcfc; width: 180px; font-family: 'Noto Serif SC';">超级工业之城</a>
+                    <a href="超级工业之城.html" data-en>Industrial Powerhouse</a>
+                </li>                 
+                <li>
+                    <a href="闽台交流之城.html" class="active" data-zh style="font-size: 20px; color: #faf8f8; font-family: 'Noto Serif SC'; font-weight: bold;">闽台交流之城</a>
+                    <a href="闽台交流之城.html" class="active" data-en>Cross-Strait</a>
+                </li>                 
+            </ul>             
+            <button class="lang-toggle" id="langToggle" aria-label="切换语言" style="font-family: 'Noto Serif SC'; font-size: 20px;"> 
+                <span class="active-lang" id="langZh" style="color: #fdf6f6;">中</span> 
+                <span class="divider">/</span> 
+                <span id="langEn" style="color: #fdf8f8;">EN</span> 
+            </button>
+            <a href="个人中心.html" class="profile-btn" id="profileBtn" title="个人中心" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;overflow:hidden;text-decoration:none;margin-left:12px;">
+              <img id="navAvatar" style="display:none;width:100%;height:100%;object-fit:cover;">
+              <svg id="navAvatarIcon" viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2"/></svg>
+            </a>
+             
+            <button class="nav-hamburger" id="hamburger" aria-label="菜单" style="color: #faf8f8; display: none;"> 
+                <span></span>
+                <span></span>
+                <span></span> 
+            </button>             
+        </nav>
+        <!-- ============================================================
+     【Hero 首屏】
+     ============================================================ -->
+        <!-- ============================================================
+     【数据总览条】
+     ============================================================ -->
+        <!-- ============================================================
+     【模块一：闽台同源故事 —— 移民历史时间轴】
+     ============================================================ -->
+        <section class="section timeline-section">
+            <div class="section-label" data-en>MODULE 1 · SHARED ROOTS</div>
+            <h2 class="section-title" data-zh="">唐山过台湾&#8212;&#8212;跨越海峡的迁徙史</h2>
+            <h2 class="section-title" data-en>"Tangshan to Taiwan": A Migration History Across the Strait</h2>
+            <p class="section-subtitle" data-zh="" style="font-size: 18px; text-align: center; margin-left: px; width: 300%;">从明末清初到改革开放，泉州人用四次大规模迁徙在海峡两岸织就了血脉相连的网络。</p>
+            <p class="section-subtitle" data-en>From the late Ming dynasty to reform and opening-up, Quanzhou people wove a blood-connected network across the strait through four major migrations.</p>
+            <div class="timeline">
+                <!-- 节点1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-period" data-zh style="font-size: 24px; font-weight: 800;">明末清初 · 17世纪</div>
+                    <div class="timeline-period" data-en>Late Ming - Early Qing · 17th Century</div>
+                    <h3 class="timeline-title" data-zh>郑成功收复台湾</h3>
+                    <h3 class="timeline-title" data-en>Koxinga Recovers Taiwan</h3>
+                    <p class="timeline-content" data-zh style="font-size: 17px;">1662年，泉州南安人郑成功驱逐荷兰殖民者，收复台湾。随后，大量泉州军民随郑成功入台，在台湾开垦土地、建立家园，形成了台湾最早的汉族聚居区。郑成功被两岸同胞共同尊为民族英雄。</p>
+                    <p class="timeline-content" data-en>In 1662, Koxinga (Zheng Chenggong), a native of Quanzhou's Nan'an, expelled Dutch colonists and recovered Taiwan. Subsequently, large numbers of Quanzhou soldiers and civilians settled in Taiwan, clearing land and building homes—forming Taiwan's earliest Han Chinese communities. Koxinga is revered as a national hero on both sides of the strait.</p>
+                    <!-- 【加图位置】郑成功收复台湾相关图片 -->
+                    <div class="timeline-img-wrap">
+                        <div class="img-placeholder">
+                            <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                            <img src="https://ts1.tc.mm.bing.net/th/id/OIP-C.KvR3o0jqSpmKX65iFREPBAHaEk?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="郑成功收复台湾">
+                        </div>
+                        <!-- 图片插入位置：第二张图——建议：郑成功雕像 / 延平郡王祠 / 郑成功收复台湾海战图 -->
+                        <div class="img-placeholder">
+                            <img src="https://so1.360tres.com/t0171ffbc2d663c84c9.png" alt="郑成功收复台湾_2">
+                        </div>
+                    </div>
+                </div>
+                <!-- 节点2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-period" data-zh style="font-size: 24px; font-weight: 800;">清代中期 · 18世纪</div>
+                    <div class="timeline-period" data-en>Mid-Qing · 18th Century</div>
+                    <h3 class="timeline-title" data-zh>大规模移民潮</h3>
+                    <h3 class="timeline-title" data-en>Large-Scale Migration Wave</h3>
+                    <p class="timeline-content" data-zh style="font-size: 17px;">清代康熙年间统一台湾后，泉州人掀起了大规模移民台湾的浪潮。泉州人渡海到台湾西部平原开垦，将闽南的农耕技术、宗族制度、民间信仰带到台湾。今天台湾的许多地名（如鹿港、笨港）都源于泉州移民的命名。</p>
+                    <p class="timeline-content" data-en>After the Qing dynasty unified Taiwan in the Kangxi era, Quanzhou people launched a large-scale migration wave. They crossed the strait to clear Taiwan's western plains, bringing Minnan farming techniques, clan systems, and folk beliefs. Many Taiwanese place names (such as Lukang and Bengang) originated from Quanzhou immigrants.</p>
+                    <!-- 【加图位置】清代移民渡海相关图片 -->
+                    <div class="timeline-img-wrap">
+                        <div class="img-placeholder">
+                            <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                            <img src="https://n.sinaimg.cn/sinakd20230131s/537/w800h537/20230131/8c7f-22b1fef179d4868ff5044a079b3cb858.jpg" alt="清代移民渡海">
+                        </div>
+                        <!-- 图片插入位置：第二张图——建议：清代泉州人渡海移民场景 / 鹿港古镇 / 移民开垦图 -->
+                        <div class="img-placeholder">
+                            <img src="https://fddi.fudan.edu.cn/_upload/article/images/77/43/635729054f2cae2829876e30671b/3328c2eb-cae6-43ad-88a3-e13f53c51a0a.jpg" alt="清代移民渡海_2">
+                        </div>
+                    </div>
+                </div>
+                <!-- 节点3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-period" data-zh style="font-size: 24px; font-weight: 800;">日据时期 · 1895-1945</div>
+                    <div class="timeline-period" data-en>Japanese Occupation · 1895-1945</div>
+                    <h3 class="timeline-title" data-zh>文化坚守</h3>
+                    <h3 class="timeline-title" data-en>Cultural Perseverance</h3>
+                    <p class="timeline-content" data-zh style="font-size: 17px;">甲午战争后台湾被割让日本，日本推行"皇民化"运动，试图消灭汉语和中国文化。但台湾同胞坚持在家中说闽南语、拜妈祖、过春节，用文化坚守维系着与大陆的血脉联系。泉州与台湾的民间往来从未完全中断。</p>
+                    <p class="timeline-content" data-en>After the First Sino-Japanese War, Taiwan was ceded to Japan, which launched a "Japanization" movement attempting to eliminate Chinese language and culture. But Taiwanese people insisted on speaking Minnan at home, worshipping Mazu, and celebrating Spring Festival—maintaining blood ties with the mainland through cultural perseverance. Folk exchanges between Quanzhou and Taiwan never fully ceased.</p>
+                    <!-- 【加图位置】日据时期台湾同胞文化坚守相关图片 -->
+                    <div class="timeline-img-wrap">
+                        <div class="img-placeholder">
+                            <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                            <img src="https://ts2.tc.mm.bing.net/th/id/OIP-C.mJAxdvnccC-S4BAIK60vHgHaFA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="日据时期文化坚守">
+                        </div>
+                        <!-- 图片插入位置：第二张图——建议：日据时期台湾同胞私塾教学 / 妈祖信仰活动 / 闽南文化传承老照片 -->
+                        <div class="img-placeholder">
+                            <img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.FlZ24G2FXKkzp6NZmmkh1QHaFT?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="日据时期文化坚守_2">
+                        </div>
+                    </div>
+                </div>
+                <!-- 节点4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-period" data-zh style="font-size: 24px; font-weight: 800;">改革开放后 · 1987至今</div>
+                    <div class="timeline-period" data-en>Post-Reform · 1987-Present</div>
+                    <h3 class="timeline-title" data-zh>交流重启</h3>
+                    <h3 class="timeline-title" data-en>Exchanges Resume</h3>
+                    <p class="timeline-content" data-zh style="font-size: 17px;">1987年台湾开放老兵返乡探亲，两岸交流重启。泉州凭借地缘、血缘、文缘优势，成为台商投资大陆的重要聚集地和两岸文化交流的前沿阵地。今天，泉州有数千家台资企业，每年有大量台湾同胞来泉州寻根谒祖、旅游交流。</p>
+                    <p class="timeline-content" data-en>In 1987, Taiwan opened up for veterans to visit mainland relatives, restarting cross-strait exchanges. With its geographic, blood, and cultural advantages, Quanzhou became a major destination for Taiwanese investment and a frontier of cross-strait cultural exchange. Today, Quanzhou hosts thousands of Taiwanese-funded enterprises, with numerous Taiwanese compatriots visiting yearly for ancestral roots, tourism, and exchange.</p>
+                    <!-- 【加图位置】两岸交流重启相关图片 -->
+                    <div class="timeline-img-wrap">
+                        <div class="img-placeholder">
+                            <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                            <img src="https://so1.360tres.com/t0171d276b7a469ab3a.jpg" alt="两岸交流重启">
+                        </div>
+                        <!-- 图片插入位置：第二张图——建议：台商投资泉州 / 两岸寻根谒祖 / 泉台交流活动 -->
+                        <div class="img-placeholder">
+                            <img src="https://so1.360tres.com/t013762e932abc553fa.jpg" alt="两岸交流重启_2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="stats">
+            <div class="stat-item">
+                <div class="stat-number">137<span style="font-size:20px">km</span>
+                </div>
+                <div class="stat-label" data-zh>泉台最近距离</div>
+                <div class="stat-label" data-en>Closest Distance to Taiwan</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">44.8<span style="font-size:20px">%</span>
+                </div>
+                <div class="stat-label" data-zh>台湾汉族祖籍泉州</div>
+                <div class="stat-label" data-en>Taiwanese Han with Quanzhou Roots</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">500<span style="font-size:20px">+</span>
+                </div>
+                <div class="stat-label" data-zh>台湾妈祖庙数量</div>
+                <div class="stat-label" data-en>Mazu Temples in Taiwan</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">数千<span style="font-size:20px">家</span>
+                </div>
+                <div class="stat-label" data-zh>泉州台资企业</div>
+                <div class="stat-label" data-en>Taiwanese-Funded Enterprises</div>
+            </div>
+        </section>
+        <!-- ============================================================
+     【模块二：闽台文化同源 —— 四维度卡片】
+     ============================================================ -->
+        <section class="section" style="padding-top: 30px;">
+            <div class="section-label" data-en>MODULE 2 · SHARED CULTURE</div>
+            <h2 class="section-title" data-zh>一样的语言，一样的信仰</h2>
+            <h2 class="section-title" data-en>Same Language, Same Faith</h2>
+            <p class="section-subtitle" data-zh style="font-size: 18px;">语言、信仰、宗族、习俗——四个维度，见证闽台两地文化的深度同构。</p>
+            <p class="section-subtitle" data-en>Language, faith, clan, customs—four dimensions witnessing the deep cultural isomorphism between Minnan and Taiwan.</p>
+            <div class="culture-grid">
+                <!-- 维度1：语言 -->
+                <div class="culture-card">
+                    <!-- 【加图位置】闽南语/语言相通相关图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 16/8; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://img1.fjdaily.com/app/images/2025-04/23/35a130bb-8f52-4485-8665-dddecede89ef.jpg.2" alt="语言相通">
+                    </div>
+                    <div class="culture-card-body">
+                        <h3 class="culture-card-title" data-zh>语言相通</h3>
+                        <h3 class="culture-card-title" data-en>Shared Language</h3>
+                        <p class="culture-card-desc" data-zh style="font-size: 16px;">台湾主流方言是闽南语，与泉州话同属闽南语系，语音、词汇、语法高度一致。台湾的"国语"中也融入了大量闽南语词汇。泉州人到台湾，用闽南语可以无障碍交流。语言是文化的载体，共同的语言承载着共同的文化记忆。</p>
+                        <p class="culture-card-desc" data-en>Taiwan's mainstream dialect is Minnan (Hokkien), belonging to the same language family as Quanzhou dialect with highly consistent pronunciation, vocabulary, and grammar. Taiwanese "Mandarin" also incorporates many Minnan words. Quanzhou people can communicate freely in Taiwan using Minnan. Language is the carrier of culture—shared language carries shared cultural memory.</p>
+                    </div>
+                </div>
+                <!-- 维度2：信仰 -->
+                <div class="culture-card">
+                    <!-- 【加图位置】妈祖信仰相关图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 16/8; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.745be2e5a14b5a5371aaf816cf479ad6?rik=khi%2fqG9Yxxp9eA&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10113%2f231%2fw1200h631%2f20191119%2f3b0e-iipztff0982526.jpg&ehk=c3mAbXmArcKazx0PXSjYVBj3YBgVeX2GnpTRAz0DS8Q%3d&risl=&pid=ImgRaw&r=0" alt="妈祖信仰">
+                    </div>
+                    <div class="culture-card-body">
+                        <h3 class="culture-card-title" data-zh>信仰相同</h3>
+                        <h3 class="culture-card-title" data-en>Shared Faith</h3>
+                        <p class="culture-card-desc" data-zh style="font-size: 16px;">妈祖信仰是闽台两地最具代表性的民间信仰。泉州天后宫是世界上规模最大的妈祖庙之一。台湾有超过500座妈祖庙，每年都有大量台湾信众到泉州天后宫、湄洲妈祖祖庙进香。妈祖文化是两岸同胞共同的精神纽带。</p>
+                        <p class="culture-card-desc" data-en>Mazu worship is the most representative folk belief on both sides. Quanzhou's Tianhou Temple is one of the world's largest Mazu temples. Taiwan has over 500 Mazu temples, and every year large numbers of Taiwanese believers make pilgrimages to Quanzhou's Tianhou Temple and Meizhou Mazu Ancestral Temple. Mazu culture is a shared spiritual bond across the strait.</p>
+                        <div class="culture-card-extra" data-en>Note: Baosheng Dadi, Guan Yu, and Qingshui Zushi are also jointly worshipped in Minnan and Taiwan.</div>
+                    </div>
+                </div>
+                <!-- 维度3：宗族 -->
+                <div class="culture-card">
+                    <!-- 【加图位置】宗族血脉/族谱相关图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 16/8; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://ts4.tc.mm.bing.net/th/id/OIP-C.5aXpMZH9j4e45w03NI_98AHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="宗族同根">
+                    </div>
+                    <div class="culture-card-body">
+                        <h3 class="culture-card-title" data-zh>宗族同根</h3>
+                        <h3 class="culture-card-title" data-en>Clan Kinship</h3>
+                        <p class="culture-card-desc" data-zh style="font-size: 16px;">台湾汉族同胞中，约44.8%祖籍泉州。台湾的许多姓氏（如陈、林、黄、张、王）都可以追溯到泉州的同宗同族。台湾各姓宗亲会经常组团到泉州寻根谒祖，修缮祖祠、续修族谱。宗族血脉是两岸最牢固的联系之一。</p>
+                        <p class="culture-card-desc" data-en>Approximately 44.8% of Taiwan's Han Chinese trace their ancestry to Quanzhou. Many Taiwanese surnames (Chen, Lin, Huang, Zhang, Wang) can be traced to Quanzhou clans. Taiwanese clan associations regularly organize groups to visit Quanzhou for ancestral worship, renovating ancestral halls and updating genealogy books. Clan bloodlines are among the strongest cross-strait bonds.</p>
+                    </div>
+                </div>
+                <!-- 维度4：习俗 -->
+                <div class="culture-card">
+                    <!-- 【加图位置】民俗习俗/饮食文化相关图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 16/8; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.55fbc121ddf5fa3f07bb5c337b0bbc53?rik=Nknjv3VSuCR71g&riu=http%3a%2f%2fwww.tsta-bj.com%2fmain%2fAtt_FCK%2fimage%2f2017photo%2fdiscovery14.jpg&ehk=vYjXXGWutu9EGwMiBV4P299modTYAIzGwz7UR63x81k%3d&risl=&pid=ImgRaw&r=0" alt="习俗同源">
+                    </div>
+                    <div class="culture-card-body">
+                        <h3 class="culture-card-title" data-zh>习俗同源</h3>
+                        <h3 class="culture-card-title" data-en>Shared Customs</h3>
+                        <p class="culture-card-desc" data-zh style="font-size: 16px;">闽台两地共享相同的民俗传统——元宵赏花灯、端午赛龙舟、中秋博饼、冬至搓圆。闽南的婚丧嫁娶、建筑风格、饮食文化（面线糊、土笋冻、姜母鸭）在台湾都有传承。这些日常习俗，是两岸同根同源最生动的证明。</p>
+                        <p class="culture-card-desc" data-en>Minnan and Taiwan share the same folk traditions—Lantern Festival lanterns, Dragon Boat Festival races, Mid-Autumn mooncake gambling (bo-bing), and Winter Solstice rice balls. Minnan wedding and funeral customs, architectural styles, and food culture (misua paste, sandworm jelly, ginger duck) are all preserved in Taiwan. These daily customs are the most vivid proof of shared roots.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================================================
+     【模块三：闽台缘博物馆】
+     ============================================================ -->
+        <section class="section museum-section" style="padding-top: 40px;">
+            <div class="section-label" data-en>MODULE 3 · AUTHORITATIVE WITNESS</div>
+            <h2 class="section-title" data-zh="">闽台缘博物馆&#8212;&#8212;用文物讲述两岸一家亲</h2>
+            <h2 class="section-title" data-en>China Museum for Fujian-Taiwan Kinship: Telling "One Family" Through Artifacts</h2>
+            <p class="museum-intro" data-zh>
+    中国闽台缘博物馆坐落于泉州，是中国大陆唯一一座反映闽台关系、系统展示闽台历史文化渊源的国家级专题博物馆。博物馆以"闽台缘"为主题，通过大量文物、文献、图片，系统展示了闽台两地在地理、血缘、法缘、商缘、文缘等方面的密切关系，是两岸同根同源的权威见证。 </p>
+            <p class="museum-intro" data-en>
+    Located in Quanzhou, the China Museum for Fujian-Taiwan Kinship is mainland China's only national-level museum dedicated to Fujian-Taiwan relations and their historical and cultural origins. With the theme of "Fujian-Taiwan kinship," it systematically displays the close geographic, blood, legal, commercial, and cultural ties through artifacts, documents, and photographs—an authoritative witness to shared cross-strait roots. </p>
+            <div class="museum-grid">
+                <!-- 展项1 -->
+                <div class="museum-card">
+                    <!-- 【加图位置】远古家园/地缘相近展项图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 4/3; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://pic2.zhimg.com/v2-adb0d6f81f4808662dea4f976b3e0119_b.jpg" alt="远古家园——地缘相近">
+                    </div>
+                    <div class="museum-card-body">
+                        <span class="museum-card-num">EXHIBIT 01</span>
+                        <h3 class="museum-card-title" data-zh="">远古家园</h3>
+                        <h3 class="museum-card-title" data-en>Ancient Homeland — Geographic Proximity</h3>
+                        <p class="museum-card-desc" data-zh="" style="font-size: 16px;">台湾海峡存在一定的地质变迁。远古时期，台湾与大陆相连，后来地壳运动形成海峡。考古发现证明，台湾史前文化与大陆东南沿海文化一脉相承。</p>
+                        <p class="museum-card-desc" data-en>Displays the geological evolution of the Taiwan Strait. In ancient times, Taiwan was connected to the mainland; later crustal movement formed the strait. Archaeological finds prove Taiwan's prehistoric culture is continuous with mainland China's southeast coast culture.</p>
+                    </div>
+                </div>
+                <!-- 展项2 -->
+                <div class="museum-card">
+                    <!-- 【加图位置】血脉相亲/血缘同源展项图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 4/3; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://img1.fjdaily.com/app/images/2025-04/14/0095eb60-af27-4975-b9a1-77034fda7967_batchwm.jpg.2" alt="血脉相亲——血缘同源">
+                    </div>
+                    <div class="museum-card-body">
+                        <span class="museum-card-num">EXHIBIT 02</span>
+                        <h3 class="museum-card-title" data-zh="">血缘同源</h3>
+                        <h3 class="museum-card-title" data-en>Blood Kinship — Shared Ancestry</h3>
+                        <p class="museum-card-desc" data-zh="" style="font-size: 16px;">明清时期泉州人移民台湾具有悠久的历史，馆内包括族谱、渡海工具、开垦契约等文物。用数据展示台湾汉族同胞的祖籍分布，其中泉州籍占比最高。</p>
+                        <p class="museum-card-desc" data-en>Displays the history of Quanzhou migration to Taiwan during the Ming-Qing period, including genealogy books, sea-crossing tools, and land reclamation contracts. Data shows the ancestral distribution of Taiwan's Han Chinese, with Quanzhou origins accounting for the largest share.</p>
+                    </div>
+                </div>
+                <!-- 展项3 -->
+                <div class="museum-card">
+                    <!-- 【加图位置】法缘相循/历史沿革展项图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 4/3; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://k.sinaimg.cn/n/sinacn10111/542/w800h542/20190526/8a63-hxntqyy7956167.jpg/w700d1q75cms.jpg" alt="法缘相循——历史沿革">
+                    </div>
+                    <div class="museum-card-body">
+                        <span class="museum-card-num">EXHIBIT 03</span>
+                        <h3 class="museum-card-title" data-zh="">法缘相循</h3>
+                        <h3 class="museum-card-title" data-en>Legal Continuity — Historical Evolution</h3>
+                        <p class="museum-card-desc" data-zh="" style="font-size: 16px;">台湾从三国时期到清代经历了多次历史沿革，用历代官方文献、舆图证明台湾自古以来就是中国领土不可分割的一部分。</p>
+                        <p class="museum-card-desc" data-en>Displays Taiwan's historical evolution from the Three Kingdoms period to the Qing dynasty, using official documents and maps to prove Taiwan has been an inalienable part of Chinese territory since ancient times.</p>
+                    </div>
+                </div>
+                <!-- 展项4 -->
+                <div class="museum-card">
+                    <!-- 【加图位置】商缘相连/经贸往来展项图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 4/3; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://x0.ifengimg.com/ucms/2021_46/F709EC713EE22C62E366BF2E62603035C422CCEC_size147_w1920_h1080.jpg" alt="商缘相连——经贸往来">
+                    </div>
+                    <div class="museum-card-body">
+                        <span class="museum-card-num">EXHIBIT 04</span>
+                        <h3 class="museum-card-title" data-zh="">商缘相连</h3>
+                        <h3 class="museum-card-title" data-en>Commercial Ties — Economic Exchange</h3>
+                        <p class="museum-card-desc" data-zh="" style="font-size: 16px;">闽台两地从古代&ldquo;郊行&rdquo;贸易到当代台商投资的经贸往来历史悠久。泉州的鹿港与台湾的鹿港（彰化）因贸易而同名，是两岸商贸往来的历史见证。</p>
+                        <p class="museum-card-desc" data-en>Displays the history of Fujian-Taiwan economic exchange from ancient "jiaohang" trade to contemporary Taiwanese investment. Quanzhou's Lugang and Taiwan's Lukang (Changhua) share the same name due to trade—a historical witness to cross-strait commerce.</p>
+                    </div>
+                </div>
+                <!-- 展项5 -->
+                <div class="museum-card">
+                    <!-- 【加图位置】文缘相承/文化传承展项图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 4/3; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://img1.fjdaily.com/app/images/2025-06/01/d728f3e0-3262-40c7-921d-2cedbf217734.png.2" alt="文缘相承——文化传承">
+                    </div>
+                    <div class="museum-card-body">
+                        <span class="museum-card-num">EXHIBIT 05</span>
+                        <h3 class="museum-card-title" data-zh="">文缘相承</h3>
+                        <h3 class="museum-card-title" data-en>Cultural Continuity — Shared Heritage</h3>
+                        <p class="museum-card-desc" data-zh="" style="font-size: 16px;">闽台具有共同的语言、信仰、戏曲、民俗、建筑、饮食文化。南音、歌仔戏、木偶戏在两岸共同传承，妈祖、保生大帝信仰在两岸共同信奉。</p>
+                        <p class="museum-card-desc" data-en>Displays shared Minnan-Taiwan language, faith, opera, folklore, architecture, and food culture. Nanyin, Gezai opera, and puppet theatre are jointly inherited; Mazu and Baosheng Dadi are jointly worshipped on both sides.</p>
+                    </div>
+                </div>
+                <!-- 博物馆外观卡片 -->
+                <div class="museum-card">
+                    <!-- 【加图位置】闽台缘博物馆建筑外观图片 -->
+                    <div class="img-placeholder" style="aspect-ratio: 4/3; border-radius: 12px 12px 0 0;">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://ts1.tc.mm.bing.net/th/id/R-C.1d4d81f01c9c14dd965c11191e03d43b?rik=fE6P9N%2f6cpx49w&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fphotoblog%2f2007%2f20%2fc4%2f221535517_1595248686058.jpg&ehk=mXfE4J0JiA8X17yeLV7ECRgLpRy9k2sVcMyzEoV1L%2bc%3d&risl=&pid=ImgRaw&r=0" alt="闽台缘博物馆外观">
+                    </div>
+                    <div class="museum-card-body">
+                        <span class="museum-card-num">MUSEUM</span>
+                        <h3 class="museum-card-title" data-zh>博物馆建筑</h3>
+                        <h3 class="museum-card-title" data-en>The Museum Building</h3>
+                        <p class="museum-card-desc" data-zh="" style="font-size: 16px;">博物馆主体建筑设计融合了闽南传统建筑元素与现代风格，&quot;出砖入石&quot;墙体、燕尾脊等符号彰显闽台同根的建筑文化。馆区占地面积100余亩，建筑面积2万余平方米。</p>
+                        <p class="museum-card-desc" data-en>The museum's architecture blends traditional Minnan elements with modern style—"brick-and-stone" walls and swallow-tail roofs symbolize shared building culture. The site covers over 100 mu with 20,000+ sqm of floor space.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================================================
+     【模块四：当代两岸交流案例】
+     ============================================================ -->
+        <section class="section" style="padding-top: 40px;">
+            <div class="section-label" data-en>MODULE 4 · INTEGRATED DEVELOPMENT</div>
+            <h2 class="section-title" data-zh="">融合发展&#8212;&#8212;新时代的两岸故事</h2>
+            <h2 class="section-title" data-en>Integrated Development: Cross-Strait Stories in a New Era</h2>
+            <p class="section-subtitle" data-zh style="font-size: 18px;">台商投资、青年交流、文化节庆——三个案例，呈现新时代两岸融合发展的生动实践。</p>
+            <p class="section-subtitle" data-en>Taiwanese investment, youth exchange, cultural festivals—three cases presenting the vivid practice of cross-strait integrated development in the new era.</p>
+            <div class="case-list">
+                <!-- 案例1 -->
+                <div class="case-item">
+                    <div class="case-content">
+                        <span class="case-tag" data-zh>经济融合</span>
+                        <span class="case-tag" data-en>ECONOMIC INTEGRATION</span>
+                        <h3 class="case-title" data-zh>台商在泉州</h3>
+                        <h3 class="case-title" data-en>Taiwanese Businesspeople in Quanzhou</h3>
+                        <p class="case-desc" data-zh style="font-size: 17px;">泉州是台商投资大陆的重要聚集地。截至目前，泉州累计批准台资企业数千家，投资领域涵盖机械、电子、食品、纺织、农业等。许多台商在泉州扎根多年，把泉州当成"第二故乡"。泉州台商投资区是国家级台商投资区，为台胞提供创业就业的优质平台。</p>
+                        <p class="case-desc" data-en>Quanzhou is a major destination for Taiwanese investment, with thousands of approved Taiwanese-funded enterprises in machinery, electronics, food, textiles, and agriculture. Many Taiwanese businesspeople have rooted in Quanzhou for years, calling it their "second hometown." The Quanzhou Taiwanese Investment Zone is a national-level zone providing a high-quality platform for Taiwanese entrepreneurship and employment.</p>
+                    </div>
+                    <!-- 【加图位置】台商在泉州/台商投资区相关图片 -->
+                    <div class="img-placeholder">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://ts3.tc.mm.bing.net/th/id/OIP-C.CahZwGM4k6BT89-5Pr0dDwHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="台商在泉州">
+                    </div>
+                </div>
+                <!-- 案例2 -->
+                <div class="case-item">
+                    <div class="case-content">
+                        <span class="case-tag" data-zh>青年交流</span>
+                        <span class="case-tag" data-en>YOUTH EXCHANGE</span>
+                        <h3 class="case-title" data-zh>两岸青年交流</h3>
+                        <h3 class="case-title" data-en>Cross-Strait Youth Exchange</h3>
+                        <p class="case-desc" data-zh style="font-size: 17px;">每年，大量台湾青年学生到泉州实习、创业、交流。泉州的高校与台湾高校建立了合作关系，举办两岸大学生夏令营、创业大赛。台湾青年在泉州体验闽南文化、了解大陆发展，许多人选择留在泉州就业创业。</p>
+                        <p class="case-desc" data-en>Every year, large numbers of Taiwanese youth come to Quanzhou for internships, entrepreneurship, and exchange. Quanzhou universities partner with Taiwanese universities, hosting cross-strait student summer camps and startup competitions. Taiwanese youth experience Minnan culture and learn about mainland development, with many choosing to stay and work in Quanzhou.</p>
+                    </div>
+                    <!-- 【加图位置】两岸青年交流相关图片 -->
+                    <div class="img-placeholder">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://cz.nankai.edu.cn/_upload/article/images/cb/4f/2f39b46e4ef18c69170e7b832444/6d408a56-90d8-4ee3-aba9-4a05d185bb17.jpg" alt="两岸青年交流">
+                    </div>
+                </div>
+                <!-- 案例3 -->
+                <div class="case-item">
+                    <div class="case-content">
+                        <span class="case-tag" data-zh>文化交流</span>
+                        <span class="case-tag" data-en>CULTURAL EXCHANGE</span>
+                        <h3 class="case-title" data-zh>妈祖文化旅游节</h3>
+                        <h3 class="case-title" data-en>Mazu Cultural Tourism Festival</h3>
+                        <p class="case-desc" data-zh style="font-size: 17px;">每年，泉州举办妈祖文化旅游节，吸引大量台湾信众和游客参加。两岸妈祖宫庙举行联合祭祀仪式，台湾妈祖庙到泉州天后宫"割香"（分灵仪式），这是两岸宗教文化交流的重要活动。</p>
+                        <p class="case-desc" data-en>Every year, Quanzhou hosts the Mazu Cultural Tourism Festival, attracting large numbers of Taiwanese believers and tourists. Cross-strait Mazu temples hold joint worship ceremonies, with Taiwanese Mazu temples conducting "incense division" rituals at Quanzhou's Tianhou Temple—an important activity of cross-strait religious and cultural exchange.</p>
+                    </div>
+                    <!-- 【加图位置】妈祖文化旅游节相关图片 -->
+                    <div class="img-placeholder">
+                        <!-- 加图说明：把下面 img 的 src 换成你的图片URL，占位图标会自动消失 -->
+                        <img src="https://huacheng.gz-cmc.com/upload/news/image/2023/05/11/1a39c88206784848828bc685810a9621.jpeg" alt="妈祖文化旅游节">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================================================
+     【模块五：政治价值升华】
+     ============================================================ -->
+        <section class="closing" style="padding-top: 40px; padding-bottom: 35px; font-size: 20px; font-weight: 300;">
+            <div class="closing-quote" style="font-weight: 400; font-size: 20px;">
+                <p data-zh="">海峡很浅，浅到可以听见对岸的潮声；</p>
+                <p data-en="">The strait is shallow&#8212;shallow enough to hear the tides on the other side.</p>
+                <p data-zh="">血脉很深，深到跨越千年依然相连。</p>
+                <p data-zh="">泉州与台湾，</p>
+                <p data-en="">Quanzhou and Taiwan</p>
+                <p data-zh="">说一样的话，拜一样的神，过一样的节，吃一样的饭。</p>
+                <p class="gold" data-zh="" style="font-size: 24px; font-weight: 700; padding-top: 10px; padding-bottom: 10px;">&ldquo;两岸一家亲，不是口号，是生活。&rdquo;</p>
+                <p class="gold" data-en="">&quot;One family across the strait&quot; is not a slogan&#8212;it is daily life.</p>
+                <p data-zh="" class="">血浓于水，这是任何力量都割不断的联系。</p>
+                <p class="gold" data-zh="" style="font-size: 24px; font-weight: 700; padding-top: 10px;">这，就是中国故事里最温暖的一章。</p>
+                <p class="gold" data-en="">This is the warmest chapter in China&apos;s story.</p>
+            </div>
+        </section>
+        <!-- ============================================================
+     【页脚】
+     ============================================================ -->
+        <footer class="footer" style="padding-top: 10px; padding-bottom: 10px; font-size: 16px;"> 
+        <div class="footer-title" data-zh="">《活态泉州&#8212;&#8212;一座中国城市的四重叙事》</div>         
+        <div class="footer-title" data-en>Living Quanzhou: A Four-Fold Narrative of a Chinese City</div>         
+        <div class="footer-sub" data-zh="" style="font-size: 13px;">第十四届全国大学生数字媒体科技作品及创意竞赛&ldquo;科技+创意，讲好中国故事&rdquo;赛道</div>         
+        <div class="footer-sub" data-en>14th National College Student Digital Media Competition · "Technology + Creativity, Telling China's Story"</div>         
+        <div class="footer-sources" style="margin-top: 0px; font-size: 13px;" data-zh> 
+            数据来源：泉州市统计局 · 联合国教科文组织 · 公开学术文献
+</div>         
+        <div class="footer-sources" style="margin-top:16px;" data-en> 
+            Data Sources: Quanzhou Municipal Bureau of Statistics · UNESCO · Public Academic Literature
+</div>         
+    </footer>
+        <!-- ============================================================
+     【JavaScript】
+     ============================================================ -->
+        <script>
+// 导航栏滚动效果
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// 中英双语切换
+const langToggle = document.getElementById('langToggle');
+const langZh = document.getElementById('langZh');
+const langEn = document.getElementById('langEn');
+const pageTitle = document.getElementById('pageTitle');
+
+const PAGE_TITLES = {
+  zh: '闽台交流之城 · 活态泉州',
+  en: 'Cross-Strait Exchange · Living Quanzhou'
+};
+
+function applyLanguage(lang) {
+  const isEn = (lang === 'en');
+  document.body.classList.toggle('lang-en', isEn);
+  document.documentElement.lang = isEn ? 'en' : 'zh-CN';
+  langZh.classList.toggle('active-lang', !isEn);
+  langEn.classList.toggle('active-lang', isEn);
+  if (pageTitle) pageTitle.textContent = PAGE_TITLES[lang];
+  document.title = PAGE_TITLES[lang];
+  try { localStorage.setItem('preferredLang', lang); } catch(e) {}
+}
+
+// 初始化：读取本地存储偏好，默认中文
+let savedLang = 'zh';
+try { savedLang = localStorage.getItem('preferredLang') || 'zh'; } catch(e) {}
+applyLanguage(savedLang);
+
+langToggle.addEventListener('click', () => {
+  const current = document.body.classList.contains('lang-en') ? 'en' : 'zh';
+  applyLanguage(current === 'zh' ? 'en' : 'zh');
+});
+
+// 数字滚动动画
+const counters = document.querySelectorAll('.stat-number');
+let countersAnimated = false;
+function animateCounters() {
+  if (countersAnimated) return;
+  countersAnimated = true;
+  counters.forEach(counter => {
+    // 只处理纯数字部分
+    const text = counter.textContent;
+    const numMatch = text.match(/[\d,]+/);
+    if (!numMatch) return;
+    const target = parseInt(numMatch[0].replace(/,/g, ''));
+    const suffix = text.replace(numMatch[0], '');
+    const duration = 2000;
+    const startTime = performance.now();
+    function update(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(easeOut * target);
+      counter.innerHTML = current.toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+      else counter.innerHTML = target.toLocaleString() + suffix;
+    }
+    requestAnimationFrame(update);
+  });
+}
+const statsSection = document.querySelector('.stats');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { animateCounters(); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.3 });
+if (statsSection) observer.observe(statsSection);
+
+// 加载导航栏头像
+(function() {
+  var profile = JSON.parse(localStorage.getItem('quanzhou_profile') || '{}');
+  if (profile.avatar) {
+    var navAvatar = document.getElementById('navAvatar');
+    var navAvatarIcon = document.getElementById('navAvatarIcon');
+    if (navAvatar && navAvatarIcon) {
+      navAvatar.src = profile.avatar;
+      navAvatar.style.display = 'block';
+      navAvatarIcon.style.display = 'none';
+    }
+  }
+})();
+
+</script>
+    </body>
+</html>

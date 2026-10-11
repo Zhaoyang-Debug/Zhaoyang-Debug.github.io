@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="pageTitle">超级工业之城 · 活态泉州</title>
+        <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap">
+        <style>/* ============================================================
+   【双语切换】放在最前面确保生效
+   ============================================================ */body:not(.lang-en) [data-en] { display: none !important; } body.lang-en [data-zh] { display: none !important; } /* ============================================================
+   【全局可调参数区】
+   ============================================================ */:root { --color-brick: #B5493B; --color-brick-dark: #8E372C; --color-brick-light: #D4756A; --color-ocean: #1B4965; --color-ocean-light: #2D6A8F; --color-paper: #F5F0E8; --color-paper-dark: #EDE5D6; --color-gold: #C9A961; --color-gold-light: #E0C98F; --color-ink: #2C2416; --color-ink-light: #5C5040; --color-ink-faint: #8A7E6C; --color-jade: #4A7C59; --color-steel: #3D4F5F; --font-serif-zh: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; --font-sans-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif-en: 'Playfair Display', Georgia, serif; --font-sans-en: 'Inter', 'Helvetica Neue', Arial, sans-serif; --fs-hero-title: clamp(40px, 6vw, 72px); --fs-hero-sub: clamp(18px, 2.5vw, 28px); --fs-section-title: clamp(28px, 4vw, 42px); --fs-card-title: 18px; --fs-nav: 14px; --fs-body: 15px; --fs-small: 12px; --padding-section: 90px 48px; --nav-height: 72px; } *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: var(--font-sans-zh), var(--font-sans-en); background: var(--color-paper); color: var(--color-ink); font-size: var(--fs-body); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; } body.lang-en { font-family: var(--font-sans-en), var(--font-sans-zh); } a { text-decoration: none; color: inherit; } ul { list-style: none; } /* ============================================================
+   【导航栏】
+   ============================================================ */.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-height); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; background: transparent; } .nav.scrolled { background: rgba(245,240,232,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(44,36,22,0.08); } .nav-logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; } .nav-logo-icon { width: 36px; height: 36px; border: 2px solid var(--color-brick); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; } .nav-logo-icon::after { content: ''; position: absolute; width: 18px; height: 2px; background: var(--color-brick); } .nav-logo-text { font-family: var(--font-serif-zh); font-size: 17px; font-weight: 700; letter-spacing: 2px; color: var(--color-ink); } body.lang-en .nav-logo-text { font-family: var(--font-serif-en); letter-spacing: 1px; font-size: 15px; } .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; } .nav-links li { position: relative; } .nav-links a { display: block; padding: 8px 12px; font-size: var(--fs-nav); font-weight: 500; letter-spacing: 1px; color: var(--color-ink-light); transition: all 0.3s; white-space: nowrap; border-radius: 4px; } .nav-links a:hover { color: var(--color-brick); background: rgba(181,73,59,0.06); } .nav-links a.active { color: var(--color-brick); font-weight: 700; } .lang-toggle { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--color-ink-faint); border-radius: 20px; cursor: pointer; background: transparent; font-size: 13px; font-weight: 500; color: var(--color-ink-light); transition: all 0.3s; flex-shrink: 0; } .lang-toggle:hover { border-color: var(--color-brick); color: var(--color-brick); } .lang-toggle .active-lang { color: var(--color-brick); font-weight: 700; } .lang-toggle .divider { color: var(--color-ink-faint); } .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; } .nav-hamburger span { width: 24px; height: 2px; background: var(--color-ink); transition: all 0.3s; } /* ============================================================
+   【页面 Hero】
+   ============================================================ */.page-hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 140px 24px 80px; position: relative; background: radial-gradient(ellipse at 30% 20%, rgba(27,73,101,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(181,73,59,0.1) 0%, transparent 50%),
+    var(--color-paper); } .page-hero-eyebrow { font-size: var(--fs-small); letter-spacing: 6px; color: var(--color-ocean); text-transform: uppercase; margin-bottom: 24px; font-weight: 500; } body.lang-en .page-hero-eyebrow { letter-spacing: 4px; } .page-hero-title { font-family: var(--font-serif-zh); font-size: var(--fs-hero-title); font-weight: 900; color: var(--color-ink); margin-bottom: 16px; line-height: 1.2; } body.lang-en .page-hero-title { font-family: var(--font-serif-en); font-style: italic; } .page-hero-title-accent { color: var(--color-brick); position: relative; display: inline-block; } .page-hero-title-accent::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 8px; background: rgba(201,169,97,0.3); z-index: -1; } .page-hero-subtitle { font-family: var(--font-serif-zh); font-size: var(--fs-hero-sub); font-weight: 400; color: var(--color-ink-light); margin-bottom: 32px; letter-spacing: 3px; } body.lang-en .page-hero-subtitle { font-family: var(--font-serif-en); font-style: italic; letter-spacing: 1px; } .page-hero-desc { max-width: 760px; font-size: 14.5px; line-height: 2; color: var(--color-ink-light); } /* ============================================================
+   【通用章节】
+   ============================================================ */.section { padding: var(--padding-section); position: relative; } .section-header { text-align: center; margin-bottom: 25px; } .section-eyebrow { font-size: var(--fs-small); letter-spacing: 5px; color: var(--color-ocean); text-transform: uppercase; margin-bottom: 14px; font-weight: 600; } body.lang-en .section-eyebrow { letter-spacing: 3px; } .section-title { font-family: var(--font-serif-zh); font-size: var(--fs-section-title); font-weight: 700; color: var(--color-ink); margin-bottom: 0px; } body.lang-en .section-title { font-family: var(--font-serif-en); } .section-desc { max-width: 680px; margin: 0 auto; font-size: 14.5px; color: var(--color-ink-light); line-height: 1.9; } /* ============================================================
+   【数据总览条】
+   ============================================================ */.stats { background: var(--color-ink); color: var(--color-paper); padding: 72px 48px; position: relative; overflow: hidden; } .stats::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 15% 50%, rgba(27,73,101,0.3) 0%, transparent 40%),
+    radial-gradient(circle at 85% 50%, rgba(181,73,59,0.2) 0%, transparent 40%); } .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 1000px; margin: 0 auto; position: relative; z-index: 1; } .stat-item { text-align: center; padding: 0 12px; border-right: 1px solid rgba(245,240,232,0.1); } .stat-item:last-child { border-right: none; } .stat-number { font-family: var(--font-serif-en); font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: var(--color-gold-light); line-height: 1.1; margin-bottom: 8px; } .stat-number .suffix { font-size: 0.45em; font-weight: 400; color: var(--color-paper); margin-left: 2px; } .stat-label { font-size: 13px; color: rgba(245,240,232,0.6); letter-spacing: 1px; line-height: 1.6; } /* ============================================================
+   【泉州产业地图模块 - 左图右文两栏】
+   ============================================================ */.map-section { background: var(--color-paper); } .map-two-col { display: grid; grid-template-columns: 42% 58%; gap: 40px; max-width: 1100px; margin: 0 auto; align-items: start; } .map-left { position: sticky; top: 90px; } .map-box { position: relative; display: block; width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 6px 24px rgba(44,36,22,0.1); } .map-box .map-photo { position: relative; z-index: 1; pointer-events: none; } .map-photo { width: 100%; display: block; height: auto; } .map-dot { position: absolute; transform: translate(-50%, -50%); cursor: pointer; z-index: 100; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; pointer-events: auto; border-radius: 50%; } .map-dot-inner { width: 16px; height: 16px; background: var(--dot-color, var(--color-brick)); border: 3px solid #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,0.4); position: relative; transition: transform 0.3s, box-shadow 0.3s; flex-shrink: 0; } .map-dot:hover .map-dot-inner { transform: scale(1.4); } .map-dot-inner::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 12px; height: 12px; background: var(--dot-color, var(--color-brick)); border-radius: 50%; animation: dotPulse 2s infinite; opacity: 0.5; } @keyframes dotPulse { 0% {  transform: translate(-50%, -50%) scale(1);  opacity: 0.5; }  100% {  transform: translate(-50%, -50%) scale(3);  opacity: 0; } } .map-dot.active .map-dot-inner { transform: scale(1.5); box-shadow: 0 0 0 3px rgba(255,255,255,0.7), 0 1px 8px rgba(0,0,0,0.4); } /* 右侧区县列表 */.district-list { display: flex; flex-direction: column; gap: 12px; } .district-item { background: var(--color-paper-dark); border-radius: 10px; padding: 18px 22px; cursor: pointer; transition: all 0.3s; border-left: 4px solid var(--item-color, var(--color-ink-faint)); border: 1px solid rgba(44,36,22,0.06); border-left: 4px solid var(--item-color, var(--color-ink-faint)); } .district-item:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(44,36,22,0.08); } .district-item.active { background: #fff; box-shadow: 0 6px 20px rgba(44,36,22,0.12); border-left-width: 5px; } .district-item-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; } .district-item-name { font-family: var(--font-serif-zh); font-size: 22px; font-weight: 700; color: var(--color-ink); } body.lang-en .district-item-name { font-family: var(--font-serif-en); font-size: 16px; } .district-item-nick { font-family: var(--font-serif-en); font-size: 12px; color: var(--color-ink-faint); font-style: italic; } .district-item-industry { display: inline-block; font-size: 11px; padding: 2px 10px; border-radius: 10px; background: rgba(27,73,101,0.08); color: var(--color-ocean); margin-bottom: 8px; font-weight: 600; letter-spacing: 0.5px; } .district-item-companies { font-size: 13px; color: var(--color-ink-light); line-height: 1.7; margin-bottom: 6px; } .district-item-companies strong { color: var(--color-ink); font-weight: 700; } .district-item-data { font-size: 12.5px; color: var(--color-ink-faint); line-height: 1.7; } @media (max-width: 900px) { .map-two-col {  grid-template-columns: 1fr;  gap: 32px; }  .map-left {  position: static;  max-width: 420px;  margin: 0 auto; } } /* ============================================================
+   【模块一：产业集群】
+   ============================================================ */.industry-section { background: var(--color-paper-dark); } .industry-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 25px; } .filter-btn { padding: 8px 20px; border: 1px solid var(--color-ink-faint); border-radius: 20px; background: transparent; font-size: 13px; font-weight: 500; color: var(--color-ink-light); cursor: pointer; transition: all 0.3s; letter-spacing: 1px; } .filter-btn:hover { border-color: var(--color-ocean); color: var(--color-ocean); } .filter-btn.active { background: var(--color-ocean); border-color: var(--color-ocean); color: #fff; } .industry-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; } .industry-card { background: var(--color-paper); border-radius: 12px; overflow: hidden; transition: all 0.4s; border: 1px solid rgba(44,36,22,0.06); position: relative; } .industry-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(44,36,22,0.12); } .industry-card-header { padding: 24px 24px 16px; border-bottom: 1px solid rgba(44,36,22,0.06); position: relative; } .industry-card-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--card-color, var(--color-ocean)); } .industry-tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 10px; background: rgba(27,73,101,0.1); color: var(--card-color, var(--color-ocean)); margin-bottom: 10px; letter-spacing: 1px; font-weight: 600; } .industry-name { font-family: var(--font-serif-zh); font-size: 22px; font-weight: 700; color: var(--color-ink); margin-bottom: 4px; } body.lang-en .industry-name { font-family: var(--font-serif-en); font-size: 20px; } .industry-name-en { font-family: var(--font-serif-en); font-size: 13px; color: var(--color-ink-faint); font-style: italic; letter-spacing: 0.5px; } .industry-card-body { padding: 20px 24px 24px; } .industry-companies { font-size: 12.5px; color: var(--color-ink-light); margin-bottom: 14px; line-height: 1.7; } .industry-companies strong { color: var(--color-ink); font-weight: 600; } .industry-data { background: var(--color-paper-dark); border-radius: 8px; padding: 12px 16px; margin-bottom: 14px; font-size: 12.5px; color: var(--color-ink-light); line-height: 1.7; border-left: 3px solid var(--card-color, var(--color-ocean)); } .industry-desc { font-size: 13px; line-height: 1.85; color: var(--color-ink-light); } .industry-card.hidden { display: none; } /* ============================================================
+   【模块二：工业时间轴】
+   ============================================================ */.timeline-section { background: var(--color-paper); } .timeline-tabs { display: flex; justify-content: center; gap: 0; margin-bottom: 48px; border-bottom: 2px solid rgba(44,36,22,0.08); max-width: 900px; margin-left: auto; margin-right: auto; flex-wrap: wrap; } .timeline-tab { flex: 1; min-width: 140px; padding: 16px 20px; background: none; border: none; font-family: var(--font-serif-zh); font-size: 15px; font-weight: 600; color: var(--color-ink-faint); cursor: pointer; position: relative; transition: all 0.3s; letter-spacing: 1px; text-align: center; } body.lang-en .timeline-tab { font-family: var(--font-serif-en); letter-spacing: 0.5px; font-size: 13px; } .timeline-tab::after { content: ''; position: absolute; bottom: -2px; left: 50%; width: 0; height: 3px; background: var(--tab-color, var(--color-brick)); transition: all 0.3s; transform: translateX(-50%); } .timeline-tab.active { color: var(--tab-color, var(--color-brick)); } .timeline-tab.active::after { width: 60%; } .timeline-tab .tab-year { display: block; font-family: var(--font-serif-en); font-size: 11px; font-weight: 400; letter-spacing: 1px; margin-top: 4px; opacity: 0.7; } .timeline-content { display: none; } .timeline-content.active { display: block; animation: fadeIn 0.5s; } @keyframes fadeIn { from {  opacity: 0;  transform: translateY(10px); }  to {  opacity: 1;  transform: translateY(0); } } .timeline-card { max-width: 1000px; margin: 0 auto; background: var(--color-paper-dark); border-radius: 12px; padding: 40px 48px; position: relative; border-left: 5px solid var(--tab-color, var(--color-brick)); } .timeline-card-two-col { display: grid; grid-template-columns: 1fr 340px; gap: 36px; align-items: start; } .timeline-card-text { min-width: 0; } .timeline-card-image { width: 100%; min-height: 260px; border-radius: 10px; overflow: hidden; background: var(--color-paper); border: 2px dashed var(--color-ink-faint); display: flex; align-items: center; justify-content: center; position: relative; background-size: cover; background-position: center; background-repeat: no-repeat; } .timeline-card-image-placeholder { text-align: center; color: var(--color-ink-faint); font-size: 13px; line-height: 1.8; padding: 24px 16px; } .timeline-card-image-placeholder .ph-icon { font-size: 32px; margin-bottom: 8px; display: block; opacity: 0.5; } .timeline-card-image-placeholder .ph-label { font-weight: 600; color: var(--color-ink-light); margin-bottom: 4px; } .timeline-card-image-placeholder .ph-note { font-size: 11.5px; color: var(--color-ink-faint); } .timeline-stage { font-family: var(--font-serif-zh); font-size: 24px; font-weight: 700; color: var(--color-ink); margin-bottom: 8px; } body.lang-en .timeline-stage { font-family: var(--font-serif-en); } .timeline-stage-en { font-family: var(--font-serif-en); font-size: 16.8px; color: var(--color-ink-faint); font-style: italic; margin-bottom: 20px; } .timeline-narrative { font-size: 17.4px; line-height: 2; color: var(--color-ink-light); margin-bottom: 24px; } .timeline-keydata { display: inline-flex; align-items: center; gap: 10px; background: var(--color-ink); color: var(--color-gold-light); padding: 10px 20px; border-radius: 8px; font-size: 15.6px; font-weight: 500; } .timeline-keydata .kd-label { color: rgba(245,240,232,0.6); font-size: 13.2px; letter-spacing: 1px; } .gov-market-note { margin-top: 20px; padding: 14px 18px; background: rgba(27,73,101,0.06); border-radius: 8px; font-size: 12.5px; color: var(--color-ocean); line-height: 1.7; } .gov-market-note strong { font-weight: 700; } /* ============================================================
+   【模块三：晋江经验理论】
+   ============================================================ */.theory-section { background: var(--color-paper-dark); } .theory-intro { max-width: 860px; margin: 0 auto 30px; font-size: 14px; line-height: 2; color: var(--color-ink-light); text-align: center; } .theory-framework { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; align-items: stretch; } .theory-pillar { background: var(--color-paper); border-radius: 12px; padding: 32px 28px; text-align: center; border: 1px solid rgba(44,36,22,0.06); display: flex; flex-direction: column; } .theory-pillar-image { width: 100%; height: 170px; border-radius: 8px; margin-bottom: 20px; background: var(--color-paper-dark); border: 2px dashed var(--color-ink-faint); display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; background-size: cover; background-position: center; background-repeat: no-repeat; flex-shrink: 0; } .theory-pillar-image-placeholder { text-align: center; color: var(--color-ink-faint); font-size: 12px; line-height: 1.7; padding: 16px; } .theory-pillar-image-placeholder .ph-icon { font-size: 28px; display: block; margin-bottom: 6px; opacity: 0.5; } .theory-pillar-image-placeholder .ph-label { font-weight: 600; color: var(--color-ink-light); } .theory-pillar.gov { border-top: 4px solid var(--color-ocean); } .theory-pillar.market { border-top: 4px solid var(--color-brick); } .theory-pillar-icon { width: 56px; height: 56px; margin: 0 auto 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; } .theory-pillar.gov .theory-pillar-icon { background: rgba(27,73,101,0.1); color: var(--color-ocean); } .theory-pillar.market .theory-pillar-icon { background: rgba(181,73,59,0.1); color: var(--color-brick); } .theory-pillar-title { font-family: var(--font-serif-zh); font-size: 20px; font-weight: 700; color: var(--color-ink); margin-bottom: 6px; } body.lang-en .theory-pillar-title { font-family: var(--font-serif-en); } .theory-pillar-sub { font-size: 12px; color: var(--color-ink-faint); margin-bottom: 16px; letter-spacing: 1px; } .theory-pillar-desc { font-size: 13px; line-height: 1.85; color: var(--color-ink-light); text-align: left; } .theory-pillar-desc li { margin-bottom: 8px; padding-left: 16px; position: relative; } .theory-pillar-desc li::before { content: ''; position: absolute; left: 0; top: 10px; width: 6px; height: 6px; border-radius: 50%; } .theory-pillar.gov .theory-pillar-desc li::before { background: var(--color-ocean); } .theory-pillar.market .theory-pillar-desc li::before { background: var(--color-brick); } .theory-bridge { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 20px; } .theory-bridge-circle { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--color-ocean), var(--color-brick)); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif-zh); font-size: 15px; font-weight: 700; text-align: center; line-height: 1.3; box-shadow: 0 8px 24px rgba(44,36,22,0.15); } body.lang-en .theory-bridge-circle { font-family: var(--font-serif-en); font-size: 12px; } .theory-bridge-arrow { font-size: 20px; color: var(--color-gold); margin: 8px 0; } /* ============================================================
+   【模块四：企业家故事】
+   ============================================================ */.stories-section { background: var(--color-paper); } .stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1200px; margin: 0 auto; } .story-card { background: var(--color-paper-dark); border-radius: 12px; overflow: hidden; transition: all 0.4s; border: 1px solid rgba(44,36,22,0.06); } .story-image { height: 180px; background: linear-gradient(135deg, var(--story-color, var(--color-brick))33, var(--story-color, var(--color-brick))11); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background-size: cover; background-position: center; background-repeat: no-repeat; } .story-image-icon { width: 64px; height: 64px; border: 2px solid var(--story-color, var(--color-brick)); border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(245,240,232,0.9); } .story-image-icon svg { width: 30px; height: 30px; stroke: var(--story-color, var(--color-brick)); fill: none; stroke-width: 1.5; } .story-body { padding: 24px 24px 28px; } .story-tag { display: inline-block; font-size: 11px; padding: 3px 10px; border-radius: 10px; background: rgba(181,73,59,0.1); color: var(--story-color, var(--color-brick)); margin-bottom: 12px; letter-spacing: 1px; font-weight: 500; } .story-title { font-family: var(--font-serif-zh); font-size: 18px; font-weight: 700; color: var(--color-ink); margin-bottom: 6px; line-height: 1.4; } body.lang-en .story-title { font-family: var(--font-serif-en); font-size: 16px; } .story-company { font-family: var(--font-serif-en); font-size: 12px; color: var(--color-ink-faint); font-style: italic; margin-bottom: 14px; } .story-text { font-size: 13.5px; line-height: 1.85; color: var(--color-ink-light); } .story-quote { margin-top: 14px; padding: 12px 16px; border-left: 3px solid var(--story-color, var(--color-brick)); font-family: var(--font-serif-zh); font-size: 13px; font-style: italic; color: var(--color-ink); line-height: 1.7; background: rgba(245,240,232,0.5); } body.lang-en .story-quote { font-family: var(--font-serif-en); } /* ============================================================
+   【升华区】
+   ============================================================ */.closing { padding: 100px 48px; text-align: center; background: var(--color-paper-dark); position: relative; } .closing-quote { font-family: var(--font-serif-zh); font-size: clamp(17px, 2.2vw, 22px); font-weight: 400; line-height: 2.2; color: var(--color-ink); max-width: 680px; margin: 0 auto 20px; position: relative; } body.lang-en .closing-quote { font-family: var(--font-serif-en); font-style: italic; line-height: 1.9; } .closing-quote::before { content: ''; display: block; width: 48px; height: 2px; background: var(--color-brick); margin: 0 auto 36px; } .closing-highlight { color: var(--color-brick); font-weight: 700; } .closing-final { font-family: var(--font-serif-zh); font-size: clamp(22px, 3.5vw, 32px); font-weight: 700; color: var(--color-ink); letter-spacing: 4px; } body.lang-en .closing-final { font-family: var(--font-serif-en); letter-spacing: 1px; } /* ============================================================
+   【页脚】
+   ============================================================ */.footer { background: var(--color-ink); padding: 48px; text-align: center; color: var(--color-paper); } .footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-paper); margin-bottom: 8px; } body.lang-en .footer-title { font-family: var(--font-serif-en); } .footer-sub { font-size: 12px; color: rgba(245,240,232,0.5); letter-spacing: 1px; margin-bottom: 16px; line-height: 1.7; } .footer-sources { font-size: 11px; color: rgba(245,240,232,0.4); line-height: 1.8; max-width: 600px; margin: 0 auto; } /* ============================================================
+   【响应式】
+   ============================================================ */@media (max-width: 1200px) { .nav-links a {  padding: 8px 8px;  font-size: 13px; }  .industry-grid {  grid-template-columns: repeat(2, 1fr); } } @media (max-width: 1024px) { .nav-links {  display: none; }  .nav-hamburger {  display: flex; }  .stories-grid {  grid-template-columns: 1fr;  max-width: 600px;  margin: 0 auto; }  .theory-framework {  grid-template-columns: 1fr;  gap: 20px; }  .theory-bridge {  flex-direction: row;  padding: 10px 0; }  .theory-bridge-circle {  width: 70px;  height: 70px;  font-size: 13px; } } @media (max-width: 768px) { :root {  --padding-section: 60px 20px; }  .nav {  padding: 0 20px; }  .page-hero {  padding: 120px 20px 60px;  min-height: 60vh; }  .industry-grid {  grid-template-columns: 1fr; }  .timeline-tab {  min-width: 45%;  flex: none; }  .timeline-card {  padding: 28px 24px; }  .timeline-card-two-col {  grid-template-columns: 1fr;  gap: 24px; }  .timeline-card-image {  min-height: 200px; }  .theory-pillar-image {  height: 150px; }  .stats {  padding: 56px 20px; }  .stats-grid {  grid-template-columns: repeat(2, 1fr);  gap: 32px 16px; }  .stat-item {  border-right: none !important; }  .closing {  padding: 72px 20px; }  .footer {  padding: 32px 20px; } } /* ===== 区县卡片两栏式（字65% 图35%）===== */.district-item { display: grid; grid-template-columns: 65% 35%; gap: 16px; align-items: center; } .district-item-text { min-width: 0; } .district-item-image { width: 100%; height: 100px; border-radius: 8px; background-size: cover; background-position: center; background-repeat: no-repeat; } /* ===== 产业弹窗 ===== */.industry-modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; } .industry-modal-overlay.active { display: flex; } .industry-modal-content { background: #F5F0E8; border-radius: 12px; width: 100%; max-width: 800px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 24px 64px rgba(0,0,0,0.4); padding: 36px 40px; } .industry-modal-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: none; background: rgba(181,73,59,0.1); color: #B5493B; border-radius: 50%; cursor: pointer; font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 10; } .industry-modal-close:hover { background: #B5493B; color: #fff; } .industry-modal-title { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; color: #1B4965; margin-bottom: 6px; } .industry-modal-subtitle { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: #8A7E6C; margin-bottom: 20px; } .industry-modal-tag { display: inline-block; font-size: 12px; padding: 4px 14px; border-radius: 12px; background: rgba(27,73,101,0.1); color: #1B4965; margin-bottom: 16px; font-weight: 600; letter-spacing: 1px; } .industry-modal-section { margin-bottom: 16px; } .industry-modal-section-title { font-size: 15px; font-weight: 700; color: #B5493B; margin-bottom: 8px; } .industry-modal-text { font-size: 14px; line-height: 2; color: #5C5040; } .industry-modal-data { background: #EDE5D6; border-radius: 8px; padding: 14px 18px; margin-bottom: 16px; font-size: 13.5px; color: #5C5040; line-height: 1.8; border-left: 4px solid #C9A961; } .industry-card { cursor: pointer; } /* ===== 标准页脚样式 ===== */.footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); } .footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 0px; } .footer-title[data-en] { font-family: var(--font-serif-en); } .footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: 0px; } .footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0; } @media (max-width: 768px) { .footer {  padding: 32px 20px; } }</style>
+    </head>
+    <body>
+        <!-- ============================================================
+     【导航栏】
+     ============================================================ -->
+        <nav class="nav" id="nav" style="background-color: #B5493B; height: 50px;"> 
+            <a href="index.html" class="nav-logo"> <span class="nav-logo-text" data-zh style="color: #fdfcfc; font-size: 27px; margin-left: 0;">活态泉州</span> <span class="nav-logo-text" data-en>Living Quanzhou</span> </a> 
+            <ul class="nav-links"> 
+                <li>
+                    <a href="index.html" data-zh style="color: #ffffff; font-size: 20px; font-family: 'Noto Serif SC'; padding-right: 40px;">首页</a>
+                    <a href="index.html" data-en>Home</a>
+                </li>                 
+                <li>
+                    <a href="海上丝绸之路.html" data-zh style="font-size: 20px; width: 180px; font-family: 'Noto Serif SC'; color: #ffffff;">海上丝绸之路</a>
+                    <a href="海上丝绸之路.html" data-en>Maritime Silk Road</a>
+                </li>                 
+                <li>
+                    <a href="世界非遗之城.html" data-zh style="font-size: 20px; color: #ffffff; width: 180px; font-family: 'Noto Serif SC';">世界非遗之城</a>
+                    <a href="世界非遗之城.html" data-en>World Heritage</a>
+                </li>                 
+                <li>
+                    <a href="超级工业之城.html" class="active" data-zh style="font-size: 20px; color: #fdfcfc; width: 180px; font-family: 'Noto Serif SC';">超级工业之城</a>
+                    <a href="超级工业之城.html" class="active" data-en>Industrial Powerhouse</a>
+                </li>                 
+                <li>
+                    <a href="闽台交流之城.html" data-zh style="font-size: 20px; color: #faf8f8; font-family: 'Noto Serif SC';">闽台交流之城</a>
+                    <a href="闽台交流之城.html" data-en>Cross-Strait</a>
+                </li>                 
+            </ul>             
+            <button class="lang-toggle" id="langToggle" aria-label="切换语言" style="font-family: 'Noto Serif SC'; font-size: 20px;"> 
+                <span class="active-lang" id="langZh" style="color: #fdf6f6;">中</span> 
+                <span class="divider">/</span> 
+                <span id="langEn" style="color: #fdf8f8;">EN</span> 
+            </button>
+            <a href="个人中心.html" class="profile-btn" id="profileBtn" title="个人中心" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;overflow:hidden;text-decoration:none;margin-left:12px;"> <img id="navAvatar" style="display:none;width:100%;height:100%;object-fit:cover;"> <svg id="navAvatarIcon" viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2"/>
+                </svg> </a>
+            <button class="nav-hamburger" id="hamburger" aria-label="菜单" style="color: #faf8f8;"> 
+                <span></span>
+                <span></span>
+                <span></span> 
+            </button>             
+        </nav>
+        <!-- ============================================================
+     【页面 Hero】
+     ============================================================ -->
+        <!-- ============================================================
+   【数据总览条】
+   ============================================================ -->
+        <!-- ============================================================
+     【泉州产业地图模块 - 左图右文两栏】
+     ============================================================ -->
+        <section class="section map-section" id="industrialMap" style="padding-top: 80px; padding-bottom: 40px;">
+            <div class="section-header">
+                <div class="section-eyebrow" data-en>Industrial Map · One County, One Industry</div>
+                <h2 class="section-title" data-zh>泉州市产业集群分布图</h2>
+                <h2 class="section-title" data-en>Quanzhou Industrial Cluster Map</h2>
+                <p class="section-desc" data-zh>点击左侧地图标记或右侧区县卡片，查看各区县的主导产业与龙头企业</p>
+                <p class="section-desc" data-en>Click a marker on the map or a district card on the right to view details</p>
+            </div>
+            <div class="map-two-col">
+                <!-- 左侧：地图 -->
+                <div class="map-left">
+                    <div class="map-box" id="mapBox">
+                        <img class="map-photo" src="https://aka.doubaocdn.com/s/XSyrjX64pA" alt="泉州市行政区划地图" data-zh>
+                        <img class="map-photo" src="https://aka.doubaocdn.com/s/XSyrjX64pA" alt="Quanzhou Administrative Map" data-en>
+                        <div class="map-dot active" data-district="dehua" onclick="event.stopPropagation(); activateDistrict(\'dehua\')" onclick="activateDistrict(\'dehua\')" style="left:42%; top:26%; --dot-color: #7BA05B;">
+                            <div class="map-dot-inner" style="margin-top: 70px;"></div>
+                        </div>
+                        <div class="map-dot" data-district="yongchun" onclick="event.stopPropagation(); activateDistrict(\'yongchun\')" onclick="activateDistrict(\'yongchun\')" style="left:45%; top:39%; --dot-color: #D4756A;">
+                            <div class="map-dot-inner" style="margin-top: 120px;"></div>
+                        </div>
+                        <div class="map-dot" data-district="anxi" onclick="event.stopPropagation(); activateDistrict(\'anxi\')" onclick="activateDistrict(\'anxi\')" style="left:28%; top:53%; --dot-color: #E8C547;">
+                            <div class="map-dot-inner" style="margin-top: 120px;"></div>
+                        </div>
+                        <div class="map-dot" data-district="nanan" onclick="event.stopPropagation(); activateDistrict(\'nanan\')" onclick="activateDistrict(\'nanan\')" style="left:48%; top:63%; --dot-color: #E8913A;">
+                            <div class="map-dot-inner" style="margin-top: 50px; margin-left: 30px;"></div>
+                        </div>
+                        <div class="map-dot" data-district="quanzhou" onclick="event.stopPropagation(); activateDistrict(\'quanzhou\')" onclick="activateDistrict(\'quanzhou\')" style="left:62%; top:68%; --dot-color: #C9A961;">
+                            <div class="map-dot-inner" style="margin-right: 30px; margin-top: 35px; margin-left: 40px;"></div>
+                        </div>
+                        <div class="map-dot" data-district="huian" onclick="event.stopPropagation(); activateDistrict(\'huian\')" onclick="activateDistrict(\'huian\')" style="left:75%; top:64%; --dot-color: #3D4F5F;">
+                            <div class="map-dot-inner" style="margin-top: 35px; margin-left: 20px;"></div>
+                        </div>
+                        <div class="map-dot" data-district="quangang" onclick="event.stopPropagation(); activateDistrict(\'quangang\')" onclick="activateDistrict(\'quangang\')" style="left:80%; top:56%; --dot-color: #8E372C;">
+                            <div class="map-dot-inner" style="margin-top: 40px;"></div>
+                        </div>
+                        <div class="map-dot" data-district="jinjiang" onclick="event.stopPropagation(); activateDistrict(\'jinjiang\')" onclick="activateDistrict(\'jinjiang\')" style="left:60%; top:76%; --dot-color: #B5493B;">
+                            <div class="map-dot-inner" style="margin-top: 30px; margin-left: 10px;"></div>
+                        </div>
+                        <div class="map-dot" data-district="shishi" onclick="event.stopPropagation(); activateDistrict(\'shishi\')" onclick="activateDistrict(\'shishi\')" style="left:68%; top:80%; --dot-color: #7BA05B;">
+                            <div class="map-dot-inner" style="margin-left: 20px; margin-top: 10px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 右侧：区县产业列表 -->
+                <div class="district-list" id="districtList">
+                    <div class="district-item active" data-district="dehua" onclick="activateDistrict(\'dehua\')" style="--item-color: #7BA05B;">
+                        <div class="district-item-text">
+                            <div class="district-item-header">
+                                <span class="district-item-name" data-zh>德化县</span>
+                                <span class="district-item-name" data-en>Dehua</span>
+                                <span class="district-item-nickname" data-zh style="font-size: 18px;">中国瓷都</span>
+                                <span class="district-item-nickname" data-en>Porcelain Capital</span>
+                            </div>
+                            <span class="district-item-industry" data-zh>陶瓷工艺</span>
+                            <span class="district-item-industry" data-en>Porcelain Craft</span>
+                            <div class="district-item-companies" data-zh style="font-size: 14px;">
+                                <strong>龙头企业：</strong>顺美陶瓷、五洲陶瓷、龙鹏集团
+                            </div>
+                            <div class="district-item-companies" data-en>
+                                <strong>Key Enterprises:</strong> Shunmei, Wuzhou, Longpeng
+                            </div>
+                            <div class="district-item-data" data-zh>中国最大工艺瓷生产出口基地，西洋工艺瓷出口占全国80%，产品销往190+国家和地区</div>
+                            <div class="district-item-data" data-en>Largest art porcelain export base in China, 80% of national Western-style porcelain exports, sold in 190+ countries</div>
+                        </div>
+                        <div class="district-item-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.90d3538275f4c5516e5f817fb51919ae?rik=n2ezNbxZWbwZ6w&riu=http%3a%2f%2f5b0988e595225.cdn.sohucs.com%2fimages%2f20171103%2f6637ad5c4a484c9b87513c5ce0c3e88b.jpeg&ehk=wF7RBui9cA3BtoeHH%2feBc7w3E7YddRHg0bzinxT1WRw%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    </div>
+                    <div class="district-item" data-district="yongchun" onclick="activateDistrict(\'yongchun\')" style="--item-color: #D4756A;">
+                        <div class="district-item-text">
+                            <div class="district-item-header">
+                                <span class="district-item-name" data-zh>永春县</span>
+                                <span class="district-item-name" data-en>Yongchun</span>
+                                <span class="district-item-nickname" data-zh style="font-size: 18px;">中国香都</span>
+                                <span class="district-item-nickname" data-en>Incense Capital</span>
+                            </div>
+                            <span class="district-item-industry" data-zh>香品制造 · 老醋食品</span>
+                            <span class="district-item-industry" data-en>Incense · Aged Vinegar</span>
+                            <div class="district-item-companies" data-zh style="font-size: 14px;">
+                                <strong>龙头企业：</strong>永春蔑香、永春老醋、达埔香业
+                            </div>
+                            <div class="district-item-companies" data-en>
+                                <strong>Key Enterprises:</strong> Yongchun Incense, Aged Vinegar, Dapu Incense
+                            </div>
+                            <div class="district-item-data" data-zh>全国最大篾香生产基地，占全国市场1/4；永春老醋为中国四大名醋之一</div>
+                            <div class="district-item-data" data-en>Largest incense production base in China, 1/4 national market; aged vinegar ranks among China's four famous vinegars</div>
+                        </div>
+                        <div class="district-item-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.0e24c11b1c9efc1b057cce620bfcd47e?rik=uJdKtFtFlQntJw&riu=http%3a%2f%2fk.sinaimg.cn%2fn%2ffront%2f355%2fw690h465%2f20190113%2fAJZV-hrpcmqw3614903.jpg%2fw700d1q75cms.jpg&ehk=FHuWDtQ50C2wdy5c8ZhmmpLT1BkoW1ePyjQ2tSGAqro%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    </div>
+                    <div class="district-item" data-district="anxi" onclick="activateDistrict(\'anxi\')" style="--item-color: #E8C547;">
+                        <div class="district-item-text">
+                            <div class="district-item-header">
+                                <span class="district-item-name" data-zh>安溪县</span>
+                                <span class="district-item-name" data-en>Anxi</span>
+                                <span class="district-item-nickname" data-zh style="font-size: 18px;">中国茶都</span>
+                                <span class="district-item-nickname" data-en>Tea Capital</span>
+                            </div>
+                            <span class="district-item-industry" data-zh>茶叶 · 藤铁工艺</span>
+                            <span class="district-item-industry" data-en>Tea · Rattan-Iron Craft</span>
+                            <div class="district-item-companies" data-zh style="font-size: 14px;">
+                                <strong>龙头企业：</strong>八马茶业、安溪铁观音集团、中闽魏氏
+                            </div>
+                            <div class="district-item-companies" data-en>
+                                <strong>Key Enterprises:</strong> Bama Tea, Tieguanyin Group, Zhongmin Weishi
+                            </div>
+                            <div class="district-item-data" data-zh>铁观音占全国乌龙茶半壁江山，藤铁工艺品出口量全国第一</div>
+                            <div class="district-item-data" data-en>Tieguanyin accounts for half of China's oolong tea; #1 nationwide in rattan-iron craft exports</div>
+                        </div>
+                        <div class="district-item-image" style="background-image: url('https://so1.360tres.com/t01834aa5d96af795a6.png');"></div>
+                    </div>
+                    <div class="district-item" data-district="nanan" onclick="activateDistrict(\'nanan\')" style="--item-color: #E8913A;">
+                        <div class="district-item-text">
+                            <div class="district-item-header">
+                                <span class="district-item-name" data-zh>南安市</span>
+                                <span class="district-item-name" data-en>Nan'an</span>
+                                <span class="district-item-nickname" data-zh style="font-size: 18px;">中国建材之乡</span>
+                                <span class="district-item-nickname" data-en>Building Materials Hub</span>
+                            </div>
+                            <span class="district-item-industry" data-zh>石材陶瓷 · 水暖阀门</span>
+                            <span class="district-item-industry" data-en>Stone · Plumbing Fixtures</span>
+                            <div class="district-item-companies" data-zh style="font-size: 14px;">
+                                <strong>龙头企业：</strong>九牧、中宇、辉煌水暖、申鹭达
+                            </div>
+                            <div class="district-item-companies" data-en>
+                                <strong>Key Enterprises:</strong> Jomoo, Zhongyu, Huihuang, Sunlot
+                            </div>
+                            <div class="district-item-data" data-zh>石材产量占全国60%+，水暖卫浴占全国市场70%，产品销往100+国家</div>
+                            <div class="district-item-data" data-en>60%+ of national stone output, 70% of plumbing market share, products sold in 100+ countries</div>
+                        </div>
+                        <div class="district-item-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.b27ec3016e641ef7706ef5063a76a797?rik=PjBrc2SZ%2bMhoiQ&riu=http%3a%2f%2fupload.mnw.cn%2f2020%2f0521%2f1590061890134.jpg&ehk=5d9sMCXrKFYl3Xmf0ui3%2bicLEwA5nG4np2h2O9MwCjI%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    </div>
+                    <div class="district-item" data-district="quanzhou" onclick="activateDistrict(\'quanzhou\')" style="--item-color: #C9A961;">
+                        <div class="district-item-text">
+                            <div class="district-item-header">
+                                <span class="district-item-name" data-zh>泉州市区</span>
+                                <span class="district-item-name" data-en>Quanzhou Urban</span>
+                                <span class="district-item-nickname" data-zh="" style="font-size: 18px;">中央商务区、高新区</span>
+                                <span class="district-item-nickname" data-en>CBD · High-Tech Zone</span>
+                            </div>
+                            <span class="district-item-industry" data-zh>数字经济 · 智能制造 · 商贸物流</span>
+                            <span class="district-item-industry" data-en>Digital · Smart Mfg · Trade</span>
+                            <div class="district-item-companies" data-zh style="font-size: 14px;">
+                                <strong>核心平台：</strong>泉州高新区、中央商务区、台商投资区
+                            </div>
+                            <div class="district-item-companies" data-en>
+                                <strong>Key Platforms:</strong> High-Tech Zone, CBD, Taiwanese Investment Zone
+                            </div>
+                            <div class="district-item-data" data-zh>全市政治经济文化中心，重点发展数字经济、智能制造、现代服务业，产业升级核心引擎</div>
+                            <div class="district-item-data" data-en>City's political, economic and cultural center, focusing on digital economy, smart manufacturing and modern services</div>
+                        </div>
+                        <div class="district-item-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.f7032862baf42f0b142ec4aa8a65adfd?rik=zW6DdYDMjAhGag&riu=http%3a%2f%2fwww.qzlc.gov.cn%2fzjlc%2flcfq%2fyou%2f202303%2fW020230301465569140644.png&ehk=NFE4T1JaOEOoplh1DudXhpTYD5MjB2dfHxWewP6bQI4%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    </div>
+                    <div class="district-item" data-district="huian" onclick="activateDistrict(\'huian\')" style="--item-color: #3D4F5F;">
+                        <div class="district-item-text">
+                            <div class="district-item-header">
+                                <span class="district-item-name" data-zh>惠安县</span>
+                                <span class="district-item-name" data-en>Hui'an</span>
+                                <span class="district-item-nickname" data-zh style="font-size: 18px;">中国建筑之乡</span>
+                                <span class="district-item-nickname" data-en>Construction Hometown</span>
+                            </div>
+                            <span class="district-item-industry" data-zh>建筑施工 · 石雕工艺 · 食品饮料</span>
+                            <span class="district-item-industry" data-en>Construction · Stone Carving · Food</span>
+                            <div class="district-item-companies" data-zh style="font-size: 14px;">
+                                <strong>龙头企业：</strong>达利食品、惠安建筑企业群、惠安石雕
+                            </div>
+                            <div class="district-item-companies" data-en>
+                                <strong>Key Enterprises:</strong> Dali Foods, Construction Group, Stone Carving
+                            </div>
+                            <div class="district-item-data" data-zh>惠安石雕为国家级非遗，建筑年施工产值超千亿；达利食品为中国最大休闲食品企业之一</div>
+                            <div class="district-item-data" data-en>Stone carving is national intangible heritage; construction output exceeds 100B RMB; Dali is one of China's largest snack food companies</div>
+                        </div>
+                        <div class="district-item-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.d524f9cb0915bc172324106e8de6a71f?rik=6gIt2Nkfam30Lg&riu=http%3a%2f%2fwww.huian.gov.cn%2fuploads%2f20190319143831144.jpeg&ehk=0pR4chWkMZSIS9iiBL12fVRVcVd9r1afoZPaAcLmaEw%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    </div>
+                    <div class="district-item" data-district="quangang" onclick="activateDistrict(\'quangang\')" style="--item-color: #8E372C;">
+                        <div class="district-item-text">
+                            <div class="district-item-header">
+                                <span class="district-item-name" data-zh>泉港区</span>
+                                <span class="district-item-name" data-en>Quangang</span>
+                                <span class="district-item-nickname" data-zh="" style="font-size: 18px;">石化基地、港口物流</span>
+                                <span class="district-item-nickname" data-en>Petrochemical Base · Port</span>
+                            </div>
+                            <span class="district-item-industry" data-zh>石油化工 · 港口物流</span>
+                            <span class="district-item-industry" data-en>Petrochemical · Port Logistics</span>
+                            <div class="district-item-companies" data-zh style="font-size: 14px;">
+                                <strong>龙头企业：</strong>福建联合石化、泉港石化园区、肖厝港
+                            </div>
+                            <div class="district-item-companies" data-en>
+                                <strong>Key Enterprises:</strong> Fujian Refining & Petrochemical, Petrochemical Park, Xiaocuo Port
+                            </div>
+                            <div class="district-item-data" data-zh>福建省重要石化基地，年炼油1400万吨；肖厝港为国家一类口岸，泉州湾能源进口枢纽</div>
+                            <div class="district-item-data" data-en>Major petrochemical base in Fujian, 14M tons annual refining capacity; Xiaocuo Port is national first-class port</div>
+                        </div>
+                        <div class="district-item-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.b1ae2d8d90fbf6369048da624a6803fc?rik=ha7WcZ%2fIBx30Ww&riu=http%3a%2f%2fwww.qzkfqnews.com%2fimages%2f2021-10%2f10%2f0ca42432-484b-4b53-b31f-e921e25e37cf.jpg&ehk=z39yFX9wBHnTsWl2By9mnXG22UFGeOMuePpPeaCdycI%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    </div>
+                    <div class="district-item" data-district="jinjiang" onclick="activateDistrict(\'jinjiang\')" style="--item-color: #B5493B;">
+                        <div class="district-item-text">
+                            <div class="district-item-header">
+                                <span class="district-item-name" data-zh>晋江市</span>
+                                <span class="district-item-name" data-en>Jinjiang</span>
+                                <span class="district-item-nickname" data-zh style="font-size: 18px;">中国鞋都</span>
+                                <span class="district-item-nickname" data-en>Shoe Capital</span>
+                            </div>
+                            <span class="district-item-industry" data-zh>鞋服纺织 · 体育用品</span>
+                            <span class="district-item-industry" data-en>Footwear · Sports Goods</span>
+                            <div class="district-item-companies" data-zh style="font-size: 14px;">
+                                <strong>龙头企业：</strong>安踏、特步、361度、鸿星尔克、七匹狼、劲霸
+                            </div>
+                            <div class="district-item-companies" data-en>
+                                <strong>Key Enterprises:</strong> Anta, Xtep, 361°, ERKE, Septwolves, K-Boxing
+                            </div>
+                            <div class="district-item-data" data-zh>运动鞋产量占全国40%，全球每5双就有1双来自晋江；安踏为全球第三大运动品牌</div>
+                            <div class="district-item-data" data-en>40% of China's sports shoes, 1 in 5 pairs worldwide from Jinjiang; Anta is world's 3rd largest sports brand</div>
+                        </div>
+                        <div class="district-item-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.265df8dd98f8dc973ab52b0f96f5bf0a?rik=9ZMhgXj1CH6cmA&riu=http%3a%2f%2fn.sinaimg.cn%2ftranslate%2f463%2fw1280h783%2f20180717%2fTLCY-hfkffam1800869.jpg&ehk=yHHuU4LHa%2bgsBBfrIVqA6gf9r7xf4xlifm2wvbBx924%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    </div>
+                    <div class="district-item" data-district="shishi" onclick="activateDistrict(\'shishi\')" style="--item-color: #7BA05B;">
+                        <div class="district-item-text">
+                            <div class="district-item-header">
+                                <span class="district-item-name" data-zh>石狮市</span>
+                                <span class="district-item-name" data-en>Shishi</span>
+                                <span class="district-item-nickname" data-zh style="font-size: 18px;">中国服装名城</span>
+                                <span class="district-item-nickname" data-en>Fashion City</span>
+                            </div>
+                            <span class="district-item-industry" data-zh>纺织服装 · 面料辅料</span>
+                            <span class="district-item-industry" data-en>Apparel · Fabrics</span>
+                            <div class="district-item-companies" data-zh style="font-size: 14px;">
+                                <strong>龙头企业：</strong>富贵鸟、卡宾、爱登堡、石狮服装城
+                            </div>
+                            <div class="district-item-companies" data-en>
+                                <strong>Key Enterprises:</strong> Fuguiniao, Cabbeen, Edenbo, Garment City
+                            </div>
+                            <div class="district-item-data" data-zh>中国主要服装面料和辅料集散地，石狮服装城为亚洲最大服装专业市场之一</div>
+                            <div class="district-item-data" data-en>Leading hub for apparel fabrics and accessories; Shishi Garment City is one of Asia's largest apparel markets</div>
+                        </div>
+                        <div class="district-item-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.b60afd39b3d3c03b2203bc3df47fa8a1?rik=7M6EQ2yTxlSZyA&riu=http%3a%2f%2fwww.fujian.xinhua.org%2ftitlepic%2f112385%2f1123853250_1544758177440_title0h.jpg&ehk=%2bjGS%2flOMF67Ntg7R%2f1W7gF14ytSjUHpQpRSg9RPXbOA%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="stats" style="padding-top: 30px; padding-bottom: 30px;">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">
+                        <span class="counter" data-target="12100">0</span>
+                        <span class="suffix" data-zh>亿元</span>
+                        <span class="suffix" data-en> 亿 RMB</span>
+                    </div>
+                    <div class="stat-label" data-zh>2023年地区生产总值</div>
+                    <div class="stat-label" data-en>2023 GDP (100 Million RMB)</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">
+                        <span class="counter" data-target="90">0</span>
+                        <span class="suffix">%+</span>
+                    </div>
+                    <div class="stat-label" data-zh>民营经济占GDP比重</div>
+                    <div class="stat-label" data-en>Private Economy Share of GDP</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">
+                        <span class="counter" data-target="25">0</span>
+                        <span class="suffix" data-zh>年</span>
+                        <span class="suffix" data-en> Years</span>
+                    </div>
+                    <div class="stat-label" data-zh>连续居福建省首位</div>
+                    <div class="stat-label" data-en>Consecutive Years #1 in Fujian</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">
+                        <span class="counter" data-target="100">0</span>
+                        <span class="suffix">+</span>
+                    </div>
+                    <div class="stat-label" data-zh>上市公司数量</div>
+                    <div class="stat-label" data-en>Number of Listed Companies</div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================================================
+     【模块一：产业集群】
+     ============================================================ -->
+        <section class="section industry-section" id="industry" style="padding-top: 30px; padding-bottom: 40px;">
+            <div class="section-header">
+                <div class="section-eyebrow" data-en>Industrial Clusters · One Town, One Product</div>
+                <h2 class="section-title" data-zh>七个区县，七条产业巨龙</h2>
+                <h2 class="section-title" data-en>Seven Districts, Seven Industrial Dragons</h2>
+                <p class="section-desc" data-zh="" style="font-size: 17px;">泉州各区县依托本地优势，形成了特色鲜明的产业集群。从晋江的鞋服到德化的陶瓷，每个区县都有自己的&ldquo;金字招牌&rdquo;。</p>
+                <p class="section-desc" data-en>Each district leverages local advantages to form distinctive industrial clusters. From Jinjiang's footwear to Dehua's porcelain, every district has its own "golden signature."</p>
+            </div>
+            <div class="industry-filter" style="font-size: 17px;">
+                <button class="filter-btn active" data-filter="all" data-zh style="font-size: 17px;">全部</button>
+                <button class="filter-btn active" data-filter="all" data-en>All</button>
+                <button class="filter-btn" data-filter="shoe" data-zh style="font-size: 17px;">鞋服纺织</button>
+                <button class="filter-btn" data-filter="shoe" data-en>Footwear & Textile</button>
+                <button class="filter-btn" data-filter="building" data-zh style="font-size: 17px;">建材石材</button>
+                <button class="filter-btn" data-filter="building" data-en>Building Materials</button>
+                <button class="filter-btn" data-filter="food" data-zh style="font-size: 17px;">食品饮料</button>
+                <button class="filter-btn" data-filter="food" data-en>Food & Beverage</button>
+                <button class="filter-btn" data-filter="craft" data-zh style="font-size: 17px;">工艺制品</button>
+                <button class="filter-btn" data-filter="craft" data-en>Crafts & Art</button>
+            </div>
+            <div class="industry-grid" id="industryGrid">
+                <!-- 晋江 -->
+                <div class="industry-card" data-cat="shoe" style="--card-color: var(--color-brick);" onclick="openIndustryModal('jinjiang')">
+                    <div class="industry-card-header">
+                        <span class="industry-tag" data-zh>鞋服纺织 · 体育用品</span>
+                        <span class="industry-tag" data-en>Footwear · Sports Goods</span>
+                        <h3 class="industry-name" data-zh>晋江市</h3>
+                        <h3 class="industry-name" data-en>Jinjiang</h3>
+                        <div class="industry-name-en" data-zh style="font-weight: 800; font-size: 17px;">中国鞋都</div>
+                        <div class="industry-name-en" data-en>China's Shoe Capital</div>
+                    </div>
+                    <div class="industry-card-body">
+                        <div class="industry-companies" data-zh>
+                            <strong>代表企业：</strong>安踏、特步、361度、鸿星尔克、七匹狼、劲霸
+                        </div>
+                        <div class="industry-companies" data-en>
+                            <strong>Key Brands:</strong> Anta, Xtep, 361°, ERKE, Septwolves, K-Boxing
+                        </div>
+                        <div class="industry-data" data-zh>运动鞋产量占全国40%，全球每5双运动鞋就有1双来自晋江；拥有国家级体育用品品牌20余个</div>
+                        <div class="industry-data" data-en>Produces 40% of China's sports shoes—1 in every 5 pairs worldwide comes from Jinjiang; home to 20+ national sports brands</div>
+                        <p class="industry-desc" data-zh>晋江是泉州民营经济的龙头，"晋江经验"的发源地。从20世纪80年代的家庭作坊做鞋开始，晋江人靠"三来一补"起步，逐步从代工走向自主品牌。今天，安踏已成为全球第三大运动品牌。</p>
+                        <p class="industry-desc" data-en>Jinjiang is the leader of Quanzhou's private economy and the birthplace of the "Jinjiang Experience." Starting with family shoe workshops in the 1980s, Jinjiang moved from OEM to own brands. Today, Anta is the world's third-largest sports brand.</p>
+                    </div>
+                </div>
+                <!-- 南安 -->
+                <div class="industry-card" data-cat="building" style="--card-color: var(--color-ocean);" onclick="openIndustryModal('nanan')">
+                    <div class="industry-card-header">
+                        <span class="industry-tag" data-zh>石材陶瓷 · 水暖阀门</span>
+                        <span class="industry-tag" data-en>Stone · Plumbing Fixtures</span>
+                        <h3 class="industry-name" data-zh>南安市</h3>
+                        <h3 class="industry-name" data-en>Nan'an</h3>
+                        <div class="industry-name-en" data-zh style="font-weight: 800; font-size: 17px;">中国建材之乡</div>
+                        <div class="industry-name-en" data-en>China's Building Materials Hub</div>
+                    </div>
+                    <div class="industry-card-body">
+                        <div class="industry-companies" data-zh>
+                            <strong>代表企业：</strong>九牧、中宇、辉煌水暖
+                        </div>
+                        <div class="industry-companies" data-en>
+                            <strong>Key Brands:</strong> Jomoo, Zhongyu, Huihuang Plumbing
+                        </div>
+                        <div class="industry-data" data-zh>石材产量占全国60%以上，水暖卫浴产品占全国市场份额70%</div>
+                        <div class="industry-data" data-en>Over 60% of China's stone materials; 70% of national plumbing and bathroom fixtures market share</div>
+                        <p class="industry-desc" data-zh>南安人从"一把锤子走天下"的石材匠人起步，逐步建立起从矿山开采、加工到销售的完整产业链。今天，南安石材销往全球100多个国家和地区，九牧卫浴成为中国卫浴行业领军品牌。</p>
+                        <p class="industry-desc" data-en>Starting as stonemasons "traveling the world with a hammer," Nan'an people built a complete industry chain from mining to processing to sales. Today, Nan'an stone is sold in 100+ countries, and Jomoo is a leading Chinese bathroom brand.</p>
+                    </div>
+                </div>
+                <!-- 石狮 -->
+                <div class="industry-card" data-cat="shoe" style="--card-color: var(--color-gold);" onclick="openIndustryModal('shishi')">
+                    <div class="industry-card-header">
+                        <span class="industry-tag" data-zh>纺织服装 · 面料辅料</span>
+                        <span class="industry-tag" data-en>Apparel · Fabrics</span>
+                        <h3 class="industry-name" data-zh>石狮市</h3>
+                        <h3 class="industry-name" data-en>Shishi</h3>
+                        <div class="industry-name-en" data-zh style="font-weight: 800; font-size: 17px;">中国服装名城</div>
+                        <div class="industry-name-en" data-en>China's Fashion City</div>
+                    </div>
+                    <div class="industry-card-body">
+                        <div class="industry-companies" data-zh>
+                            <strong>代表企业：</strong>富贵鸟、卡宾、爱登堡
+                        </div>
+                        <div class="industry-companies" data-en>
+                            <strong>Key Brands:</strong> Fuguiniao, Cabbeen, Edenbo
+                        </div>
+                        <div class="industry-data" data-zh>休闲服装产量占全国重要份额，是中国主要的服装面料和辅料集散地</div>
+                        <div class="industry-data" data-en>Major national share of casual wear; China's leading hub for apparel fabrics and accessories</div>
+                        <p class="industry-desc" data-zh>石狮因服装而兴，从20世纪80年代的地摊服装市场起步，发展成为中国重要的服装生产和贸易中心。石狮服装城是亚洲最大的服装专业市场之一。</p>
+                        <p class="industry-desc" data-en>Shishi thrived on apparel, growing from 1980s street clothing markets into a major Chinese garment production and trade center. Shishi Garment City is one of Asia's largest apparel markets.</p>
+                    </div>
+                </div>
+                <!-- 惠安 -->
+                <div class="industry-card" data-cat="building" style="--card-color: var(--color-steel);" onclick="openIndustryModal('huian')">
+                    <div class="industry-card-header">
+                        <span class="industry-tag" data-zh>建筑施工 · 石雕工艺</span>
+                        <span class="industry-tag" data-en>Construction · Stone Carving</span>
+                        <h3 class="industry-name" data-zh>惠安县</h3>
+                        <h3 class="industry-name" data-en>Hui'an</h3>
+                        <div class="industry-name-en" data-zh="" style="font-weight: 800; font-size: 17px;">中国建筑之乡</div>
+                        <div class="industry-name-en" data-en>China's Construction Hometown</div>
+                    </div>
+                    <div class="industry-card-body">
+                        <div class="industry-companies" data-zh>
+                            <strong>代表企业：</strong>惠安建筑企业群
+                        </div>
+                        <div class="industry-companies" data-en>
+                            <strong>Key Players:</strong> Hui'an Construction Group
+                        </div>
+                        <div class="industry-data" data-zh>惠安石雕是国家级非遗，建筑企业遍布全国，年施工产值超千亿</div>
+                        <div class="industry-data" data-en>Hui'an stone carving is national intangible heritage; construction firms operate nationwide with annual output exceeding 100 billion RMB</div>
+                        <p class="industry-desc" data-zh>惠安素有"建筑之乡"美誉，惠安石雕技艺精湛，从故宫修缮到城市雕塑，都有惠安工匠的身影。惠安建筑队伍是中国建筑业的重要力量。</p>
+                        <p class="industry-desc" data-en>Known as "China's construction hometown," Hui'an boasts masterful stone carving—from Forbidden City restoration to urban sculptures. Hui'an construction teams are a major force in China's building industry.</p>
+                    </div>
+                </div>
+                <!-- 安溪 -->
+                <div class="industry-card" data-cat="food" style="--card-color: var(--color-jade);" onclick="openIndustryModal('anxi')">
+                    <div class="industry-card-header">
+                        <span class="industry-tag" data-zh>茶叶 · 藤铁工艺</span>
+                        <span class="industry-tag" data-en>Tea · Rattan-Iron Craft</span>
+                        <h3 class="industry-name" data-zh>安溪县</h3>
+                        <h3 class="industry-name" data-en>Anxi</h3>
+                        <div class="industry-name-en" data-zh style="font-weight: 800; font-size: 17px;">中国茶都</div>
+                        <div class="industry-name-en" data-en>China's Tea Capital</div>
+                    </div>
+                    <div class="industry-card-body">
+                        <div class="industry-companies" data-zh>
+                            <strong>代表企业：</strong>八马茶业、安溪铁观音集团
+                        </div>
+                        <div class="industry-companies" data-en>
+                            <strong>Key Brands:</strong> Bama Tea, Anxi Tieguanyin Group
+                        </div>
+                        <div class="industry-data" data-zh>铁观音茶叶产量占全国乌龙茶半壁江山，藤铁工艺品出口量全国第一</div>
+                        <div class="industry-data" data-en>Tieguanyin accounts for half of China's oolong tea; #1 nationwide in rattan-iron craft exports</div>
+                        <p class="industry-desc" data-zh>安溪是铁观音的故乡，茶产业是安溪的支柱产业，带动数十万茶农增收。安溪藤铁工艺从传统竹编发展而来，产品远销欧美。</p>
+                        <p class="industry-desc" data-en>Anxi is the homeland of Tieguanyin tea, with tea as its pillar industry supporting hundreds of thousands of farmers. Its rattan-iron crafts, evolved from traditional bamboo weaving, are exported to Europe and America.</p>
+                    </div>
+                </div>
+                <!-- 永春 -->
+                <div class="industry-card" data-cat="food" style="--card-color: var(--color-brick-light);" onclick="openIndustryModal('yongchun')">
+                    <div class="industry-card-header">
+                        <span class="industry-tag" data-zh>香品制造 · 老醋食品</span>
+                        <span class="industry-tag" data-en>Incense · Aged Vinegar</span>
+                        <h3 class="industry-name" data-zh>永春县</h3>
+                        <h3 class="industry-name" data-en>Yongchun</h3>
+                        <div class="industry-name-en" data-zh style="font-weight: 800; font-size: 17px;">中国香都</div>
+                        <div class="industry-name-en" data-en>China's Incense Capital</div>
+                    </div>
+                    <div class="industry-card-body">
+                        <div class="industry-companies" data-zh>
+                            <strong>代表企业：</strong>永春蔑香、永春老醋
+                        </div>
+                        <div class="industry-companies" data-en>
+                            <strong>Key Products:</strong> Yongchun Incense, Yongchun Aged Vinegar
+                        </div>
+                        <div class="industry-data" data-zh>全国最大的篾香生产基地，永春老醋是中国四大名醋之一</div>
+                        <div class="industry-data" data-en>China's largest incense production base; Yongchun aged vinegar is one of China's four famous vinegars</div>
+                        <p class="industry-desc" data-zh>永春篾香有千余年历史，源于宋元时期阿拉伯商人带来的制香工艺，今天永春香产品占全国市场份额的四分之一。永春老醋与山西老陈醋、镇江香醋、四川保宁醋并称中国四大名醋。</p>
+                        <p class="industry-desc" data-en>Yongchun incense has over a millennium of history, originating from incense-making techniques brought by Arab merchants in the Song-Yuan period. Today, Yongchun holds a quarter of the national incense market. Its aged vinegar ranks among China's four famous vinegars.</p>
+                    </div>
+                </div>
+                <!-- 德化 -->
+                <div class="industry-card" data-cat="craft" style="--card-color: var(--color-ocean-light);" onclick="openIndustryModal('dehua')">
+                    <div class="industry-card-header">
+                        <span class="industry-tag" data-zh>陶瓷工艺</span>
+                        <span class="industry-tag" data-en>Porcelain Craft</span>
+                        <h3 class="industry-name" data-zh>德化县</h3>
+                        <h3 class="industry-name" data-en>Dehua</h3>
+                        <div class="industry-name-en" data-zh style="font-weight: 800; font-size: 17px;">中国瓷都</div>
+                        <div class="industry-name-en" data-en>China's Porcelain Capital</div>
+                    </div>
+                    <div class="industry-card-body">
+                        <div class="industry-companies" data-zh>
+                            <strong>代表企业：</strong>顺美陶瓷、五洲陶瓷
+                        </div>
+                        <div class="industry-companies" data-en>
+                            <strong>Key Brands:</strong> Shunmei Porcelain, Wuzhou Porcelain
+                        </div>
+                        <div class="industry-data" data-zh>中国最大的工艺瓷生产和出口基地，西洋工艺瓷出口量占全国80%</div>
+                        <div class="industry-data" data-en>China's largest art porcelain production and export base; 80% of national Western-style art porcelain exports</div>
+                        <p class="industry-desc" data-zh>德化白瓷有千年历史，今天的德化陶瓷从传统佛像扩展到西洋工艺瓷、日用瓷，产品销往全球190多个国家和地区，是中国陶瓷出口的重要基地。</p>
+                        <p class="industry-desc" data-en>With a millennium of white porcelain history, Dehua today produces everything from traditional Buddha statues to Western-style art porcelain and daily-use ceramics, sold in 190+ countries—a major Chinese ceramic export base.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================================================
+     【模块二：工业时间轴】
+     ============================================================ -->
+        <section class="section timeline-section" id="timeline" style="padding-top: 40px; padding-bottom: 40px;">
+            <div class="section-header">
+                <div class="section-eyebrow" data-en>Industrial Journey · From Grassroots to Global</div>
+                <h2 class="section-title" data-zh>泉州工业的四十年</h2>
+                <h2 class="section-title" data-en>Forty Years of Quanzhou Industry</h2>
+            </div>
+            <div class="timeline-tabs">
+                <button class="timeline-tab active" data-stage="1" style="--tab-color: var(--color-ocean-light); font-size: 20x; font-weight: 800;">
+                    <span data-zh style="font-size: 20px;">萌芽起步</span>
+                    <span data-en>Emergence</span>
+                    <span class="tab-year" style="font-size: 18px;">1978-1991</span>
+                </button>
+                <button class="timeline-tab" data-stage="2" style="--tab-color: var(--color-gold); font-size: 19px;">
+                    <span data-zh style="font-size: 20px; font-weight: 800;">规模扩张</span>
+                    <span data-en>Scale Expansion</span>
+                    <span class="tab-year" style="font-size: 18px;">1992-2000</span>
+                </button>
+                <button class="timeline-tab" data-stage="3" style="--tab-color: var(--color-brick);">
+                    <span data-zh style="font-size: 20px; font-weight: 800;">品牌崛起</span>
+                    <span data-en>Brand Rise</span>
+                    <span class="tab-year" style="font-size: 18px;">2001-2012</span>
+                </button>
+                <button class="timeline-tab" data-stage="4" style="--tab-color: var(--color-jade);">
+                    <span data-zh style="font-size: 20px; font-weight: 800;">创新升级</span>
+                    <span data-en>Innovation Upgrade</span>
+                    <span class="tab-year" style="font-size: 18px;">2013-至今</span>
+                </button>
+            </div>
+            <!-- 阶段一 -->
+            <div class="timeline-content active" id="stage-1">
+                <div class="timeline-card" style="--tab-color: var(--color-ocean-light);">
+                    <div class="timeline-card-two-col">
+                        <div class="timeline-card-text">
+                            <h3 class="timeline-stage" data-zh>萌芽起步：草根工业的诞生</h3>
+                            <h3 class="timeline-stage" data-en>Emergence: Birth of Grassroots Industry</h3>
+                            <div class="timeline-stage-en" style="font-size: 20px;">1978 — 1991</div>
+                            <p class="timeline-narrative" data-zh>改革开放初期，泉州人多地少、资源匮乏，国家投资少。面对困境，泉州人选择了"草根工业"道路——以家庭作坊、联户企业为起点，从"三来一补"起步。晋江陈埭镇的农民率先办起制鞋作坊，石狮出现了服装地摊市场。地方政府采取"宽松放任"的态度，不争论、不压制，为民间创业留出空间。</p>
+                            <p class="timeline-narrative" data-en>In the early reform era, Quanzhou had limited land, resources, and state investment. Facing this, Quanzhou people chose a "grassroots industry" path—starting with family workshops and joint household enterprises through "three supplies and one compensation." Farmers in Jinjiang's Chendai town pioneered shoe workshops, while Shishi saw clothing street markets emerge. Local governments took a hands-off approach, leaving room for private entrepreneurship.</p>
+                            <div class="timeline-keydata">
+                                <span class="kd-label" data-zh>关键数据</span>
+                                <span class="kd-label" data-en>Key Data</span>
+                                <span data-zh>1985年乡镇企业突破1万家</span>
+                                <span data-en>10,000+ township enterprises by 1985</span>
+                            </div>
+                        </div>
+                        <!-- 图片插入位置：阶段一·萌芽起步（1978-1991）——建议插入：20世纪80年代晋江陈埭镇家庭制鞋作坊老照片 / 石狮早期服装地摊市场 / 泉州乡镇企业手工生产场景，黑白或复古色调 -->
+                        <div class="timeline-card-image" style="background-image: url('https://img1.fjdaily.com/app/images/2024-12/03/eff4a615-983f-45bb-b6a8-fedbe0240332.JPEG.2');">
+</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 阶段二 -->
+            <div class="timeline-content" id="stage-2">
+                <div class="timeline-card" style="--tab-color: var(--color-gold);">
+                    <div class="timeline-card-two-col">
+                        <div class="timeline-card-text">
+                            <h3 class="timeline-stage" data-zh>规模扩张：从作坊到工厂</h3>
+                            <h3 class="timeline-stage" data-en>Scale Expansion: From Workshops to Factories</h3>
+                            <div class="timeline-stage-en">1992 — 2000</div>
+                            <p class="timeline-narrative" data-zh>邓小平南方谈话后，泉州民营经济进入快速扩张期。家庭作坊升级为工厂，企业开始注重质量和品牌。1995年，晋江提出"质量立市"战略，政府开始从"放任"转向"引导"——设立质量检测中心、举办鞋业博览会、打击假冒伪劣。与此同时，企业之间的市场竞争日趋激烈，倒逼企业提升技术和管理。安踏、特步等品牌在这一时期创立，泉州鞋业从"贴牌代工"向"自主品牌"转型。</p>
+                            <p class="timeline-narrative" data-en>After Deng Xiaoping's Southern Tour, Quanzhou's private economy entered rapid expansion. Family workshops upgraded to factories, and enterprises began focusing on quality and branding. In 1995, Jinjiang launched a "Quality City" strategy—government shifted from hands-off to guidance, establishing quality testing centers, hosting shoe expos, and cracking down on counterfeits. Brands like Anta and Xtep were founded, as Quanzhou's shoe industry shifted from OEM to own brands.</p>
+                            <div class="timeline-keydata">
+                                <span class="kd-label" data-zh>关键数据</span>
+                                <span class="kd-label" data-en>Key Data</span>
+                                <span data-zh>1999年晋江被授予"中国鞋都"</span>
+                                <span data-en>Jinjiang named "China's Shoe Capital" in 1999</span>
+                            </div>
+                        </div>
+                        <!-- 图片插入位置：阶段二·规模扩张（1992-2000）——建议插入：90年代晋江鞋业博览会现场 / 现代化制鞋工厂流水线 / 晋江"质量立市"相关宣传或检测中心场景 -->
+                        <div class="timeline-card-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/OIP-C.hYbcSX7fPbHuqufiEmjjRAHaE7?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');">
+</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 阶段三 -->
+            <div class="timeline-content" id="stage-3">
+                <div class="timeline-card" style="--tab-color: var(--color-brick);">
+                    <div class="timeline-card-two-col">
+                        <div class="timeline-card-text">
+                            <h3 class="timeline-stage" data-zh>品牌崛起：从国内到全球</h3>
+                            <h3 class="timeline-stage" data-en>Brand Rise: From Domestic to Global</h3>
+                            <div class="timeline-stage-en">2001 — 2012</div>
+                            <p class="timeline-narrative" data-zh>加入WTO后，泉州企业迎来全球化机遇。政府推动"品牌之都"建设，出台品牌奖励政策，鼓励企业上市融资。2007年，安踏在香港上市，成为泉州体育用品行业第一家上市公司。随后，特步、361度、匹克等企业相继上市，形成了独特的"晋江体育用品板块"。企业从国内市场走向国际市场，安踏收购FILA中国业务，开启多品牌战略。</p>
+                            <p class="timeline-narrative" data-en>After China's WTO accession, Quanzhou enterprises seized globalization opportunities. The government promoted a "Brand Capital" initiative with brand rewards and IPO support. In 2007, Anta listed in Hong Kong—the first IPO in Quanzhou's sports goods industry. Xtep, 361°, and Peak followed, forming a unique "Jinjiang sports goods cluster." Anta acquired FILA China, launching a multi-brand strategy.</p>
+                            <div class="timeline-keydata">
+                                <span class="kd-label" data-zh>关键数据</span>
+                                <span class="kd-label" data-en>Key Data</span>
+                                <span data-zh>2012年GDP突破5000亿，上市公司超70家</span>
+                                <span data-en>GDP exceeded 500B RMB, 70+ listed companies in 2012</span>
+                            </div>
+                        </div>
+                        <!-- 图片插入位置：阶段三·品牌崛起（2001-2012）——建议插入：安踏2007年香港上市敲钟现场 / 晋江体育用品品牌门店集群 / 安踏收购FILA相关画面或品牌总部大楼 -->
+                        <div class="timeline-card-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.332f093e1dce28f9ed18c05795dbf1d0?rik=xRJqvQDnP14g4A&riu=http%3a%2f%2fn.sinaimg.cn%2ftranslate%2f20170712%2fRa-V-fyhwret2555067.jpg&ehk=gBec951IO7OS87cPduN8fJ6VgKk2GVXFvoFHJWO1LQY%3d&risl=&pid=ImgRaw&r=0');">
+</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 阶段四 -->
+            <div class="timeline-content" id="stage-4">
+                <div class="timeline-card" style="--tab-color: var(--color-jade);">
+                    <div class="timeline-card-two-col">
+                        <div class="timeline-card-text">
+                            <h3 class="timeline-stage" data-zh>创新升级：从制造到智造</h3>
+                            <h3 class="timeline-stage" data-en>Innovation Upgrade: From Manufacturing to Smart Making</h3>
+                            <div class="timeline-stage-en">2013 — Present</div>
+                            <p class="timeline-narrative" data-zh>面对劳动力成本上升和产业转型压力，泉州推动"中国制造2025"试点，建设智能制造示范工厂。政府引导企业加大研发投入，建设工业设计中心、产业技术研究院。安踏成立运动科学实验室，研发投入占比超过5%；九牧建设智能卫浴工厂，实现自动化生产。同时，泉州企业加速"出海"，在东南亚、非洲建设生产基地，通过"21世纪海上丝绸之路"拓展全球市场。</p>
+                            <p class="timeline-narrative" data-en>Facing rising labor costs and transformation pressure, Quanzhou became a "Made in China 2025" pilot city, building smart manufacturing factories. Government guided enterprises to increase R&D. Anta's sports science lab invests over 5% of revenue in R&D; Jomoo built smart bathroom factories with automated production. Meanwhile, Quanzhou enterprises accelerated "going global," building production bases in Southeast Asia and Africa via the "21st Century Maritime Silk Road."</p>
+                            <div class="timeline-keydata">
+                                <span class="kd-label" data-zh>关键数据</span>
+                                <span class="kd-label" data-en>Key Data</span>
+                                <span data-zh>2023年GDP达1.21万亿，连续25年福建第一</span>
+                                <span data-en>2023 GDP reached 1.21T RMB, #1 in Fujian for 25 consecutive years</span>
+                            </div>
+                        </div>
+                        <!-- 图片插入位置：阶段四·创新升级（2013-至今）——建议插入：安踏运动科学实验室 / 九牧智能卫浴工厂自动化生产线 / 泉州智能制造示范车间 / 企业海外生产基地 -->
+                        <div class="timeline-card-image" style="background-image: url('https://img-md.veimg.cn/meadincms/img5/2023/5/6C8C282FF3B841C8ADBCBEB6D08A2A8D.png');">
+</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================================================
+     【模块三：晋江经验理论】
+     ============================================================ -->
+        <section class="section theory-section" id="theory" style="padding-top: 40px; padding-bottom: 50px;">
+            <div class="section-header">
+                <div class="section-eyebrow" data-en="">Theoretical Reading &middot; Government-Market Interaction</div>
+                <h2 class="section-title" data-zh="">晋江经验&#8212;&#8212;中国民营企业的领航</h2>
+                <h2 class="section-title" data-en="">The Jinjiang Experience: Code of China&apos;s County Economy</h2>
+            </div>
+            <p class="theory-intro" data-zh="" style="font-size: 16px;">
+    2002年，时任福建省省长的习近平同志总结&ldquo;晋江经验&rdquo;，指出晋江的发展道路是中国特色社会主义市场经济的成功实践。其核心是：始终坚持以发展社会生产力为根本方向，始终坚持以市场为导向发展经济，始终坚持在顽强拼搏中取胜，始终坚持以诚信促进市场经济健康发展，始终坚持立足本地优势加快发展，始终坚持加强政府对市场经济的引导和服务。 </p>
+            <p class="theory-intro" data-en="">
+    In 2002, then-Fujian Governor Xi Jinping summarized the &quot;Jinjiang Experience,&quot; noting that Jinjiang&apos;s development path was a successful practice of a socialist market economy with Chinese characteristics. Its core: always prioritizing productive forces, always taking a market-oriented approach, always winning through tenacity, always promoting healthy market development through integrity, always leveraging local advantages, and always strengthening government guidance and services. </p>
+            <div class="theory-framework">
+                <div class="theory-pillar gov">
+                    <!-- 图片插入位置：晋江经验·官场竞争——建议插入：晋江市政府办公大楼 / 政务服务中心办事大厅 / 产业政策发布会 / 质量检测中心工作场景，体现政府引导与公共服务 -->
+                    <div class="theory-pillar-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.4b6288c1c1fa762244168b2291a4f08c?rik=u7DU%2fNqwv%2fk0Gw&riu=http%3a%2f%2fwww.88vj.com%2fupfiles%2fvideoimg%2f20210403%2f2779aac2ea8e1c162cf3e00135f03fc7_13.jpg&ehk=AUlDmetCPRHE7t5Lj0YWg%2fVHzsEZN7DvibJubgktNu4%3d&risl=&pid=ImgRaw&r=0');">
+</div>
+                    <h3 class="theory-pillar-title" data-zh="" style="font-size: 24px;">官场竞争</h3>
+                    <h3 class="theory-pillar-title" data-en="">Bureaucratic Competition</h3>
+                    <div class="theory-pillar-sub" data-en="">Government Guidance &middot; Public Services</div>
+                    <ul class="theory-pillar-desc" data-zh="">
+                        <li style="font-size: 15px;">地方官员围绕GDP、税收、招商引资展开竞争</li>
+                        <li style="font-size: 15px;">激励政府改善营商环境、提供公共服务</li>
+                        <li style="font-size: 15px;">制定产业政策，建设质量检测、展会等平台</li>
+                        <li style="font-size: 15px;">&quot;质量立市&quot;&quot;品牌之都&quot;等战略引导方向</li>
+                    </ul>
+                    <ul class="theory-pillar-desc" data-en="">
+                        <li>Local officials compete on GDP, tax revenue, investment</li>
+                        <li>Incentivizes better business environments and public services</li>
+                        <li>Sets industrial policies, builds quality testing and expo platforms</li>
+                        <li>&quot;Quality City&quot; and &quot;Brand Capital&quot; strategies guide direction</li>
+                    </ul>
+                </div>
+                <div class="theory-bridge">
+                    <div class="theory-bridge-circle" data-zh="" style="font-size: 18px;">良性<br>互动
+                    </div>
+                    <div class="theory-bridge-circle" data-en="">Positive<br>Interaction
+                    </div>
+                </div>
+                <div class="theory-pillar market">
+                    <!-- 图片插入位置：晋江经验·市场竞争——建议插入：晋江鞋服专业市场繁忙交易场景 / 企业现代化生产线 / 体育品牌门店集群 / 鞋业博览会人流，体现市场竞争与企业创新 -->
+                    <div class="theory-pillar-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.a38f95b7456a7811bae325dc6b3cc961?rik=CO7Xj%2bJZeBQVdw&riu=http%3a%2f%2f5b0988e595225.cdn.sohucs.com%2fimages%2f20181101%2fd67d0d3d60034a7897b96ba17d70bbfb.jpeg&ehk=mwuSkE50Zc2IwpDoOu%2fulYmPqkXh1NtGpXaU%2buSy6%2fI%3d&risl=&pid=ImgRaw&r=0');">
+</div>
+                    <h3 class="theory-pillar-title" data-zh="" style="font-size: 24px;">市场竞争</h3>
+                    <h3 class="theory-pillar-title" data-en="">Market Competition</h3>
+                    <div class="theory-pillar-sub" data-en="">Enterprise Innovation &middot; Survival of Fittest</div>
+                    <ul class="theory-pillar-desc" data-zh="">
+                        <li style="font-size: 15px;">企业在全国乃至全球市场中充分竞争</li>
+                        <li style="font-size: 15px;">市场&quot;无形之手&quot;约束和检验政府干预效果</li>
+                        <li style="font-size: 15px;">倒逼企业提升技术、管理和品牌能力</li>
+                        <li style="font-size: 15px;">从代工到品牌，从国内到全球的持续升级</li>
+                    </ul>
+                    <ul class="theory-pillar-desc" data-en="">
+                        <li>Enterprises compete in national and global markets</li>
+                        <li>Market&apos;s &quot;invisible hand&quot; constrains and tests government intervention</li>
+                        <li>Forces enterprises to improve technology, management, and branding</li>
+                        <li>Continuous upgrade from OEM to brand, domestic to global</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- ============================================================
+     【模块四：企业家故事】
+     ============================================================ -->
+        <section class="section stories-section" id="stories" style="padding-top: 40px; padding-bottom: 50px;">
+            <div class="section-header">
+                <div class="section-eyebrow" data-en>Entrepreneurship · Win Through Hard Work</div>
+                <h2 class="section-title" data-zh>草根企业家的奋斗故事</h2>
+                <h2 class="section-title" data-en>Stories of Grassroots Entrepreneurs</h2>
+                <p class="section-desc" data-zh style="font-size: 18px;">每一个品牌的背后，都有一个从草根起步、爱拼敢赢的故事。他们用双手和智慧，书写了中国制造的传奇。</p>
+                <p class="section-desc" data-en>Behind every brand lies a story of grassroots beginnings and relentless striving. With their hands and wit, they wrote the legend of Chinese manufacturing.</p>
+            </div>
+            <div class="stories-grid">
+                <!-- 故事1：安踏 -->
+                <div class="story-card" style="--story-color: var(--color-brick);">
+                    <!-- 图片插入位置：故事一·丁世忠（安踏）——建议插入：丁世忠人物肖像 / 安踏总部大楼 / 安踏品牌旗舰店 / 1987年北京摆地摊卖鞋的历史场景（如有），上图下文 -->
+                    <div class="story-image" style="background-image: url('https://aip-p01.oss-cn-hangzhou.aliyuncs.com/lianheti/res/images/37fd1646-7cf9-4ce9-a7af-0b9a5b3efece.jpg');">
+</div>
+                    <div class="story-body">
+                        <span class="story-tag" data-zh style="font-size: 16px;">故事一 · 体育用品</span>
+                        <span class="story-tag" data-en>Story 1 · Sports Goods</span>
+                        <h3 class="story-title" data-zh style="font-size: 22px;">丁世忠：从摆地摊到全球第三</h3>
+                        <h3 class="story-title" data-en>Ding Shizhong: From Street Vendor to Global #3</h3>
+                        <div class="story-company" style="font-size: 18px;">ANTA &middot; 安踏体育</div>
+                        <p class="story-text" data-zh style="font-size: 14px;">1987年，17岁的丁世忠带着600双晋江产的运动鞋，只身来到北京推销。他摆过地摊，跑过商场，用了两年时间把晋江鞋卖进了北京的大商场。1991年，他回到晋江创办安踏。三十多年后，安踏成为全球第三大运动品牌，市值超千亿。</p>
+                        <p class="story-text" data-en>In 1987, 17-year-old Ding Shizhong took 600 pairs of Jinjiang-made sports shoes to Beijing alone. He sold on streets and pitched department stores, taking two years to get Jinjiang shoes into Beijing's major retailers. In 1991, he returned to found Anta. Over 30 years later, Anta is the world's third-largest sports brand.</p>
+                        <div class="story-quote" data-zh="" style="font-size: 16px;">&ldquo;晋江人的特点就是爱拼才会赢，不做就什么都没有。&rdquo;</div>
+                        <div class="story-quote" data-en>"Jinjiang people's trait is winning through hard work. Do nothing, and you have nothing."</div>
+                    </div>
+                </div>
+                <!-- 故事2：九牧 -->
+                <div class="story-card" style="--story-color: var(--color-ocean);">
+                    <!-- 图片插入位置：故事二·林孝发（九牧）——建议插入：林孝发人物肖像 / 九牧智能卫浴工厂 / 九牧智能马桶产品 / 水龙头生产线，上图下文 -->
+                    <div class="story-image" style="background-image: url('https://image.pp918.com/BrandNews/20180612/20180612141052_7982.jpg');">
+</div>
+                    <div class="story-body">
+                        <span class="story-tag" data-zh style="font-size: 16px;">故事二 · 智能卫浴</span>
+                        <span class="story-tag" data-en>Story 2 · Smart Bathroom</span>
+                        <h3 class="story-title" data-zh style="font-size: 22px;">林孝发：从水龙头到智能卫浴</h3>
+                        <h3 class="story-title" data-en>Lin Xiaofa: From Faucets to Smart Bathrooms</h3>
+                        <div class="story-company" style="font-size: 18px;">JOMOO · 九牧厨卫</div>
+                        <p class="story-text" data-zh style="font-size: 14px;">1990年，林孝发在南安创办九牧，从生产最简单的水龙头开始。他坚持自主研发，从传统卫浴到智能马桶，再到整体卫浴解决方案，九牧一步步成为中国卫浴行业领军品牌。今天，九牧的智能工厂实现了生产自动化，产品销往全球数十个国家。</p>
+                        <p class="story-text" data-en>In 1990, Lin Xiaofa founded Jomoo in Nan'an, starting with the simplest faucets. Insisting on independent R&D, Jomoo progressed from traditional bathroom fixtures to smart toilets to total bathroom solutions, becoming China's leading bathroom brand. Today, Jomoo's smart factory achieves automated production, with products sold in dozens of countries.</p>
+                        <div class="story-quote" data-zh="" style="font-size: 16px;">&ldquo;做企业就要敢为人先，别人不敢做的我们来做。&rdquo;</div>
+                        <div class="story-quote" data-en>"In business, you must dare to be first—what others won't do, we will."</div>
+                    </div>
+                </div>
+                <!-- 故事3：达利 -->
+                <div class="story-card" style="--story-color: var(--color-gold);">
+                    <!-- 图片插入位置：故事三·许世辉（达利）——建议插入：许世辉人物肖像 / 达利食品工厂 / 达利园蛋黄派或好吃点产品 / 饼干生产线，上图下文 -->
+                    <div class="story-image" style="background-image: url('https://contentcenter-drcn.dbankcdn.cn/img/pub_1/Browser_contentImg_1195_8/aa/v3/1051195293ee4a8fc60757379433a3bbacb866d/a2a5d8638dfa4a738c64a688f8b5efa4_5_0/hd.webp');">
+</div>
+                    <div class="story-body">
+                        <span class="story-tag" data-zh style="font-size: 16px;">故事三 · 休闲食品</span>
+                        <span class="story-tag" data-en>Story 3 · Snack Food</span>
+                        <h3 class="story-title" data-zh style="font-size: 22px;">许世辉：从小食品厂到休闲食品帝国</h3>
+                        <h3 class="story-title" data-en>Xu Shihui: From Small Factory to Snack Empire</h3>
+                        <div class="story-company" style="font-size: 18px;">DALI · 达利食品</div>
+                        <p class="story-text" data-zh>1989年，许世辉在惠安创办达利食品，从生产饼干开始。他敏锐捕捉市场需求，先后推出"达利园"蛋黄派、"好吃点"饼干、"和其正"凉茶等爆款产品。今天，达利集团是中国最大的休闲食品企业之一，产品覆盖全国，远销海外。</p>
+                        <p class="story-text" data-en>In 1989, Xu Shihui founded Dali Foods in Hui'an, starting with biscuits. Sensing market demand, he launched hit products like Daliyuan egg yolk pies, Haochidian cookies, and Heqizheng herbal tea. Today, Dali Group is one of China's largest snack food companies, with products nationwide and exported abroad.</p>
+                        <div class="story-quote" data-zh="" style="font-size: 16px;">&ldquo;食品工业是良心工业，每一口都要对得起消费者。&rdquo;</div>
+                        <div class="story-quote" data-en>"The food industry is a conscience industry—every bite must be worthy of consumers."</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================================================
+   【升华区】
+   ============================================================ -->
+        <section class="closing" style="padding-bottom: 35px; padding-top: 20px;">
+            <div class="closing-quote" data-zh="">
+                泉州的工业故事，是中国故事的经济注脚。<br>
+                没有资源，没有特区，没有国企，<br>
+                靠的是&quot;爱拼才会赢&quot;的草根精神，<br>
+                靠的是政府与市场的良性互动。<br>
+                一双鞋，可以走出国门；<br>
+                一片食品，可以香飘世界。<br>
+                <span class="closing-highlight">这，就是中国制造的底气。</span>
+            </div>
+            <div class="closing-quote" data-en>
+                Quanzhou's industrial story is the economic footnote to China's story.<br>
+                No resources, no special zone, no state-owned enterprises—<br>
+                only the grassroots spirit of "win through hard work,"<br>
+                only the positive interaction between government and market.<br>
+                <br>
+                A single pair of shoes can go global.<br>
+                A single snack can delight the world.<br>
+                <span class="closing-highlight">This is the confidence of Chinese manufacturing.</span>
+            </div>
+            <div class="closing-final" data-zh>爱拼才会赢，实业兴邦</div>
+            <div class="closing-final" data-en>Win Through Hard Work, Enterprise Builds the Nation</div>
+        </section>
+        <!-- ============================================================
+     【页脚】
+     ============================================================ -->
+        <footer class="footer" style="padding-top: 10px; padding-bottom: 10px; font-size: 16px;"> 
+            <div class="footer-title" data-zh="">《活态泉州&#8212;&#8212;一座中国城市的四重叙事》</div>             
+            <div class="footer-title" data-en>Living Quanzhou: A Four-Fold Narrative of a Chinese City</div>             
+            <div class="footer-sub" data-zh="" style="font-size: 13px;">第十四届全国大学生数字媒体科技作品及创意竞赛&ldquo;科技+创意，讲好中国故事&rdquo;赛道</div>             
+            <div class="footer-sub" data-en>14th National College Student Digital Media Competition · "Technology + Creativity, Telling China's Story"</div>             
+            <div class="footer-sources" style="margin-top: 0px; font-size: 13px;" data-zh> 
+                数据来源：泉州市统计局 · 联合国教科文组织 · 公开学术文献
+</div>             
+            <div class="footer-sources" style="margin-top:16px;" data-en> 
+                Data Sources: Quanzhou Municipal Bureau of Statistics · UNESCO · Public Academic Literature
+</div>             
+        </footer>
+        <!-- ============================================================
+     【JavaScript】
+     ============================================================ -->
+        <script>
+
+// 按账号隔离存储
+const currentUser = localStorage.getItem('quanzhou_login') || 'guest';
+const INTERACTIONS_KEY = 'quanzhou_interactions_' + currentUser;
+const FAVORITES_INFO_KEY = 'quanzhou_favorites_info_' + currentUser;
+// ===== 互动功能：收藏、点赞、倒赞 =====
+var currentIndustryKey = null;
+
+function getInteractionData() {
+  return JSON.parse(localStorage.getItem(INTERACTIONS_KEY) || '{"favorites":[],"likes":{},"dislikes":{},"likeCount":{},"dislikeCount":{}}');
+}
+
+function saveInteractionData(data) {
+  localStorage.setItem(INTERACTIONS_KEY, JSON.stringify(data));
+}
+
+function updateIndustryModalButtons(key) {
+  var data = getInteractionData();
+  var type = 'industry';
+  var prefix = 'industry';
+  
+  // 收藏状态
+  var isFav = data.favorites.indexOf(type + '_' + key) !== -1;
+  document.getElementById(prefix + 'FavIcon').textContent = isFav ? '★' : '☆';
+  document.getElementById(prefix + 'FavText').textContent = isFav ? '已收藏' : '收藏';
+  document.getElementById(prefix + 'FavBtn').style.background = isFav ? '#B5493B' : '#fff';
+  document.getElementById(prefix + 'FavBtn').style.color = isFav ? '#fff' : '#333';
+  document.getElementById(prefix + 'FavBtn').style.borderColor = isFav ? '#B5493B' : '#ddd';
+  
+  // 点赞状态
+  var isLiked = data.likes[type + '_' + key];
+  var likeCount = data.likeCount[type + '_' + key] || 0;
+  document.getElementById(prefix + 'LikeCount').textContent = likeCount;
+  document.getElementById(prefix + 'LikeBtn').style.background = isLiked ? '#3D4F5F' : '#fff';
+  document.getElementById(prefix + 'LikeBtn').style.color = isLiked ? '#fff' : '#333';
+  document.getElementById(prefix + 'LikeBtn').style.borderColor = isLiked ? '#3D4F5F' : '#ddd';
+  
+  // 倒赞状态
+  var isDisliked = data.dislikes[type + '_' + key];
+  var dislikeCount = data.dislikeCount[type + '_' + key] || 0;
+  document.getElementById(prefix + 'DislikeCount').textContent = dislikeCount;
+  document.getElementById(prefix + 'DislikeBtn').style.background = isDisliked ? '#8A7E6C' : '#fff';
+  document.getElementById(prefix + 'DislikeBtn').style.color = isDisliked ? '#fff' : '#333';
+  document.getElementById(prefix + 'DislikeBtn').style.borderColor = isDisliked ? '#8A7E6C' : '#ddd';
+}
+
+function toggleFavorite(type, key) {
+  var data = getInteractionData();
+  var id = type + '_' + key;
+  var idx = data.favorites.indexOf(id);
+  if (idx !== -1) {
+    data.favorites.splice(idx, 1);
+  } else {
+    data.favorites.push(id);
+    // 保存收藏内容的元信息
+    var info = JSON.parse(localStorage.getItem(FAVORITES_INFO_KEY) || '{}');
+    var name = document.getElementById('industryModalTitle').textContent;
+    info[id] = { name: name, type: type };
+    localStorage.setItem('quanzhou_favorites_info', JSON.stringify(info));
+  }
+  saveInteractionData(data);
+  if (type === 'industry') updateIndustryModalButtons(key);
+}
+
+function toggleLike(type, key) {
+  var data = getInteractionData();
+  var id = type + '_' + key;
+  if (data.likes[id]) {
+    delete data.likes[id];
+    data.likeCount[id] = Math.max(0, (data.likeCount[id] || 1) - 1);
+  } else {
+    data.likes[id] = true;
+    data.likeCount[id] = (data.likeCount[id] || 0) + 1;
+    if (data.dislikes[id]) {
+      delete data.dislikes[id];
+      data.dislikeCount[id] = Math.max(0, (data.dislikeCount[id] || 1) - 1);
+    }
+  }
+  saveInteractionData(data);
+  if (type === 'industry') updateIndustryModalButtons(key);
+}
+
+function toggleDislike(type, key) {
+  var data = getInteractionData();
+  var id = type + '_' + key;
+  if (data.dislikes[id]) {
+    delete data.dislikes[id];
+    data.dislikeCount[id] = Math.max(0, (data.dislikeCount[id] || 1) - 1);
+  } else {
+    data.dislikes[id] = true;
+    data.dislikeCount[id] = (data.dislikeCount[id] || 0) + 1;
+    if (data.likes[id]) {
+      delete data.likes[id];
+      data.likeCount[id] = Math.max(0, (data.likeCount[id] || 1) - 1);
+    }
+  }
+  saveInteractionData(data);
+  if (type === 'industry') updateIndustryModalButtons(key);
+}
+
+
+// 导航栏滚动效果
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// 中英双语切换 - 完整版（偏好保存 + 标题切换）
+const langToggle = document.getElementById('langToggle');
+const langZh = document.getElementById('langZh');
+const langEn = document.getElementById('langEn');
+const pageTitle = document.getElementById('pageTitle');
+
+const PAGE_TITLES = {
+  zh: '超级工业之城 · 活态泉州',
+  en: 'Industrial Powerhouse · Living Quanzhou'
+};
+
+function applyLanguage(lang) {
+  const isEn = (lang === 'en');
+  document.body.classList.toggle('lang-en', isEn);
+  document.documentElement.lang = isEn ? 'en' : 'zh-CN';
+  langZh.classList.toggle('active-lang', !isEn);
+  langEn.classList.toggle('active-lang', isEn);
+  if (pageTitle) pageTitle.textContent = PAGE_TITLES[lang];
+  document.title = PAGE_TITLES[lang];
+  try { localStorage.setItem('preferredLang', lang); } catch(e) {}
+}
+
+// 初始化：读取本地存储偏好，默认中文
+let savedLang = 'zh';
+try { savedLang = localStorage.getItem('preferredLang') || 'zh'; } catch(e) {}
+applyLanguage(savedLang);
+
+langToggle.addEventListener('click', () => {
+  const current = document.body.classList.contains('lang-en') ? 'en' : 'zh';
+  applyLanguage(current === 'zh' ? 'en' : 'zh');
+});
+
+
+// 地图标记点与右侧列表联动
+var mapDots = document.querySelectorAll('.map-dot');
+var districtItems = document.querySelectorAll('.district-item');
+
+// 各区县的点击热区（百分比坐标，基于地图图片）
+var districtHotspots = [
+  { id: 'dehua',    x: 45, y: 36 },
+  { id: 'yongchun', x: 47, y: 47 },
+  { id: 'anxi',     x: 36, y: 60 },
+  { id: 'nanan',    x: 47, y: 66 },
+  { id: 'quanzhou', x: 57, y: 69 },
+  { id: 'huian',    x: 66, y: 64 },
+  { id: 'quangang', x: 69, y: 55 },
+  { id: 'jinjiang', x: 54, y: 78 },
+  { id: 'shishi',   x: 61, y: 80 }
+];
+
+window.activateDistrict = function(district) {
+  mapDots.forEach(function(d) {
+    d.classList.toggle('active', d.dataset.district === district);
+  });
+  districtItems.forEach(function(item) {
+    item.classList.toggle('active', item.dataset.district === district);
+  });
+  var target = document.querySelector('.district-item[data-district="' + district + '"]');
+  if (target) {
+    setTimeout(function() {
+      target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 50);
+  }
+};
+
+// document级别点击监听：判断是否点击了地图热区
+document.addEventListener('click', function(e) {
+  var box = document.getElementById('mapBox');
+  if (!box) return;
+  var rect = box.getBoundingClientRect();
+  
+  // 检查点击是否在地图容器内
+  if (e.clientX >= rect.left && e.clientX <= rect.right &&
+      e.clientY >= rect.top && e.clientY <= rect.bottom) {
+    var xPercent = ((e.clientX - rect.left) / rect.width) * 100;
+    var yPercent = ((e.clientY - rect.top) / rect.height) * 100;
+    
+    var nearest = null;
+    var minDist = Infinity;
+    districtHotspots.forEach(function(h) {
+      var dist = Math.sqrt(Math.pow(xPercent - h.x, 2) + Math.pow(yPercent - h.y, 2));
+      if (dist < minDist) {
+        minDist = dist;
+        nearest = h.id;
+      }
+    });
+    
+    if (nearest) {
+      window.activateDistrict(nearest);
+    }
+  }
+});
+
+// 右侧卡片点击
+districtItems.forEach(function(item) {
+  item.addEventListener('click', function(e) {
+    e.stopPropagation();
+    window.activateDistrict(item.dataset.district);
+  });
+});
+
+// 产业筛选
+const filterBtns = document.querySelectorAll('.filter-btn');
+const industryCards = document.querySelectorAll('.industry-card');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.filter-btn[data-filter="' + filter + '"]').forEach(b => b.classList.add('active'));
+    industryCards.forEach(card => {
+      if (filter === 'all' || card.dataset.cat === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// 工业时间轴切换
+const timelineTabs = document.querySelectorAll('.timeline-tab');
+const timelineContents = document.querySelectorAll('.timeline-content');
+timelineTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    timelineTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const stage = tab.dataset.stage;
+    timelineContents.forEach(content => {
+      content.classList.toggle('active', content.id === 'stage-' + stage);
+    });
+  });
+});
+
+// 数字滚动动画
+const counters = document.querySelectorAll('.counter');
+let countersAnimated = false;
+function animateCounters() {
+  if (countersAnimated) return;
+  countersAnimated = true;
+  counters.forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    const duration = 2000;
+    const startTime = performance.now();
+    function update(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = Math.floor(easeOut * target);
+      if (progress < 1) requestAnimationFrame(update);
+      else counter.textContent = target.toLocaleString();
+    }
+    requestAnimationFrame(update);
+  });
+}
+const statsSection = document.querySelector('.stats');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { animateCounters(); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.3 });
+observer.observe(statsSection);
+</script>
+        <!-- ===== 产业详情弹窗 ===== -->
+        <div class="industry-modal-overlay" id="industryModal" onclick="if(event.target===this)closeIndustryModal()">
+            <div class="industry-modal-content">
+                <button class="industry-modal-close" onclick="closeIndustryModal()">×</button>
+                <div class="industry-modal-title" id="industryModalTitle"></div>
+                <div class="industry-modal-subtitle" id="industryModalSubtitle"></div>
+                <div class="industry-modal-tag" id="industryModalTag"></div>
+                <div id="industryModalBody"></div>
+                <div class="modal-actions" id="industryModalActions" style="margin-top:24px;padding-top:16px;border-top:1px solid rgba(44,36,22,0.1);display:flex;gap:12px;align-items:center;">
+                    <button class="action-btn" id="industryFavBtn" onclick="toggleFavorite('industry', currentIndustryKey)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer;font-size:13px;transition:all 0.3s;">
+                        <span id="industryFavIcon">☆</span>
+                        <span id="industryFavText">收藏</span>
+                    </button>
+                    <button class="action-btn" id="industryLikeBtn" onclick="toggleLike('industry', currentIndustryKey)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer;font-size:13px;transition:all 0.3s;">
+                        <span id="industryLikeIcon">👍</span>
+                        <span id="industryLikeCount">0</span>
+                    </button>
+                    <button class="action-btn" id="industryDislikeBtn" onclick="toggleDislike('industry', currentIndustryKey)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer;font-size:13px;transition:all 0.3s;">
+                        <span id="industryDislikeIcon">👎</span>
+                        <span id="industryDislikeCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script>
+const industryModalData = {
+  jinjiang: {
+    zh: {
+      title: "晋江市",
+      subtitle: "中国鞋都 · China's Shoe Capital",
+      tag: "鞋服纺织 · 体育用品",
+      sections: [
+        { title: "产业概况", text: "晋江是泉州民营经济的龙头，晋江经验的发源地。运动鞋产量占全国40%，全球每5双运动鞋就有1双来自晋江。拥有国家级体育用品品牌20余个，安踏已成为全球第三大运动品牌。" },
+        { title: "龙头企业", text: "安踏、特步、361度、鸿星尔克、七匹狼、劲霸等知名品牌总部均设在晋江。安踏集团2023年营收超600亿元，旗下拥有安踏、FILA、迪桑特、可隆等多个品牌。" },
+        { title: "发展历程", text: "从20世纪80年代的家庭作坊做鞋开始，晋江人靠三来一补起步，逐步从代工走向自主品牌。1995年提出质量立市战略，2007年安踏在香港上市，开启品牌全球化进程。" },
+        { title: "创新升级", text: "安踏成立运动科学实验室，研发投入占比超过5%；九牧建设智能卫浴工厂。企业加速出海，在东南亚、非洲建设生产基地，通过21世纪海上丝绸之路拓展全球市场。" }
+      ],
+      data: "运动鞋产量占全国40% | 全球每5双有1双来自晋江 | 国家级体育品牌20+ | 安踏全球第三大运动品牌"
+    },
+    en: {
+      title: "Jinjiang",
+      subtitle: "China's Shoe Capital",
+      tag: "Footwear · Sports Goods",
+      sections: [
+        { title: "Industry Overview", text: "Jinjiang is the leader of Quanzhou's private economy and the birthplace of the Jinjiang Experience. It produces 40% of China's sports shoes, 1 in every 5 pairs worldwide comes from Jinjiang. Home to 20+ national sports brands, Anta is now the world's third-largest sports brand." },
+        { title: "Key Enterprises", text: "Anta, Xtep, 361°, ERKE, Septwolves, and K-Boxing are all headquartered in Jinjiang. Anta Group revenue exceeded 60 billion RMB in 2023, with brands including Anta, FILA, Descente, and Kolon." },
+        { title: "Development History", text: "Starting with family shoe workshops in the 1980s, Jinjiang moved from OEM to own brands. The Quality City strategy launched in 1995, and Anta's 2007 Hong Kong IPO began the globalization era." },
+        { title: "Innovation Upgrade", text: "Anta's sports science lab invests over 5% of revenue in R&D. Enterprises are accelerating going global, building production bases in Southeast Asia and Africa via the 21st Century Maritime Silk Road." }
+      ],
+      data: "40% of China's sports shoes | 1 in 5 pairs worldwide | 20+ national sports brands | Anta: world's #3 sports brand"
+    }
+  },
+  nanan: {
+    zh: {
+      title: "南安市",
+      subtitle: "中国建材之乡 · Building Materials Hub",
+      tag: "石材陶瓷 · 水暖阀门",
+      sections: [
+        { title: "产业概况", text: "南安是中国最大的石材生产和交易基地，石材产量占全国60%以上。水暖卫浴产品占全国市场份额70%，产品销往100多个国家和地区。" },
+        { title: "龙头企业", text: "九牧、中宇、辉煌水暖、申鹭达等卫浴品牌领军全国。九牧卫浴连续多年位居中国卫浴行业前列，拥有国家级工业设计中心。" },
+        { title: "发展历程", text: "南安人从一把锤子走天下的石材匠人起步，逐步建立起从矿山开采、加工到销售的完整产业链。水头镇成为中国石材城，仑苍镇成为中国水暖卫浴重镇。" },
+        { title: "创新升级", text: "九牧建设智能卫浴工厂，实现自动化生产；石材企业向高端定制、文创产品转型。南安石材从传统建筑材料向艺术装饰、奢侈品配套升级。" }
+      ],
+      data: "石材产量占全国60%+ | 水暖卫浴占全国70% | 产品销往100+国家 | 九牧：中国卫浴领军品牌"
+    },
+    en: {
+      title: "Nan'an",
+      subtitle: "China's Building Materials Hub",
+      tag: "Stone · Plumbing Fixtures",
+      sections: [
+        { title: "Industry Overview", text: "Nan'an is China's largest stone production and trading base, with over 60% of national stone output. Plumbing and bathroom fixtures hold 70% of national market share, sold in 100+ countries." },
+        { title: "Key Enterprises", text: "Jomoo, Zhongyu, Huihuang Plumbing, and Sunlot lead the industry. Jomoo has ranked among China's top bathroom brands for years, with a national industrial design center." },
+        { title: "Development History", text: "Starting as stonemasons traveling the world with a hammer, Nan'an built a complete chain from mining to processing to sales. Shuitou became China's Stone City, and Lancang became China's Plumbing Town." },
+        { title: "Innovation Upgrade", text: "Jomoo built smart bathroom factories with automated production. Stone enterprises are shifting to high-end customization and cultural creative products, upgrading from traditional materials to art and luxury." }
+      ],
+      data: "60%+ of national stone output | 70% of plumbing market | Sold in 100+ countries | Jomoo: leading Chinese bathroom brand"
+    }
+  },
+  shishi: {
+    zh: {
+      title: "石狮市",
+      subtitle: "中国服装名城 · Fashion City",
+      tag: "纺织服装 · 面料辅料",
+      sections: [
+        { title: "产业概况", text: "石狮是中国主要的服装面料和辅料集散地，休闲服装产量占全国重要份额。石狮服装城是亚洲最大的服装专业市场之一。" },
+        { title: "龙头企业", text: "富贵鸟、卡宾、爱登堡等品牌享誉全国。石狮拥有完整的纺织服装产业链，从面料织造、印染到成衣制造、销售。" },
+        { title: "发展历程", text: "石狮因服装而兴，从20世纪80年代的地摊服装市场起步，发展成为中国重要的服装生产和贸易中心。石狮服装成为全国知名的区域品牌。" },
+        { title: "创新升级", text: "石狮企业向时尚设计、品牌运营转型，每年举办石狮国际时装周。电商直播成为新增长点，石狮服装通过互联网销往全国和海外。" }
+      ],
+      data: "中国主要服装面料集散地 | 亚洲最大服装专业市场之一 | 完整纺织服装产业链 | 电商直播新增长点"
+    },
+    en: {
+      title: "Shishi",
+      subtitle: "China's Fashion City",
+      tag: "Apparel · Fabrics",
+      sections: [
+        { title: "Industry Overview", text: "Shishi is a leading hub for apparel fabrics and accessories, with a major national share of casual wear. Shishi Garment City is one of Asia's largest apparel markets." },
+        { title: "Key Enterprises", text: "Fuguiniao, Cabbeen, and Edenbo are nationally renowned brands. Shishi has a complete textile-apparel chain from weaving, dyeing, to garment manufacturing and sales." },
+        { title: "Development History", text: "Shishi thrived on apparel, growing from 1980s street clothing markets into a major Chinese garment production and trade center. Shishi Apparel became a well-known regional brand." },
+        { title: "Innovation Upgrade", text: "Enterprises are shifting to fashion design and brand operation, with the annual Shishi International Fashion Week. E-commerce livestreaming has become a new growth channel." }
+      ],
+      data: "Leading apparel fabric hub | One of Asia's largest garment markets | Complete textile-apparel chain | E-commerce livestreaming growth"
+    }
+  },
+  huian: {
+    zh: {
+      title: "惠安县",
+      subtitle: "中国建筑之乡 · Construction Hometown",
+      tag: "建筑施工 · 石雕工艺 · 食品饮料",
+      sections: [
+        { title: "产业概况", text: "惠安素有建筑之乡美誉，建筑企业遍布全国，年施工产值超千亿。惠安石雕是国家级非遗，达利食品是中国最大休闲食品企业之一。" },
+        { title: "龙头企业", text: "达利食品集团总部设在惠安，旗下拥有达利园、好吃点、和其正等知名品牌。惠安建筑企业群在全国建筑市场占有重要地位。" },
+        { title: "发展历程", text: "惠安石雕技艺精湛，从故宫修缮到城市雕塑，都有惠安工匠的身影。惠安建筑队伍是中国建筑业的重要力量，从南到北都有惠安建设者的足迹。" },
+        { title: "创新升级", text: "惠安石雕向文创产品、城市公共艺术转型；建筑企业向绿色建筑、装配式建筑升级；达利食品持续推出新产品，拓展海外市场。" }
+      ],
+      data: "建筑年施工产值超千亿 | 惠安石雕：国家级非遗 | 达利食品：中国最大休闲食品之一 | 建筑企业遍布全国"
+    },
+    en: {
+      title: "Hui'an",
+      subtitle: "China's Construction Hometown",
+      tag: "Construction · Stone Carving · Food",
+      sections: [
+        { title: "Industry Overview", text: "Known as China's construction hometown, Hui'an construction firms operate nationwide with annual output exceeding 100 billion RMB. Hui'an stone carving is national intangible heritage, and Dali Foods is one of China's largest snack food companies." },
+        { title: "Key Enterprises", text: "Dali Foods Group is headquartered in Hui'an, with brands including Daliyuan, Haochidian, and Heqizheng. Hui'an construction groups hold an important position in China's building industry." },
+        { title: "Development History", text: "From Forbidden City restoration to urban sculptures, Hui'an craftsmen are everywhere. Hui'an construction teams are a major force in China's building industry, with footprints nationwide." },
+        { title: "Innovation Upgrade", text: "Stone carving is shifting to cultural creative products and urban public art; construction firms are upgrading to green and prefabricated buildings; Dali Foods continues launching new products and expanding overseas." }
+      ],
+      data: "Construction output >100B RMB | Stone carving: national heritage | Dali: top Chinese snack food | Construction firms nationwide"
+    }
+  },
+  anxi: {
+    zh: {
+      title: "安溪县",
+      subtitle: "中国茶都 · Tea Capital",
+      tag: "茶叶 · 藤铁工艺",
+      sections: [
+        { title: "产业概况", text: "安溪是铁观音的故乡，铁观音茶叶产量占全国乌龙茶半壁江山。藤铁工艺品出口量全国第一，产品远销欧美。" },
+        { title: "龙头企业", text: "八马茶业、安溪铁观音集团、中闽魏氏等茶企领军全国。八马茶业在全国开设数千家门店，是中国茶业连锁领军品牌。" },
+        { title: "发展历程", text: "茶产业是安溪的支柱产业，带动数十万茶农增收。安溪藤铁工艺从传统竹编发展而来，从家庭作坊走向规模化生产，成为出口创汇重要产业。" },
+        { title: "创新升级", text: "安溪茶企向品牌化、标准化转型，建设生态茶园、智慧茶园。藤铁工艺向家居软装、文创产品升级，通过跨境电商拓展全球市场。" }
+      ],
+      data: "铁观音占全国乌龙茶半壁江山 | 藤铁工艺出口全国第一 | 茶农数十万人 | 八马茶业：全国数千家门店"
+    },
+    en: {
+      title: "Anxi",
+      subtitle: "China's Tea Capital",
+      tag: "Tea · Rattan-Iron Craft",
+      sections: [
+        { title: "Industry Overview", text: "Anxi is the homeland of Tieguanyin tea, accounting for half of China's oolong tea output. Rattan-iron craft exports rank #1 nationwide, sold to Europe and America." },
+        { title: "Key Enterprises", text: "Bama Tea, Anxi Tieguanyin Group, and Zhongmin Weishi lead the industry. Bama Tea has thousands of stores nationwide, a leading Chinese tea chain brand." },
+        { title: "Development History", text: "Tea is Anxi's pillar industry, supporting hundreds of thousands of farmers. Rattan-iron crafts evolved from traditional bamboo weaving, growing from family workshops to scaled production and major export earnings." },
+        { title: "Innovation Upgrade", text: "Tea enterprises are shifting to branding and standardization, building ecological and smart tea gardens. Rattan-iron crafts are upgrading to home decor and cultural creative products, expanding globally via cross-border e-commerce." }
+      ],
+      data: "Half of China's oolong tea | #1 rattan-iron craft exports | Hundreds of thousands of farmers | Bama Tea: thousands of stores"
+    }
+  },
+  yongchun: {
+    zh: {
+      title: "永春县",
+      subtitle: "中国香都 · Incense Capital",
+      tag: "香品制造 · 老醋食品",
+      sections: [
+        { title: "产业概况", text: "永春是全国最大的篾香生产基地，占全国市场份额四分之一。永春老醋是中国四大名醋之一，与山西老陈醋、镇江香醋、四川保宁醋齐名。" },
+        { title: "龙头企业", text: "永春蔑香、永春老醋、达埔香业等品牌享誉全国。达埔镇是中国香都核心产区，拥有数百家制香企业。" },
+        { title: "发展历程", text: "永春篾香有千余年历史，源于宋元时期阿拉伯商人带来的制香工艺。永春老醋始于北宋，至今已有千年历史，是闽南饮食文化的重要组成部分。" },
+        { title: "创新升级", text: "永春香品向养生香、文创香、香道文化体验转型；老醋企业向高端醋、醋饮料、健康食品拓展。两大传统产业焕发新生。" }
+      ],
+      data: "全国最大篾香生产基地 | 占全国市场1/4 | 永春老醋：中国四大名醋之一 | 制香历史千余年"
+    },
+    en: {
+      title: "Yongchun",
+      subtitle: "China's Incense Capital",
+      tag: "Incense · Aged Vinegar",
+      sections: [
+        { title: "Industry Overview", text: "Yongchun is China's largest incense production base, holding a quarter of the national market. Yongchun aged vinegar is one of China's four famous vinegars, alongside Shanxi, Zhenjiang, and Sichuan Baoning vinegars." },
+        { title: "Key Enterprises", text: "Yongchun Incense, Yongchun Aged Vinegar, and Dapu Incense are nationally renowned. Dapu town is the core production area of China's Incense Capital, with hundreds of incense makers." },
+        { title: "Development History", text: "Yongchun incense has over a millennium of history, originating from techniques brought by Arab merchants in the Song-Yuan period. Yongchun aged vinegar dates to the Northern Song, a key part of Minnan food culture." },
+        { title: "Innovation Upgrade", text: "Incense products are shifting to wellness, cultural creative, and incense ceremony experiences. Aged vinegar enterprises are expanding to premium vinegar, vinegar drinks, and health foods. Both traditional industries are being reborn." }
+      ],
+      data: "China's largest incense base | 1/4 national market | One of China's four famous vinegars | 1000+ years of incense making"
+    }
+  },
+  dehua: {
+    zh: {
+      title: "德化县",
+      subtitle: "中国瓷都 · Porcelain Capital",
+      tag: "陶瓷工艺",
+      sections: [
+        { title: "产业概况", text: "德化是中国最大的工艺瓷生产和出口基地，西洋工艺瓷出口量占全国80%。产品销往全球190多个国家和地区，是中国陶瓷出口的重要基地。" },
+        { title: "龙头企业", text: "顺美陶瓷、五洲陶瓷、龙鹏集团等企业领军全国。顺美集团是国家级文化出口重点企业，产品进入欧美主流市场。" },
+        { title: "发展历程", text: "德化白瓷有千年历史，与江西景德镇、湖南醴陵并称中国三大古瓷都。今天的德化陶瓷从传统佛像扩展到西洋工艺瓷、日用瓷，成为世界陶瓷之都。" },
+        { title: "创新升级", text: "德化陶瓷向高端艺术品、文创产品、智能陶瓷转型。电商直播成为新渠道，德化白瓷通过互联网走向全球年轻消费者。" }
+      ],
+      data: "中国最大工艺瓷出口基地 | 西洋工艺瓷占全国80% | 产品销往190+国家 | 世界陶瓷之都"
+    },
+    en: {
+      title: "Dehua",
+      subtitle: "Porcelain Capital",
+      tag: "Porcelain Craft",
+      sections: [
+        { title: "Industry Overview", text: "Dehua is China's largest art porcelain production and export base, with 80% of national Western-style art porcelain exports. Products are sold in 190+ countries, a major Chinese ceramic export hub." },
+        { title: "Key Enterprises", text: "Shunmei Porcelain, Wuzhou Porcelain, and Longpeng Group lead the industry. Shunmei Group is a national key cultural export enterprise, with products entering mainstream European and American markets." },
+        { title: "Development History", text: "Dehua white porcelain has a millennium of history, one of China's three ancient porcelain capitals alongside Jingdezhen and Liling. Today it produces everything from traditional Buddha statues to Western-style art and daily-use ceramics, known as the World Porcelain Capital." },
+        { title: "Innovation Upgrade", text: "Dehua ceramics are shifting to high-end art, cultural creative, and smart ceramics. E-commerce livestreaming has become a new channel, bringing Dehua white porcelain to young consumers worldwide." }
+      ],
+      data: "China's largest art porcelain export base | 80% of national Western-style porcelain | Sold in 190+ countries | World Porcelain Capital"
+    }
+  }
+};
+
+function openIndustryModal(key) {
+  currentIndustryKey = key;
+  const isEn = document.body.classList.contains('lang-en');
+  const data = isEn ? industryModalData[key].en : industryModalData[key].zh;
+  document.getElementById('industryModalTitle').textContent = data.title;
+  document.getElementById('industryModalSubtitle').textContent = data.subtitle;
+  document.getElementById('industryModalTag').textContent = data.tag;
+  let bodyHtml = '';
+  data.sections.forEach(function(section) {
+    bodyHtml += '<div class="industry-modal-section">';
+    bodyHtml += '<div class="industry-modal-section-title">' + section.title + '</div>';
+    bodyHtml += '<div class="industry-modal-text">' + section.text + '</div>';
+    bodyHtml += '</div>';
+  });
+  bodyHtml += '<div class="industry-modal-data">' + data.data + '</div>';
+  document.getElementById('industryModalBody').innerHTML = bodyHtml;
+  updateIndustryModalButtons(key);
+  document.getElementById('industryModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeIndustryModal() {
+  document.getElementById('industryModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// 加载导航栏头像
+(function() {
+  var profile = JSON.parse(localStorage.getItem('quanzhou_profile') || '{}');
+  if (profile.avatar) {
+    var navAvatar = document.getElementById('navAvatar');
+    var navAvatarIcon = document.getElementById('navAvatarIcon');
+    if (navAvatar && navAvatarIcon) {
+      navAvatar.src = profile.avatar;
+      navAvatar.style.display = 'block';
+      navAvatarIcon.style.display = 'none';
+    }
+  }
+})();
+
+</script>
+    </body>
+</html>

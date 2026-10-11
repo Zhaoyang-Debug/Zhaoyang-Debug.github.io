@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="pageTitle">世界非遗之城 · 活态泉州</title>
+        <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap">
+        <style>/* ============================================================
+   【双语切换】放在最前面确保生效
+   ============================================================ */body:not(.lang-en) [data-en] { display: none !important; } body.lang-en [data-zh] { display: none !important; }
+body:not(.lang-en) [data-en] { display: none !important; } /* ============================================================
+   【全局可调参数区】
+   ============================================================ */:root { --color-brick: #B5493B; --color-brick-dark: #8E372C; --color-brick-light: #D4756A; --color-ocean: #1B4965; --color-ocean-light: #2D6A8F; --color-paper: #F5F0E8; --color-paper-dark: #EDE5D6; --color-gold: #C9A961; --color-gold-light: #E0C98F; --color-ink: #2C2416; --color-ink-light: #5C5040; --color-ink-faint: #8A7E6C; --color-jade: #4A7C59; --font-serif-zh: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; --font-sans-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif-en: 'Playfair Display', Georgia, serif; --font-sans-en: 'Inter', 'Helvetica Neue', Arial, sans-serif; --fs-hero-title: clamp(40px, 6vw, 72px); --fs-hero-sub: clamp(18px, 2.5vw, 28px); --fs-section-title: clamp(28px, 4vw, 42px); --fs-card-title: 18px; --fs-nav: 14px; --fs-body: 15px; --fs-small: 12px; --padding-section: 90px 48px; --nav-height: 72px; } *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: var(--font-sans-zh), var(--font-sans-en); background: var(--color-paper); color: var(--color-ink); font-size: var(--fs-body); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; } body.lang-en { font-family: var(--font-sans-en), var(--font-sans-zh); } a { text-decoration: none; color: inherit; } ul { list-style: none; } /* ============================================================
+   【导航栏】
+   ============================================================ */.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-height); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; background: transparent; } .nav.scrolled { background: rgba(245,240,232,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(44,36,22,0.08); } .nav-logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; } .nav-logo-icon { width: 36px; height: 36px; border: 2px solid var(--color-brick); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; } .nav-logo-icon::after { content: ''; position: absolute; width: 18px; height: 2px; background: var(--color-brick); } .nav-logo-text { font-family: var(--font-serif-zh); font-size: 17px; font-weight: 700; letter-spacing: 2px; color: var(--color-ink); } body.lang-en .nav-logo-text { font-family: var(--font-serif-en); letter-spacing: 1px; font-size: 15px; } .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; } .nav-links li { position: relative; } .nav-links a { display: block; padding: 8px 12px; font-size: var(--fs-nav); font-weight: 500; letter-spacing: 1px; color: var(--color-ink-light); transition: all 0.3s; white-space: nowrap; border-radius: 4px; } .nav-links a:hover { color: var(--color-brick); background: rgba(181,73,59,0.06); } .nav-links a.active { color: var(--color-brick); font-weight: 700; } .lang-toggle { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--color-ink-faint); border-radius: 20px; cursor: pointer; background: transparent; font-size: 13px; font-weight: 500; color: var(--color-ink-light); transition: all 0.3s; flex-shrink: 0; } .lang-toggle:hover { border-color: var(--color-brick); color: var(--color-brick); } .lang-toggle .active-lang { color: var(--color-brick); font-weight: 700; } .lang-toggle .divider { color: var(--color-ink-faint); } .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; } .nav-hamburger span { width: 24px; height: 2px; background: var(--color-ink); transition: all 0.3s; } /* ============================================================
+   【页面 Hero】
+   ============================================================ */.page-hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 140px 24px 80px; position: relative; background: radial-gradient(ellipse at 30% 20%, rgba(74,124,89,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(201,169,97,0.1) 0%, transparent 50%),
+    var(--color-paper); } .page-hero-eyebrow { font-size: var(--fs-small); letter-spacing: 6px; color: var(--color-jade); text-transform: uppercase; margin-bottom: 24px; font-weight: 500; } body.lang-en .page-hero-eyebrow { letter-spacing: 4px; } .page-hero-title { font-family: var(--font-serif-zh); font-size: var(--fs-hero-title); font-weight: 900; color: var(--color-ink); margin-bottom: 16px; line-height: 1.2; } body.lang-en .page-hero-title { font-family: var(--font-serif-en); font-style: italic; } .page-hero-title-accent { color: var(--color-jade); position: relative; display: inline-block; } .page-hero-title-accent::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 8px; background: rgba(201,169,97,0.3); z-index: -1; } .page-hero-subtitle { font-family: var(--font-serif-zh); font-size: var(--fs-hero-sub); font-weight: 400; color: var(--color-ink-light); margin-bottom: 32px; letter-spacing: 3px; } body.lang-en .page-hero-subtitle { font-family: var(--font-serif-en); font-style: italic; letter-spacing: 1px; } .page-hero-desc { max-width: 720px; font-size: 14.5px; line-height: 2; color: var(--color-ink-light); } /* ============================================================
+   【通用章节】
+   ============================================================ */.section { padding: var(--padding-section); position: relative; } .section-header { text-align: center; margin-bottom: 56px; } .section-eyebrow { font-size: var(--fs-small); letter-spacing: 5px; color: var(--color-jade); text-transform: uppercase; margin-bottom: 14px; font-weight: 600; } body.lang-en .section-eyebrow { letter-spacing: 3px; } .section-title { font-family: var(--font-serif-zh); font-size: var(--fs-section-title); font-weight: 700; color: var(--color-ink); margin-bottom: 0px; } body.lang-en .section-title { font-family: var(--font-serif-en); } .section-desc { max-width: 640px; margin: 0 auto; font-size: 14.5px; color: var(--color-ink-light); line-height: 1.9; } /* ============================================================
+   【模块一：22处世遗点】
+   ============================================================ */.heritage-section { background: var(--color-paper-dark); } .heritage-filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 20px; } .filter-btn { padding: 8px 20px; border: 1px solid var(--color-ink-faint); border-radius: 20px; background: transparent; font-size: 13px; font-weight: 500; color: var(--color-ink-light); cursor: pointer; transition: all 0.3s; letter-spacing: 1px; } .filter-btn:hover { border-color: var(--color-jade); color: var(--color-jade); } .filter-btn.active { background: var(--color-jade); border-color: var(--color-jade); color: #fff; } .heritage-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1280px; margin: 0 auto; } .heritage-card { background: var(--color-paper); border: 1px solid rgba(44,36,22,0.06); border-radius: 8px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; } /* ============================================================
+   ★ 世遗点卡片图片区
+   每个卡片顶部都有一个图片位，高度120px
+   加图方法：在HTML中找到对应卡片的
+   <div class="heritage-card-image" style="background-image: url('');">
+   把 url('') 里的引号中间填入你的图片URL，例如：
+   <div class="heritage-card-image" style="background-image: url('https://xxx.com/photo.jpg');">
+   本地图片请用相对路径，例如 url('images/jiurishan.jpg')
+   ============================================================ */.heritage-card-image { height: 120px; width: 100%; background: linear-gradient(135deg, var(--card-color, var(--color-jade))22, var(--card-color, var(--color-jade))08); background-size: cover; background-position: center; background-repeat: no-repeat; flex-shrink: 0; position: relative; } .heritage-card-body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; } .heritage-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--card-color, var(--color-jade)); transform: scaleY(0); transition: transform 0.3s; } .heritage-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(44,36,22,0.1); } .heritage-card:hover::before { transform: scaleY(1); } .heritage-card.hidden { display: none; } .heritage-num { font-family: var(--font-serif-en); font-size: 11px; font-weight: 600; color: var(--color-ink-faint); letter-spacing: 2px; margin-bottom: 8px; } .heritage-name { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 6px; } body.lang-en .heritage-name { font-family: var(--font-serif-en); font-size: 15px; } .heritage-cat { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 10px; background: rgba(74,124,89,0.1); color: var(--color-jade); margin-bottom: 8px; letter-spacing: 1px; } .heritage-era { font-size: 12px; color: var(--color-ink-faint); margin-bottom: 8px; } .heritage-desc { font-size: 12.5px; line-height: 1.7; color: var(--color-ink-light); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } /* ============================================================
+   【模块二：三级非遗体系】
+   ============================================================ */.intangible-section { background: var(--color-paper); } .tier-tabs { display: flex; justify-content: center; gap: 0; margin-bottom: 48px; border-bottom: 2px solid rgba(44,36,22,0.08); max-width: 600px; margin-left: auto; margin-right: auto; } .tier-tab { flex: 1; padding: 14px 20px; background: none; border: none; font-family: var(--font-serif-zh); font-size: 16px; font-weight: 600; color: var(--color-ink-faint); cursor: pointer; position: relative; transition: all 0.3s; letter-spacing: 2px; } body.lang-en .tier-tab { font-family: var(--font-serif-en); letter-spacing: 1px; font-size: 14px; } .tier-tab::after { content: ''; position: absolute; bottom: -2px; left: 50%; width: 0; height: 3px; background: var(--tier-color, var(--color-gold)); transition: all 0.3s; transform: translateX(-50%); } .tier-tab.active { color: var(--tier-color, var(--color-gold)); } .tier-tab.active::after { width: 60%; } .tier-tab .tier-count { display: block; font-family: var(--font-serif-en); font-size: 11px; font-weight: 400; letter-spacing: 1px; margin-top: 2px; opacity: 0.7; } .tier-content { display: none; } .tier-content.active { display: block; animation: fadeIn 0.5s; } @keyframes fadeIn { from {  opacity: 0;  transform: translateY(10px); }  to {  opacity: 1;  transform: translateY(0); } } .intangible-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; } .intangible-card { background: var(--color-paper-dark); border-radius: 10px; overflow: hidden; transition: all 0.3s; border: 1px solid rgba(44,36,22,0.06); } .intangible-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(44,36,22,0.1); } .intangible-card-header { padding: 24px 24px 16px; border-bottom: 1px solid rgba(44,36,22,0.06); position: relative; } .intangible-card-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--tier-color, var(--color-gold)); } .intangible-cat { font-size: 11px; letter-spacing: 2px; color: var(--tier-color, var(--color-gold)); text-transform: uppercase; margin-bottom: 8px; font-weight: 600; } .intangible-name { font-family: var(--font-serif-zh); font-size: 20px; font-weight: 700; color: var(--color-ink); } body.lang-en .intangible-name { font-family: var(--font-serif-en); } .intangible-card-body { padding: 20px 24px 24px; } .intangible-desc { font-size: 13.5px; line-height: 1.85; color: var(--color-ink-light); margin-bottom: 14px; } .intangible-meta { font-size: 12px; color: var(--color-ink-faint); padding-top: 12px; border-top: 1px dashed rgba(44,36,22,0.1); line-height: 1.7; } /* ============================================================
+   【模块三：当代故事】
+   ============================================================ */.stories-section { background: var(--color-paper-dark); } .stories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1200px; margin: 0 auto; } .story-card { background: var(--color-paper); border-radius: 12px; overflow: hidden; transition: all 0.4s; border: 1px solid rgba(44,36,22,0.06); }  .story-image { height: 200px; background: linear-gradient(135deg, var(--story-color, var(--color-brick))33, var(--story-color, var(--story-color, var(--color-brick))11);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  /* ============================================================
+     ★ 案例卡片图片区（共3张卡片，分别对应3个案例）
+     加图方法：在HTML中找到对应卡片的
+     <div class="story-image" style="background-image: url('');">
+     把 url('') 引号中换成图片地址
+     三张卡片分别是：
+       第1张 → 蟳埔女簪花围照片
+       第2张 → 南音演出照片
+       第3张 → 德化白瓷作品照片
+     ============================================================ */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.story-image-icon {
+  width: 64px; height: 64px;
+  border: 2px solid var(--story-color, var(--color-brick));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(245,240,232,0.9);
+}
+.story-image-icon svg {
+  width: 32px; height: 32px;
+  stroke: var(--story-color, var(--color-brick));
+  fill: none; stroke-width: 1.5;
+}
+.story-body {
+  padding: 24px 24px 28px;
+}
+.story-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  background: rgba(181,73,59,0.1);
+  color: var(--color-brick);
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+.story-title {
+  font-family: var(--font-serif-zh);
+  font-size: 19px; font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 12px;
+}
+body.lang-en .story-title { font-family: var(--font-serif-en); }
+.story-text {
+  font-size: 13.5px;
+  line-height: 1.85;
+  color: var(--color-ink-light);
+}
+
+/* ============================================================
+   【数据总览条】
+   ============================================================ */
+.stats {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 72px 48px;
+  position: relative;
+  overflow: hidden;
+}
+.stats::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(74,124,89,0.2) 0%, transparent 40%),
+    radial-gradient(circle at 85% 50%, rgba(201,169,97,0.15) 0%, transparent 40%);
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative; z-index: 1;
+}
+.stat-item {
+  text-align: center;
+  padding: 0 12px;
+  border-right: 1px solid rgba(245,240,232,0.1);
+}
+.stat-item:last-child { border-right: none; }
+.stat-number {
+  font-family: var(--font-serif-en);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  color: var(--color-gold-light);
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.stat-number .suffix {
+  font-size: 0.5em; font-weight: 400;
+  color: var(--color-paper);
+  margin-left: 2px;
+}
+.stat-label {
+  font-size: 13px;
+  color: rgba(245,240,232,0.6);
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   【升华区】
+   ============================================================ */
+.closing {
+  padding: 100px 48px;
+  text-align: center;
+  background: var(--color-paper);
+  position: relative;
+}
+.closing-quote {
+  font-family: var(--font-serif-zh);
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 400;
+  line-height: 2.2;
+  color: var(--color-ink);
+  max-width: 680px;
+  margin: 0 auto 40px;
+  position: relative;
+}
+body.lang-en .closing-quote { font-family: var(--font-serif-en); font-style: italic; line-height: 1.9; }
+.closing-quote::before {
+  content: ''; display: block;
+  width: 48px; height: 2px;
+  background: var(--color-jade);
+  margin: 0 auto 36px;
+}
+.closing-highlight {
+  color: var(--color-jade);
+  font-weight: 700;
+}
+.closing-final {
+  font-family: var(--font-serif-zh);
+  font-size: clamp(22px, 3.5vw, 32px);
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: 4px;
+}
+body.lang-en .closing-final { font-family: var(--font-serif-en); letter-spacing: 1px; }
+
+/* ============================================================
+   【页脚】
+   ============================================================ */
+
+
+
+
+
+
+  .heritage-modal-image { min-height: 200px !important; }
+
+/* ============================================================
+   【响应式】
+   ============================================================ */
+@media (max-width: 1200px) {
+  .nav-links a { padding: 8px 8px; font-size: 13px; }
+  .heritage-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 1024px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+  .intangible-grid { grid-template-columns: repeat(2, 1fr); }
+  .stories-grid { grid-template-columns: 1fr; max-width: 600px; }
+}
+@media (max-width: 768px) {
+  :root { --padding-section: 60px 20px; }
+  .nav { padding: 0 20px; }
+  .page-hero { padding: 120px 20px 60px; min-height: 60vh; }
+  .heritage-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .heritage-card { padding: 16px; }
+  .intangible-grid { grid-template-columns: 1fr; }
+  .tier-tab { font-size: 14px; padding: 12px 10px; }
+  .stats { padding: 56px 20px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px 16px; }
+  .stat-item { border-right: none !important; }
+  .closing { padding: 72px 20px; }
+  
+}
+/* ===== 弹窗样式 ===== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.modal-overlay.active {
+  display: flex;
+}
+.modal-content {
+  background: #F5F0E8;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: rgba(181,73,59,0.1);
+  color: #B5493B;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+.modal-close:hover {
+  background: #B5493B;
+  color: #fff;
+}
+.heritage-modal-body {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  min-height: 400px;
+}
+.heritage-modal-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 400px;
+}
+.heritage-modal-text {
+  padding: 32px 28px;
+}
+.heritage-modal-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1B4965;
+  margin-bottom: 8px;
+}
+.heritage-modal-meta {
+  font-size: 13px;
+  color: #8A7E6C;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+.heritage-modal-desc {
+  font-size: 14px;
+  line-height: 2;
+  color: #5C5040;
+}
+.video-modal-body {
+  padding: 20px;
+}
+.video-modal-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #C9A961;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.video-modal-player {
+  width: 100%;
+  border-radius: 8px;
+  background: #000;
+}
+@media (max-width: 768px) {
+  .heritage-modal-body { grid-template-columns: 1fr; }
+  .heritage-modal-image { min-height: 200px; }
+}
+
+
+
+.footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); }
+.footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 0px; }
+body.lang-en .footer-title { font-family: var(--font-serif-en); }
+.footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: px; }
+.footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0; }
+@media (max-width: 768px) {
+  .footer { padding: 32px 20px; }
+}
+</style>
+    </head>
+    <body>
+<!-- ===== 弹窗容器：22世遗点详情 ===== -->
+<div class="modal-overlay" id="heritageModal" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.6);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;" onclick="if(event.target===this)closeHeritageModal()">
+  <div class="modal-content" style="background:#F5F0E8;border-radius:12px;width:100%;max-width:800px;max-height:85vh;overflow-y:auto;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.4);">
+    <button class="modal-close" style="position:absolute;top:12px;right:12px;width:36px;height:36px;border:none;background:rgba(181,73,59,0.1);color:#B5493B;border-radius:50%;cursor:pointer;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;z-index:10;" onclick="closeHeritageModal()">×</button>
+    <div class="heritage-modal-body" style="display:grid;grid-template-columns:45% 55%;min-height:400px;">
+      <div class="heritage-modal-image" id="heritageModalImage" style="background-size:cover;background-position:center;background-repeat:no-repeat;min-height:400px;"></div>
+      <div class="heritage-modal-text" style="padding:32px 28px;">
+        <div class="heritage-modal-title" id="heritageModalTitle" style="font-family:'Noto Serif SC',serif;font-size:24px;font-weight:700;color:#1B4965;margin-bottom:8px;"></div>
+        <div class="heritage-modal-meta" id="heritageModalMeta" style="font-size:13px;color:#8A7E6C;margin-bottom:16px;letter-spacing:1px;"></div>
+        <div class="heritage-modal-desc" id="heritageModalDesc" style="font-size:14px;line-height:2;color:#5C5040;"></div>
+        <div class="modal-actions" id="heritageModalActions" style="margin-top:24px;padding-top:16px;border-top:1px solid rgba(44,36,22,0.1);display:flex;gap:12px;align-items:center;">
+          <button class="action-btn" id="heritageFavBtn" onclick="toggleFavorite('heritage', currentHeritageKey)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer;font-size:13px;transition:all 0.3s;">
+            <span id="heritageFavIcon">☆</span><span id="heritageFavText">收藏</span>
+          </button>
+          <button class="action-btn" id="heritageLikeBtn" onclick="toggleLike('heritage', currentHeritageKey)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer;font-size:13px;transition:all 0.3s;">
+            <span id="heritageLikeIcon">👍</span><span id="heritageLikeCount">0</span>
+          </button>
+          <button class="action-btn" id="heritageDislikeBtn" onclick="toggleDislike('heritage', currentHeritageKey)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer;font-size:13px;transition:all 0.3s;">
+            <span id="heritageDislikeIcon">👎</span><span id="heritageDislikeCount">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 弹窗容器：非遗视频 ===== -->
+<div class="modal-overlay" id="videoModal" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.6);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;" onclick="if(event.target===this)closeVideoModal()">
+  <div class="modal-content" style="background:#F5F0E8;border-radius:12px;width:100%;max-width:800px;max-height:85vh;overflow-y:auto;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.4);">
+    <button class="modal-close" style="position:absolute;top:12px;right:12px;width:36px;height:36px;border:none;background:rgba(181,73,59,0.1);color:#B5493B;border-radius:50%;cursor:pointer;font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;z-index:10;" onclick="closeVideoModal()">×</button>
+    <div class="video-modal-body" style="padding:20px;">
+      <div class="video-modal-title" id="videoModalTitle" style="font-family:'Noto Serif SC',serif;font-size:20px;font-weight:700;color:#C9A961;margin-bottom:16px;text-align:center;"></div>
+      <video class="video-modal-player" id="videoModalPlayer" controls style="width:100%;border-radius:8px;background:#000;"></video>
+      <div class="modal-actions" id="videoModalActions" style="margin-top:24px;padding-top:16px;border-top:1px solid rgba(44,36,22,0.1);display:flex;gap:12px;align-items:center;">
+        <button class="action-btn" id="videoFavBtn" onclick="toggleFavorite('intangible', currentVideoKey)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer;font-size:13px;transition:all 0.3s;">
+          <span id="videoFavIcon">☆</span><span id="videoFavText">收藏</span>
+        </button>
+        <button class="action-btn" id="videoLikeBtn" onclick="toggleLike('intangible', currentVideoKey)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer;font-size:13px;transition:all 0.3s;">
+          <span id="videoLikeIcon">👍</span><span id="videoLikeCount">0</span>
+        </button>
+        <button class="action-btn" id="videoDislikeBtn" onclick="toggleDislike('intangible', currentVideoKey)" style="display:flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid #ddd;border-radius:20px;background:#fff;cursor:pointer;font-size:13px;transition:all 0.3s;">
+          <span id="videoDislikeIcon">👎</span><span id="videoDislikeCount">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- ============================================================
+     【导航栏】
+     ============================================================ -->
+        <nav class="nav" id="nav" style="background-color: #B5493B; height: 50px;"> 
+            <a href="index.html" class="nav-logo"> <span class="nav-logo-text" data-zh style="color: #fdfcfc; font-size: 27px; margin-left: 0;">活态泉州</span> <span class="nav-logo-text" data-en>Living Quanzhou</span> </a> 
+            <ul class="nav-links"> 
+                <li>
+                    <a href="index.html" data-zh style="color: #ffffff; font-size: 20px; font-family: 'Noto Serif SC'; padding-right: 40px;">首页</a>
+                    <a href="index.html" data-en>Home</a>
+                </li>                 
+                <li>
+                    <a href="海上丝绸之路.html" data-zh style="font-size: 20px; width: 180px; font-family: 'Noto Serif SC'; color: #ffffff;">海上丝绸之路</a>
+                    <a href="海上丝绸之路.html" data-en>Maritime Silk Road</a>
+                </li>                 
+                <li>
+                    <a href="世界非遗之城.html" class="active" data-zh style="font-size: 20px; color: #ffffff; width: 180px; font-family: 'Noto Serif SC';">世界非遗之城</a>
+                    <a href="世界非遗之城.html" class="active" data-en>World Heritage</a>
+                </li>                 
+                <li>
+                    <a href="超级工业之城.html" data-zh style="font-size: 20px; color: #fdfcfc; width: 180px; font-family: 'Noto Serif SC';">超级工业之城</a>
+                    <a href="超级工业之城.html" data-en>Industrial Powerhouse</a>
+                </li>                 
+                <li>
+                    <a href="闽台交流之城.html" data-zh style="font-size: 20px; color: #faf8f8; font-family: 'Noto Serif SC';">闽台交流之城</a>
+                    <a href="闽台交流之城.html" data-en>Cross-Strait</a>
+                </li>                 
+            </ul>             
+            <button class="lang-toggle" id="langToggle" aria-label="切换语言" style="font-family: 'Noto Serif SC'; font-size: 20px;"> 
+                <span class="active-lang" id="langZh" style="color: #fdf6f6;">中</span> 
+                <span class="divider">/</span> 
+                <span id="langEn" style="color: #fdf8f8;">EN</span> 
+            </button>
+            <a href="个人中心.html" class="profile-btn" id="profileBtn" title="个人中心" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;overflow:hidden;text-decoration:none;margin-left:12px;">
+              <img id="navAvatar" style="display:none;width:100%;height:100%;object-fit:cover;">
+              <svg id="navAvatarIcon" viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2"/></svg>
+            </a>
+             
+            <button class="nav-hamburger" id="hamburger" aria-label="菜单" style="color: #faf8f8;"> 
+                <span></span>
+                <span></span>
+                <span></span> 
+            </button>             
+        </nav>
+        <!-- ============================================================
+     【页面 Hero】
+     ============================================================ -->
+        <!-- ============================================================
+     【模块一：22处世遗点】
+     ============================================================ -->
+        <section class="section heritage-section" id="heritage" style="padding-bottom: 30px; color: #073f87;">
+            <div class="section-header">
+                <div class="section-eyebrow" data-en>22 Heritage Sites · Memories of Song-Yuan Maritime Commerce</div>
+                <h2 class="section-title" data-zh="">一座城，半部海洋商贸史</h2>
+                <p data-zh style="font-weight: 600; font-size: 20px; letter-spacing: 8px; height: 0;">22处世界遗迹图文展示</p>
+                <p data-en style="font-weight: 600; font-size: 20px; letter-spacing: 4px; height: 0;">22 Heritage Sites Gallery</p>
+                <h2 class="section-title" data-en>One City, Half a History of Maritime Commerce</h2>
+            </div>
+            <div class="heritage-filter">
+                <button class="filter-btn active" data-filter="all" data-zh>全部</button>
+                <button class="filter-btn active" data-filter="all" data-en>All</button>
+                <button class="filter-btn" data-filter="admin" data-zh>行政管理</button>
+                <button class="filter-btn" data-filter="admin" data-en>Administration</button>
+                <button class="filter-btn" data-filter="trade" data-zh>商贸设施</button>
+                <button class="filter-btn" data-filter="trade" data-en>Trade Facilities</button>
+                <button class="filter-btn" data-filter="religion" data-zh>宗教建筑</button>
+                <button class="filter-btn" data-filter="religion" data-en>Religious Sites</button>
+                <button class="filter-btn" data-filter="culture" data-zh>文化地标</button>
+                <button class="filter-btn" data-filter="culture" data-en>Cultural Landmarks</button>
+                <button class="filter-btn" data-filter="transport" data-zh>交通枢纽</button>
+                <button class="filter-btn" data-filter="transport" data-en>Transport Hubs</button>
+            </div>
+            <div class="heritage-grid" id="heritageGrid">
+                <!-- 行政管理 -->
+                <div class="heritage-card" data-cat="admin" style="--card-color: var(--color-ocean);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.6fa2d58874899064c3088256ad1c5194?rik=P8i7zeiS3InY5w&riu=http%3a%2f%2fupload.mnw.cn%2f2022%2f0608%2f1654683701440.jpg&ehk=PCuNdTUif2zMkMewSHzQNlcpwWq87I2iMhJ8i6INsg4%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">01 / ADMIN</div>
+                        <h3 class="heritage-name" data-zh>九日山祈风石刻</h3>
+                        <h3 class="heritage-name" data-en>Jiuri Mountain Inscriptions</h3>
+                        <span class="heritage-cat" data-zh>行政管理</span>
+                        <span class="heritage-cat" data-en>Administration</span>
+                        <div class="heritage-era" data-zh>南宋（12-13世纪）</div>
+                        <div class="heritage-era" data-en>Southern Song (12th-13th C.)</div>
+                        <p class="heritage-desc" data-zh>每年冬夏季风转换时节，泉州市舶司官员率商民在九日山举行祈风仪式，祈求航海顺风。现存10方宋代祈风石刻，是中国古代海外贸易管理的珍贵实物见证。</p>
+                        <p class="heritage-desc" data-en>During the Song dynasty, Maritime Trade Office officials held wind-praying ceremonies at Jiuri Mountain. Ten surviving Song inscriptions are precious evidence of ancient China's maritime trade administration.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="admin" style="--card-color: var(--color-ocean);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://img1.fjdaily.com/app/images/2025-09/23/809621e2-a0c2-4f60-874d-97de757f1aa7copy.JPEG.2');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">02 / ADMIN</div>
+                        <h3 class="heritage-name" data-zh>市舶司遗址</h3>
+                        <h3 class="heritage-name" data-en>Maritime Trade Office</h3>
+                        <span class="heritage-cat" data-zh>行政管理</span>
+                        <span class="heritage-cat" data-en>Administration</span>
+                        <div class="heritage-era" data-zh>北宋（1087年设立）</div>
+                        <div class="heritage-era" data-en>Northern Song (est. 1087)</div>
+                        <p class="heritage-desc" data-zh>北宋元祐二年（1087年），朝廷在泉州设立市舶司，管理海外贸易、征收关税、接待外商。这是泉州成为官方对外贸易港口的标志。</p>
+                        <p class="heritage-desc" data-en>Established in 1087, the Maritime Trade Office managed overseas trade, collected tariffs, and received foreign merchants—marking Quanzhou's status as an official trade port.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="admin" style="--card-color: var(--color-ocean);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://tr-osdcp.qunarzz.com/tr-osd-tr-space/img/925907f22a34c0f608263200430d26c8.jpg_r_680x452x95_436e2530.jpg');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">03 / ADMIN</div>
+                        <h3 class="heritage-name" data-zh>南外宗正司遗址</h3>
+                        <h3 class="heritage-name" data-en>Southern Clan Court</h3>
+                        <span class="heritage-cat" data-zh>行政管理</span>
+                        <span class="heritage-cat" data-en>Administration</span>
+                        <div class="heritage-era" data-zh>南宋</div>
+                        <div class="heritage-era" data-en>Southern Song</div>
+                        <p class="heritage-desc" data-zh>南宋皇室宗族管理机构，管理迁居泉州的赵氏宗室。大量皇族聚居泉州，带动了城市的繁荣和文化的发展。</p>
+                        <p class="heritage-desc" data-en>The Southern Song imperial clan administration, managing the Zhao imperial family members who relocated to Quanzhou, driving the city's prosperity and cultural development.</p>
+                    </div>
+                </div>
+                <!-- 商贸设施 -->
+                <div class="heritage-card" data-cat="trade" style="--card-color: var(--color-gold);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://region-fujian-resource.xuexi.cn/image/1006/process/3eddb54c28e7402d9472e0de59dc5dc5.jpg');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">04 / TRADE</div>
+                        <h3 class="heritage-name" data-zh>德济门遗址</h3>
+                        <h3 class="heritage-name" data-en>Deji Gate Site</h3>
+                        <span class="heritage-cat" data-zh>商贸设施</span>
+                        <span class="heritage-cat" data-en>Trade Facility</span>
+                        <div class="heritage-era" data-zh>南宋至明代</div>
+                        <div class="heritage-era" data-en>Southern Song-Ming</div>
+                        <p class="heritage-desc" data-zh>宋元泉州城南城门，门外是阿拉伯、波斯商人聚居的"蕃坊"。出土了大量外来宗教石刻和陶瓷，见证了多元文化生态。</p>
+                        <p class="heritage-desc" data-en>The south gate of Song-Yuan Quanzhou, leading to the "foreign quarter" of Arab and Persian merchants. Excavations uncovered foreign religious carvings and ceramics.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="trade" style="--card-color: var(--color-gold);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts3.tc.mm.bing.net/th/id/OIP-C.hYu5bUr7pIRQ8zaQWYElvAHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">05 / TRADE</div>
+                        <h3 class="heritage-name" data-zh>德化窑址</h3>
+                        <h3 class="heritage-name" data-en>Dehua Kiln Sites</h3>
+                        <span class="heritage-cat" data-zh>商贸设施</span>
+                        <span class="heritage-cat" data-en>Trade Facility</span>
+                        <div class="heritage-era" data-zh>宋元至明清</div>
+                        <div class="heritage-era" data-en>Song-Yuan to Ming-Qing</div>
+                        <p class="heritage-desc" data-zh>宋元时期泉州外销瓷的主要产地，以白瓷闻名。产品经泉州港远销海外，在东亚、东南亚、西亚、东非均有出土。</p>
+                        <p class="heritage-desc" data-en>The main production base for export porcelain in Song-Yuan Quanzhou, famous for white porcelain. Products were exported worldwide and excavated across multiple regions.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="trade" style="--card-color: var(--color-gold);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts2.tc.mm.bing.net/th/id/OIP-C.H6rkV9AYz2nlbLt6m40_XAHaFQ?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">06 / TRADE</div>
+                        <h3 class="heritage-name" data-zh>安溪青阳冶铁遗址</h3>
+                        <h3 class="heritage-name" data-en>Anxi Iron Smelting Site</h3>
+                        <span class="heritage-cat" data-zh>商贸设施</span>
+                        <span class="heritage-cat" data-en>Trade Facility</span>
+                        <div class="heritage-era" data-zh>宋元时期</div>
+                        <div class="heritage-era" data-en>Song-Yuan Period</div>
+                        <p class="heritage-desc" data-zh>宋元时期泉州冶铁手工业的重要遗址，出土大量炉渣、铁制品和冶炼设施。泉州的铁制品经海上丝绸之路外销。</p>
+                        <p class="heritage-desc" data-en>An important Song-Yuan iron smelting site, yielding slag, iron products, and smelting facilities. Quanzhou's iron goods were exported via the Maritime Silk Road.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="trade" style="--card-color: var(--color-gold);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts4.tc.mm.bing.net/th/id/OIP-C.Ntq9LS6JJLF-XyCs9DnRfAHaER?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">07 / TRADE</div>
+                        <h3 class="heritage-name" data-zh>磁灶窑址</h3>
+                        <h3 class="heritage-name" data-en>Cizao Kiln Sites</h3>
+                        <span class="heritage-cat" data-zh>商贸设施</span>
+                        <span class="heritage-cat" data-en>Trade Facility</span>
+                        <div class="heritage-era" data-zh>宋元时期</div>
+                        <div class="heritage-era" data-en>Song-Yuan Period</div>
+                        <p class="heritage-desc" data-zh>泉州南郊的民间窑场，以酱釉、绿釉瓷器闻名，产品主要外销东南亚，是泉州外销瓷的重要组成部分。</p>
+                        <p class="heritage-desc" data-en>Folk kilns in southern Quanzhou, famous for brown and green glazed ceramics, mainly exported to Southeast Asia—an important part of Quanzhou's export porcelain.</p>
+                    </div>
+                </div>
+                <!-- 宗教建筑 -->
+                <div class="heritage-card" data-cat="religion" style="--card-color: var(--color-brick);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://n.sinaimg.cn/sinakd20106/600/w1920h1080/20220712/4680-e19549853fe66fdea773ecef26c80004.jpg');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">08 / RELIGION</div>
+                        <h3 class="heritage-name" data-zh>开元寺</h3>
+                        <h3 class="heritage-name" data-en>Kaiyuan Temple</h3>
+                        <span class="heritage-cat" data-zh>文化地标</span>
+                        <span class="heritage-cat" data-en>Cultural Landmark</span>
+                        <div class="heritage-era" data-zh>唐代始建（686年）</div>
+                        <div class="heritage-era" data-en>Founded Tang (686)</div>
+                        <p class="heritage-desc" data-zh>始建于唐垂拱二年，寺内东西塔建于南宋，高40余米，是中国现存最高的一对石塔。大雄宝殿斗拱雕有24尊飞天乐伎。</p>
+                        <p class="heritage-desc" data-en>Founded in 686, its East and West Pagodas stand over 40m tall—the tallest surviving stone pagodas in China. The Main Hall features 24 flying apsara musicians.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="religion" style="--card-color: var(--color-brick);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.dd083f7500149081b793cd9d47cc6e12?rik=WgWHWJL01rZxGQ&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20220607ac%2f200%2fw600h400%2f20220607%2fee71-25bb6ea7491a28c76e1475e4a4ef601d.jpg&ehk=QChzkNbAykWVRCDyRVmEl%2fdbATjy%2fIklGhnrZ59blmQ%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">09 / RELIGION</div>
+                        <h3 class="heritage-name" data-zh>清净寺</h3>
+                        <h3 class="heritage-name" data-en>Qingjing Mosque</h3>
+                        <span class="heritage-cat" data-zh>宗教建筑</span>
+                        <span class="heritage-cat" data-en>Religious Site</span>
+                        <div class="heritage-era" data-zh>北宋（1009年）</div>
+                        <div class="heritage-era" data-en>Northern Song (1009)</div>
+                        <p class="heritage-desc" data-zh>中国现存最古老的伊斯兰教寺，由阿拉伯商人始建于1009年。它是泉州作为国际商埠、多元文化交融的实物见证。</p>
+                        <p class="heritage-desc" data-en>China's oldest surviving mosque, founded by Arab merchants in 1009. It is physical evidence of Quanzhou's role as an international trading port and multicultural hub.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="religion" style="--card-color: var(--color-brick);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts3.tc.mm.bing.net/th/id/OIP-C.6ALo3JE4aSFsYr48K_MungHaFx?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">10 / RELIGION</div>
+                        <h3 class="heritage-name" data-zh>草庵摩尼光佛造像</h3>
+                        <h3 class="heritage-name" data-en>Cao'an Manichaean Buddha</h3>
+                        <span class="heritage-cat" data-zh>宗教建筑</span>
+                        <span class="heritage-cat" data-en>Religious Site</span>
+                        <div class="heritage-era" data-zh>元代（1339年）</div>
+                        <div class="heritage-era" data-en>Yuan Dynasty (1339)</div>
+                        <p class="heritage-desc" data-zh>世界仅存的摩尼教石雕造像，雕刻于元代。摩尼教在唐代传入中国，在泉州与佛教、道教融合，是宗教交流的独特见证。</p>
+                        <p class="heritage-desc" data-en>The world's only surviving Manichaean stone Buddha statue, carved in the Yuan dynasty. Manichaeism fused with Buddhism and Daoism in Quanzhou—a unique witness to religious exchange.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="religion" style="--card-color: var(--color-brick);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.8f32015cec0a3cb8a52b9cecf0974218?rik=JQaUYAGCldHB7Q&riu=http%3a%2f%2fe0.ifengimg.com%2f02%2f2018%2f1116%2fF9231725FC4CF680DFE62B5A9C5C646462EFDE1D_size155_w1080_h720.jpeg&ehk=1yWEIzOtf0tdYFj4QPptRoAYo7yc27dnvXfTkMtct3o%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">11 / RELIGION</div>
+                        <h3 class="heritage-name" data-zh>天后宫</h3>
+                        <h3 class="heritage-name" data-en>Tianhou Temple</h3>
+                        <span class="heritage-cat" data-zh>宗教建筑</span>
+                        <span class="heritage-cat" data-en>Religious Site</span>
+                        <div class="heritage-era" data-zh>南宋（1196年）</div>
+                        <div class="heritage-era" data-en>Southern Song (1196)</div>
+                        <p class="heritage-desc" data-zh>祭祀海神妈祖的庙宇，是海内外建筑规格最高、规模最大的妈祖庙之一。妈祖信仰随泉州商人传播到世界各地。</p>
+                        <p class="heritage-desc" data-en>A temple dedicated to sea goddess Mazu, one of the highest-standard and largest Mazu temples worldwide. Mazu worship spread globally with Quanzhou merchants.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="religion" style="--card-color: var(--color-brick);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts3.tc.mm.bing.net/th/id/OIP-C.oLt8PYpom4k9O8kSXjqdtQHaFB?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">12 / RELIGION</div>
+                        <h3 class="heritage-name" data-zh>真武庙</h3>
+                        <h3 class="heritage-name" data-en>Zhenwu Temple</h3>
+                        <span class="heritage-cat" data-zh>宗教建筑</span>
+                        <span class="heritage-cat" data-en>Religious Site</span>
+                        <div class="heritage-era" data-zh>宋代</div>
+                        <div class="heritage-era" data-en>Song Dynasty</div>
+                        <p class="heritage-desc" data-zh>祭祀海神真武大帝的庙宇，是宋元时期泉州商人出海前祭拜海神、祈求平安的重要场所。</p>
+                        <p class="heritage-desc" data-en>A temple dedicated to sea god Zhenwu, where Quanzhou merchants prayed for safe voyages before setting sail during the Song-Yuan period.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="religion" style="--card-color: var(--color-brick);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.5656a3d1e6a7015dc349a70436f775d7?rik=BSDcxKved9WVuQ&riu=http%3a%2f%2ffj.people.cn%2fNMediaFile%2f2024%2f0124%2fLOCAL170606236849211098ML6LU.jpg&ehk=BM5fRe%2bwyH3WykhXBp2kTjdoaikIuCORw4n4ByPYDN4%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">13 / RELIGION</div>
+                        <h3 class="heritage-name" data-zh>伊斯兰教圣墓</h3>
+                        <h3 class="heritage-name" data-en>Islamic Holy Tombs</h3>
+                        <span class="heritage-cat" data-zh>宗教建筑</span>
+                        <span class="heritage-cat" data-en>Religious Site</span>
+                        <div class="heritage-era" data-zh>唐代</div>
+                        <div class="heritage-era" data-en>Tang Dynasty</div>
+                        <p class="heritage-desc" data-zh>唐代来华的伊斯兰教三贤、四贤的墓葬，是伊斯兰教传入中国的重要史迹，见证了中阿文化交流的悠久历史。</p>
+                        <p class="heritage-desc" data-en>Tombs of two early Islamic missionaries who came to China in the Tang dynasty—important historical evidence of Islam's introduction to China and Sino-Arab cultural exchange.</p>
+                    </div>
+                </div>
+                <!-- 文化地标 -->
+                <div class="heritage-card" data-cat="culture" style="--card-color: var(--color-jade);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://youimg1.c-ctrip.com/target/100u180000013rxsc0D08.jpg');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">14 / CULTURE</div>
+                        <h3 class="heritage-name" data-zh>泉州府文庙</h3>
+                        <h3 class="heritage-name" data-en>Quanzhou Confucian Temple</h3>
+                        <span class="heritage-cat" data-zh>文化地标</span>
+                        <span class="heritage-cat" data-en>Cultural Landmark</span>
+                        <div class="heritage-era" data-zh>唐代始建</div>
+                        <div class="heritage-era" data-en>Founded Tang Dynasty</div>
+                        <p class="heritage-desc" data-zh>中国东南地区规模最大的文庙建筑群，是泉州重教兴学传统的象征。宋元时期泉州科举兴盛，人才辈出。</p>
+                        <p class="heritage-desc" data-en>The largest Confucian temple complex in southeast China, symbolizing Quanzhou's tradition of valuing education. The Song-Yuan period saw flourishing imperial examinations here.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="culture" style="--card-color: var(--color-jade);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://region-fujian-resource.xuexi.cn/image/1006/process/60a2365404354915abe9d4cdfeed1c12.jpg');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">15 / CULTURE</div>
+                        <h3 class="heritage-name" data-zh>老君岩造像</h3>
+                        <h3 class="heritage-name" data-en>Laozi Rock Statue</h3>
+                        <span class="heritage-cat" data-zh>文化地标</span>
+                        <span class="heritage-cat" data-en>Cultural Landmark</span>
+                        <div class="heritage-era" data-zh>宋代</div>
+                        <div class="heritage-era" data-en>Song Dynasty</div>
+                        <p class="heritage-desc" data-zh>中国现存最大的宋代道教石雕老君像，高5.63米。造像慈祥端庄，是泉州道教文化的标志性遗存。</p>
+                        <p class="heritage-desc" data-en>China's largest surviving Song-dynasty Taoist stone statue of Laozi, standing 5.63m tall. The serene figure is an iconic remnant of Quanzhou's Taoist culture.</p>
+                    </div>
+                </div>
+                <!-- 交通枢纽 -->
+                <div class="heritage-card" data-cat="transport" style="--card-color: var(--color-ocean-light);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.827c40228c36cfc631987303dd2eff26?rik=QgibWyEy%2f0tE2A&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn10115%2f519%2fw843h476%2f20190406%2f06bb-hvhrcxm3623555.jpg&ehk=nUgpmTje8pblK54tGDYnAoWrNruokR4gv9IiQ1SWxBA%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">16 / TRANSPORT</div>
+                        <h3 class="heritage-name" data-zh>洛阳桥</h3>
+                        <h3 class="heritage-name" data-en>Luoyang Bridge</h3>
+                        <span class="heritage-cat" data-zh>交通枢纽</span>
+                        <span class="heritage-cat" data-en>Transport Hub</span>
+                        <div class="heritage-era" data-zh>北宋（1053-1059年）</div>
+                        <div class="heritage-era" data-en>Northern Song (1053-1059)</div>
+                        <p class="heritage-desc" data-zh>由北宋泉州太守蔡襄主持修建，首创"筏型基础"和"种蛎固基"技术，是中国现存最早的跨海梁式石桥。</p>
+                        <p class="heritage-desc" data-en>Built under prefect Cai Xiang, pioneering "raft foundation" and "oyster-bed consolidation" techniques—China's earliest surviving cross-sea stone beam bridge.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="transport" style="--card-color: var(--color-ocean-light);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://img.comseo.cn/uploads/wordimg/23227/e810f823b105d7089ad5fc789c4874ab.jpg');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">17 / TRANSPORT</div>
+                        <h3 class="heritage-name" data-zh>安平桥</h3>
+                        <h3 class="heritage-name" data-en>Anping Bridge</h3>
+                        <span class="heritage-cat" data-zh>交通枢纽</span>
+                        <span class="heritage-cat" data-en>Transport Hub</span>
+                        <div class="heritage-era" data-zh>南宋（1138年）</div>
+                        <div class="heritage-era" data-en>Southern Song (1138)</div>
+                        <p class="heritage-desc" data-zh>全长2255米，是中古时期世界上最长的梁式石桥，有"天下无桥长此桥"之誉。是泉州内陆与沿海商贸的重要通道。</p>
+                        <p class="heritage-desc" data-en>At 2,255m, the world's longest medieval beam-style stone bridge, praised as "no bridge under heaven is longer." A vital commerce channel between Quanzhou's interior and coast.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="transport" style="--card-color: var(--color-ocean-light);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts4.tc.mm.bing.net/th/id/OIP-C.L0b_8l4LasaCgMQl2d3LjAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">18 / TRANSPORT</div>
+                        <h3 class="heritage-name" data-zh>顺济桥遗址</h3>
+                        <h3 class="heritage-name" data-en>Shunji Bridge Site</h3>
+                        <span class="heritage-cat" data-zh>交通枢纽</span>
+                        <span class="heritage-cat" data-en>Transport Hub</span>
+                        <div class="heritage-era" data-zh>南宋</div>
+                        <div class="heritage-era" data-en>Southern Song</div>
+                        <p class="heritage-desc" data-zh>南宋时期建造的石桥，连接泉州城与晋江流域，是泉州古城向南拓展的重要交通设施。</p>
+                        <p class="heritage-desc" data-en>A Southern Song stone bridge connecting Quanzhou city to the Jinjiang River basin—an important transport facility for the ancient city's southward expansion.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="transport" style="--card-color: var(--color-ocean-light);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts3.tc.mm.bing.net/th/id/OIP-C.2nL1UYWxgpb2IL1LcUrgzQHaE-?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">19 / TRANSPORT</div>
+                        <h3 class="heritage-name" data-zh>江口码头</h3>
+                        <h3 class="heritage-name" data-en>Jiangkou Dock</h3>
+                        <span class="heritage-cat" data-zh>交通枢纽</span>
+                        <span class="heritage-cat" data-en>Transport Hub</span>
+                        <div class="heritage-era" data-zh>宋元时期</div>
+                        <div class="heritage-era" data-en>Song-Yuan Period</div>
+                        <p class="heritage-desc" data-zh>泉州古城内港码头，是商船装卸货物、商人登岸的重要场所，见证了泉州港的繁华。</p>
+                        <p class="heritage-desc" data-en>An inner harbor dock in ancient Quanzhou, where merchant ships loaded/unloaded cargo and merchants came ashore—witnessing the port's prosperity.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="transport" style="--card-color: var(--color-ocean-light);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://img1.fjdaily.com/app/images/2022-04/18/f8ca08c6-a279-4297-8151-db763fc714e4.jpg.2');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">20 / TRANSPORT</div>
+                        <h3 class="heritage-name" data-zh>石湖码头</h3>
+                        <h3 class="heritage-name" data-en>Shihu Dock</h3>
+                        <span class="heritage-cat" data-zh>交通枢纽</span>
+                        <span class="heritage-cat" data-en>Transport Hub</span>
+                        <div class="heritage-era" data-zh>唐宋时期</div>
+                        <div class="heritage-era" data-en>Tang-Song Period</div>
+                        <p class="heritage-desc" data-zh>泉州湾外港码头，是远洋商船停泊和补给的重要基地，也是泉州港通往世界的门户。</p>
+                        <p class="heritage-desc" data-en>An outer harbor dock in Quanzhou Bay, an important base for ocean-going ships to anchor and resupply—the gateway from Quanzhou Port to the world.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="transport" style="--card-color: var(--color-ocean-light);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://x0.ifengimg.com/res/2020/B5CD97F68DEA09006361456C1119858990DCE6CE_size300_w2000_h1208.jpeg');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">21 / TRANSPORT</div>
+                        <h3 class="heritage-name" data-zh>六胜塔</h3>
+                        <h3 class="heritage-name" data-en>Liusheng Pagoda</h3>
+                        <span class="heritage-cat" data-zh>交通枢纽</span>
+                        <span class="heritage-cat" data-en>Transport Hub</span>
+                        <div class="heritage-era" data-zh>元代</div>
+                        <div class="heritage-era" data-en>Yuan Dynasty</div>
+                        <p class="heritage-desc" data-zh>泉州湾入海处的航标塔，为进出泉州港的商船指引方向。是古代海上丝绸之路的重要导航设施。</p>
+                        <p class="heritage-desc" data-en>A navigation beacon tower at the entrance of Quanzhou Bay, guiding merchant ships in and out of the port—an important navigation facility of the ancient Maritime Silk Road.</p>
+                    </div>
+                </div>
+                <div class="heritage-card" data-cat="transport" style="--card-color: var(--color-ocean-light);" onclick="openHeritageModal(this)">
+                    <!-- ★【在此处插入本卡片图片】把 url('') 引号中换成图片地址，例如 url('https://xxx.com/photo.jpg') -->
+                    <div class="heritage-card-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.3b67e51a3e5c96afbc227864f8cad547?rik=fQd4p%2bMIDGTTZA&riu=http%3a%2f%2ftr-osdcp.qunarzz.com%2ftr-osd-tr-space%2fimg%2f3b67e51a3e5c96afbc227864f8cad547.jpg&ehk=J%2fXBue5pIK9EbuWQLtrkOBgXdzP%2b32%2b9SCOLJhOlsO8%3d&risl=&pid=ImgRaw&r=0');"></div>
+                    <div class="heritage-card-body">
+                        <div class="heritage-num">22 / TRANSPORT</div>
+                        <h3 class="heritage-name" data-zh>万寿塔</h3>
+                        <h3 class="heritage-name" data-en>Wanshou Pagoda</h3>
+                        <span class="heritage-cat" data-zh>交通枢纽</span>
+                        <span class="heritage-cat" data-en>Transport Hub</span>
+                        <div class="heritage-era" data-zh>宋代</div>
+                        <div class="heritage-era" data-en>Song Dynasty</div>
+                        <p class="heritage-desc" data-zh>又称"关锁塔"，矗立在泉州湾南岸，是商船出入泉州港的重要航标，也是泉州港的标志性建筑。</p>
+                        <p class="heritage-desc" data-en>Also called "Guansuo Pagoda," standing on Quanzhou Bay's south shore—an important navigation beacon for merchant ships and an iconic landmark of Quanzhou Port.</p>
+                    </div>
+                </div>
+        </section>
+        <!-- ============================================================
+     【模块二：三级非遗体系】
+     ============================================================ -->
+        <section class="section intangible-section" id="intangible" style="padding-top: 40px;">
+            <div class="section-header">
+                <div class="section-eyebrow" data-en>Living Heritage · A Three-Tier Map from World to Provincial</div>
+                <h2 class="section-title" data-zh style="height: 20px;">不在玻璃柜里，在日常生活中</h2>
+                <h2 class="section-title" data-en>Not in Glass Cases, but in Daily Life</h2>
+            </div>
+            <div class="tier-tabs" style="max-width: 300px;">
+                <button class="tier-tab active" data-tier="world" style="--tier-color: var(--color-gold);">
+                    <span data-zh style="font-size: 18px;">世界级</span>
+                    <span data-en>World</span>
+                    <span class="tier-count" data-zh style="font-size: 15px;">7 项</span>
+                    <span class="tier-count" data-en>7 Items</span>
+                </button>
+            </div>
+            <!-- 世界级 -->
+            <div class="tier-content active" id="tier-world">
+                <p style="text-align: center; color: var(--color-ink-faint); font-size: 16px; margin-bottom: 25px;" data-zh>泉州是全国唯一拥有联合国教科文组织三大类非遗项目的城市（代表作名录、急需保护名录、优秀实践名册）</p>
+                <p style="text-align:center; color: var(--color-ink-faint); font-size: 13px; margin-bottom: 32px;" data-en>Quanzhou is China's only city with UNESCO intangible heritage in all three categories (Representative List, Urgent Safeguarding List, Register of Good Practices)</p>
+                <div class="intangible-grid">
+                    <div class="intangible-card" style="--tier-color: var(--color-gold); cursor: pointer;" data-video="南音.mp4" data-title-zh="南音" data-title-en="Nanyin" onclick="openVideoModal(this.dataset.titleZh || this.dataset.titleEn, this.dataset.video, this.dataset.titleZh || this.dataset.titleEn)">
+                        <div class="intangible-card-header">
+                            <div class="intangible-cat" data-zh="">传统音乐 &middot; 2009年 &middot; 代表作名录</div>
+                            <div class="intangible-cat" data-en>Traditional Music · 2009 · Representative List</div>
+                            <h3 class="intangible-name" data-zh>南音</h3>
+                            <h3 class="intangible-name" data-en>Nanyin</h3>
+                        </div>
+                        <div class="intangible-card-body">
+                            <p class="intangible-desc" data-zh="">被誉为&ldquo;中国音乐史上的活化石&rdquo;，有千余年历史，以琵琶、洞箫、二弦、三弦为主要乐器，保留了唐宋古乐遗韵。至今仍在宗祠、茶馆、社区定期演出。</p>
+                            <p class="intangible-desc" data-en>A "living fossil of Chinese music history" with over a millennium of history. Featuring pipa, dongxiao, erxian, and sanxian, it preserves Tang-Song musical echoes and still performs regularly in communities.</p>
+                        </div>
+                    </div>
+                    <div class="intangible-card" style="--tier-color: var(--color-gold); cursor: pointer;" data-video="闽南民居营造技艺.mp4" data-title-zh="闽南民居营造技艺" data-title-en="Minnan Architecture" onclick="openVideoModal(this.dataset.titleZh || this.dataset.titleEn, this.dataset.video, this.dataset.titleZh || this.dataset.titleEn)">
+                        <div class="intangible-card-header">
+                            <div class="intangible-cat" data-zh>传统技艺 · 2009年 · 代表作名录</div>
+                            <div class="intangible-cat" data-en>Traditional Craft · 2009 · Representative List</div>
+                            <h3 class="intangible-name" data-zh>闽南民居营造技艺</h3>
+                            <h3 class="intangible-name" data-en>Minnan Architecture</h3>
+                        </div>
+                        <div class="intangible-card-body">
+                            <p class="intangible-desc" data-zh>中国传统木结构营造技艺的重要组成部分。闽南红砖厝以"出砖入石"墙体、燕尾脊屋顶、雕梁画栋为特色，是中国传统建筑的独特流派。</p>
+                            <p class="intangible-desc" data-en>A key part of traditional Chinese wooden architecture. Minnan red-brick houses feature "brick-and-stone" walls, swallow-tail roofs, and ornate carvings—a unique architectural school.</p>
+                        </div>
+                    </div>
+                    <div class="intangible-card" style="--tier-color: var(--color-gold); cursor: pointer;" data-video="水密隔舱福船制造技艺.mp4" data-title-zh="水密隔舱福船制造技艺" data-title-en="Watertight Bulkhead Shipbuilding" onclick="openVideoModal(this.dataset.titleZh || this.dataset.titleEn, this.dataset.video, this.dataset.titleZh || this.dataset.titleEn)">
+                        <div class="intangible-card-header">
+                            <div class="intangible-cat" data-zh>传统技艺 · 2010年 · 急需保护名录</div>
+                            <div class="intangible-cat" data-en>Traditional Craft · 2010 · Urgent Safeguarding</div>
+                            <h3 class="intangible-name" data-zh>水密隔舱福船制造技艺</h3>
+                            <h3 class="intangible-name" data-en>Watertight Bulkhead Shipbuilding</h3>
+                        </div>
+                        <div class="intangible-card-body">
+                            <p class="intangible-desc" data-zh>古代中国造船技术的伟大发明，将船舱分隔为多个水密隔舱，大大提升了航海安全性。这一技术后来传播到世界各地，影响了全球造船业。</p>
+                            <p class="intangible-desc" data-en>A great ancient Chinese shipbuilding invention, dividing hulls into watertight compartments to vastly improve maritime safety. This technology spread worldwide and influenced global shipbuilding.</p>
+                        </div>
+                    </div>
+                    <div class="intangible-card" style="--tier-color: var(--color-gold); cursor: pointer;" data-video="福建木偶戏传承人培养.mp4" data-title-zh="福建木偶戏后继人才培养计划" data-title-en="Fujian Puppet Talent Development" onclick="openVideoModal(this.dataset.titleZh || this.dataset.titleEn, this.dataset.video, this.dataset.titleZh || this.dataset.titleEn)">
+                        <div class="intangible-card-header">
+                            <div class="intangible-cat" data-zh>传统戏剧 · 2012年 · 优秀实践名册</div>
+                            <div class="intangible-cat" data-en>Traditional Theatre · 2012 · Good Practices</div>
+                            <h3 class="intangible-name" data-zh>福建木偶戏后继人才培养计划</h3>
+                            <h3 class="intangible-name" data-en>Fujian Puppet Talent Development</h3>
+                        </div>
+                        <div class="intangible-card-body">
+                            <p class="intangible-desc" data-zh>泉州提线木偶戏有两千余年历史，一个木偶最多36条提线。该项目以系统化的传承人培养模式入选优秀实践名册，为全球非遗传承提供了中国经验。</p>
+                            <p class="intangible-desc" data-en>Quanzhou marionette theatre has 2,000+ years of history, with up to 36 strings per puppet. Its systematic inheritor training model was inscribed on the Register of Good Practices, offering Chinese experience to global heritage transmission.</p>
+                        </div>
+                    </div>
+                    <div class="intangible-card" style="--tier-color: var(--color-gold); cursor: pointer;" data-video="送王船.mp4" data-title-zh="送王船" data-title-en="Sending the Wangchuan" onclick="openVideoModal(this.dataset.titleZh || this.dataset.titleEn, this.dataset.video, this.dataset.titleZh || this.dataset.titleEn)">
+                        <div class="intangible-card-header">
+                            <div class="intangible-cat" data-zh>民俗 · 2020年 · 代表作名录</div>
+                            <div class="intangible-cat" data-en>Folklore · 2020 · Representative List</div>
+                            <h3 class="intangible-name" data-zh>送王船</h3>
+                            <h3 class="intangible-name" data-en>Sending the Wangchuan</h3>
+                        </div>
+                        <div class="intangible-card-body">
+                            <p class="intangible-desc" data-zh>有关人与海洋可持续联系的仪式及相关实践。泉州沿海渔村定期建造并焚烧王船，送代天巡狩的王爷回天庭，祈求风调雨顺、航海平安，是海洋文化的活态传承。</p>
+                            <p class="intangible-desc" data-en>A ritual of sustainable human-ocean relations. Coastal villages build and burn "Wangchuan" (king ships) to send deities back to heaven, praying for fair weather and safe voyages—a living maritime heritage.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="intangible-card" style="--tier-color: var(--color-gold); cursor: pointer;" data-video="春节.mp4" data-title-zh="春节" data-title-en="Spring Festival" onclick="openVideoModal(this.dataset.titleZh || this.dataset.titleEn, this.dataset.video, this.dataset.titleZh || this.dataset.titleEn)">
+                        <div class="intangible-card-header">
+                            <div class="intangible-cat" data-zh>民俗 · 2024年 · 代表作名录</div>
+                            <div class="intangible-cat" data-en>Folklore · 2024 · Representative List</div>
+                            <h3 class="intangible-name" data-zh>春节</h3>
+                            <h3 class="intangible-name" data-en>Spring Festival</h3>
+                        </div>
+                        <div class="intangible-card-body">
+                            <p class="intangible-desc" data-zh>中国人庆祝传统新年的社会实践。泉州的春节习俗保留了浓厚的闽南特色——拜天公、博饼、逛花灯、吃润饼，是中华年俗文化的活态传承。</p>
+                            <p class="intangible-desc" data-en>The social practice of celebrating the Chinese New Year. Quanzhou's Spring Festival retains strong Minnan features—worshipping heaven, mooncake dice games, lantern fairs, and eating runbing flatbreads.</p>
+                        </div>
+                    </div>
+                    <div class="intangible-card" style="--tier-color: var(--color-gold); cursor: pointer;" data-video="中国传统制茶技艺.mp4" data-title-zh="中国传统制茶技艺及其相关习俗" data-title-en="Chinese Traditional Tea Processing" onclick="openVideoModal(this.dataset.titleZh || this.dataset.titleEn, this.dataset.video, this.dataset.titleZh || this.dataset.titleEn)">
+                        <div class="intangible-card-header">
+                            <div class="intangible-cat" data-zh>传统技艺 · 代表作名录</div>
+                            <div class="intangible-cat" data-en>Traditional Craft · Representative List</div>
+                            <h3 class="intangible-name" data-zh>中国传统制茶技艺及其相关习俗</h3>
+                            <h3 class="intangible-name" data-en>Chinese Traditional Tea Processing and Related Practices</h3>
+                        </div>
+                        <div class="intangible-card-body">
+                            <p class="intangible-desc" data-zh="">泉州多地的制茶技艺共同构成中国传统制茶技艺体系。除安溪铁观音外，永春佛手、南安石亭绿等也各具特色，共同见证了中国茶文化的丰富多样性。</p>
+                            <p class="intangible-desc" data-en>Multiple Quanzhou tea-processing techniques form part of China's traditional tea heritage. Beyond Anxi Tieguanyin, Yongchun Foshou and Nan'an Shiting Green teas each have distinctive characters, testifying to the richness of Chinese tea culture.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </section>
+    <!-- ============================================================
+   【数据总览条】
+   ============================================================ -->
+    <section class="stats">
+</section>
+    <!-- ============================================================
+     【模块三：当代故事】
+     ============================================================ -->
+    <section class="section stories-section" id="stories" style="padding-top: 40px; padding-bottom: 50px;">
+        <div class="section-header">
+            <div class="section-eyebrow" data-en>Heritage Meets the Present · The Rebirth of Tradition</div>
+            <h2 class="section-title" data-zh>传统不是过去式，而是进行时</h2>
+            <h2 class="section-title" data-en>Tradition Is Not Past Tense — It Is Present Continuous</h2>
+            <p class="section-desc" data-zh style="font-size: 16px;">非遗的生命力在于传承，更在于创新。在泉州，古老的非遗正在以年轻人喜欢的方式回归生活。</p>
+            <p class="section-desc" data-en>The vitality of intangible heritage lies in transmission—and innovation. In Quanzhou, ancient heritage is returning to daily life in ways young people love.</p>
+        </div>
+        <div class="stories-grid">
+            <div class="story-card" style="--story-color: var(--color-brick);">
+                <!-- ★【案例1图片：蟳埔女簪花围】把 url('') 引号中换成图片地址 -->
+                <div class="story-image" style="background-image: url('https://ts3.tc.mm.bing.net/th/id/OIP-C.azozM1N-9Z3niDECVDStPwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3');">
+</div>
+                <div class="story-body">
+                    <span class="story-tag" data-zh="" style="color: #f9084b; font-weight: 800; font-size: 25px; padding-left: 15px; padding-right: 15px;">案例一</span>
+                    <span class="story-tag" data-en="">Case 1 &middot; Cultural IP</span>
+                    <h3 class="story-title" data-zh="" style="padding-left: 15px; padding-right: 15px;">蟳埔女的&ldquo;出圈&rdquo;</h3>
+                    <h3 class="story-title" data-en="">Xunpu Goes Viral</h3>
+                    <p class="story-text" data-zh="" style="padding-right: 15px; padding-left: 15px; padding-bottom: 15px; font-size: 14px; color: #60310c;">2023年，蟳埔女簪花围在社交媒体走红，全国各地游客专程到泉州体验簪花。原本只是渔村日常的头饰，变成了文化IP。当地村民成立了簪花体验合作社，年轻的&quot;蟳埔女&quot;们用短视频记录生活，让千年习俗在当代焕发新生。</p>
+                    <p class="story-text" data-en="">In 2023, Xunpu&apos;s floral headdresses went viral on social media, drawing tourists nationwide. What was once daily village attire became a cultural IP. Local villagers founded a floral-headdress experience cooperative, and young Xunpu women document their lives on short video&#8212;giving a millennium-old custom new life.</p>
+                </div>
+            </div>
+            <div class="story-card" style="--story-color: var(--color-ocean);">
+                <!-- ★【案例2图片：南音演出】把 url('') 引号中换成图片地址 -->
+                <div class="story-image" style="background-image: url('https://x0.ifengimg.com/res/2023/9A9A2EB4C77D8DE494341D1D51FF4E5499027CA2_size142_w1080_h810.jpg');">
+</div>
+                <div class="story-body" style="color: #000000; padding-left: 15px; padding-right: 15px;">
+                    <span class="story-tag" data-zh="" style="color: #036634; font-weight: 800; font-size: 25px;">案例二</span>
+                    <span class="story-tag" data-en>Case 2 · Musical Innovation</span>
+                    <h3 class="story-title" data-zh="">南音的&ldquo;新声&rdquo;</h3>
+                    <h3 class="story-title" data-en>Nanyin's New Voice</h3>
+                    <p class="story-text" data-zh="" style="font-size: 14px; color: #734c12;">泉州的年轻音乐人将南音与流行音乐、电子乐结合，创作出&quot;新南音&quot;作品。南音传承人走进校园开设课程，让00后学生学习古乐。在泉州的livehouse里，南音与摇滚乐同台演出，古老的旋律找到了新的听众。</p>
+                    <p class="story-text" data-en>Young Quanzhou musicians fuse Nanyin with pop and electronic music to create "New Nanyin." Nanyin inheritors teach in schools, introducing post-2000s students to ancient music. In Quanzhou's livehouses, Nanyin shares the stage with rock—ancient melodies finding new audiences.</p>
+                </div>
+            </div>
+            <div class="story-card" style="--story-color: var(--color-gold);">
+                <!-- ★【案例3图片：德化白瓷】把 url('') 引号中换成图片地址 -->
+                <div class="story-image" style="background-image: url('https://www.chnmuseum.cn/portals/0/web/zt/202309dhbc/img/bdyimg3.jpg');">
+</div>
+                <div class="story-body" style="padding-left: 15px; padding-right: 15px; font-size: 14px; color: #704410;">
+                    <span class="story-tag" data-zh="" style="font-size: 25px; color: #174b91; font-weight: 800;">案例三&nbsp;</span>
+                    <span class="story-tag" data-en="">Case 3 &middot; Global Design</span>
+                    <h3 class="story-title" data-zh="" style="color: #000000;">德化白瓷的&ldquo;出海&rdquo;</h3>
+                    <h3 class="story-title" data-en="">Dehua Porcelain Goes Global</h3>
+                    <p class="story-text" data-zh="">今天的德化白瓷不再只是传统佛像和花瓶，年轻设计师将白瓷与现代生活美学结合，设计出茶具、香器、首饰等文创产品，通过跨境电商销往全球。千年的&quot;中国白&quot;，以新的形态继续走向世界。</p>
+                    <p class="story-text" data-en="">Today&apos;s Dehua porcelain is no longer just traditional Buddha statues and vases. Young designers combine white porcelain with modern lifestyle aesthetics, creating tea ware, incense holders, and jewelry sold globally via cross-border e-commerce. The millennium-old &quot;China White&quot; continues to reach the world in new forms.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============================================================
+   【升华区】
+   ============================================================ -->
+    <section class="closing">
+        <div class="closing-quote" data-en>
+            The true value of cultural heritage lies not in its age,<br>
+            but in whether it still lives in people's daily lives.<br>
+            In Quanzhou, Nanyin is still sung, puppets still perform, tea still steams, and flowers still adorn hair.<br>
+            <br>
+            This is the vitality of Chinese civilization—<br>
+            <span class="closing-highlight">honoring its roots, embracing the foreign, and facing the future.</span>
+        </div>
+        <div class="closing-final" data-en>Living Heritage, Endlessly Renewed</div>
+    </section>
+    <!-- ============================================================
+     【页脚】
+     ============================================================ -->
+    <footer class="footer" style="padding-top: 10px; padding-bottom: 10px; font-size: 16px; background: #EDE5D6; text-align: center; border-top: 1px solid rgba(44,36,22,0.08);"> 
+        <div class="footer-title" data-zh="" style="text-align: center; font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; font-size: 16px; font-weight: 700; color: #2C2416; margin-bottom: 0px;">《活态泉州&#8212;&#8212;一座中国城市的四重叙事》</div>         
+        <div class="footer-title" data-en style="text-align: center;">Living Quanzhou: A Four-Fold Narrative of a Chinese City</div>         
+        <div class="footer-sub" data-zh="" style="font-size: 13px; text-align: center; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #8A7E6C; letter-spacing: 1px; margin-bottom: 0px;">第十四届全国大学生数字媒体科技作品及创意竞赛&ldquo;科技+创意，讲好中国故事&rdquo;赛道</div>         
+        <div class="footer-sub" data-en style="text-align: center;">14th National College Student Digital Media Competition · "Technology + Creativity, Telling China's Story"</div>         
+        <div class="footer-sources" style="margin-top: 0px; font-size: 13px; text-align: center; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #8A7E6C; line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0;" data-zh> 
+            数据来源：泉州市统计局 · 联合国教科文组织 · 公开学术文献
+</div>         
+        <div class="footer-sources" style="margin-top:16px;" data-en> 
+            Data Sources: Quanzhou Municipal Bureau of Statistics · UNESCO · Public Academic Literature
+</div>         
+    </footer>
+    <!-- ============================================================
+     【JavaScript】
+     ============================================================ -->
+    <script>
+
+// 按账号隔离存储
+const currentUser = localStorage.getItem('quanzhou_login') || 'guest';
+const INTERACTIONS_KEY = 'quanzhou_interactions_' + currentUser;
+const FAVORITES_INFO_KEY = 'quanzhou_favorites_info_' + currentUser;
+// ===== 互动功能：收藏、点赞、倒赞 =====
+var currentHeritageKey = null;
+var currentVideoKey = null;
+
+function getInteractionData() {
+  return JSON.parse(localStorage.getItem(INTERACTIONS_KEY) || '{"favorites":[],"likes":{},"dislikes":{},"likeCount":{},"dislikeCount":{}}');
+}
+
+function saveInteractionData(data) {
+  localStorage.setItem(INTERACTIONS_KEY, JSON.stringify(data));
+}
+
+function updateModalButtons(type, key) {
+  var data = getInteractionData();
+  var prefix = type === 'heritage' ? 'heritage' : 'video';
+  
+  // 收藏状态
+  var isFav = data.favorites.indexOf(type + '_' + key) !== -1;
+  document.getElementById(prefix + 'FavIcon').textContent = isFav ? '★' : '☆';
+  document.getElementById(prefix + 'FavText').textContent = isFav ? '已收藏' : '收藏';
+  document.getElementById(prefix + 'FavBtn').style.background = isFav ? '#B5493B' : '#fff';
+  document.getElementById(prefix + 'FavBtn').style.color = isFav ? '#fff' : '#333';
+  document.getElementById(prefix + 'FavBtn').style.borderColor = isFav ? '#B5493B' : '#ddd';
+  
+  // 点赞状态
+  var isLiked = data.likes[type + '_' + key];
+  var likeCount = data.likeCount[type + '_' + key] || 0;
+  document.getElementById(prefix + 'LikeIcon').textContent = isLiked ? '👍' : '👍';
+  document.getElementById(prefix + 'LikeCount').textContent = likeCount;
+  document.getElementById(prefix + 'LikeBtn').style.background = isLiked ? '#4A7C59' : '#fff';
+  document.getElementById(prefix + 'LikeBtn').style.color = isLiked ? '#fff' : '#333';
+  document.getElementById(prefix + 'LikeBtn').style.borderColor = isLiked ? '#4A7C59' : '#ddd';
+  
+  // 倒赞状态
+  var isDisliked = data.dislikes[type + '_' + key];
+  var dislikeCount = data.dislikeCount[type + '_' + key] || 0;
+  document.getElementById(prefix + 'DislikeIcon').textContent = isDisliked ? '👎' : '👎';
+  document.getElementById(prefix + 'DislikeCount').textContent = dislikeCount;
+  document.getElementById(prefix + 'DislikeBtn').style.background = isDisliked ? '#8A7E6C' : '#fff';
+  document.getElementById(prefix + 'DislikeBtn').style.color = isDisliked ? '#fff' : '#333';
+  document.getElementById(prefix + 'DislikeBtn').style.borderColor = isDisliked ? '#8A7E6C' : '#ddd';
+}
+
+function toggleFavorite(type, key) {
+  var data = getInteractionData();
+  var id = type + '_' + key;
+  var idx = data.favorites.indexOf(id);
+  if (idx !== -1) {
+    data.favorites.splice(idx, 1);
+  } else {
+    data.favorites.push(id);
+    // 保存收藏内容的元信息
+    var info = JSON.parse(localStorage.getItem(FAVORITES_INFO_KEY) || '{}');
+    var name = '';
+    if (type === 'heritage') {
+      name = document.getElementById('heritageModalTitle').textContent;
+    } else if (type === 'intangible') {
+      name = document.getElementById('videoModalTitle').textContent;
+    }
+    info[id] = { name: name, type: type };
+    localStorage.setItem('quanzhou_favorites_info', JSON.stringify(info));
+  }
+  saveInteractionData(data);
+  updateModalButtons(type, key);
+}
+
+function toggleLike(type, key) {
+  var data = getInteractionData();
+  var id = type + '_' + key;
+  if (data.likes[id]) {
+    delete data.likes[id];
+    data.likeCount[id] = Math.max(0, (data.likeCount[id] || 1) - 1);
+  } else {
+    data.likes[id] = true;
+    data.likeCount[id] = (data.likeCount[id] || 0) + 1;
+    // 取消倒赞
+    if (data.dislikes[id]) {
+      delete data.dislikes[id];
+      data.dislikeCount[id] = Math.max(0, (data.dislikeCount[id] || 1) - 1);
+    }
+  }
+  saveInteractionData(data);
+  updateModalButtons(type, key);
+}
+
+function toggleDislike(type, key) {
+  var data = getInteractionData();
+  var id = type + '_' + key;
+  if (data.dislikes[id]) {
+    delete data.dislikes[id];
+    data.dislikeCount[id] = Math.max(0, (data.dislikeCount[id] || 1) - 1);
+  } else {
+    data.dislikes[id] = true;
+    data.dislikeCount[id] = (data.dislikeCount[id] || 0) + 1;
+    // 取消点赞
+    if (data.likes[id]) {
+      delete data.likes[id];
+      data.likeCount[id] = Math.max(0, (data.likeCount[id] || 1) - 1);
+    }
+  }
+  saveInteractionData(data);
+  updateModalButtons(type, key);
+}
+
+
+// 导航栏滚动效果
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// 中英双语切换 - 完整版（偏好保存 + 标题切换）
+const langToggle = document.getElementById('langToggle');
+const langZh = document.getElementById('langZh');
+const langEn = document.getElementById('langEn');
+const pageTitle = document.getElementById('pageTitle');
+
+const PAGE_TITLES = {
+  zh: '世界非遗之城 · 活态泉州',
+  en: 'World Heritage City · Living Quanzhou'
+};
+
+function applyLanguage(lang) {
+  const isEn = (lang === 'en');
+  document.body.classList.toggle('lang-en', isEn);
+  document.documentElement.lang = isEn ? 'en' : 'zh-CN';
+  langZh.classList.toggle('active-lang', !isEn);
+  langEn.classList.toggle('active-lang', isEn);
+  if (pageTitle) pageTitle.textContent = PAGE_TITLES[lang];
+  document.title = PAGE_TITLES[lang];
+  try { localStorage.setItem('preferredLang', lang); } catch(e) {}
+}
+
+// 初始化：读取本地存储偏好，默认中文
+let savedLang = 'zh';
+try { savedLang = localStorage.getItem('preferredLang') || 'zh'; } catch(e) {}
+applyLanguage(savedLang);
+
+langToggle.addEventListener('click', () => {
+  const current = document.body.classList.contains('lang-en') ? 'en' : 'zh';
+  applyLanguage(current === 'zh' ? 'en' : 'zh');
+});
+
+// 世遗点筛选
+const filterBtns = document.querySelectorAll('.filter-btn');
+const heritageCards = document.querySelectorAll('.heritage-card');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    // 同时激活中英文对应按钮
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.filter-btn[data-filter="' + filter + '"]').forEach(b => b.classList.add('active'));
+    heritageCards.forEach(card => {
+      if (filter === 'all' || card.dataset.cat === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// 三级非遗标签切换
+const tierTabs = document.querySelectorAll('.tier-tab');
+const tierContents = document.querySelectorAll('.tier-content');
+tierTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tierTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    const tier = tab.dataset.tier;
+    tierContents.forEach(content => {
+      content.classList.toggle('active', content.id === 'tier-' + tier);
+    });
+  });
+});
+
+// 数字滚动动画
+const counters = document.querySelectorAll('.counter');
+let countersAnimated = false;
+function animateCounters() {
+  if (countersAnimated) return;
+  countersAnimated = true;
+  counters.forEach(counter => {
+    const target = parseInt(counter.dataset.target);
+    const duration = 2000;
+    const startTime = performance.now();
+    function update(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = Math.floor(easeOut * target);
+      if (progress < 1) requestAnimationFrame(update);
+      else counter.textContent = target;
+    }
+    requestAnimationFrame(update);
+  });
+}
+const statsSection = document.querySelector('.stats');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { animateCounters(); observer.unobserve(entry.target); }
+  });
+}, { threshold: 0.3 });
+observer.observe(statsSection);
+
+
+
+
+
+</script>
+
+
+
+
+<script>
+// 弹窗相关代码（独立script，确保不受原页面JS影响）
+
+
+
+
+// ============================================================
+// 【22世遗点详情弹窗】数据 + 函数
+// ============================================================
+const heritageDetailData = {
+  jiurishan: { zh: { title: '九日山祈风石刻', meta: '南宋（12-13世纪）· 行政管理', desc: '九日山祈风石刻是中国古代海外贸易管理的珍贵实物见证。每年冬夏季风转换时节，泉州市舶司官员率商民在九日山延福寺举行祈风仪式，祈求航海顺风、商船平安。现存宋代祈风石刻10方，记载了从北宋到南宋的多次祈风活动，是研究宋代海上丝绸之路和市舶制度的重要史料。石刻书法精美，具有很高的艺术价值。' }, en: { title: 'Jiuri Mountain Inscriptions', meta: 'Southern Song (12th-13th C.) · Administration', desc: 'The Jiuri Mountain wind-praying inscriptions are precious physical evidence of ancient China maritime trade administration. Each year during the monsoon transition, Maritime Trade Office officials held ceremonies to pray for favorable winds. Ten surviving Song-dynasty inscriptions record multiple ceremonies, providing important historical data on the Maritime Silk Road and the maritime trade system. The calligraphy is exquisite and of high artistic value.' } },
+  shibosi: { zh: { title: '市舶司遗址', meta: '北宋（1087年设立）· 行政管理', desc: '北宋元祐二年（1087年），朝廷在泉州设立市舶司，专门管理海外贸易、征收关税、接待外商。这标志着泉州正式成为官方对外贸易港口，开启了泉州港的黄金时代。市舶司的设立使泉州的海外贸易规范化、制度化，吸引了大量阿拉伯、波斯、印度商人前来贸易，泉州逐渐成为东方第一大港。' }, en: { title: 'Maritime Trade Office', meta: 'Northern Song (est. 1087) · Administration', desc: 'In 1087, the Song court established the Maritime Trade Office in Quanzhou to manage overseas trade, collect tariffs, and receive foreign merchants. This marked Quanzhou official status as a trade port and began its golden age. The office standardized trade, attracting merchants from Arabia, Persia, and India, and Quanzhou gradually became the greatest port of the East.' } },
+  nanwaizong: { zh: { title: '南外宗正司遗址', meta: '南宋 · 行政管理', desc: '南外宗正司是南宋管理皇室宗族的机构。南宋初年，大量赵氏皇族成员迁居泉州，南外宗正司随之迁入。皇族聚居泉州带来了先进的文化和技术，促进了城市的繁荣和文化的发展。宗室成员参与海外贸易，推动了泉州港的兴盛。遗址出土了大量建筑构件和生活用品，见证了南宋皇族在泉州的生活。' }, en: { title: 'Southern Clan Court', meta: 'Southern Song · Administration', desc: 'The Southern Clan Court administered the imperial clan. In the early Southern Song, many Zhao imperial family members relocated to Quanzhou, bringing advanced culture and technology that promoted urban prosperity. Clan members participated in maritime trade, boosting the port. Excavations yielded numerous architectural components and daily artifacts, witnessing the imperial clan life in Quanzhou.' } },
+  dejimen: { zh: { title: '德济门遗址', meta: '南宋至明代 · 商贸设施', desc: '德济门是宋元泉州城南城门，门外是阿拉伯、波斯商人聚居的"蕃坊"。德济门遗址出土了大量外来宗教石刻、陶瓷器和建筑构件，见证了泉州多元文化的生态。城门遗址展示了从南宋到明代的多次修缮和扩建过程，是研究泉州城市发展和海外贸易的重要实物资料。' }, en: { title: 'Deji Gate Site', meta: 'Southern Song-Ming · Trade Facility', desc: 'Deji Gate was the south gate of Song-Yuan Quanzhou, leading to the "foreign quarter" of Arab and Persian merchants. Excavations uncovered foreign religious carvings, ceramics, and architectural components, witnessing Quanzhou multicultural ecology. The site shows multiple renovations from Southern Song to Ming, important for studying urban development and maritime trade.' } },
+  dehua: { zh: { title: '德化窑址', meta: '宋元至明清 · 商贸设施', desc: '德化窑是宋元时期泉州外销瓷的主要产地，以白瓷闻名于世，被称为"中国白"。德化白瓷釉色温润、造型精美，产品经泉州港远销东亚、东南亚、西亚、东非等地，在世界各地均有出土。德化窑的兴盛反映了泉州海外贸易的繁荣，也是中国陶瓷文化对外传播的重要见证。' }, en: { title: 'Dehua Kiln Sites', meta: 'Song-Yuan to Ming-Qing · Trade Facility', desc: 'Dehua kilns were the main production base for export porcelain in Song-Yuan Quanzhou, famous for white porcelain known as "Blanc de Chine." With warm glazes and exquisite forms, Dehua porcelain was exported worldwide and excavated across multiple regions. Its prosperity reflects Quanzhou thriving maritime trade and the spread of Chinese ceramic culture.' } },
+  anxi: { zh: { title: '安溪青阳冶铁遗址', meta: '宋元时期 · 商贸设施', desc: '安溪青阳冶铁遗址是宋元时期泉州冶铁手工业的重要遗址，出土了大量炉渣、铁制品和冶炼设施。泉州的铁制品经海上丝绸之路外销到东南亚、西亚等地。冶铁业的发展为泉州的海外贸易提供了重要的商品来源，也反映了宋代手工业的发达水平。' }, en: { title: 'Anxi Iron Smelting Site', meta: 'Song-Yuan Period · Trade Facility', desc: 'The Anxi Qingyang iron smelting site yielded numerous slag, iron products, and smelting facilities. Quanzhou iron goods were exported via the Maritime Silk Road to Southeast and West Asia. The iron industry provided important commodities for maritime trade and reflects the advanced level of Song-dynasty handicrafts.' } },
+  cizao: { zh: { title: '磁灶窑址', meta: '宋元时期 · 商贸设施', desc: '磁灶窑位于泉州南郊，是宋元时期著名的民间窑场，以酱釉、绿釉瓷器闻名。产品主要外销东南亚地区，是泉州外销瓷的重要组成部分。磁灶窑的瓷器在菲律宾、印度尼西亚等地多有出土，见证了泉州与东南亚的密切贸易往来。' }, en: { title: 'Cizao Kiln Sites', meta: 'Song-Yuan Period · Trade Facility', desc: 'Cizao kilns in southern Quanzhou were famous folk kilns of the Song-Yuan period, known for brown and green glazed ceramics. Products were mainly exported to Southeast Asia, forming an important part of Quanzhou export porcelain. Cizao ceramics have been excavated in the Philippines and Indonesia, witnessing close trade ties.' } },
+  kaiyuan: { zh: { title: '开元寺', meta: '唐代始建（686年）· 文化地标', desc: '开元寺始建于唐垂拱二年（686年），是福建最大的佛教寺院。寺内东西塔建于南宋，高40余米，是中国现存最高的一对石塔，历经多次地震仍屹立不倒。大雄宝殿斗拱雕有24尊飞天乐伎，融合了印度佛教艺术与中国传统建筑风格，是多元文化交融的杰出代表。' }, en: { title: 'Kaiyuan Temple', meta: 'Founded Tang (686) · Cultural Landmark', desc: 'Founded in 686, Kaiyuan Temple is Fujian largest Buddhist temple. Its East and West Pagodas, built in the Southern Song, stand over 40m tall—the tallest surviving stone pagodas in China, enduring multiple earthquakes. The Main Hall features 24 flying apsara musicians on its brackets, blending Indian Buddhist art with Chinese architecture—a masterpiece of multicultural fusion.' } },
+  qingjing: { zh: { title: '清净寺', meta: '北宋（1009年）· 宗教建筑', desc: '清净寺始建于北宋大中祥符二年（1009年），是中国现存最古老的伊斯兰教寺，由阿拉伯商人创建。寺院建筑采用西亚风格，现存的奉天坛遗迹和门楼见证了中阿建筑艺术的交流。清净寺是泉州作为国际商埠、多元文化交融的实物见证，也是中阿友好交往的历史见证。' }, en: { title: 'Qingjing Mosque', meta: 'Northern Song (1009) · Religious Site', desc: 'Founded in 1009 by Arab merchants, Qingjing Mosque is China oldest surviving mosque. Built in West Asian style, its remaining prayer hall and gate witness Sino-Arab architectural exchange. The mosque is physical evidence of Quanzhou role as an international trading port and multicultural hub, and of Sino-Arab friendship.' } },
+  caoan: { zh: { title: '草庵摩尼光佛造像', meta: '元代（1339年）· 宗教建筑', desc: '草庵摩尼光佛造像是世界仅存的摩尼教石雕造像，雕刻于元代至元五年（1339年）。摩尼教在唐代传入中国，在泉州与佛教、道教融合，形成了独特的宗教文化。造像高1.54米，面容慈祥，背雕佛光，是研究摩尼教在中国传播和宗教交流的珍贵实物。' }, en: { title: 'Caoan Manichaean Buddha', meta: 'Yuan Dynasty (1339) · Religious Site', desc: 'The Caoan Manichaean Buddha is the world only surviving Manichaean stone statue, carved in 1339. Manichaeism entered China in the Tang dynasty and fused with Buddhism and Daoism in Quanzhou, forming a unique religious culture. The 1.54m statue with a serene face and radiant halo is precious evidence of Manichaean spread and religious exchange in China.' } },
+  tianhou: { zh: { title: '天后宫', meta: '南宋（1196年）· 宗教建筑', desc: '天后宫始建于南宋庆元二年（1196年），是祭祀海神妈祖的庙宇，也是海内外建筑规格最高、规模最大的妈祖庙之一。妈祖信仰起源于泉州，随着泉州商人的海上贸易传播到世界各地，成为海上丝绸之路的重要文化符号。天后宫见证了妈祖信仰的起源和传播。' }, en: { title: 'Tianhou Temple', meta: 'Southern Song (1196) · Religious Site', desc: 'Founded in 1196, Tianhou Temple is dedicated to sea goddess Mazu and is one of the highest-standard and largest Mazu temples worldwide. Mazu worship originated in Quanzhou and spread globally with Quanzhou merchants, becoming an important cultural symbol of the Maritime Silk Road. The temple witnesses the origin and spread of Mazu belief.' } },
+  zhenwu: { zh: { title: '真武庙', meta: '宋代 · 宗教建筑', desc: '真武庙是祭祀海神真武大帝的庙宇，是宋元时期泉州商人出海前祭拜海神、祈求平安的重要场所。真武信仰与妈祖信仰共同构成了泉州的海神信仰体系，反映了海洋贸易在泉州社会中的重要地位。庙宇建筑保存完好，是研究泉州海洋文化和民间信仰的重要实物。' }, en: { title: 'Zhenwu Temple', meta: 'Song Dynasty · Religious Site', desc: 'Zhenwu Temple is dedicated to sea god Zhenwu and was an important place where Quanzhou merchants prayed for safe voyages before setting sail. Together with Mazu worship, Zhenwu belief formed Quanzhou sea god system, reflecting the importance of maritime trade in Quanzhou society. The well-preserved temple is important for studying Quanzhou marine culture and folk beliefs.' } },
+  shengmu: { zh: { title: '伊斯兰教圣墓', meta: '唐代 · 宗教建筑', desc: '伊斯兰教圣墓是唐代来华的伊斯兰教三贤、四贤的墓葬，是伊斯兰教传入中国的重要史迹。墓园保存了唐代以来的多方阿拉伯文墓碑，见证了中阿文化交流的悠久历史。圣墓是泉州海外交通史和宗教史的重要实物，也是中国伊斯兰教的重要遗迹。' }, en: { title: 'Islamic Holy Tombs', meta: 'Tang Dynasty · Religious Site', desc: 'The Islamic Holy Tombs are the burial sites of two early Islamic missionaries who came to China in the Tang dynasty—important historical evidence of Islam introduction to China. The cemetery preserves Arabic tombstones from the Tang onward, witnessing the long history of Sino-Arab cultural exchange. The tombs are important relics of Quanzhou maritime and religious history.' } },
+  wenmiao: { zh: { title: '泉州府文庙', meta: '唐代始建 · 文化地标', desc: '泉州府文庙是中国东南地区规模最大的文庙建筑群，始建于唐代，是泉州重教兴学传统的象征。宋元时期泉州科举兴盛，人才辈出，文庙是培养人才的重要场所。文庙建筑宏伟，保存了大量碑刻和文物，是研究泉州教育史和文化史的重要实物。' }, en: { title: 'Quanzhou Confucian Temple', meta: 'Founded Tang Dynasty · Cultural Landmark', desc: 'Quanzhou Confucian Temple is the largest Confucian temple complex in southeast China, founded in the Tang dynasty and symbolizing Quanzhou tradition of valuing education. The Song-Yuan period saw flourishing imperial examinations here. The grand temple preserves numerous steles and artifacts, important for studying Quanzhou educational and cultural history.' } },
+  laojun: { zh: { title: '老君岩造像', meta: '宋代 · 文化地标', desc: '老君岩造像是中国现存最大的宋代道教石雕老君像，高5.63米，宽8.01米。造像慈祥端庄，衣褶分明，是宋代石雕艺术的杰作。老君岩位于泉州清源山麓，是泉州道教文化的标志性遗存，见证了道教在泉州的传播和发展。' }, en: { title: 'Laozi Rock Statue', meta: 'Song Dynasty · Cultural Landmark', desc: 'The Laozi Rock Statue is China largest surviving Song-dynasty Taoist stone statue of Laozi, standing 5.63m tall and 8.01m wide. With a serene face and distinct folds, it is a masterpiece of Song stone carving. Located at the foot of Qingyuan Mountain, it is an iconic remnant of Quanzhou Taoist culture.' } },
+  luoyang: { zh: { title: '洛阳桥', meta: '北宋（1053-1059年）· 交通枢纽', desc: '洛阳桥由北宋泉州太守蔡襄主持修建，是中国现存最早的跨海梁式石桥。桥长834米，首创"筏型基础"和"种蛎固基"技术，利用牡蛎的繁殖来加固桥基，是古代桥梁工程的伟大创举。洛阳桥的建成促进了泉州内陆与沿海的商贸往来，是海上丝绸之路的重要交通设施。' }, en: { title: 'Luoyang Bridge', meta: 'Northern Song (1053-1059) · Transport Hub', desc: 'Built under prefect Cai Xiang, Luoyang Bridge is China earliest surviving cross-sea stone beam bridge, 834m long. It pioneered "raft foundation" and "oyster-bed consolidation" techniques, using oyster reproduction to strengthen the foundation—a great innovation in ancient bridge engineering. The bridge promoted commerce between Quanzhou interior and coast.' } },
+  anping: { zh: { title: '安平桥', meta: '南宋（1138年）· 交通枢纽', desc: '安平桥全长2255米，是中古时期世界上最长的梁式石桥，有"天下无桥长此桥"之誉。桥始建于南宋绍兴八年，历时14年建成。安平桥连接泉州安海和南安水头，是泉州内陆与沿海商贸的重要通道，见证了泉州海上贸易的繁荣。' }, en: { title: 'Anping Bridge', meta: 'Southern Song (1138) · Transport Hub', desc: 'At 2,255m, Anping Bridge was the world longest medieval beam-style stone bridge, praised as "no bridge under heaven is longer." Built over 14 years starting in 1138, it connects Anhai and Shuitou, serving as a vital commerce channel and witnessing Quanzhou maritime trade prosperity.' } },
+  shunji: { zh: { title: '顺济桥遗址', meta: '南宋 · 交通枢纽', desc: '顺济桥始建于南宋嘉定四年（1211年），是连接泉州城与晋江流域的重要石桥。桥因临近顺济宫（天后宫）而得名。顺济桥是泉州古城向南拓展的重要交通设施，促进了泉州城南的发展和海外贸易的繁荣。遗址见证了宋代泉州桥梁建设的高超水平。' }, en: { title: 'Shunji Bridge Site', meta: 'Southern Song · Transport Hub', desc: 'Founded in 1211, Shunji Bridge was an important stone bridge connecting Quanzhou city to the Jinjiang River basin, named after the nearby Shunji Palace (Tianhou Temple). It was a key transport facility for the ancient city southward expansion, promoting southern district development and trade prosperity.' } },
+  jiangkou: { zh: { title: '江口码头', meta: '宋元时期 · 交通枢纽', desc: '江口码头是泉州古城内港码头，位于晋江入海口附近，是商船装卸货物、商人登岸的重要场所。码头遗址出土了大量宋元时期的陶瓷、铁器等贸易商品，见证了泉州港的繁华。江口码头是研究泉州海外贸易和港口布局的重要实物。' }, en: { title: 'Jiangkou Dock', meta: 'Song-Yuan Period · Transport Hub', desc: 'Jiangkou Dock was an inner harbor dock near the Jinjiang River mouth, where merchant ships loaded/unloaded cargo and merchants came ashore. Excavations yielded numerous Song-Yuan ceramics, iron goods, and trade commodities, witnessing the port prosperity. It is important for studying Quanzhou maritime trade and port layout.' } },
+  shihu: { zh: { title: '石湖码头', meta: '唐宋时期 · 交通枢纽', desc: '石湖码头位于泉州湾外港，是唐宋时期远洋商船停泊和补给的重要基地，也是泉州港通往世界的门户。码头始建于唐代，宋元时期达到鼎盛。石湖码头水深港阔，适合大型商船停泊，是泉州海上丝绸之路的重要起点之一。' }, en: { title: 'Shihu Dock', meta: 'Tang-Song Period · Transport Hub', desc: 'Shihu Dock, an outer harbor in Quanzhou Bay, was an important base for ocean-going ships to anchor and resupply from Tang through Song, and the gateway from Quanzhou Port to the world. Founded in the Tang and flourishing in Song-Yuan, its deep waters accommodated large merchant ships—one of the key starting points of the Maritime Silk Road.' } },
+  liusheng: { zh: { title: '六胜塔', meta: '元代 · 交通枢纽', desc: '六胜塔位于泉州湾入海处的石湖村，是一座五层八角的石塔，高36.06米。塔建于元代，是进出泉州港商船的重要航标，为商船指引方向。六胜塔是古代海上丝绸之路的重要导航设施，见证了泉州港的繁荣和航海技术的发展。' }, en: { title: 'Liusheng Pagoda', meta: 'Yuan Dynasty · Transport Hub', desc: 'Liusheng Pagoda, a five-story octagonal stone tower 36.06m tall at Shihu Village by Quanzhou Bay entrance, was built in the Yuan dynasty as an important navigation beacon guiding merchant ships in and out of Quanzhou Port. It is a key navigation facility of the ancient Maritime Silk Road.' } },
+  wanshou: { zh: { title: '万寿塔', meta: '宋代 · 交通枢纽', desc: '万寿塔又称"关锁塔"，矗立在泉州湾南岸的宝盖山上，高22.86米。塔建于宋代，是商船出入泉州港的重要航标，也是泉州港的标志性建筑。万寿塔见证了泉州海上贸易的繁荣，是海上丝绸之路的重要文化遗产。' }, en: { title: 'Wanshou Pagoda', meta: 'Song Dynasty · Transport Hub', desc: 'Wanshou Pagoda, also called "Guansuo Pagoda," stands 22.86m tall on Baogai Mountain on Quanzhou Bay south shore. Built in the Song dynasty, it was an important navigation beacon for merchant ships and an iconic landmark of Quanzhou Port, witnessing maritime trade prosperity.' } }
+};
+
+function getHeritageKey(name) {
+  const keyMap = {
+    '九日山祈风石刻': 'jiurishan', 'Jiuri Mountain Inscriptions': 'jiurishan',
+    '市舶司遗址': 'shibosi', 'Maritime Trade Office': 'shibosi',
+    '南外宗正司遗址': 'nanwaizong', 'Southern Clan Court': 'nanwaizong',
+    '德济门遗址': 'dejimen', 'Deji Gate Site': 'dejimen',
+    '德化窑址': 'dehua', 'Dehua Kiln Sites': 'dehua',
+    '安溪青阳冶铁遗址': 'anxi', 'Anxi Iron Smelting Site': 'anxi',
+    '磁灶窑址': 'cizao', 'Cizao Kiln Sites': 'cizao',
+    '开元寺': 'kaiyuan', 'Kaiyuan Temple': 'kaiyuan',
+    '清净寺': 'qingjing', 'Qingjing Mosque': 'qingjing',
+    '草庵摩尼光佛造像': 'caoan', 'Caoan Manichaean Buddha': 'caoan',
+    '天后宫': 'tianhou', 'Tianhou Temple': 'tianhou',
+    '真武庙': 'zhenwu', 'Zhenwu Temple': 'zhenwu',
+    '伊斯兰教圣墓': 'shengmu', 'Islamic Holy Tombs': 'shengmu',
+    '泉州府文庙': 'wenmiao', 'Quanzhou Confucian Temple': 'wenmiao',
+    '老君岩造像': 'laojun', 'Laozi Rock Statue': 'laojun',
+    '洛阳桥': 'luoyang', 'Luoyang Bridge': 'luoyang',
+    '安平桥': 'anping', 'Anping Bridge': 'anping',
+    '顺济桥遗址': 'shunji', 'Shunji Bridge Site': 'shunji',
+    '江口码头': 'jiangkou', 'Jiangkou Dock': 'jiangkou',
+    '石湖码头': 'shihu', 'Shihu Dock': 'shihu',
+    '六胜塔': 'liusheng', 'Liusheng Pagoda': 'liusheng',
+    '万寿塔': 'wanshou', 'Wanshou Pagoda': 'wanshou'
+  };
+  return keyMap[name] || null;
+}
+
+function openHeritageModal(card) {
+  try {
+    const isEn = document.body.classList.contains('lang-en');
+    const nameEl = card.querySelector('.heritage-name[data-zh]');
+    if (!nameEl) return;
+    const name = isEn ? (card.querySelector('.heritage-name[data-en]') || {}).textContent : nameEl.textContent;
+    const key = getHeritageKey(name);
+    if (!key || !heritageDetailData[key]) { console.log('未找到遗迹数据:', name); return; }
+    currentHeritageKey = key;
+    const d = isEn ? heritageDetailData[key].en : heritageDetailData[key].zh;
+    const imgEl = card.querySelector('.heritage-card-image');
+    const imgStyle = imgEl ? imgEl.style.backgroundImage : '';
+    document.getElementById('heritageModalImage').style.backgroundImage = imgStyle;
+    document.getElementById('heritageModalTitle').textContent = d.title;
+    document.getElementById('heritageModalMeta').textContent = d.meta;
+    document.getElementById('heritageModalDesc').textContent = d.desc;
+    updateModalButtons('heritage', key);
+    document.getElementById('heritageModal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  } catch(e) { alert('openHeritageModal错误: ' + e.message); }
+}
+
+function closeHeritageModal() {
+  document.getElementById('heritageModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function openVideoModal(title, videoSrc, key) {
+  currentVideoKey = key || title;
+  document.getElementById('videoModalTitle').textContent = title;
+  const player = document.getElementById('videoModalPlayer');
+  player.src = videoSrc;
+  updateModalButtons('intangible', currentVideoKey);
+  document.getElementById('videoModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  const player = document.getElementById('videoModalPlayer');
+  player.pause();
+  player.src = '';
+  document.getElementById('videoModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// 点击事件已通过内联onclick绑定
+
+// 加载导航栏头像
+(function() {
+  var profile = JSON.parse(localStorage.getItem('quanzhou_profile') || '{}');
+  if (profile.avatar) {
+    var navAvatar = document.getElementById('navAvatar');
+    var navAvatarIcon = document.getElementById('navAvatarIcon');
+    if (navAvatar && navAvatarIcon) {
+      navAvatar.src = profile.avatar;
+      navAvatar.style.display = 'block';
+      navAvatarIcon.style.display = 'none';
+    }
+  }
+})();
+
+</script>
+</body>
+</html>

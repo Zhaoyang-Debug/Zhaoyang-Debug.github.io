@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人中心 · 活态泉州 | Profile · Living Quanzhou</title>
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap">
+<style>
+:root {
+  --color-brick: #B5493B;
+  --color-brick-dark: #8E372C;
+  --color-ocean: #1B4965;
+  --color-paper: #F5F0E8;
+  --color-paper-dark: #EDE5D6;
+  --color-gold: #C9A961;
+  --color-ink: #2C2416;
+  --color-ink-light: #5C5040;
+  --color-ink-faint: #8A7E6C;
+  --font-serif-zh: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-sans-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-serif-en: 'Playfair Display', Georgia, serif;
+  --font-sans-en: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-sans-zh);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  min-height: 100vh;
+}
+body.lang-en { font-family: var(--font-sans-en), var(--font-sans-zh); }
+body.lang-en [data-zh] { display: none !important; }
+body:not(.lang-en) [data-en] { display: none !important; }
+
+/* 导航栏 */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-height);
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--color-brick);
+  box-shadow: 0 2px 12px rgba(44,36,22,0.1);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-icon { width: 36px; height: 36px; border: 2px solid var(--color-brick); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; background: var(--color-paper); }
+.nav-logo-icon::after { content: ''; position: absolute; width: 18px; height: 2px; background: var(--color-brick); }
+.nav-logo-text { font-family: var(--font-serif-zh); font-size: 17px; font-weight: 700; letter-spacing: 2px; color: var(--color-paper); }
+.nav-logo-text[data-en] { font-family: var(--font-serif-en); letter-spacing: 1px; }
+.nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; list-style: none; }
+.nav-links li { position: relative; list-style: none; }
+.nav-links a { display: block; padding: 8px 12px; font-size: var(--fs-nav); font-weight: 500; letter-spacing: 1px; color: var(--color-paper); text-decoration: none; transition: all 0.3s; border-radius: 6px; }
+.nav-links a:hover { color: var(--color-brick); background: rgba(181,73,59,0.06); }
+.nav-links a.active { color: var(--color-brick); font-weight: 700; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+.nav-hamburger span { width: 24px; height: 2px; background: var(--color-ink); transition: all 0.3s; }
+.lang-toggle {
+  background: none; border: 1px solid rgba(255,255,255,0.5); border-radius: 20px;
+  padding: 6px 14px; color: #fff; cursor: pointer; font-family: var(--font-serif-zh); font-size: 14px;
+}
+.lang-toggle .active-lang { font-weight: 700; }
+.lang-toggle .divider { margin: 0 6px; opacity: 0.5; }
+.profile-btn {
+  width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.2);
+  border: 2px solid rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.3s; overflow: hidden;
+}
+.profile-btn:hover { background: rgba(255,255,255,0.3); }
+.profile-btn img { width: 100%; height: 100%; object-fit: cover; }
+.profile-btn svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 2; }
+
+/* 主内容 */
+.main-content { padding-top: 100px; padding-bottom: 60px; max-width: 1000px; margin: 0 auto; padding-left: 20px; padding-right: 20px; position: relative; left: -20px; }
+.page-title {
+  font-family: var(--font-serif-zh); font-size: 32px; font-weight: 700;
+  color: var(--color-ink); text-align: center; margin-bottom: 8px;
+}
+.page-subtitle {
+  font-family: var(--font-serif-en); font-size: 14px; font-style: italic;
+  color: var(--color-ink-faint); text-align: center; margin-bottom: 40px; letter-spacing: 1px;
+}
+
+/* 个人信息卡片 */
+.profile-card {
+  background: #fff; border-radius: 16px; padding: 32px;
+  box-shadow: 0 4px 20px rgba(44,36,22,0.08); margin-bottom: 32px;
+  display: flex; gap: 32px; align-items: flex-start;
+}
+.avatar-section { text-align: center; flex-shrink: 0; }
+.avatar-wrapper {
+  width: 120px; height: 120px; border-radius: 50%; overflow: hidden;
+  border: 4px solid var(--color-gold); margin: 0 auto 12px;
+  background: var(--color-paper-dark); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; position: relative;
+}
+.avatar-wrapper:hover .avatar-overlay { opacity: 1; }
+.avatar-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+.avatar-wrapper svg { width: 48px; height: 48px; stroke: var(--color-ink-faint); fill: none; stroke-width: 1.5; }
+.avatar-overlay {
+  position: absolute; inset: 0; background: rgba(0,0,0,0.5);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 12px; opacity: 0; transition: opacity 0.3s;
+}
+.avatar-hint { font-size: 12px; color: var(--color-ink-faint); }
+
+.info-section { flex: 1; }
+.info-title {
+  font-family: var(--font-serif-zh); font-size: 20px; font-weight: 700;
+  color: var(--color-ink); margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-paper-dark);
+}
+.info-row { display: flex; align-items: center; margin-bottom: 16px; gap: 12px; }
+.info-label { width: 80px; font-size: 14px; color: var(--color-ink-light); font-weight: 500; }
+.info-value {
+  flex: 1; padding: 8px 12px; border: 1px solid var(--color-paper-dark);
+  border-radius: 8px; font-size: 14px; color: var(--color-ink); background: var(--color-paper);
+}
+.info-value[contenteditable="true"]:focus { outline: none; border-color: var(--color-brick); background: #fff; }
+.info-select {
+  flex: 1; padding: 8px 12px; border: 1px solid var(--color-paper-dark);
+  border-radius: 8px; font-size: 14px; color: var(--color-ink); background: var(--color-paper);
+  font-family: inherit; cursor: pointer;
+}
+.save-btn {
+  margin-top: 8px; padding: 10px 24px; background: var(--color-brick); color: #fff;
+  border: none; border-radius: 8px; font-size: 14px; cursor: pointer;
+  font-family: inherit; transition: all 0.3s;
+}
+.save-btn:hover { background: var(--color-brick-dark); }
+
+/* 收藏区域 */
+.section-card {
+  background: #fff; border-radius: 16px; padding: 32px;
+  box-shadow: 0 4px 20px rgba(44,36,22,0.08); margin-bottom: 32px;
+}
+.section-title {
+  font-family: var(--font-serif-zh); font-size: 20px; font-weight: 700;
+  color: var(--color-ink); margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-paper-dark); display: flex; align-items: center; gap: 8px;
+}
+.section-title-icon { font-size: 20px; }
+.favorites-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px;
+}
+.favorite-item {
+  background: var(--color-paper); border-radius: 12px; padding: 16px;
+  border: 1px solid var(--color-paper-dark); cursor: pointer; transition: all 0.3s;
+}
+.favorite-item:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(44,36,22,0.1); }
+.favorite-type {
+  display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px;
+  margin-bottom: 8px; font-weight: 500;
+}
+.favorite-type.heritage { background: rgba(74,124,89,0.15); color: #4A7C59; }
+.favorite-type.intangible { background: rgba(201,169,97,0.2); color: #8B7332; }
+.favorite-type.industry { background: rgba(61,79,95,0.15); color: #3D4F5F; }
+.favorite-name { font-family: var(--font-serif-zh); font-size: 15px; font-weight: 600; color: var(--color-ink); margin-bottom: 4px; }
+.favorite-remove {
+  margin-top: 8px; font-size: 12px; color: var(--color-brick); background: none;
+  border: none; cursor: pointer; padding: 0;
+}
+.favorite-remove:hover { text-decoration: underline; }
+.empty-state { text-align: center; padding: 40px; color: var(--color-ink-faint); font-size: 14px; }
+
+/* 留言板 */
+.message-input-area { margin-bottom: 24px; }
+.message-textarea {
+  width: 100%; min-height: 80px; padding: 12px; border: 1px solid var(--color-paper-dark);
+  border-radius: 8px; font-size: 14px; font-family: inherit; resize: vertical;
+  background: var(--color-paper); color: var(--color-ink);
+}
+.message-textarea:focus { outline: none; border-color: var(--color-brick); background: #fff; }
+.message-submit {
+  margin-top: 12px; padding: 10px 24px; background: var(--color-brick); color: #fff;
+  border: none; border-radius: 8px; font-size: 14px; cursor: pointer;
+  font-family: inherit; transition: all 0.3s;
+}
+.message-submit:hover { background: var(--color-brick-dark); }
+.message-list { display: flex; flex-direction: column; gap: 16px; }
+.message-item {
+  padding: 16px; background: var(--color-paper); border-radius: 12px;
+  border-left: 3px solid var(--color-brick);
+}
+.message-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.message-author { font-weight: 600; font-size: 14px; color: var(--color-ink); }
+.message-time { font-size: 12px; color: var(--color-ink-faint); }
+.message-content { font-size: 14px; color: var(--color-ink-light); line-height: 1.6; }
+.message-delete {
+  margin-top: 8px; font-size: 12px; color: var(--color-ink-faint); background: none;
+  border: none; cursor: pointer; padding: 0;
+}
+.message-delete:hover { color: var(--color-brick); }
+
+/* 页脚 */
+.footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); }
+.footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 0px; }
+body.lang-en .footer-title { font-family: var(--font-serif-en); }
+.footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: 0px; }
+.footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0; }
+@media (max-width: 768px) {
+  .footer { padding: 32px 20px; }
+  .profile-card { flex-direction: column; align-items: center; }
+  .nav-links { display: none; }
+  .nav { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="nav" id="nav" style="background-color: #B5493B; height: 50px;"> 
+            <a href="index.html" class="nav-logo"> <span class="nav-logo-text" data-zh style="color: #fdfcfc; font-size: 27px; margin-left: 0;">活态泉州</span> <span class="nav-logo-text" data-en>Living Quanzhou</span> </a> 
+            <ul class="nav-links"> 
+                <li>
+                    <a href="index.html" data-zh style="color: #ffffff; font-size: 20px; font-family: 'Noto Serif SC'; padding-right: 40px; font-weight: bold;">首页</a>
+                    <a href="index.html" data-en>Home</a>
+                </li>                 
+                <li>
+                    <a href="海上丝绸之路.html" data-zh style="font-size: 20px; width: 180px; font-family: 'Noto Serif SC'; color: #ffffff;">海上丝绸之路</a>
+                    <a href="海上丝绸之路.html" data-en>Maritime Silk Road</a>
+                </li>                 
+                <li>
+                    <a href="世界非遗之城.html" data-zh style="font-size: 20px; color: #ffffff; width: 180px; font-family: 'Noto Serif SC';">世界非遗之城</a>
+                    <a href="世界非遗之城.html" data-en>World Heritage</a>
+                </li>                 
+                <li>
+                    <a href="超级工业之城.html" data-zh style="font-size: 20px; color: #fdfcfc; width: 180px; font-family: 'Noto Serif SC';">超级工业之城</a>
+                    <a href="超级工业之城.html" data-en>Industrial Powerhouse</a>
+                </li>                 
+                <li>
+                    <a href="闽台交流之城.html" data-zh style="font-size: 20px; color: #faf8f8; font-family: 'Noto Serif SC';">闽台交流之城</a>
+                    <a href="闽台交流之城.html" data-en>Cross-Strait</a>
+                </li>                 
+            </ul>             
+            <button class="lang-toggle" id="langToggle" aria-label="切换语言" style="font-family: 'Noto Serif SC'; font-size: 20px;"> 
+                <span class="active-lang" id="langZh" style="color: #fdf6f6;">中</span> 
+                <span class="divider">/</span> 
+                <span id="langEn" style="color: #fdf8f8;">EN</span> 
+            </button>
+            <a href="个人中心.html" class="profile-btn" id="profileBtn" title="个人中心" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;overflow:hidden;text-decoration:none;margin-left:12px;">
+              <img id="navAvatar" style="display:none;width:100%;height:100%;object-fit:cover;">
+              <svg id="navAvatarIcon" viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2"/></svg>
+            </a>
+             
+            <button class="nav-hamburger" id="hamburger" aria-label="菜单" style="color: #faf8f8;"> 
+                <span></span>
+                <span></span>
+                <span></span> 
+            </button>             
+        </nav>
+
+<!-- 主内容 -->
+<div class="main-content">
+  <!-- 右侧装饰图片 -->
+  <img src="奔跑动作.png" alt="装饰图" style="position: absolute; right: -140px; top: 80px; height: 300px; z-index: 1;">
+  <h1 class="page-title" data-zh>个人中心</h1>
+  <h1 class="page-title" data-en>My Profile</h1>
+  <p class="page-subtitle" data-zh>管理你的个人信息、收藏与留言</p>
+  <p class="page-subtitle" data-en>Manage your profile, favorites and messages</p>
+
+  <!-- 个人信息卡片 -->
+  <div class="profile-card">
+    <div class="avatar-section">
+      <div class="avatar-wrapper" id="avatarWrapper" onclick="document.getElementById('avatarInput').click()">
+        <img id="avatarImg" style="display:none;">
+        <svg id="avatarIcon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2"/></svg>
+        <div class="avatar-overlay" data-zh>点击更换头像</div>
+        <div class="avatar-overlay" data-en>Click to change</div>
+      </div>
+      <input type="file" id="avatarInput" accept="image/*" style="display:none;" onchange="handleAvatarChange(event)">
+      <p class="avatar-hint" data-zh>点击更换头像</p>
+      <p class="avatar-hint" data-en>Click to change avatar</p>
+    </div>
+    <div class="info-section">
+      <h2 class="info-title" data-zh>个人信息</h2>
+      <h2 class="info-title" data-en>Personal Info</h2>
+      <div class="info-row">
+        <span class="info-label" data-zh>昵称</span>
+        <span class="info-label" data-en>Nickname</span>
+        <div class="info-value" id="nicknameValue" contenteditable="true" data-placeholder="请输入昵称" data-en-placeholder="Enter nickname">泉州爱好者</div>
+      </div>
+      <div class="info-row">
+        <span class="info-label" data-zh>性别</span>
+        <span class="info-label" data-en>Gender</span>
+        <select class="info-select" id="genderSelect">
+          <option value="male" data-zh>男</option>
+          <option value="male" data-en>Male</option>
+          <option value="female" data-zh>女</option>
+          <option value="female" data-en>Female</option>
+          <option value="other" data-zh>保密</option>
+          <option value="other" data-en>Secret</option>
+        </select>
+      </div>
+      <div class="info-row">
+        <span class="info-label" data-zh>个性签名</span>
+        <span class="info-label" data-en>Signature</span>
+        <div class="info-value" id="signatureValue" contenteditable="true" data-placeholder="写点什么吧..." data-en-placeholder="Write something...">热爱泉州文化</div>
+      </div>
+      <button class="save-btn" onclick="saveProfile()" data-zh>保存信息</button>
+      <button class="save-btn" onclick="saveProfile()" data-en>Save</button>
+    </div>
+  </div>
+
+  <!-- 我的收藏 -->
+  <div class="section-card">
+    <h2 class="section-title">
+      <span class="section-title-icon">⭐</span>
+      <span data-zh>我的收藏</span>
+      <span data-en>My Favorites</span>
+    </h2>
+    <div class="favorites-grid" id="favoritesGrid">
+      <!-- 收藏内容动态生成 -->
+    </div>
+    <div class="empty-state" id="favoritesEmpty" data-zh>还没有收藏任何内容，去探索页面点击收藏吧~</div>
+    <div class="empty-state" id="favoritesEmptyEn" data-en>No favorites yet. Explore and collect!</div>
+  </div>
+
+  <!-- 留言板 -->
+  <div class="section-card">
+    <h2 class="section-title">
+      <span class="section-title-icon">💬</span>
+      <span data-zh>留言板</span>
+      <span data-en>Message Board</span>
+    </h2>
+    <div class="message-input-area">
+      <textarea class="message-textarea" id="messageInput" placeholder="说点什么吧..." data-zh-placeholder="说点什么吧..." data-en-placeholder="Say something..."></textarea>
+      <button class="message-submit" onclick="submitMessage()" data-zh>发表留言</button>
+      <button class="message-submit" onclick="submitMessage()" data-en>Submit</button>
+    </div>
+    <div class="message-list" id="messageList">
+      <!-- 留言动态生成 -->
+    </div>
+  </div>
+</div>
+
+<!-- 页脚 -->
+<footer class="footer" style="padding-top: 10px; padding-bottom: 10px; font-size: 16px; background: #EDE5D6; text-align: center; border-top: 1px solid rgba(44,36,22,0.08);">
+  <div class="footer-title" data-zh="" style="text-align: center; font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; font-size: 16px; font-weight: 700; color: #2C2416;">《活态泉州——一座中国城市的四重叙事》</div>
+  <div class="footer-title" data-en style="text-align: center;">Living Quanzhou: A Four-Fold Narrative of a Chinese City</div>
+  <div class="footer-sub" data-zh="" style="font-size: 13px; text-align: center; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #8A7E6C; letter-spacing: 1px;">第十四届全国大学生数字媒体科技作品及创意竞赛"科技+创意，讲好中国故事"赛道</div>
+  <div class="footer-sub" data-en style="text-align: center;">14th National College Student Digital Media Competition · "Technology + Creativity, Telling China's Story"</div>
+  <div class="footer-sources" style="margin-top: 0px; font-size: 13px; text-align: center; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #8A7E6C; line-height: 1.8; max-width: 600px; margin: 0 auto;" data-zh>
+    数据来源：泉州市统计局 · 联合国教科文组织 · 公开学术文献
+  </div>
+  <div class="footer-sources" style="margin-top:16px;" data-en>
+    Data Sources: Quanzhou Municipal Bureau of Statistics · UNESCO · Public Academic Literature
+  </div>
+</footer>
+
+<script>
+// ===== 登录检查：未登录跳转到登录页 =====
+const currentUser = localStorage.getItem('quanzhou_login');
+if (!currentUser) {
+  window.location.href = 'login.html';
+}
+
+// 按账号隔离存储的key
+const PROFILE_KEY = 'quanzhou_profile_' + currentUser;
+const INTERACTIONS_KEY = 'quanzhou_interactions_' + currentUser;
+const FAVORITES_INFO_KEY = 'quanzhou_favorites_info_' + currentUser;
+const MESSAGES_KEY = 'quanzhou_messages_' + currentUser;
+
+// 双语切换
+const langToggle = document.getElementById('langToggle');
+const langZh = document.getElementById('langZh');
+const langEn = document.getElementById('langEn');
+langToggle.addEventListener('click', () => {
+  document.body.classList.toggle('lang-en');
+  const isEn = document.body.classList.contains('lang-en');
+  langZh.classList.toggle('active-lang', !isEn);
+  langEn.classList.toggle('active-lang', isEn);
+  updatePlaceholders();
+});
+
+// 更新placeholder语言
+function updatePlaceholders() {
+  const isEn = document.body.classList.contains('lang-en');
+  const textarea = document.getElementById('messageInput');
+  if (textarea) {
+    textarea.placeholder = isEn ? textarea.getAttribute('data-en-placeholder') : textarea.getAttribute('data-zh-placeholder');
+  }
+}
+
+// 个人中心按钮点击（当前页面，不跳转）
+document.getElementById('profileBtn').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ===== 个人信息存储 =====
+function loadProfile() {
+  const profile = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
+  // 新账号没有保存信息时，清空默认值，显示placeholder
+  if (profile.nickname) {
+    document.getElementById('nicknameValue').textContent = profile.nickname;
+  } else {
+    document.getElementById('nicknameValue').textContent = '';
+  }
+  if (profile.gender) {
+    document.getElementById('genderSelect').value = profile.gender;
+  }
+  if (profile.signature) {
+    document.getElementById('signatureValue').textContent = profile.signature;
+  } else {
+    document.getElementById('signatureValue').textContent = '';
+  }
+  if (profile.avatar) {
+    document.getElementById('avatarImg').src = profile.avatar;
+    document.getElementById('avatarImg').style.display = 'block';
+    document.getElementById('avatarIcon').style.display = 'none';
+    document.getElementById('navAvatar').src = profile.avatar;
+    document.getElementById('navAvatar').style.display = 'block';
+    document.getElementById('navAvatarIcon').style.display = 'none';
+  }
+}
+
+function saveProfile() {
+  const profile = {
+    nickname: document.getElementById('nicknameValue').textContent,
+    gender: document.getElementById('genderSelect').value,
+    signature: document.getElementById('signatureValue').textContent,
+    avatar: document.getElementById('avatarImg').src || ''
+  };
+  localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+  alert('保存成功！');
+}
+
+// 头像上传
+function handleAvatarChange(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('avatarImg').src = e.target.result;
+    document.getElementById('avatarImg').style.display = 'block';
+    document.getElementById('avatarIcon').style.display = 'none';
+    document.getElementById('navAvatar').src = e.target.result;
+    document.getElementById('navAvatar').style.display = 'block';
+    document.getElementById('navAvatarIcon').style.display = 'none';
+    // 自动保存
+    const profile = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
+    profile.avatar = e.target.result;
+    localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+  };
+  reader.readAsDataURL(file);
+}
+
+// ===== 收藏功能 =====
+function getInteractionData() {
+  return JSON.parse(localStorage.getItem(INTERACTIONS_KEY) || '{"favorites":[],"likes":{},"dislikes":{},"likeCount":{},"dislikeCount":{}}');
+}
+
+function getFavoritesInfo() {
+  // 收藏内容的元信息
+  return JSON.parse(localStorage.getItem(FAVORITES_INFO_KEY) || '{}');
+}
+
+function saveFavoritesInfo(info) {
+  localStorage.setItem(FAVORITES_INFO_KEY, JSON.stringify(info));
+}
+
+function renderFavorites() {
+  const data = getInteractionData();
+  const info = getFavoritesInfo();
+  const grid = document.getElementById('favoritesGrid');
+  const empty = document.getElementById('favoritesEmpty');
+  const emptyEn = document.getElementById('favoritesEmptyEn');
+  
+  grid.innerHTML = '';
+  
+  if (data.favorites.length === 0) {
+    empty.style.display = 'block';
+    emptyEn.style.display = 'block';
+    return;
+  }
+  
+  empty.style.display = 'none';
+  emptyEn.style.display = 'none';
+  
+  data.favorites.forEach(function(favId) {
+    const parts = favId.split('_');
+    const type = parts[0];
+    const key = parts.slice(1).join('_');
+    const itemInfo = info[favId] || {};
+    
+    const item = document.createElement('div');
+    item.className = 'favorite-item';
+    
+    let typeLabel = '';
+    let typeClass = '';
+    if (type === 'heritage') { typeLabel = '世遗点'; typeClass = 'heritage'; }
+    else if (type === 'intangible') { typeLabel = '非遗'; typeClass = 'intangible'; }
+    else if (type === 'industry') { typeLabel = '产业'; typeClass = 'industry'; }
+    
+    item.innerHTML = 
+      '<span class="favorite-type ' + typeClass + '">' + typeLabel + '</span>' +
+      '<div class="favorite-name">' + (itemInfo.name || key) + '</div>' +
+      '<button class="favorite-remove" onclick="removeFavorite(\'' + favId + '\')" data-zh>取消收藏</button>' +
+      '<button class="favorite-remove" onclick="removeFavorite(\'' + favId + '\')" data-en>Remove</button>';
+    
+    grid.appendChild(item);
+  });
+}
+
+function removeFavorite(favId) {
+  const data = getInteractionData();
+  const idx = data.favorites.indexOf(favId);
+  if (idx !== -1) {
+    data.favorites.splice(idx, 1);
+    localStorage.setItem(INTERACTIONS_KEY, JSON.stringify(data));
+  }
+  renderFavorites();
+}
+
+// ===== 留言板 =====
+function getMessages() {
+  return JSON.parse(localStorage.getItem(MESSAGES_KEY) || '[]');
+}
+
+function saveMessages(messages) {
+  localStorage.setItem(MESSAGES_KEY, JSON.stringify(messages));
+}
+
+function submitMessage() {
+  const input = document.getElementById('messageInput');
+  const text = input.value.trim();
+  if (!text) { alert('请输入留言内容'); return; }
+  
+  const profile = JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}');
+  const messages = getMessages();
+  messages.unshift({
+    author: profile.nickname || '匿名用户',
+    content: text,
+    time: new Date().toLocaleString('zh-CN')
+  });
+  saveMessages(messages);
+  input.value = '';
+  renderMessages();
+}
+
+function deleteMessage(index) {
+  const messages = getMessages();
+  messages.splice(index, 1);
+  saveMessages(messages);
+  renderMessages();
+}
+
+function renderMessages() {
+  const messages = getMessages();
+  const list = document.getElementById('messageList');
+  list.innerHTML = '';
+  
+  if (messages.length === 0) {
+    list.innerHTML = '<div class="empty-state" data-zh>还没有留言，来发表第一条吧~</div><div class="empty-state" data-en>No messages yet. Be the first!</div>';
+    return;
+  }
+  
+  messages.forEach(function(msg, index) {
+    const item = document.createElement('div');
+    item.className = 'message-item';
+    item.innerHTML = 
+      '<div class="message-header">' +
+        '<span class="message-author">' + msg.author + '</span>' +
+        '<span class="message-time">' + msg.time + '</span>' +
+      '</div>' +
+      '<div class="message-content">' + msg.content + '</div>' +
+      '<button class="message-delete" onclick="deleteMessage(' + index + ')" data-zh>删除</button>' +
+      '<button class="message-delete" onclick="deleteMessage(' + index + ')" data-en>Delete</button>';
+    list.appendChild(item);
+  });
+}
+
+// 页面加载
+loadProfile();
+renderFavorites();
+renderMessages();
+</script>
+
+</body>
+</html>
