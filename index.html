@@ -1,414 +1,137 @@
-<!DOCTYPE html> 
-<html lang="zh-CN"> 
-    <head> 
-        <meta charset="UTF-8"> 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>活态泉州 · 一座中国城市的四重叙事 | Living Quanzhou</title>         
-        <!-- 字体引入（如需更换字体，修改下面 family 参数即可） -->         
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap"> 
-        <style>/* ============================================================
-   【全局可调参数区】
-   所有字体大小、颜色、间距统一在这里管理，修改此处即可全站生效
-   ============================================================ */:root { /* ---- 颜色体系 ---- */ --color-brick: #B5493B;  /* 主色：闽南红砖赭红 */ --color-brick-dark: #8E372C;  /* 主色深色 */ --color-brick-light: #D4756A;  /* 主色浅色 */ --color-ocean: #1B4965;  /* 辅色：海洋深蓝 */ --color-ocean-light: #2D6A8F;  /* 辅色浅色 */ --color-paper: #F5F0E8;  /* 底色：古纸米白 */ --color-paper-dark: #EDE5D6;  /* 底色深色（卡片背景/分区） */ --color-gold: #C9A961;  /* 强调色：描金 */ --color-gold-light: #E0C98F;  /* 强调色浅色 */ --color-ink: #2C2416;  /* 文字：深墨色 */ --color-ink-light: #5C5040;  /* 文字：次要色 */ --color-ink-faint: #8A7E6C;  /* 文字：辅助色 */ /* ---- 字体体系 ---- */ --font-serif-zh: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; --font-brush-zh: 'Ma Shan Zheng', 'Noto Serif SC', cursive; --font-sans-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif-en: 'Playfair Display', Georgia, serif; --font-sans-en: 'Inter', 'Helvetica Neue', Arial, sans-serif;  /* ---- 字号体系（可按需调节） ---- */ --fs-hero-title: clamp(48px, 8vw, 96px); --fs-hero-sub: clamp(20px, 3vw, 32px); --fs-hero-desc: 15px; --fs-section-title: clamp(32px, 5vw, 48px); --fs-section-desc: 15px; --fs-card-title: 22px; --fs-card-desc: 13.5px; --fs-stat-number: clamp(32px, 4vw, 48px); --fs-nav: 14px; --fs-body: 15px; --fs-small: 12px;  /* ---- 间距体系 ---- */ --padding-section: 100px 48px; --padding-hero: 120px 24px 80px; --gap-cards: 24px; --nav-height: 72px; } /* ============================================================
-   【基础重置】
-   ============================================================ */*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; } body { font-family: var(--font-sans-zh), var(--font-sans-en); background: var(--color-paper); color: var(--color-ink); font-size: var(--fs-body); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; } body.en { font-family: var(--font-sans-en), var(--font-sans-zh); } a { text-decoration: none; color: inherit; } ul { list-style: none; } .brick-texture { background-color: var(--color-paper); background-image: repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(181,73,59,0.03) 38px, rgba(181,73,59,0.03) 40px),
-    repeating-linear-gradient(90deg, transparent, transparent 78px, rgba(181,73,59,0.02) 78px, rgba(181,73,59,0.02) 80px); } /* ============================================================
-   【导航栏】
-   结构：首页 | 海上丝绸之路 | 世界非遗之城 | 超级工业之城 | 闽台交流之城
-   子页面做好后，把 href="#" 替换为对应页面链接即可
-   ============================================================ */.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: var(--nav-height); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; background: transparent; } .nav.scrolled { background: rgba(245,240,232,0.95); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(44,36,22,0.08); } .nav-logo { display: flex; align-items: center; gap: 12px; flex-shrink: 0; } .nav-logo-icon { width: 36px; height: 36px; border: 2px solid var(--color-brick); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; } .nav-logo-icon::after { content: ''; position: absolute; width: 18px; height: 2px; background: var(--color-brick); } .nav-logo-text { font-family: var(--font-serif-zh); font-size: 17px; font-weight: 700; letter-spacing: 2px; color: var(--color-ink); } body.en .nav-logo-text { font-family: var(--font-serif-en); letter-spacing: 1px; font-size: 15px; } .nav-links { display: flex; align-items: center; gap: 4px; flex: 1; justify-content: center; } .nav-links li { position: relative; } .nav-links a { display: block; padding: 8px 12px; font-size: var(--fs-nav); font-weight: 500; letter-spacing: 1px; color: var(--color-ink-light); transition: all 0.3s; white-space: nowrap; border-radius: 4px; } .nav-links a:hover { color: var(--color-brick); background: rgba(181,73,59,0.06); } .nav-links a.active { color: var(--color-brick); font-weight: 100; } .lang-toggle { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid var(--color-ink-faint); border-radius: 20px; cursor: pointer; background: transparent; font-size: 13px; font-weight: 500; color: var(--color-ink-light); transition: all 0.3s; flex-shrink: 0; } .lang-toggle:hover { border-color: var(--color-brick); color: var(--color-brick); } .lang-toggle .active-lang { color: var(--color-brick); font-weight: 700; } .lang-toggle .divider { color: var(--color-ink-faint); } .nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; } .nav-hamburger span { width: 24px; height: 2px; background: var(--color-ink); transition: all 0.3s; } /* ============================================================
-   【Hero 首屏】
-   ★ 底图添加位置：见下方 .hero 的 background 注释区
-   ============================================================ */.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: var(--padding-hero); position: relative; overflow: hidden;  /* ===== 【底图设置区】===== */ background-image: url('首页3.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;  /* ================================ */ } /* 底图半透明遮罩：保证文字清晰可读，觉得太亮/太暗可以调 0.75 这个数值 */.hero::before { content: ''; position: absolute; inset: 0; background: rgba(245,240,232,0.75); z-index: 0; } .hero > * { position: relative; z-index: 1; } .hero-deco-line { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--color-gold) 20%, var(--color-gold) 80%, transparent); opacity: 0.3; transform: translateY(-50%); pointer-events: none; } .hero-eyebrow { font-size: var(--fs-small); letter-spacing: 6px; color: var(--color-brick); text-transform: uppercase; margin-bottom: 10px; font-weight: 500; opacity: 0; animation: fadeUp 1s 0.3s forwards; } body.en .hero-eyebrow { letter-spacing: 4px; } .hero-title { font-family: var(--font-serif-zh); font-size: var(--fs-hero-title); font-weight: 900; line-height: 1.15; color: var(--color-ink); margin-bottom: 16px; opacity: 0; animation: fadeUp 1s 0.5s forwards; } .hero-title [data-zh] { font-family: var(--font-brush-zh); font-weight: 400; letter-spacing: 4px; } body.en .hero-title { font-family: var(--font-serif-en); font-style: italic; } .hero-title-accent { color: var(--color-brick); position: relative; display: inline-block; } .hero-title-accent::after { content: ''; position: absolute; bottom: 4px; left: 0; right: 0; height: 8px; background: rgba(201,169,97,0.3); z-index: -1; } .hero-subtitle { font-family: var(--font-serif-zh); font-size: var(--fs-hero-sub); font-weight: 600; color: var(--color-ink-light); margin-bottom: 10px; letter-spacing: 4px; opacity: 0; animation: fadeUp 1s 0.7s forwards; } body.en .hero-subtitle { font-family: var(--font-serif-en); font-style: italic; letter-spacing: 1px; } .hero-desc { max-width: 680px; font-size: var(--fs-hero-desc); line-height: 2; color: var(--color-ink-light); margin-bottom: 10px; opacity: 0; animation: fadeUp 1s 0.9s forwards; } .hero-cta { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 1s 1.1s forwards; } .btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 36px; background: var(--color-brick); color: #fff; font-size: 14px; font-weight: 600; letter-spacing: 2px; border: none; cursor: pointer; transition: all 0.3s; } .btn-primary:hover { background: var(--color-brick-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(181,73,59,0.3); } .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 14px 36px; background: transparent; color: var(--color-ink); font-size: 14px; font-weight: 600; letter-spacing: 2px; border: 1.5px solid var(--color-ink); cursor: pointer; transition: all 0.3s; } .btn-outline:hover { border-color: var(--color-brick); color: var(--color-brick); } .hero-scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--color-ink-faint); font-size: 11px; letter-spacing: 3px; opacity: 0; animation: fadeUp 1s 1.5s forwards; } /* ===== 【左侧竖版人物图片】浮于最顶层，标题左边 ===== */.hero-side-image { position: absolute; left: 60px; top: calc(40% - 30px); transform: translateY(-50%); height: 310px; width: auto; z-index: 5; object-fit: contain; pointer-events: none; opacity: 0; animation: fadeInOnly 1s 1.0s forwards; } /* ===== 【右侧竖版人物图片】浮于最顶层，与左图对称 ===== */.hero-side-image-right { position: absolute; right: 50px; top: calc(75% - 30px); transform: translateY(-50%); height: 310px; width: auto; z-index: 5; object-fit: contain; pointer-events: none; opacity: 0; animation: fadeInOnly 1s 1.2s forwards; } .hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--color-ink-faint), transparent); animation: scrollPulse 2s infinite; } @keyframes fadeUp { from {  opacity: 0;  transform: translateY(30px); }  to {  opacity: 1;  transform: translateY(0); } } @keyframes fadeInOnly { from {  opacity: 0; }  to {  opacity: 1; } } @keyframes scrollPulse { 0%, 100% {  opacity: 0.3;  transform: scaleY(0.6); }  50% {  opacity: 1;  transform: scaleY(1); } } /* ============================================================
-   【通用章节样式】
-   ============================================================ */.section { padding: var(--padding-section); position: relative; } .section-header { text-align: center; margin-bottom: 64px; } .section-eyebrow { font-size: var(--fs-small); letter-spacing: 5px; color: var(--color-brick); text-transform: uppercase; margin-bottom: 0px; font-weight: 600; } body.en .section-eyebrow { letter-spacing: 3px; } .section-title { font-family: var(--font-serif-zh); font-size: var(--fs-section-title); font-weight: 700; color: var(--color-ink); margin-bottom: 16px; } body.en .section-title { font-family: var(--font-serif-en); } .section-desc { max-width: 600px; margin: 0 auto; font-size: var(--fs-section-desc); color: var(--color-ink-light); line-height: 1.9; } /* ============================================================
-   【四重身份卡片区】
-   ★ 每张卡片顶部 .card-image 为图片预留区
-   ============================================================ */.identities { background: var(--color-paper-dark); position: relative; } .identities::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--color-brick), var(--color-gold), var(--color-ocean), var(--color-brick)); } .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap-cards); max-width: 1280px; margin: 0 auto; } .identity-card { background: var(--color-paper); position: relative; cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(44,36,22,0.08); overflow: hidden; display: flex; flex-direction: column; } .identity-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--card-color, var(--color-brick)); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; z-index: 2; } /* ===== 【卡片图片区】高度160px ===== *//* 注意：这里不再统一设置背景图，改由每张卡片单独内联控制 */.card-image { height: 160px; width: 100%; background: linear-gradient(135deg, var(--card-color, var(--color-brick))22, var(--card-color, var(--color-brick))08); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; flex-shrink: 0; background-size: cover; background-position: center; background-repeat: no-repeat; } .card-image-icon { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--card-color, var(--color-brick)); border-radius: 50%; background: rgba(245,240,232,0.9); transition: all 0.4s; } .card-image-icon svg { width: 28px; height: 28px; stroke: var(--card-color, var(--color-brick)); fill: none; stroke-width: 1.5; transition: stroke 0.4s; } .card-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; } .card-number { font-family: var(--font-serif-en); font-size: 12px; font-weight: 600; color: var(--color-ink-faint); letter-spacing: 2px; margin-bottom: 0px; } .card-title { font-family: var(--font-serif-zh); font-size: var(--fs-card-title); font-weight: 700; color: var(--color-ink); margin-bottom: 0px; transition: color 0.3s; } body.en .card-title { font-family: var(--font-serif-en); } .card-desc { font-size: var(--fs-card-desc); line-height: 1.8; color: var(--color-ink-light); margin-bottom: 20px; flex: 1; } .card-stat-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; } .card-stat { font-family: var(--font-serif-en); font-size: 28px; font-weight: 700; color: var(--card-color, var(--color-brick)); line-height: 1.2; } .card-stat-suffix { font-size: 13px; font-weight: 400; color: var(--color-ink-light); } .card-stat-label { font-size: 11px; color: var(--color-ink-faint); letter-spacing: 1px; } /* ============================================================
-   【数据总览条】
-   ============================================================ */.stats { background: var(--color-ink); color: var(--color-paper); padding: 80px 48px; position: relative; overflow: hidden; } .stats::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 10% 50%, rgba(181,73,59,0.15) 0%, transparent 40%),
-    radial-gradient(circle at 90% 50%, rgba(27,73,101,0.2) 0%, transparent 40%); } .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 32px; max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; } .stat-item { text-align: center; padding: 0 12px; border-right: 1px solid rgba(245,240,232,0.1); } .stat-item:last-child { border-right: none; } .stat-number { font-family: var(--font-serif-en); font-size: var(--fs-stat-number); font-weight: 700; color: var(--color-gold-light); line-height: 1.1; margin-bottom: 8px; } .stat-number .suffix { font-size: 0.5em; font-weight: 400; color: var(--color-paper); margin-left: 2px; } .stat-label { font-size: 12.5px; color: rgba(245,240,232,0.6); letter-spacing: 1px; line-height: 1.6; } /* ============================================================
-   【叙事升华区】
-   ★ 背景图位置：见 .closing 的 background 注释
-   ============================================================ */.closing { padding: 120px 48px; text-align: center; background: var(--color-paper); position: relative;  /* ★ 加背景图：取消下面注释
-  background-image: url('你的背景图URL');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; */ } .closing-quote { font-family: var(--font-serif-zh); font-size: clamp(18px, 2.5vw, 24px); font-weight: 400; line-height: 2.2; color: var(--color-ink); max-width: 720px; margin: 0 auto 48px; position: relative; } body.en .closing-quote { font-family: var(--font-serif-en); font-style: italic; line-height: 1.9; } .closing-quote::before { content: ''; display: block; width: 48px; height: 2px; background: var(--color-brick); margin: 0 auto 40px; } .closing-highlight { color: var(--color-brick); font-weight: 700; } .closing-final { font-family: var(--font-serif-zh); font-size: clamp(24px, 4vw, 36px); font-weight: 700; color: var(--color-ink); letter-spacing: 4px; } body.en .closing-final { font-family: var(--font-serif-en); letter-spacing: 1px; } /* ============================================================
-   【页脚】
-   ============================================================ */.footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); } .footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 8px; } body.en .footer-title { font-family: var(--font-serif-en); } .footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: 16px; } .footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; } /* ============================================================
-   【响应式适配】
-   ============================================================ */@media (max-width: 1200px) { .nav-links a {  padding: 8px 8px;  font-size: 13px; } } @media (max-width: 1024px) { .cards-grid {  grid-template-columns: repeat(2, 1fr); }  .stats-grid {  grid-template-columns: repeat(3, 1fr);  gap: 40px 24px; }  .stat-item:nth-child(3) {  border-right: none; }  .stat-item:nth-child(4), .stat-item:nth-child(5) {  border-right: 1px solid rgba(245,240,232,0.1); }  .nav-links {  display: none; }  .nav-hamburger {  display: flex; } } @media (max-width: 768px) { :root {  --padding-section: 64px 20px;  --padding-hero: 100px 20px 60px;  --gap-cards: 16px; }  .nav {  padding: 0 20px; }  .cards-grid {  grid-template-columns: 1fr; }  .card-image {  height: 140px; }  .card-body {  padding: 24px 20px 28px; }  .stats {  padding: 56px 20px; }  .stats-grid {  grid-template-columns: repeat(2, 1fr);  gap: 32px 16px; }  .stat-item {  border-right: none !important; }  .closing {  padding: 80px 20px; }  .footer {  padding: 32px 20px; } } /* ============================================================
-   【双语切换控制】
-   ============================================================ */[data-zh], [data-en] { transition: opacity 0.3s; } body.en [data-zh] { display: none; } body:not(.en) [data-en] { display: none; } .identity-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(44,36,22,0.12); } .identity-card:hover::before { transform: scaleX(1); } .identity-card:hover .card-image-icon { background: var(--card-color, var(--color-brick)); } .identity-card:hover .card-image-icon svg { stroke: #fff; } .identity-card:hover .card-title { color: var(--card-color, var(--color-brick)); } /* ===== 标准页脚样式 ===== */.footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); } .footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 0px; } .footer-title[data-en] { font-family: var(--font-serif-en); } .footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: 0px; } .footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0; } @media (max-width: 768px) { .footer {  padding: 32px 20px; } }</style>         
-    </head>     
-    <body class="brick-texture"> 
-        <audio id="bgMusic" loop preload="auto">
-            <source src="福建泉州民间乐团 - 百鸟归巢.mp3" type="audio/mpeg">
-        </audio>
-        <!-- ============================================================
-     【导航栏】五页面入口
-     子页面完成后，将 href="#" 替换为对应页面路径
-     ============================================================ -->         
-        <nav class="nav" id="nav" style="background-color: #B5493B; height: 50px;"> 
-            <a href="首页.html" class="nav-logo"> <span class="nav-logo-text" data-zh style="color: #fdfcfc; font-size: 27px; margin-left: 0;">活态泉州</span> <span class="nav-logo-text" data-en>Living Quanzhou</span> </a> 
-            <ul class="nav-links"> 
-                <li>
-                    <a href="首页.html" class="active" data-zh style="color: #ffffff; font-size: 20px; font-family: 'Noto Serif SC'; padding-right: 40px; font-weight: bold;">首页</a>
-                    <a href="首页.html" class="active" data-en>Home</a>
-                </li>                 
-                <li>
-                    <a href="海上丝绸之路.html" data-zh style="font-size: 20px; width: 180px; font-family: 'Noto Serif SC'; color: #ffffff;">海上丝绸之路</a>
-                    <a href="#" data-en>Maritime Silk Road</a>
-                </li>                 
-                <li>
-                    <a href="世界非遗之城.html" data-zh style="font-size: 20px; color: #ffffff; width: 180px; font-family: 'Noto Serif SC';">世界非遗之城</a>
-                    <a href="#" data-en>World Heritage</a>
-                </li>                 
-                <li>
-                    <a href="超级工业之城.html" data-zh style="font-size: 20px; color: #fdfcfc; width: 180px; font-family: 'Noto Serif SC';">超级工业之城</a>
-                    <a href="#" data-en>Industrial Powerhouse</a>
-                </li>                 
-                <li>
-                    <a href="闽台交流之城.html" data-zh style="font-size: 20px; color: #faf8f8; font-family: 'Noto Serif SC';">闽台交流之城</a>
-                    <a href="#" data-en>Cross-Strait</a>
-                </li>                 
-            </ul>             
-            <button class="lang-toggle" id="langToggle" aria-label="切换语言" style="font-family: 'Noto Serif SC'; font-size: 20px;"> 
-                <span class="active-lang" id="langZh" style="color: #fdf6f6;">中</span> 
-                <span class="divider">/</span> 
-                <span id="langEn" style="color: #fdf8f8;">EN</span> 
-            </button>
-            <a href="个人中心.html" id="profileBtn" title="个人中心" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.2);border:2px solid rgba(255,255,255,0.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.3s;overflow:hidden;text-decoration:none;margin-left:12px;"> <img id="navAvatar" style="display:none;width:100%;height:100%;object-fit:cover;"> <svg id="navAvatarIcon" viewBox="0 0 24 24" style="width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2;">
-                    <circle cx="12" cy="8" r="4"/>
-                    <path d="M4 21v-2a6 6 0 016-6h4a6 6 0 016 6v2"/>
-                </svg> </a>
-            <button class="nav-hamburger" id="hamburger" aria-label="菜单" style="color: #faf8f8;"> 
-                <span></span>
-                <span></span>
-                <span></span> 
-            </button>             
-        </nav>         
-        <!-- ============================================================
-     【Hero 首屏】★ 底图位置见 CSS .hero 注释
-     ============================================================ -->         
-        <section class="hero" id="hero" style="padding-top: 100px;"> 
-            <div class="hero-deco-line"></div>
-            <!-- ★ 左侧竖版人物图片，浮于最顶层，标题左边 -->
-            <img class="hero-side-image" src="提裤子动作.png" alt="泉州文化形象">
-            <!-- ★ 右侧竖版人物图片，浮于最顶层，标题右边 -->
-            <img class="hero-side-image-right" src="献花动作.png" alt="泉州文化形象"> 
-            <div class="hero-eyebrow" data-zh="" style="font-size: 30px;">科技+创意，讲好中国故事</div>             
-            <div class="hero-eyebrow" data-en="">Technology + Creativity &middot; Telling China&apos;s Story</div>             
-            <h1 class="hero-title"> <span data-zh="" style="font-size: 95px;">活 态&nbsp;<span class="hero-title-accent">泉 州</span></span> <span data-en="">Living <span class="hero-title-accent">Quanzhou</span></span> </h1> 
-            <!-- 副标题已按要求修改 -->             
-            <p class="hero-subtitle" data-zh="" style="font-size: 40px; padding-bottom: 10px; bottom: 0; top: 0;">一座中国城市的四重叙事</p> 
-            <p class="hero-desc" data-zh="" style="padding-bottom: 10px;"> 
-    泉州，古称&ldquo;刺桐&rdquo;。宋元时期，它是&quot;东方第一大港&quot;，是海上丝绸之路的起点；今天，它是世界文化遗产城市，是民营经济的重镇，是两岸同胞血脉相连的前沿。这座城市，用四重身份，讲述着一个立体而真实的中国故事。 </p>
-            <p class="hero-subtitle" data-en="">A Four-Fold Narrative of a Chinese City</p> 
-            <p class="hero-desc" data-en=""> 
-    Quanzhou, historically known as &quot;Zayton,&quot; was the &quot;Greatest Port of the East&quot; during the Song and Yuan dynasties and a starting point of the Maritime Silk Road. Today, it is a UNESCO World Heritage City, a powerhouse of private enterprise, and a frontier of cross-strait kinship. Through four identities, this city tells a multidimensional and authentic story of China. </p> 
-            <div class="hero-cta"> 
-                <a href="#identities" class="btn-primary" style="line-height: 1; padding-bottom: 10px;"> <span data-zh="">开始探索</span> <span data-en="">Start Exploring</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;">
-                        <path d="M5 12h14M12 5l7 7-7 7"></path>
-                    </svg> </a> 
-            </div>             
-        </section>         
-        <!-- ============================================================
-     【四重身份卡片区】★ 每张卡片单独设置图片
-     ============================================================ -->         
-        <section class="section identities" id="identities" style="margin-top: 0; padding-top: 25px; padding-bottom: 30px;"> 
-            <div class="section-header" style="padding-bottom: 0; margin-bottom: 25px;"> 
-                <div class="section-eyebrow" data-en>Four Identities · From One City to a Nation</div>                 
-                <h2 class="section-title" data-zh style="font-size: 35px; padding-top: 0; padding-bottom: 0; margin-bottom: 0;">从一座城，读懂一个国</h2> 
-                <h2 class="section-title" data-en>Understand China Through One City</h2> 
-                <p class="section-desc" data-zh="" style="font-size: 19px;"> 
-      历史、文化、经济、政治&#8212;&#8212;泉州以四重身份，浓缩了中华文明的过去与现在。点击任一身份，进入对应的叙事篇章。 </p> 
-                <p class="section-desc" data-en> 
-      History, culture, economy, politics—Quanzhou encapsulates Chinese civilization's past and present through four identities. Click any identity to enter its narrative chapter. </p> 
-            </div>             
-            <div class="cards-grid"> 
-                <!-- ========== 卡片1：海上丝绸之路 ========== -->                 
-                <a href="海上丝绸之路.html" class="identity-card" style="--card-color: #1B4965;"> <!-- ★ 卡片1图片：替换括号里的图片路径即可 --> <div class="card-image" style="background-image: url('https://20721690.s21i.faiusr.com/2/ABUIABACGAAgz56OkAYonID8MDD6BjjJBA.jpg');"> 
-                        <div class="card-image-icon"> 
-                            <svg viewBox="0 0 24 24">
-                                <path d="M2 20h20M4 20l1.5-5h13L20 20M12 4v11M12 4l-3 3h6l-3-3zM8 11h8"/>
-                            </svg>                             
-                        </div>                         
-                    </div> <div class="card-body" style="margin-bottom: 0; padding-bottom: 15px; padding-top: 15px; display: inline;"> 
-                        <div class="card-number">01 / HISTORY</div>                         
-                        <h3 class="card-title" data-zh style="font-size: 30px;">海上丝绸之路</h3>
-                        <p class="card-desc" data-zh style="font-size: 16px; line-height: 2;">千年商港，文明交汇。从刺桐港出发，中国与世界在此相遇。和平合作、开放包容的丝路精神，延续至今。</p> 
-                        <h3 class="card-title" data-en>Maritime Silk Road</h3> 
-                        <p class="card-desc" data-en>A millennial port where civilizations met. From Zayton Harbor, China connected with the world. The Silk Road spirit of peace and openness endures.</p> 
-                        <div class="card-stat-row"> 
-                            <span class="card-stat">1500</span> 
-                            <span class="card-stat-suffix" data-zh style="font-size: 25px;">+年</span> 
-                            <span class="card-stat-suffix" data-en>+ yrs</span> 
-                        </div>                         
-                        <div class="card-stat-label" data-zh style="font-size: 20px;">海外交通史</div>                         
-                        <div class="card-stat-label" data-en>Years of Maritime Trade</div>                         
-                    </div> </a> 
-                <!-- ========== 卡片2：世界非遗之城 ========== -->                 
-                <a href="世界非遗之城.html" class="identity-card" style="--card-color: #B5493B;"> <!-- ★ 卡片2图片：替换括号里的图片路径即可 --> <div class="card-image" style="background-image: url('https://hxdsb.fjdaily.com/pc/pic/202502/10/a33906ed-da17-4aca-b98f-d95e3bcba1eb.jpg.1');"> 
-                        <div class="card-image-icon"> 
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6L12 2z"/>
-                            </svg>                             
-                        </div>                         
-                    </div> <div class="card-body" style="padding-bottom: 15px; padding-top: 15px; display: inline;"> 
-                        <div class="card-number">02 / CULTURE</div>                         
-                        <h3 class="card-title" data-zh style="font-size: 30px;">世界非遗之城</h3> 
-                        <h3 class="card-title" data-en>World Heritage City</h3> 
-                        <p class="card-desc" data-zh style="font-size: 16px; line-height: 2; padding-bottom: 0; margin-bottom: 0;">22处世遗点，活态传承千年。文化不是标本，是仍在生长的生活。南音还在唱，木偶还在演，茶香还在飘。</p> 
-                        <p class="card-desc" data-en>22 UNESCO heritage sites, living heritage spanning a millennium. Culture is not a fossil—it is living life. Nanyin still sings, puppets still perform, tea still steams.</p> 
-                        <div class="card-stat-row"> 
-                            <span class="card-stat" style="font-size: 35px;">22</span> 
-                            <span class="card-stat-suffix" data-zh style="font-size: 25px;">处</span> 
-                            <span class="card-stat-suffix" data-en> sites</span> 
-                        </div>                         
-                        <div class="card-stat-label" data-zh style="font-size: 20px;">世界文化遗产点</div>                         
-                        <div class="card-stat-label" data-en>UNESCO Heritage Sites</div>                         
-                    </div> </a> 
-                <!-- ========== 卡片3：超级工业之城 ========== -->                 
-                <a href="超级工业之城.html" class="identity-card" style="--card-color: #C9A961;"> <!-- ★ 卡片3图片：替换括号里的图片路径即可 --> <div class="card-image" style="background-image: url('https://img1.fjdaily.com/app/images/2026-03/03/t0_(86X2X535X301)c9c5fbe9-42cf-470a-bc76-49c741d3d5d9.JPEG');"> 
-                        <div class="card-image-icon"> 
-                            <svg viewBox="0 0 24 24">
-                                <path d="M2 20h20M4 20V10l4 3V10l4 3V7l4 3v10M4 20h16"/>
-                            </svg>                             
-                        </div>                         
-                    </div> <div class="card-body" style="padding-top: 14px; padding-bottom: 18px;"> 
-                        <div class="card-number">03 / ECONOMY</div>                         
-                        <h3 class="card-title" data-zh style="font-size: 30px;">超级工业之城</h3> 
-                        <h3 class="card-title" data-en>Industrial Powerhouse</h3> 
-                        <p class="card-desc" data-zh style="font-size: 16px; padding-bottom: 0; margin-bottom: 0;">一双鞋、一片食品，撑起万亿民营经济。晋江经验，中国制造的草根样本。爱拼才会赢，是这座城市的基因。</p> 
-                        <p class="card-desc" data-en>Shoes and food power a trillion-yuan private economy. The "Jinjiang Experience" is China's grassroots manufacturing blueprint. "Win through hard work" is in this city's DNA.</p> 
-                        <div class="card-stat-row"> 
-                            <span class="card-stat">1</span> 
-                            <span class="card-stat-suffix" data-zh>万亿+</span> 
-                            <span class="card-stat-suffix" data-en> trillion+</span> 
-                        </div>                         
-                        <div class="card-stat-label" data-zh style="font-size: 20px;">地区生产总值（元）</div>                         
-                        <div class="card-stat-label" data-en>GDP (RMB)</div>                         
-                    </div> </a> 
-                <!-- ========== 卡片4：闽台交流之城 ========== -->                 
-                <a href="闽台交流之城.html" class="identity-card" style="--card-color: #2D6A8F;"> <!-- ★ 卡片4图片：替换括号里的图片路径即可 --> <div class="card-image" style="background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.1d4d81f01c9c14dd965c11191e03d43b?rik=fE6P9N%2f6cpx49w&riu=http%3a%2f%2fimg.pconline.com.cn%2fimages%2fupload%2fupc%2ftx%2fphotoblog%2f2007%2f20%2fc4%2f221535517_1595248686058.jpg&ehk=mXfE4J0JiA8X17yeLV7ECRgLpRy9k2sVcMyzEoV1L%2bc%3d&risl=&pid=ImgRaw&r=0');"> 
-                        <div class="card-image-icon"> 
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zM12 11.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5z"/>
-                            </svg>                             
-                        </div>                         
-                    </div> <div class="card-body" style="padding-bottom: 10px; padding-top: 15px; display: inline;"> 
-                        <div class="card-number">04 / POLITICS</div>                         
-                        <h3 class="card-title" data-zh style="font-size: 30px;">闽台交流之城</h3> 
-                        <h3 class="card-title" data-en>Cross-Strait Exchange</h3> 
-                        <p class="card-desc" data-zh="" style="font-size: 16px; line-height: 2; padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 0;">一水之隔，同根同源。语言、信仰、血脉，从未被海峡隔断。台湾汉族同胞中，近半数祖籍泉州。</p> 
-                        <p class="card-desc" data-en>Separated by a narrow strait, bound by shared roots. Language, faith, and bloodlines transcend the water. Nearly half of Taiwan's Han Chinese trace ancestry to Quanzhou.</p> 
-                        <div class="card-stat-row" style="margin-top: 0px; padding-bottom: 0; padding-top: 0px; margin-bottom: 8px;"> 
-                            <span class="card-stat">44</span> 
-                            <span class="card-stat-suffix" style="font-size: 25px;">%</span> 
-                        </div>                         
-                        <div class="card-stat-label" data-zh style="font-size: 18px; padding-bottom: 0; margin-bottom: 0;">台湾汉族同胞祖籍占比</div>                         
-                        <div class="card-stat-label" data-en>Taiwanese Han with Quanzhou Roots</div>                         
-                    </div> </a> 
-            </div>             
-        </section>         
-        <!-- ============================================================
-     【数据总览条】
-     ============================================================ -->         
-        <section class="stats" id="stats"> 
-            <div class="stats-grid"> 
-                <div class="stat-item"> 
-                    <div class="stat-number">
-                        <span class="counter" data-target="1500">0</span>
-                        <span class="suffix">+</span>
-                    </div>                     
-                    <div class="stat-label" data-zh>年海外交通史</div>                     
-                    <div class="stat-label" data-en>Years of Maritime History</div>                     
-                </div>                 
-                <div class="stat-item"> 
-                    <div class="stat-number">
-                        <span class="counter" data-target="22">0</span>
-                        <span class="suffix" data-zh>处</span>
-                        <span class="suffix" data-en></span>
-                    </div>                     
-                    <div class="stat-label" data-zh>世界文化遗产点</div>                     
-                    <div class="stat-label" data-en>UNESCO Heritage Sites</div>                     
-                </div>                 
-                <div class="stat-item"> 
-                    <div class="stat-number">
-                        <span class="counter" data-target="5">0</span>
-                        <span class="suffix" data-zh>项</span>
-                        <span class="suffix" data-en></span>
-                    </div>                     
-                    <div class="stat-label" data-zh>国家级非物质文化遗产</div>                     
-                    <div class="stat-label" data-en>National Intangible Heritage</div>                     
-                </div>                 
-                <div class="stat-item"> 
-                    <div class="stat-number">
-                        <span class="counter" data-target="1">0</span>
-                        <span class="suffix" data-zh>万亿+</span>
-                        <span class="suffix" data-en> trillion+</span>
-                    </div>                     
-                    <div class="stat-label" data-zh>地区生产总值（元）</div>                     
-                    <div class="stat-label" data-en>GDP (Trillion RMB)</div>                     
-                </div>                 
-                <div class="stat-item"> 
-                    <div class="stat-number">
-                        <span class="counter" data-target="90">0</span>
-                        <span class="suffix">%+</span>
-                    </div>                     
-                    <div class="stat-label" data-zh>民营经济占比</div>                     
-                    <div class="stat-label" data-en>Private Economy Share</div>                     
-                </div>                 
-                <div class="stat-item"> 
-                    <div class="stat-number">
-                        <span class="counter" data-target="200">200</span>
-                        <span class="suffix" data-zh="">万</span>
-                        <span class="suffix" data-en="">0K+</span>
-                    </div>                     
-                    <div class="stat-label" data-zh>泉州籍台湾同胞</div>                     
-                    <div class="stat-label" data-en>Quanzhou-Origin Taiwanese</div>                     
-                </div>                 
-            </div>             
-        </section>         
-        <!-- ============================================================
-     【叙事升华区】★ 背景图位置见 .closing CSS 注释
-     ============================================================ -->         
-        <section class="closing" id="closing" style="padding-bottom: 35px; padding-top: 35px;"> 
-            <div class="closing-quote" data-zh="" style="margin-bottom: 20px; padding-top: 0px; font-size: 23px;"> 
-                这不是一座博物馆里的城市。<br> 
-                这里的古港仍在通航，这里的非遗仍在生活，<br> 
-                这里的工厂仍在运转，这里的两岸仍在往来。<br> 
-                泉州，是中国的一个缩影&#8212;&#8212;<br> 
-                <span class="closing-highlight">传统在这里新生，实业在这里崛起，血脉在这里相连。</span> 
-            </div>             
-            <div class="closing-quote" data-en> 
-                This is not a city frozen in a museum.<br> 
-                Its ancient port still trades, its heritage still lives,<br> 
-                its factories still hum, and its cross-strait bonds still endure.<br>
-                <br> 
-                Quanzhou is a microcosm of China—<br> 
-                <span class="closing-highlight">where tradition is reborn, enterprise thrives, and kinship endures.</span> 
-            </div>             
-            <div class="closing-final" data-zh style="font-weight: 700; font-size: 30px;">从一座城，读懂一个国</div>             
-            <div class="closing-final" data-en>Understand China, Through One City</div>             
-        </section>         
-        <!-- ============================================================
-     【页脚】
-     ============================================================ -->         
-        <footer class="footer" style="padding-top: 10px; padding-bottom: 10px; font-size: 16px;"> 
-            <div class="footer-title" data-zh="">《活态泉州&#8212;&#8212;一座中国城市的四重叙事》</div>             
-            <div class="footer-title" data-en>Living Quanzhou: A Four-Fold Narrative of a Chinese City</div>             
-            <div class="footer-sub" data-zh="" style="font-size: 13px;">第十四届全国大学生数字媒体科技作品及创意竞赛&ldquo;科技+创意，讲好中国故事&rdquo;赛道</div>             
-            <div class="footer-sub" data-en>14th National College Student Digital Media Competition · "Technology + Creativity, Telling China's Story"</div>             
-            <div class="footer-sources" style="margin-top: 0px; font-size: 13px;" data-zh> 
-                数据来源：泉州市统计局 · 联合国教科文组织 · 公开学术文献
-</div>             
-            <div class="footer-sources" style="margin-top:16px;" data-en> 
-                Data Sources: Quanzhou Municipal Bureau of Statistics · UNESCO · Public Academic Literature
-</div>             
-        </footer>         
-        <!-- ============================================================
-     【JavaScript 交互逻辑】
-     ============================================================ -->         
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>登录 · 活态泉州 | Login · Living Quanzhou</title>
+        <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap">
+        <style>:root { --color-brick: #B5493B; --color-brick-dark: #8E372C; --color-ocean: #1B4965; --color-paper: #F5F0E8; --color-paper-dark: #EDE5D6; --color-gold: #C9A961; --color-ink: #2C2416; --color-ink-light: #5C5040; --color-ink-faint: #8A7E6C; --font-serif-zh: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; --font-sans-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif-en: 'Playfair Display', Georgia, serif; --font-sans-en: 'Inter', 'Helvetica Neue', Arial, sans-serif;  /* ★ 毛笔字体：马善政毛笔楷书 */ --font-brush: 'Ma Shan Zheng', 'KaiTi', 'STKaiti', cursive; } * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: var(--font-sans-zh); background: transparent; color: var(--color-ink); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; position: relative; } /* ★ 整个页面底图，透明度40%，在最底层 */ body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: url('file:///C:/学科竞赛所有资料/数字媒体/新作品内容/首页1.jpg'); background-size: cover; background-position: center; opacity: 0.4; z-index: -1; } .login-card { width: 100%; max-width: 960px; height: 580px; background: #fff; border-radius: 16px; box-shadow: 0 20px 60px rgba(44,36,22,0.12); display: flex; overflow: hidden; } .login-illustration { flex: 1; background: var(--color-paper-dark); position: relative; overflow: hidden; } .illustration-img { width: 100%; height: 100%; object-fit: contain; padding: 99px; display: none; position: relative; top: -80px; } .illustration-img[src]:not([src=""]) { display: block; } .illustration-img[src]:not([src=""]) ~ .illustration-placeholder { display: none; } .illustration-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--color-ink-faint); } .illustration-placeholder-icon { width: 72px; height: 72px; border: 2px dashed var(--color-ink-faint); border-radius: 12px; display: flex; align-items: center; justify-content: center; opacity: 0.5; } .illustration-placeholder-icon svg { width: 32px; height: 32px; stroke: var(--color-ink-faint); fill: none; stroke-width: 1.5; } .illustration-placeholder-text { font-size: 13px; letter-spacing: 1px; text-align: center; line-height: 1.8; } .illustration-caption { position: absolute; bottom: 15px; left: 28px; right: 28px; z-index: 2; background: rgba(245, 240, 232, 0.78); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 16px 20px; border-radius: 10px; } /* ★ 中文标题用毛笔字体 */.illustration-caption-zh { font-family: var(--font-brush); font-size: 30px; font-weight: 400; color: var(--color-ink); line-height: 1.4; margin-bottom: 6px; letter-spacing: 2px; } .illustration-caption-en { font-family: var(--font-serif-en); font-size: 13px; font-style: italic; color: var(--color-ink-light); letter-spacing: 0.5px; } .illustration-caption::before { content: ''; display: block; width: 48px; height: 2px; background: var(--color-brick); margin-bottom: 8px; } .login-form-wrap { flex: 1; padding: 52px 44px 40px; display: flex; flex-direction: column; overflow-y: auto; } .login-header { margin-bottom: 18px; } .login-title-zh { font-family: var(--font-serif-zh); font-size: 24px; font-weight: 700; color: var(--color-ink); margin-bottom: 4px; } .login-title-en { font-family: var(--font-serif-en); font-size: 13px; color: var(--color-ink-faint); font-style: italic; } .form-tabs { display: flex; border-bottom: 2px solid var(--color-paper-dark); margin-bottom: 24px; gap: 32px; } .form-tab { background: none; border: none; padding: 10px 0; font-family: var(--font-serif-zh); font-size: 16px; font-weight: 600; color: var(--color-ink-faint); cursor: pointer; position: relative; transition: all 0.3s; } .form-tab::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--color-brick); transition: width 0.3s; } .form-tab.active { color: var(--color-brick); } .form-tab.active::after { width: 100%; } .form-panel { display: none; flex: 1; flex-direction: column; } .form-panel.active { display: flex; animation: fadeIn 0.3s ease; } @keyframes fadeIn { from {  opacity: 0;  transform: translateY(8px); }  to {  opacity: 1;  transform: translateY(0); } } /* 表单字段 —— 登录页和注册页统一大小 */.form-group { margin-bottom: 16px; } .form-label-zh { display: block; font-size: 18px; color: var(--color-ink); font-weight: 500; margin-bottom: 2px; } .form-label-en { display: block; font-size: 14px; color: var(--color-ink-faint); font-family: var(--font-serif-en); font-style: italic; margin-bottom: 6px; letter-spacing: 0.3px; } .form-input { width: 100%; padding: 11px 14px; border: 1px solid var(--color-paper-dark); border-radius: 8px; font-size: 14px; font-family: inherit; background: var(--color-paper); transition: all 0.3s; color: var(--color-ink); } .form-input:focus { outline: none; border-color: var(--color-brick); background: #fff; box-shadow: 0 0 0 3px rgba(181,73,59,0.08); } .error-msg { color: var(--color-brick); font-size: 12px; margin-bottom: 8px; min-height: 16px; } .form-btn { margin-top: auto; padding: 10px 13px; background: var(--color-brick); color: #fff; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; letter-spacing: 2px; } .form-btn:hover { background: var(--color-brick-dark); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(181,73,59,0.25); } .form-tip { margin-top: 14px; text-align: center; font-size: 14px; color: var(--color-ink-faint); } .form-tip span { color: var(--color-brick); cursor: pointer; font-weight: 500; } .form-tip span:hover { text-decoration: underline; } @media (max-width: 768px) { .login-card {  flex-direction: column;  height: auto;  max-width: 420px; }  .login-illustration {  height: 200px; }  .login-form-wrap {  padding: 32px 24px 28px; }  .illustration-caption {  bottom: 20px;  left: 24px; }  .illustration-caption-zh {  font-size: 24px; } }</style>
+    </head>
+    <body>
+        <div class="login-card">
+            <div class="login-illustration">
+                <!-- ★【在此处插入插图】把下面 src="" 的引号里填上图片地址 -->
+                <img class="illustration-img" src="file:///C:/学科竞赛所有资料/数字媒体/新作品内容/坐着动作.png" alt="泉州插图">
+                <div class="illustration-placeholder">
+                    <div class="illustration-placeholder-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <circle cx="8.5" cy="8.5" r="1.5"/>
+                            <path d="M21 15l-5-5L5 21"/>
+                        </svg>
+                    </div>
+                    <div class="illustration-placeholder-text">
+                        在此处插入插图<br>
+                        <span style="font-size:11px;opacity:0.7;">Insert illustration here</span>
+                    </div>
+                </div>
+                <!-- 左下角标题（毛笔字体） -->
+                <div class="illustration-caption">
+                    <div class="illustration-caption-zh">从一座城<br>读懂一个国
+                    </div>
+                    <div class="illustration-caption-en" style="font-size: 17px;">Understand China Through One City</div>
+                </div>
+            </div>
+            <div class="login-form-wrap" style="padding-top: 25px; padding-bottom: 70px;">
+                <div class="login-header">
+                    <div class="login-title-zh">欢迎进入</div>
+                    <div class="login-title-en" style="font-size: 16px;">Welcome to Living Quanzhou</div>
+                </div>
+                <div class="form-tabs">
+                    <button class="form-tab active" data-tab="login" style="font-size: 20px;">登录</button>
+                    <button class="form-tab" data-tab="register" style="font-size: 20px;">注册</button>
+                </div>
+                <!-- 登录面板 -->
+                <div class="form-panel active" id="loginPanel">
+                    <div class="form-group">
+                        <label class="form-label-zh">账户名</label>
+                        <label class="form-label-en">Username</label>
+                        <input type="text" class="form-input" id="loginUser" placeholder="请输入账户名">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label-zh">密码</label>
+                        <label class="form-label-en">Password</label>
+                        <input type="password" class="form-input" id="loginPass" placeholder="请输入密码">
+                    </div>
+                    <div class="error-msg" id="loginError"></div>
+                    <button class="form-btn" onclick="handleLogin()">登 录</button>
+                    <div class="form-tip">还没有账号？<span onclick="switchTab('register')">立即注册</span>
+                    </div>
+                </div>
+                <!-- 注册面板（字体已和登录页统一） -->
+                <div class="form-panel" id="registerPanel">
+                    <div class="form-group">
+                        <label class="form-label-zh">设置账户名</label>
+                        <label class="form-label-en">Set Username</label>
+                        <input type="text" class="form-input" id="regUser" placeholder="请输入账户名">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label-zh">邮箱地址</label>
+                        <label class="form-label-en">Email Address</label>
+                        <input type="email" class="form-input" id="regEmail" placeholder="请输入邮箱地址">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label-zh">设置密码</label>
+                        <label class="form-label-en">Set Password</label>
+                        <input type="password" class="form-input" id="regPass" placeholder="请输入密码（至少6位）">
+                    </div>
+                    <div class="error-msg" id="regError"></div>
+                    <button class="form-btn" onclick="handleRegister()">注 册</button>
+                    <div class="form-tip">已有账号？<span onclick="switchTab('login')">直接登录</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script>
-// 导航栏滚动效果
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// 中英双语切换
-const langToggle = document.getElementById('langToggle');
-const langZh = document.getElementById('langZh');
-const langEn = document.getElementById('langEn');
-langToggle.addEventListener('click', () => {
-  document.body.classList.toggle('en');
-  const isEn = document.body.classList.contains('en');
-  langZh.classList.toggle('active-lang', !isEn);
-  langEn.classList.toggle('active-lang', isEn);
-  document.documentElement.lang = isEn ? 'en' : 'zh-CN';
-});
-
-// 数字滚动动画
-const counters = document.querySelectorAll('.counter');
-let countersAnimated = false;
-function animateCounters() {
-  if (countersAnimated) return;
-  countersAnimated = true;
-  counters.forEach(counter => {
-    const target = parseFloat(counter.dataset.target);
-    const duration = 2000;
-    const startTime = performance.now();
-    const isDecimal = target % 1 !== 0;
-    function update(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      const current = easeOut * target;
-      counter.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
-      if (progress < 1) requestAnimationFrame(update);
-      else counter.textContent = isDecimal ? target.toFixed(1) : target;
-    }
-    requestAnimationFrame(update);
-  });
+function switchTab(tab) {
+  document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.form-tab[data-tab="' + tab + '"]').classList.add('active');
+  document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(tab + 'Panel').classList.add('active');
+  document.getElementById('loginError').textContent = '';
+  document.getElementById('regError').textContent = '';
 }
-const statsSection = document.getElementById('stats');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) { animateCounters(); observer.unobserve(entry.target); }
-  });
-}, { threshold: 0.3 });
-observer.observe(statsSection);
-
-
-// 加载导航栏头像
-(function() {
-  var profile = JSON.parse(localStorage.getItem('quanzhou_profile') || '{}');
-  if (profile.avatar) {
-    var navAvatar = document.getElementById('navAvatar');
-    var navAvatarIcon = document.getElementById('navAvatarIcon');
-    if (navAvatar && navAvatarIcon) {
-      navAvatar.src = profile.avatar;
-      navAvatar.style.display = 'block';
-      navAvatarIcon.style.display = 'none';
-    }
-  }
-})();
-
-
-// ===== 背景音乐控制 =====
-document.addEventListener('DOMContentLoaded', function() {
-  var bgMusic = document.getElementById('bgMusic');
-  var musicBtn = document.getElementById('musicBtn');
-  var musicIconPlay = document.getElementById('musicIconPlay');
-  var musicIconPause = document.getElementById('musicIconPause');
-  var isPlaying = false;
-
-  musicBtn.addEventListener('click', function() {
-    if (isPlaying) {
-      bgMusic.pause();
-      musicIconPlay.style.display = 'block';
-      musicIconPause.style.display = 'none';
-      musicBtn.title = '播放背景音乐';
-      isPlaying = false;
-    } else {
-      // 先切换图标，给用户视觉反馈
-      musicIconPlay.style.display = 'none';
-      musicIconPause.style.display = 'block';
-      musicBtn.title = '暂停背景音乐';
-      isPlaying = true;
-      bgMusic.play().catch(function(e) {
-        console.log('播放失败，请检查音乐文件是否存在:', e);
-        // 播放失败则恢复图标
-        musicIconPlay.style.display = 'block';
-        musicIconPause.style.display = 'none';
-        musicBtn.title = '播放背景音乐';
-        isPlaying = false;
-      });
-    }
-  });
+document.querySelectorAll('.form-tab').forEach(tab => {
+  tab.addEventListener('click', () => switchTab(tab.dataset.tab));
 });
-</script>         
-    </body>     
+
+function handleRegister() {
+  const user = document.getElementById('regUser').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const pass = document.getElementById('regPass').value;
+  const error = document.getElementById('regError');
+  if (!user) return error.textContent = '请输入账户名';
+  if (!email) return error.textContent = '请输入邮箱地址';
+  if (!pass) return error.textContent = '请输入密码';
+  if (pass.length < 6) return error.textContent = '密码至少6位';
+  const users = JSON.parse(localStorage.getItem('quanzhou_users') || '{}');
+  if (users[user]) return error.textContent = '该账户名已存在';
+  users[user] = { email: email, password: pass };
+  localStorage.setItem('quanzhou_users', JSON.stringify(users));
+  localStorage.setItem('quanzhou_login', user);
+  alert('注册成功，即将进入首页');
+  window.location.href = '首页.html';
+}
+
+function handleLogin() {
+  const user = document.getElementById('loginUser').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  const error = document.getElementById('loginError');
+  if (!user) return error.textContent = '请输入账户名';
+  if (!pass) return error.textContent = '请输入密码';
+  const users = JSON.parse(localStorage.getItem('quanzhou_users') || '{}');
+  if (!users[user]) return error.textContent = '账户不存在，请先注册';
+  if (users[user].password !== pass) return error.textContent = '密码错误';
+  localStorage.setItem('quanzhou_login', user);
+  window.location.href = '首页.html';
+}
+
+document.getElementById('loginPass').addEventListener('keypress', e => {
+  if (e.key === 'Enter') handleLogin();
+});
+document.getElementById('regPass').addEventListener('keypress', e => {
+  if (e.key === 'Enter') handleRegister();
+});
+</script>
+    </body>
 </html>
