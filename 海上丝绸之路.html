@@ -48,11 +48,11 @@
      【导航栏】
      ============================================================ -->         
         <nav class="nav" id="nav" style="background-color: #B5493B; height: 50px;"> 
-            <a href="index.html" class="nav-logo"> <span class="nav-logo-text" data-zh style="color: #fdfcfc; font-size: 27px; margin-left: 0;">活态泉州</span> <span class="nav-logo-text" data-en>Living Quanzhou</span> </a> 
+            <a href="首页.html" class="nav-logo"> <span class="nav-logo-text" data-zh style="color: #fdfcfc; font-size: 27px; margin-left: 0;">活态泉州</span> <span class="nav-logo-text" data-en>Living Quanzhou</span> </a> 
             <ul class="nav-links"> 
                 <li>
-                    <a href="index.html" data-zh style="color: #ffffff; font-size: 20px; font-family: 'Noto Serif SC'; padding-right: 40px;">首页</a>
-                    <a href="index.html" data-en>Home</a>
+                    <a href="首页.html" data-zh style="color: #ffffff; font-size: 20px; font-family: 'Noto Serif SC'; padding-right: 40px;">首页</a>
+                    <a href="首页.html" data-en>Home</a>
                 </li>                 
                 <li>
                     <a href="海上丝绸之路.html" class="active" data-zh style="font-size: 20px; width: 180px; font-family: 'Noto Serif SC'; color: #ffffff;">海上丝绸之路</a>
@@ -94,13 +94,14 @@
      【模块一：世界地图交互】
      ============================================================ -->         
         <section class="section map-section" id="map" style="margin-top: 0; padding-top: 80px; padding-bottom: 40px;"> 
-            <div class="section-header" style="font-size: 30px; font-weight: 200;"> 
+            <div class="section-header" style="font-size: 30px; font-weight: 200; position: relative;"> 
                 <div class="section-eyebrow" data-en>Maritime Routes · From Quanzhou to the World</div>                                  
                 <h2 class="section-title" data-en>One Map, a Millennium of Maritime Trade</h2> 
                 <p class="section-desc" data-en> 
       Click route nodes on the map to explore each port's trade story. Toggle between "Ancient" and "Contemporary" to witness the millennial continuity of the Maritime Silk Road. </p>
                 <h2 class="section-title" data-zh="">一张地图，读懂千年海丝之路</h2>
                 <h2 class="section-title" data-zh="" style="font-size: 17px; font-weight: 500; font-family: 'Noto Serif SC';">地图可以切换古代和现代，并且点击航线地图贸易节点，将在下方得到沿线相关国家介绍解析</h2> 
+                <img src="趴着.png" style="position: absolute; right: 50px; top: 70px; width: 135px; height: 135px; object-fit: contain; z-index: 5;" alt="装饰图">
             </div>             
             <!-- 时代切换 -->             
             <div class="era-toggle"> 
@@ -578,7 +579,7 @@ const nodeData = {
     en: { title: 'Bangladesh', meta: 'Important South Asian Trade Port', text: 'The Bengal region was an important stop on the Maritime Silk Road in South Asia. Chinese porcelain and silk entered South Asia through here, while cotton cloth, pearls, and spices were imported to China.' }
   },
   srilanka: {
-    zh: { title: '故临（今斯里兰卡）', meta: '印度洋贸易枢纽', text: '故临（今斯里兰卡）是印度洋上的贸易枢纽，中国商船在此中转。斯里兰卡的宝石、香料、象牙闻名于世，大量输入中国。' },
+    zh: { title: '僧加剌（师子国，今斯里兰卡）', meta: '印度洋佛国宝岛', text: '僧加剌（今斯里兰卡）是印度洋上的贸易枢纽，中国商船在此中转。斯里兰卡的宝石、香料、象牙闻名于世，大量输入中国。' },
     en: { title: 'Kollam (Sri Lanka)', meta: 'Indian Ocean Trade Hub', text: 'Kollam (present-day Sri Lanka) was an Indian Ocean trade hub where Chinese merchant ships transited. Sri Lanka\'s gems, spices, and ivory were world-renowned and imported in large quantities to China.' }
   },
   india: {
@@ -669,7 +670,7 @@ const nodeImages = {
   thailand: 'https://gocity.com.cn/upload/images/20220411/172432959.jpg',    // 泰国（古暹罗）：建议 大城府遗址 / 暹罗船 / 水上市场
   indonesia: 'https://ts1.tc.mm.bing.net/th/id/R-C.3b1e4a5b5dffaf7081f21def570d9169?rik=KUNm2S7zLrMwKA&riu=http%3a%2f%2fn.sinaimg.cn%2fsinakd20114%2f194%2fw1024h770%2f20220803%2fbfa1-f98ed07275e1b71a1afa91d63325100b.jpg&ehk=y2qo%2ftwV1l9oVDceAFBZRMXFAmVWQRTWnilUZd3cjAM%3d&risl=&pid=ImgRaw&r=0',   // 三佛齐（今印尼）：建议 巨港遗址 / 苏门答腊 / 香料贸易
   bangladesh: 'https://pic.nximg.cn/file/20160530/5418251_174918104724_2.jpg',  // 孟加拉：建议 吉大港 / 孟加拉纺织 / 恒河三角洲
-  srilanka: 'https://ts1.tc.mm.bing.net/th/id/R-C.8bcd98a0f1dfc309a2dd3aa583c303e8?rik=y7VZAqbzopR4xg&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn20200217ac%2f696%2fw900h596%2f20200217%2fa5b2-iprtayy7177516.jpg&ehk=ouRy9Cm87PgcRXjBHtXQJ1I6Tb8MwSeLcef1YhLXI2A%3d&risl=&pid=ImgRaw&r=0',    // 故临（今斯里兰卡）：建议 狮子岩 / 宝石矿 / 印度洋港口
+  srilanka: 'https://ts1.tc.mm.bing.net/th/id/R-C.8bcd98a0f1dfc309a2dd3aa583c303e8?rik=y7VZAqbzopR4xg&riu=http%3a%2f%2fn.sinaimg.cn%2fsinacn20200217ac%2f696%2fw900h596%2f20200217%2fa5b2-iprtayy7177516.jpg&ehk=ouRy9Cm87PgcRXjBHtXQJ1I6Tb8MwSeLcef1YhLXI2A%3d&risl=&pid=ImgRaw&r=0',    // 僧加剌（今斯里兰卡）：建议 狮子岩 / 宝石矿 / 印度洋港口
   india: 'https://ts2.tc.mm.bing.net/th/id/OIP-C.XMdKxOwd9NPxFtc4V_3NvwHaEv?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',       // 印度：建议 卡利卡特港 / 印度教石刻 / 香料市场
   pakistan: 'https://ts1.tc.mm.bing.net/th/id/OIP-C.z1tyQat3A6q8rxcyEke2OgAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',    // 巴基斯坦：建议 印度河文明 / 卡拉奇港 / 摩亨佐达罗
   hormuz: 'https://ts3.tc.mm.bing.net/th/id/OIP-C.Du9ut0VaAxiaonlcLFi1CQHaFL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3',      // 忽鲁谟斯（今霍尔木兹）：建议 霍尔木兹海峡 / 阿拉伯帆船 / 波斯湾
