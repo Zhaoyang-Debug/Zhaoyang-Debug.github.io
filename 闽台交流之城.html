@@ -41,6 +41,83 @@
 @media (max-width: 768px) {
   .footer { padding: 32px 20px; }
 }
+
+
+.page-seal.collected .page-seal-check {
+  display: flex;
+}
+
+/* ===== 页面印章（可点击收集） ===== */
+.page-seal {
+  position: absolute;
+  left: 35px;
+  top: 80px;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.page-seal:hover {
+  transform: scale(1.08);
+}
+.page-seal-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #4A7C59;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.92);
+  transition: all 0.4s ease;
+  position: relative;
+  box-sizing: border-box;
+}
+.page-seal-circle::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1px solid #4A7C59;
+  opacity: 0.4;
+}
+.page-seal.collected .page-seal-circle {
+  background: #4A7C59;
+  box-shadow: 0 4px 16px #4A7C5955;
+}
+.page-seal-text {
+  font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive;
+  font-size: 26px;
+  color: #4A7C59;
+  writing-mode: vertical-rl;
+  letter-spacing: 4px;
+  transition: color 0.3s;
+  line-height: 1;
+}
+.page-seal.collected .page-seal-text {
+  color: #fff;
+}
+.page-seal-check {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #4A7C59;
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  border: 2px solid #fff;
+}
+.page-seal.collected .page-seal-check {
+  display: flex;
+}
+
 </style>
     </head>
     <body>
@@ -103,6 +180,14 @@
             <p class="section-subtitle" data-zh="" style="font-size: 18px; text-align: center; margin-left: px; width: 300%;">从明末清初到改革开放，泉州人用四次大规模迁徙在海峡两岸织就了血脉相连的网络。</p>
             <p class="section-subtitle" data-en>From the late Ming dynasty to reform and opening-up, Quanzhou people wove a blood-connected network across the strait through four major migrations.</p>
             <img src="标准动作.png" style="position: absolute; right: 50px; top: 80px; width: 150px; height: 280px; object-fit: contain; z-index: 5;" alt="装饰图">
+            <!-- 页面印章：点击收集 -->
+            <div class="page-seal" id="pageSeal" onclick="collectSeal('seal_mintai')" title="点击收集印章">
+                <div class="page-seal-circle">
+                    <span class="page-seal-text">归航</span>
+                    <div class="page-seal-check">✓</div>
+                </div>
+            </div>
+
             <div class="timeline">
                 <!-- 节点1 -->
                 <div class="timeline-item">
@@ -573,10 +658,15 @@ if (statsSection) observer.observe(statsSection);
   }
 })();
 
+
+// ===== 页面印章收集功能 =====
+function collectSeal(sealKey) {
+  const seal = document.getElementById('pageSeal');
+  if (seal.classList.contains('collected')) return;
+  seal.classList.add('collected');
+  try { localStorage.setItem(sealKey, 'true'); } catch(e) {}
+}
 </script>
-    <!-- 数字印章系统：访问本页自动点亮对应印章 -->
-<script>
-  try { localStorage.setItem('seal_mintai', 'true'); } catch(e) {}
-</script>
+    
 </body>
 </html>
