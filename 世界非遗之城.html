@@ -5,7 +5,95 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title id="pageTitle">世界非遗之城 · 活态泉州</title>
         <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap">
-        <style>/* ============================================================
+        <style>
+/* ===== 页面印章（可点击收集） ===== */
+.page-seal {
+  position: absolute !important;
+  left: 35px !important;
+  top: 60px !important;
+  width: 100px !important;
+  height: 100px !important;
+  z-index: 999 !important;
+  cursor: pointer !important;
+  transition: transform 0.3s !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+}
+.page-seal:hover {
+  transform: scale(1.08) !important;
+}
+.page-seal-circle {
+  width: 100px !important;
+  height: 100px !important;
+  border-radius: 50% !important;
+  border: 4px solid #B5493B !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #fff !important;
+  transition: all 0.4s ease !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
+.page-seal-circle::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 5px !important;
+  border-radius: 50% !important;
+  border: 1px solid #B5493B !important;
+  opacity: 0.4 !important;
+}
+.page-seal.collected .page-seal-circle {
+  background: #B5493B !important;
+  box-shadow: 0 4px 16px rgba(181,73,59,0.33) !important;
+}
+.page-seal-text {
+  font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive !important;
+  font-size: 26px !important;
+  color: #B5493B !important;
+  writing-mode: vertical-rl !important;
+  letter-spacing: 4px !important;
+  transition: color 0.3s !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+.page-seal.collected .page-seal-text {
+  color: #fff !important;
+}
+.page-seal-check {
+  position: absolute !important;
+  bottom: 2px !important;
+  right: 2px !important;
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 50% !important;
+  background: #B5493B !important;
+  color: #fff !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  border: 2px solid #fff !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+  z-index: 3 !important;
+}
+.page-seal.collected .page-seal-check {
+  display: flex !important;
+}
+/* ============================================================
    【双语切换】放在最前面确保生效
    ============================================================ */body:not(.lang-en) [data-en] { display: none !important; } body.lang-en [data-zh] { display: none !important; }
 body:not(.lang-en) [data-en] { display: none !important; } /* ============================================================
@@ -325,11 +413,15 @@ body.lang-en .closing-final { font-family: var(--font-serif-en); letter-spacing:
 .footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); }
 .footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 0px; }
 body.lang-en .footer-title { font-family: var(--font-serif-en); }
-.footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: px; }
+.footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: 0px; }
 .footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0; }
 @media (max-width: 768px) {
   .footer { padding: 32px 20px; }
 }
+
+
+
+
 </style>
     </head>
     <body>
@@ -438,6 +530,14 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
                 <p data-en style="font-weight: 600; font-size: 20px; letter-spacing: 4px; height: 0;">22 Heritage Sites Gallery</p>
                 <h2 class="section-title" data-en>One City, Half a History of Maritime Commerce</h2>
                 <img src="趴着.png" style="position: absolute; right: 30px; top: 60px; width: 135px; height: 135px; object-fit: contain; z-index: 5;" alt="装饰图">
+            <!-- 页面印章：点击收集 -->
+            <div class="page-seal" id="pageSeal" onclick="collectSeal('seal_feiyi')" title="点击收集印章">
+                <div class="page-seal-circle">
+                    <span class="page-seal-text">传薪</span>
+                    <div class="page-seal-check">✓</div>
+                </div>
+            </div>
+
             </div>
             <div class="heritage-filter">
                 <button class="filter-btn active" data-filter="all" data-zh>全部</button>
@@ -1340,10 +1440,15 @@ function closeVideoModal() {
   }
 })();
 
+
+// ===== 页面印章收集功能 =====
+function collectSeal(sealKey) {
+  const seal = document.getElementById('pageSeal');
+  if (seal.classList.contains('collected')) return;
+  seal.classList.add('collected');
+  try { localStorage.setItem(sealKey, 'true'); } catch(e) {}
+}
 </script>
-<!-- 数字印章系统：访问本页自动点亮对应印章 -->
-<script>
-  try { localStorage.setItem('seal_feiyi', 'true'); } catch(e) {}
-</script>
+
 </body>
 </html>
