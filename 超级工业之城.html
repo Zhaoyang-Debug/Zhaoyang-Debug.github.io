@@ -36,7 +36,84 @@
    【页脚】
    ============================================================ */.footer { background: var(--color-ink); padding: 48px; text-align: center; color: var(--color-paper); } .footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-paper); margin-bottom: 8px; } body.lang-en .footer-title { font-family: var(--font-serif-en); } .footer-sub { font-size: 12px; color: rgba(245,240,232,0.5); letter-spacing: 1px; margin-bottom: 16px; line-height: 1.7; } .footer-sources { font-size: 11px; color: rgba(245,240,232,0.4); line-height: 1.8; max-width: 600px; margin: 0 auto; } /* ============================================================
    【响应式】
-   ============================================================ */@media (max-width: 1200px) { .nav-links a {  padding: 8px 8px;  font-size: 13px; }  .industry-grid {  grid-template-columns: repeat(2, 1fr); } } @media (max-width: 1024px) { .nav-links {  display: none; }  .nav-hamburger {  display: flex; }  .stories-grid {  grid-template-columns: 1fr;  max-width: 600px;  margin: 0 auto; }  .theory-framework {  grid-template-columns: 1fr;  gap: 20px; }  .theory-bridge {  flex-direction: row;  padding: 10px 0; }  .theory-bridge-circle {  width: 70px;  height: 70px;  font-size: 13px; } } @media (max-width: 768px) { :root {  --padding-section: 60px 20px; }  .nav {  padding: 0 20px; }  .page-hero {  padding: 120px 20px 60px;  min-height: 60vh; }  .industry-grid {  grid-template-columns: 1fr; }  .timeline-tab {  min-width: 45%;  flex: none; }  .timeline-card {  padding: 28px 24px; }  .timeline-card-two-col {  grid-template-columns: 1fr;  gap: 24px; }  .timeline-card-image {  min-height: 200px; }  .theory-pillar-image {  height: 150px; }  .stats {  padding: 56px 20px; }  .stats-grid {  grid-template-columns: repeat(2, 1fr);  gap: 32px 16px; }  .stat-item {  border-right: none !important; }  .closing {  padding: 72px 20px; }  .footer {  padding: 32px 20px; } } /* ===== 区县卡片两栏式（字65% 图35%）===== */.district-item { display: grid; grid-template-columns: 65% 35%; gap: 16px; align-items: center; } .district-item-text { min-width: 0; } .district-item-image { width: 100%; height: 100px; border-radius: 8px; background-size: cover; background-position: center; background-repeat: no-repeat; } /* ===== 产业弹窗 ===== */.industry-modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; } .industry-modal-overlay.active { display: flex; } .industry-modal-content { background: #F5F0E8; border-radius: 12px; width: 100%; max-width: 800px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 24px 64px rgba(0,0,0,0.4); padding: 36px 40px; } .industry-modal-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: none; background: rgba(181,73,59,0.1); color: #B5493B; border-radius: 50%; cursor: pointer; font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 10; } .industry-modal-close:hover { background: #B5493B; color: #fff; } .industry-modal-title { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; color: #1B4965; margin-bottom: 6px; } .industry-modal-subtitle { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: #8A7E6C; margin-bottom: 20px; } .industry-modal-tag { display: inline-block; font-size: 12px; padding: 4px 14px; border-radius: 12px; background: rgba(27,73,101,0.1); color: #1B4965; margin-bottom: 16px; font-weight: 600; letter-spacing: 1px; } .industry-modal-section { margin-bottom: 16px; } .industry-modal-section-title { font-size: 15px; font-weight: 700; color: #B5493B; margin-bottom: 8px; } .industry-modal-text { font-size: 14px; line-height: 2; color: #5C5040; } .industry-modal-data { background: #EDE5D6; border-radius: 8px; padding: 14px 18px; margin-bottom: 16px; font-size: 13.5px; color: #5C5040; line-height: 1.8; border-left: 4px solid #C9A961; } .industry-card { cursor: pointer; } /* ===== 标准页脚样式 ===== */.footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); } .footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 0px; } .footer-title[data-en] { font-family: var(--font-serif-en); } .footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: 0px; } .footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0; } @media (max-width: 768px) { .footer {  padding: 32px 20px; } }</style>
+   ============================================================ */@media (max-width: 1200px) { .nav-links a {  padding: 8px 8px;  font-size: 13px; }  .industry-grid {  grid-template-columns: repeat(2, 1fr); } } @media (max-width: 1024px) { .nav-links {  display: none; }  .nav-hamburger {  display: flex; }  .stories-grid {  grid-template-columns: 1fr;  max-width: 600px;  margin: 0 auto; }  .theory-framework {  grid-template-columns: 1fr;  gap: 20px; }  .theory-bridge {  flex-direction: row;  padding: 10px 0; }  .theory-bridge-circle {  width: 70px;  height: 70px;  font-size: 13px; } } @media (max-width: 768px) { :root {  --padding-section: 60px 20px; }  .nav {  padding: 0 20px; }  .page-hero {  padding: 120px 20px 60px;  min-height: 60vh; }  .industry-grid {  grid-template-columns: 1fr; }  .timeline-tab {  min-width: 45%;  flex: none; }  .timeline-card {  padding: 28px 24px; }  .timeline-card-two-col {  grid-template-columns: 1fr;  gap: 24px; }  .timeline-card-image {  min-height: 200px; }  .theory-pillar-image {  height: 150px; }  .stats {  padding: 56px 20px; }  .stats-grid {  grid-template-columns: repeat(2, 1fr);  gap: 32px 16px; }  .stat-item {  border-right: none !important; }  .closing {  padding: 72px 20px; }  .footer {  padding: 32px 20px; } } /* ===== 区县卡片两栏式（字65% 图35%）===== */.district-item { display: grid; grid-template-columns: 65% 35%; gap: 16px; align-items: center; } .district-item-text { min-width: 0; } .district-item-image { width: 100%; height: 100px; border-radius: 8px; background-size: cover; background-position: center; background-repeat: no-repeat; } /* ===== 产业弹窗 ===== */.industry-modal-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; } .industry-modal-overlay.active { display: flex; } .industry-modal-content { background: #F5F0E8; border-radius: 12px; width: 100%; max-width: 800px; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 24px 64px rgba(0,0,0,0.4); padding: 36px 40px; } .industry-modal-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border: none; background: rgba(181,73,59,0.1); color: #B5493B; border-radius: 50%; cursor: pointer; font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: center; z-index: 10; } .industry-modal-close:hover { background: #B5493B; color: #fff; } .industry-modal-title { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; color: #1B4965; margin-bottom: 6px; } .industry-modal-subtitle { font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: #8A7E6C; margin-bottom: 20px; } .industry-modal-tag { display: inline-block; font-size: 12px; padding: 4px 14px; border-radius: 12px; background: rgba(27,73,101,0.1); color: #1B4965; margin-bottom: 16px; font-weight: 600; letter-spacing: 1px; } .industry-modal-section { margin-bottom: 16px; } .industry-modal-section-title { font-size: 15px; font-weight: 700; color: #B5493B; margin-bottom: 8px; } .industry-modal-text { font-size: 14px; line-height: 2; color: #5C5040; } .industry-modal-data { background: #EDE5D6; border-radius: 8px; padding: 14px 18px; margin-bottom: 16px; font-size: 13.5px; color: #5C5040; line-height: 1.8; border-left: 4px solid #C9A961; } .industry-card { cursor: pointer; } /* ===== 标准页脚样式 ===== */.footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); } .footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 0px; } .footer-title[data-en] { font-family: var(--font-serif-en); } .footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: 0px; } .footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0; } @media (max-width: 768px) { .footer {  padding: 32px 20px; } }
+
+.page-seal.collected .page-seal-check {
+  display: flex;
+}
+
+/* ===== 页面印章（可点击收集） ===== */
+.page-seal {
+  position: absolute;
+  left: 35px;
+  top: 0px;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.page-seal:hover {
+  transform: scale(1.08);
+}
+.page-seal-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #C9A961;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.92);
+  transition: all 0.4s ease;
+  position: relative;
+  box-sizing: border-box;
+}
+.page-seal-circle::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1px solid #C9A961;
+  opacity: 0.4;
+}
+.page-seal.collected .page-seal-circle {
+  background: #C9A961;
+  box-shadow: 0 4px 16px #C9A96155;
+}
+.page-seal-text {
+  font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive;
+  font-size: 26px;
+  color: #C9A961;
+  writing-mode: vertical-rl;
+  letter-spacing: 4px;
+  transition: color 0.3s;
+  line-height: 1;
+}
+.page-seal.collected .page-seal-text {
+  color: #fff;
+}
+.page-seal-check {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #C9A961;
+  color: #fff;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  border: 2px solid #fff;
+}
+.page-seal.collected .page-seal-check {
+  display: flex;
+}
+
+</style>
     </head>
     <body>
         <!-- ============================================================
@@ -98,6 +175,14 @@
                 <p class="section-desc" data-zh>点击左侧地图标记或右侧区县卡片，查看各区县的主导产业与龙头企业</p>
                 <p class="section-desc" data-en>Click a marker on the map or a district card on the right to view details</p>
                 <img src="趴着.png" style="position: absolute; right: 30px; top: 0px; width: 135px; height: 135px; object-fit: contain; z-index: 5;" alt="装饰图">
+            <!-- 页面印章：点击收集 -->
+            <div class="page-seal" id="pageSeal" onclick="collectSeal('seal_gongye')" title="点击收集印章">
+                <div class="page-seal-circle">
+                    <span class="page-seal-text">弄潮</span>
+                    <div class="page-seal-check">✓</div>
+                </div>
+            </div>
+
             </div>
             <div class="map-two-col">
                 <!-- 左侧：地图 -->
@@ -1367,10 +1452,15 @@ function closeIndustryModal() {
   }
 })();
 
+
+// ===== 页面印章收集功能 =====
+function collectSeal(sealKey) {
+  const seal = document.getElementById('pageSeal');
+  if (seal.classList.contains('collected')) return;
+  seal.classList.add('collected');
+  try { localStorage.setItem(sealKey, 'true'); } catch(e) {}
+}
 </script>
-    <!-- 数字印章系统：访问本页自动点亮对应印章 -->
-<script>
-  try { localStorage.setItem('seal_gongye', 'true'); } catch(e) {}
-</script>
+    
 </body>
 </html>
