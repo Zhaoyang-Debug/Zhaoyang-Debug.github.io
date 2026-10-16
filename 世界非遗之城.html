@@ -38,7 +38,7 @@
   box-sizing: border-box !important;
   padding: 0 !important;
   margin: 0 !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 .page-seal-circle::before {
   content: '' !important;
@@ -50,7 +50,7 @@
 }
 .page-seal.collected .page-seal-circle {
   background: #B5493B !important;
-  box-shadow: 0 4px 16px rgba(181,73,59,0.33) !important;
+  box-shadow: 0 4px 16px #B5493B55 !important;
 }
 .page-seal-text {
   font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive !important;
@@ -72,8 +72,8 @@
 }
 .page-seal-check {
   position: absolute !important;
-  bottom: 2px !important;
-  right: 2px !important;
+  bottom: 8px !important;
+  right: 8px !important;
   width: 22px !important;
   height: 22px !important;
   border-radius: 50% !important;
@@ -418,10 +418,6 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
 @media (max-width: 768px) {
   .footer { padding: 32px 20px; }
 }
-
-
-
-
 </style>
     </head>
     <body>
@@ -537,7 +533,6 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
                     <div class="page-seal-check">✓</div>
                 </div>
             </div>
-
             </div>
             <div class="heritage-filter">
                 <button class="filter-btn active" data-filter="all" data-zh>全部</button>
