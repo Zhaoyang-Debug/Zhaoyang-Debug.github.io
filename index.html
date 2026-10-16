@@ -131,6 +131,10 @@ function handleLogin() {
   if (!users[user]) return error.textContent = '账户不存在，请先注册';
   if (users[user].password !== pass) return error.textContent = '密码错误';
   localStorage.setItem('quanzhou_login', user);
+  // 每次登录清零该账号的印章收集进度（每轮登录重新收集）
+  ['seal_haisi','seal_feiyi','seal_gongye','seal_mintai'].forEach(function(k){
+    localStorage.removeItem(k + '_' + user);
+  });
   window.location.href = '首页.html';
 }
 
