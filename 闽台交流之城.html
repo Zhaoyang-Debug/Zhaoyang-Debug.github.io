@@ -46,12 +46,24 @@
 .page-seal.collected .page-seal-check {
   display: flex;
 }
+/* 印章下方提示文字 */
+.page-seal-hint {
+  position: absolute;
+  top: 106px;  /* 100px圆 + 6px间距 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive;  /* 手写体 */
+  font-size: 18px;
+  color: #4A7C59;
+  white-space: nowrap;
+  text-align: center;
+}
 
 /* ===== 页面印章（可点击收集） ===== */
 .page-seal {
   position: absolute;
-  left: 35px;
-  top: 80px;
+  left: 33px;
+  top: 70px;
   width: 100px;
   height: 100px;
   z-index: 10;
@@ -116,6 +128,18 @@
 }
 .page-seal.collected .page-seal-check {
   display: flex;
+}
+/* 印章下方提示文字 */
+.page-seal-hint {
+  position: absolute;
+  top: 106px;  /* 100px圆 + 6px间距 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive;  /* 手写体 */
+  font-size: 18px;
+  color: #4A7C59;
+  white-space: nowrap;
+  text-align: center;
 }
 
 </style>
@@ -186,6 +210,8 @@
                     <span class="page-seal-text">归航</span>
                     <div class="page-seal-check">✓</div>
                 </div>
+                <span class="page-seal-hint" data-zh>点击获得印章</span>
+                <span class="page-seal-hint" data-en>Click to collect</span>
             </div>
 
             <div class="timeline">
@@ -660,11 +686,13 @@ if (statsSection) observer.observe(statsSection);
 
 
 // ===== 页面印章收集功能 =====
+const currentUser = localStorage.getItem('quanzhou_login') || 'guest';
+
 function collectSeal(sealKey) {
   const seal = document.getElementById('pageSeal');
   if (seal.classList.contains('collected')) return;
   seal.classList.add('collected');
-  try { localStorage.setItem(sealKey, 'true'); } catch(e) {}
+  try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
 }
 </script>
     
