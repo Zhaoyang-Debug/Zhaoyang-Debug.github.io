@@ -542,6 +542,8 @@ if (!currentUser) {
   window.location.href = 'login.html';
 }
 
+
+
 // 按账号隔离存储的key
 const PROFILE_KEY = 'quanzhou_profile_' + currentUser;
 const INTERACTIONS_KEY = 'quanzhou_interactions_' + currentUser;
@@ -646,9 +648,27 @@ function saveFavoritesInfo(info) {
   localStorage.setItem(FAVORITES_INFO_KEY, JSON.stringify(info));
 }
 
+// 世遗点key到中文名称的映射（不依赖子页面保存的元信息）
+const HERITAGE_KEY_NAME_MAP = {
+  'jiurishan': '九日山祈风石刻', 'shibosi': '市舶司遗址', 'nanwaizong': '南外宗正司遗址',
+  'dejimen': '德济门遗址', 'dehua': '德化窑址', 'anxi': '安溪青阳冶铁遗址',
+  'cizao': '磁灶窑址', 'kaiyuan': '开元寺', 'qingjing': '清净寺',
+  'caoan': '草庵摩尼光佛造像', 'tianhou': '天后宫', 'zhenwu': '真武庙',
+  'shengmu': '伊斯兰教圣墓', 'wenmiao': '泉州府文庙', 'laojun': '老君岩造像',
+  'luoyang': '洛阳桥', 'anping': '安平桥', 'shunji': '顺济桥遗址',
+  'jiangkou': '江口码头', 'shihu': '石湖码头', 'liusheng': '六胜塔',
+  'wanshou': '万寿塔'
+};
+
 function renderFavorites() {
   const data = getInteractionData();
-  const info = getFavoritesInfo();
+  // 同时读取新旧两个key的收藏元信息（兼容旧数据）
+  let info = getFavoritesInfo();
+  const oldInfo = JSON.parse(localStorage.getItem('quanzhou_favorites_info') || '{}');
+  // 合并：新key优先，旧key补充
+  for (const k in oldInfo) {
+    if (!info[k]) info[k] = oldInfo[k];
+  }
   const grid = document.getElementById('favoritesGrid');
   const empty = document.getElementById('favoritesEmpty');
   const emptyEn = document.getElementById('favoritesEmptyEn');
@@ -679,9 +699,16 @@ function renderFavorites() {
     else if (type === 'intangible') { typeLabel = '非遗'; typeClass = 'intangible'; }
     else if (type === 'industry') { typeLabel = '产业'; typeClass = 'industry'; }
     
+    // 优先用元信息中的name，否则用映射表（世遗点），最后用key
+    let displayName = itemInfo.name;
+    if (!displayName && type === 'heritage' && HERITAGE_KEY_NAME_MAP[key]) {
+      displayName = HERITAGE_KEY_NAME_MAP[key];
+    }
+    if (!displayName) displayName = key;
+    
     item.innerHTML = 
       '<span class="favorite-type ' + typeClass + '">' + typeLabel + '</span>' +
-      '<div class="favorite-name">' + (itemInfo.name || key) + '</div>' +
+      '<div class="favorite-name">' + displayName + '</div>' +
       '<button class="favorite-remove" onclick="removeFavorite(\'' + favId + '\')" data-zh>取消收藏</button>' +
       '<button class="favorite-remove" onclick="removeFavorite(\'' + favId + '\')" data-en>Remove</button>';
     
@@ -757,11 +784,6 @@ function renderMessages() {
   });
 }
 
-// 页面加载
-loadProfile();
-renderFavorites();
-renderMessages();
-
 // ===== 数字印章系统 =====
 const SEAL_DATA = [
   { key: 'seal_haisi', name: '海上丝绸之路', nameEn: 'Maritime Silk Road', char: '扬帆', color: '#1B4965' },
@@ -781,7 +803,8 @@ function renderSeals() {
   grid.innerHTML = '';
   
   SEAL_DATA.forEach(function(seal) {
-    const isCollected = localStorage.getItem(seal.key) === 'true';
+    const userKey = seal.key + '_' + currentUser;
+    const isCollected = localStorage.getItem(userKey) === 'true';
     if (isCollected) collected++;
     
     const item = document.createElement('div');
@@ -822,9 +845,12 @@ function closeCertModal() {
 }
 
 // 点击遮罩关闭
-document.getElementById('certModal').addEventListener('click', function(e) {
-  if (e.target === this) closeCertModal();
-});
+var certModalEl = document.getElementById('certModal');
+if (certModalEl) {
+  certModalEl.addEventListener('click', function(e) {
+    if (e.target === this) closeCertModal();
+  });
+}
 
 // ESC键关闭
 document.addEventListener('keydown', function(e) {
@@ -849,9 +875,17 @@ function downloadCert() {
   }
 }
 
-// 页面加载时渲染印章
-renderSeals();
 
+
+
+
+
+
+// 页面加载初始化
+loadProfile();
+renderFavorites();
+renderMessages();
+renderSeals();
 </script>
 
 <!-- 奖状弹窗 -->
@@ -861,7 +895,6 @@ renderSeals();
     <h3 class="cert-title" data-zh>泉州文化探索证书</h3>
     <h3 class="cert-title" data-en>Quanzhou Cultural Explorer Certificate</h3>
     <div class="cert-image-wrap">
-      <!-- ★ 奖状图片：把下面 src 改成你的奖状图片路径即可 -->
       <img id="certImg" src="奖状.jpg" alt="奖状" onerror="this.style.display='none';this.parentNode.querySelector('.cert-placeholder').style.display='block';">
       <div class="cert-placeholder" style="display:none;">
         <div class="cert-placeholder-icon">📜</div>
