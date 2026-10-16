@@ -41,36 +41,32 @@
    ============================================================ */@media (max-width: 1200px) { .nav-links a {  padding: 8px 8px;  font-size: 13px; } } @media (max-width: 1024px) { .cards-grid {  grid-template-columns: repeat(2, 1fr); }  .stats-grid {  grid-template-columns: repeat(3, 1fr);  gap: 40px 24px; }  .stat-item:nth-child(3) {  border-right: none; }  .stat-item:nth-child(4), .stat-item:nth-child(5) {  border-right: 1px solid rgba(245,240,232,0.1); }  .nav-links {  display: none; }  .nav-hamburger {  display: flex; } } @media (max-width: 768px) { :root {  --padding-section: 64px 20px;  --padding-hero: 100px 20px 60px;  --gap-cards: 16px; }  .nav {  padding: 0 20px; }  .cards-grid {  grid-template-columns: 1fr; }  .card-image {  height: 140px; }  .card-body {  padding: 24px 20px 28px; }  .stats {  padding: 56px 20px; }  .stats-grid {  grid-template-columns: repeat(2, 1fr);  gap: 32px 16px; }  .stat-item {  border-right: none !important; }  .closing {  padding: 80px 20px; }  .footer {  padding: 32px 20px; } } /* ============================================================
    【双语切换控制】
    ============================================================ */[data-zh], [data-en] { transition: opacity 0.3s; } body.en [data-zh] { display: none; } body:not(.en) [data-en] { display: none; } .identity-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px rgba(44,36,22,0.12); } .identity-card:hover::before { transform: scaleX(1); } .identity-card:hover .card-image-icon { background: var(--card-color, var(--color-brick)); } .identity-card:hover .card-image-icon svg { stroke: #fff; } .identity-card:hover .card-title { color: var(--card-color, var(--color-brick)); } /* ===== 标准页脚样式 ===== */.footer { background: var(--color-paper-dark); padding: 48px; text-align: center; border-top: 1px solid rgba(44,36,22,0.08); } .footer-title { font-family: var(--font-serif-zh); font-size: 16px; font-weight: 700; color: var(--color-ink); margin-bottom: 0px; } .footer-title[data-en] { font-family: var(--font-serif-en); } .footer-sub { font-size: 12px; color: var(--color-ink-faint); letter-spacing: 1px; margin-bottom: 0px; } .footer-sources { font-size: 11px; color: var(--color-ink-faint); line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0; } @media (max-width: 768px) { .footer {  padding: 32px 20px; } }
-/* ===== 滚动叙事：海浪动画（不影响人物图片） ===== */
+/* ===== 滚动叙事：海浪图片（位置大小可调节） ===== */
+/* ★ 可调节参数：
+   bottom: 距底部距离（上下位置）
+   left: 距左侧距离（左右位置）
+   width: 海浪图片宽度（大小）
+   height: 海浪图片高度（大小）
+*/
 .hero-waves {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 70px;
+  bottom: 0;          /* 下底与分割线重合 */
+  left: 0;            /* 左右填满 */
+  width: 100%;        /* 左右刚好填满网页宽度 */
   z-index: 2;
   pointer-events: none;
 }
-.hero-waves svg {
+.hero-waves img {
   width: 100%;
-  height: 100%;
+  height: auto;       /* 按比例自动高度，不裁剪 */
   display: block;
-}
-.wave-path {
-  animation: waveMove 8s ease-in-out infinite;
-}
-.wave-path-2 {
-  animation: waveMove 12s ease-in-out infinite reverse;
-  opacity: 0.4;
-}
-@keyframes waveMove {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(-25px); }
+  transform: scaleY(0.7);       /* 上下压缩到原来的70% */
+  transform-origin: bottom;     /* 从底部开始压缩，下底位置不变 */
 }
 
 /* ===== 滚动叙事：城市苏醒过渡屏（美观对称版） ===== */
 .awakening {
-  min-height: 65vh;
+  min-height: calc(65vh + 80px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -78,7 +74,7 @@
   text-align: center;
   padding: 80px 48px;
   position: relative;
-  background: linear-gradient(180deg, var(--color-paper) 0%, var(--color-paper-dark) 50%, var(--color-paper) 100%);
+  background: var(--color-paper-dark);  /* 与下一板块identities纯色背景一致 */
   overflow: hidden;
 }
 .awakening::before, .awakening::after {
@@ -108,7 +104,7 @@
 }
 .awakening-sub {
   font-family: var(--font-serif-en);
-  font-size: 13px;
+  font-size: 18px;
   font-style: italic;
   color: var(--color-ink-faint);
   letter-spacing: 3px;
@@ -188,6 +184,24 @@
   color: var(--color-brick);
   font-weight: 700;
 }
+/* 点击符号切换的背景图 */
+.awakening-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+.awakening-bg.show { opacity: 0.7; }  /* 背景图透明度20% */
+.awakening > *:not(.awakening-bg) { position: relative; z-index: 1; }
+/* 显示背景图后隐藏标题和副标题，其他元素不变 */
+.awakening.has-bg .awakening-question,
+.awakening.has-bg .awakening-sub { display: none; }
+.awakening-symbol-wrap { cursor: pointer; }
 
 /* ===== 滚动叙事：卡片滚动淡入 ===== */
 .reveal {
@@ -277,40 +291,38 @@
                         <path d="M5 12h14M12 5l7 7-7 7"></path>
                     </svg> </a> 
             </div>             
-                    <!-- 海浪动画 -->
+                    <!-- 海浪图片（同目录 海浪.png，位置大小在CSS的.hero-waves中调节） -->
             <div class="hero-waves">
-                <svg viewBox="0 0 1440 70" preserveAspectRatio="none">
-                    <path class="wave-path" d="M0,35 C240,70 480,0 720,35 C960,70 1200,0 1440,35 L1440,70 L0,70 Z" fill="rgba(245,240,232,0.35)"/>
-                    <path class="wave-path-2" d="M0,45 C360,10 720,60 1080,25 C1260,10 1380,45 1440,40 L1440,70 L0,70 Z" fill="rgba(27,73,101,0.12)"/>
-                </svg>
+                <img src="海浪.png" alt="海浪装饰">
             </div>
 </section>         
                 <!-- 滚动叙事：城市苏醒过渡屏 -->
         <section class="awakening" id="awakening">
+            <div class="awakening-bg" id="awakeningBg"></div>
             <h2 class="awakening-question" data-zh>你所看到的泉州，是哪一种泉州？</h2>
             <h2 class="awakening-question" data-en>Which Quanzhou Do You See?</h2>
-            <p class="awakening-sub" data-zh>四重叙事 · 一座城市</p>
-            <p class="awakening-sub" data-en>Four Narratives · One City</p>
+            <p class="awakening-sub" data-zh>点击以下圆形图标查看更多</p>
+            <p class="awakening-sub" data-en>Click the icons below to explore</p>
             <div class="awakening-symbols">
-                <div class="awakening-symbol-wrap">
+                <div class="awakening-symbol-wrap" onclick="setAwakeningBg('首页-海丝.jpg')">
                     <div class="awakening-symbol" style="background: var(--color-ocean);" data-zh>海</div>
                     <span class="awakening-symbol-label" data-zh>海上丝路</span>
                     <span class="awakening-symbol-label" data-en>Maritime</span>
                 </div>
                 <div class="awakening-connector"></div>
-                <div class="awakening-symbol-wrap">
+                <div class="awakening-symbol-wrap" onclick="setAwakeningBg('首页-世遗.jpg')">
                     <div class="awakening-symbol" style="background: var(--color-brick);" data-zh>城</div>
                     <span class="awakening-symbol-label" data-zh>世遗之城</span>
                     <span class="awakening-symbol-label" data-en>Heritage</span>
                 </div>
                 <div class="awakening-connector"></div>
-                <div class="awakening-symbol-wrap">
+                <div class="awakening-symbol-wrap" onclick="setAwakeningBg('首页-工业.jpg')">
                     <div class="awakening-symbol" style="background: var(--color-gold);" data-zh>艺</div>
                     <span class="awakening-symbol-label" data-zh>工业之城</span>
                     <span class="awakening-symbol-label" data-en>Industry</span>
                 </div>
                 <div class="awakening-connector"></div>
-                <div class="awakening-symbol-wrap">
+                <div class="awakening-symbol-wrap" onclick="setAwakeningBg('首页-闽台.jpg')">
                     <div class="awakening-symbol" style="background: #4A7C59;" data-zh>人</div>
                     <span class="awakening-symbol-label" data-zh>闽台交流</span>
                     <span class="awakening-symbol-label" data-en>Cross-Strait</span>
@@ -629,5 +641,24 @@ const revealObserver = new IntersectionObserver((entries) => {
 revealElements.forEach(el => revealObserver.observe(el));
 
 </script>         
-    </body>     
+    <script>
+function setAwakeningBg(imgSrc) {
+  var bg = document.getElementById('awakeningBg');
+  var section = document.getElementById('awakening');
+  if (!bg || !section) return;
+  var currentBg = bg.style.backgroundImage;
+  var targetBg = 'url("' + imgSrc + '")';
+  // 如果当前已经显示的是这张图，则恢复原状
+  if (section.classList.contains('has-bg') && currentBg.indexOf(imgSrc) >= 0) {
+    bg.classList.remove('show');
+    section.classList.remove('has-bg');
+  } else {
+    // 否则切换到这张图
+    bg.style.backgroundImage = targetBg;
+    bg.classList.add('show');
+    section.classList.add('has-bg');
+  }
+}
+</script>
+</body>     
 </html>
