@@ -9,11 +9,11 @@
 /* ===== 页面印章（可点击收集） ===== */
 .page-seal {
   position: absolute !important;
-  left: 35px !important;
-  top: 60px !important;
+  left: -15px !important;
+  top: -20px !important;
   width: 100px !important;
   height: 100px !important;
-  z-index: 999 !important;
+  z-index: 10 !important;
   cursor: pointer !important;
   transition: transform 0.3s !important;
   padding: 0 !important;
@@ -418,6 +418,22 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
 @media (max-width: 768px) {
   .footer { padding: 32px 20px; }
 }
+.page-seal.collected .page-seal-check {
+  display: flex;
+}
+/* 印章下方提示文字 */
+.page-seal-hint {
+  position: absolute !important;
+  top: 106px !important;  /* 100px圆 + 6px间距 */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  font-family: 'Ma Shan Zheng', 'STKaiti', 'KaiTi', cursive !important;  /* 手写体 */
+  font-size: 18px !important;
+  color: #B5493B !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  display: inline-block !important;
+}
 </style>
     </head>
     <body>
@@ -532,6 +548,8 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
                     <span class="page-seal-text">传薪</span>
                     <div class="page-seal-check">✓</div>
                 </div>
+                <span class="page-seal-hint" data-zh style="position:absolute !important;top:106px !important;left:50% !important;transform:translateX(-50%) !important;font-family:'Ma Shan Zheng','STKaiti','KaiTi',cursive !important;font-size:18px !important;color:#B5493B !important;white-space:nowrap !important;text-align:center !important;">点击获得印章</span>
+                <span class="page-seal-hint" data-en style="position:absolute !important;top:106px !important;left:50% !important;transform:translateX(-50%) !important;font-family:'Ma Shan Zheng','STKaiti','KaiTi',cursive !important;font-size:18px !important;color:#B5493B !important;white-space:nowrap !important;text-align:center !important;">Click to collect</span>
             </div>
             </div>
             <div class="heritage-filter">
@@ -1441,7 +1459,7 @@ function collectSeal(sealKey) {
   const seal = document.getElementById('pageSeal');
   if (seal.classList.contains('collected')) return;
   seal.classList.add('collected');
-  try { localStorage.setItem(sealKey, 'true'); } catch(e) {}
+  try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
 }
 </script>
 
