@@ -143,7 +143,7 @@
 }
 
 </style>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" async></script>
 </head>
     <body>
         <!-- ============================================================
@@ -687,24 +687,39 @@ if (statsSection) observer.observe(statsSection);
 
 
 // ===== 页面印章收集功能（Supabase云端同步）=====
-const supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
-const supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
-const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
-const currentUser = localStorage.getItem('quanzhou_login') || 'guest';
-const isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
+var supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
+var supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
+var supabase = null;
+var currentUser = localStorage.getItem('quanzhou_login') || 'guest';
+var isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
 
-async function collectSeal(sealKey) {
-  const seal = document.getElementById('pageSeal');
+// 轮询等待SDK加载
+function tryInitSupabase() {
+  if (window.supabase && window.supabase.createClient) {
+    try {
+      supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+      // SDK加载完后检查印章状态
+      checkSealStatus();
+    } catch(e) { console.error('Supabase初始化失败', e); }
+  } else {
+    setTimeout(tryInitSupabase, 300);
+  }
+}
+tryInitSupabase();
+
+// 点击收集印章（不依赖SDK，先更新UI再异步同步）
+function collectSeal(sealKey) {
+  var seal = document.getElementById('pageSeal');
   if (seal.classList.contains('collected')) return;
   seal.classList.add('collected');
   
-  if (isLoggedIn) {
+  if (isLoggedIn && supabase) {
     // 已登录：写入云端数据库
-    try {
-      const updateData = {};
-      updateData[sealKey] = true;
-      await supabase.from('user_seals').update(updateData).eq('user_id', currentUser);
-    } catch(e) { console.error('印章同步失败', e); }
+    var updateData = {};
+    updateData[sealKey] = true;
+    supabase.from('user_seals').update(updateData).eq('user_id', currentUser)
+      .then(function() { console.log('印章同步成功'); })
+      .catch(function(e) { console.error('印章同步失败', e); });
   } else {
     // 游客：本地存储
     try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
@@ -712,28 +727,30 @@ async function collectSeal(sealKey) {
 }
 
 // 页面加载时检查印章状态
-(async function() {
-  const seal = document.getElementById('pageSeal');
+function checkSealStatus() {
+  var seal = document.getElementById('pageSeal');
   if (!seal) return;
-  if (isLoggedIn) {
+  if (isLoggedIn && supabase) {
     // 已登录：从云端读取
-    try {
-      const { data, error } = await supabase
-        .from('user_seals')
-        .select('seal_mintai')
-        .eq('user_id', currentUser)
-        .single();
-      if (data && data.seal_mintai) {
-        seal.classList.add('collected');
-      }
-    } catch(e) { console.error('读取印章状态失败', e); }
+    supabase.from('user_seals')
+      .select('seal_mintai')
+      .eq('user_id', currentUser)
+      .single()
+      .then(function(result) {
+        if (result.data && result.data.seal_mintai) {
+          seal.classList.add('collected');
+        }
+      })
+      .catch(function(e) { console.error('读取印章状态失败', e); });
   } else {
     // 游客：从本地读取
     if (localStorage.getItem('seal_mintai_' + currentUser) === 'true') {
       seal.classList.add('collected');
     }
   }
-})();
+}
+// 游客模式立即检查（不依赖SDK）
+if (!isLoggedIn) { checkSealStatus(); }
 </script>
     
 </body>
