@@ -6,7 +6,7 @@
         <title>登录 · 活态泉州 | Login · Living Quanzhou</title>
         <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Ma+Shan+Zheng&display=swap">
         <style>:root { --color-brick: #B5493B; --color-brick-dark: #8E372C; --color-ocean: #1B4965; --color-paper: #F5F0E8; --color-paper-dark: #EDE5D6; --color-gold: #C9A961; --color-ink: #2C2416; --color-ink-light: #5C5040; --color-ink-faint: #8A7E6C; --font-serif-zh: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; --font-sans-zh: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; --font-serif-en: 'Playfair Display', Georgia, serif; --font-sans-en: 'Inter', 'Helvetica Neue', Arial, sans-serif;  /* ★ 毛笔字体：马善政毛笔楷书 */ --font-brush: 'Ma Shan Zheng', 'KaiTi', 'STKaiti', cursive; } * { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: var(--font-sans-zh); background: transparent; color: var(--color-ink); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 40px 20px; position: relative; } /* ★ 整个页面底图，透明度40%，在最底层 */ body::before { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: url('首页1.jpg'); background-size: cover; background-position: center; opacity: 0.4; z-index: -1; } .login-card { width: 100%; max-width: 960px; height: 580px; background: #fff; border-radius: 16px; box-shadow: 0 20px 60px rgba(44,36,22,0.12); display: flex; overflow: hidden; } .login-illustration { flex: 1; background: var(--color-paper-dark); position: relative; overflow: hidden; } .illustration-img { width: 100%; height: 100%; object-fit: contain; padding: 99px; display: none; position: relative; top: -80px; } .illustration-img[src]:not([src=""]) { display: block; } .illustration-img[src]:not([src=""]) ~ .illustration-placeholder { display: none; } .illustration-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; color: var(--color-ink-faint); } .illustration-placeholder-icon { width: 72px; height: 72px; border: 2px dashed var(--color-ink-faint); border-radius: 12px; display: flex; align-items: center; justify-content: center; opacity: 0.5; } .illustration-placeholder-icon svg { width: 32px; height: 32px; stroke: var(--color-ink-faint); fill: none; stroke-width: 1.5; } .illustration-placeholder-text { font-size: 13px; letter-spacing: 1px; text-align: center; line-height: 1.8; } .illustration-caption { position: absolute; bottom: 15px; left: 28px; right: 28px; z-index: 2; background: rgba(245, 240, 232, 0.78); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 16px 20px; border-radius: 10px; } /* ★ 中文标题用毛笔字体 */.illustration-caption-zh { font-family: var(--font-brush); font-size: 30px; font-weight: 400; color: var(--color-ink); line-height: 1.4; margin-bottom: 6px; letter-spacing: 2px; } .illustration-caption-en { font-family: var(--font-serif-en); font-size: 13px; font-style: italic; color: var(--color-ink-light); letter-spacing: 0.5px; } .illustration-caption::before { content: ''; display: block; width: 48px; height: 2px; background: var(--color-brick); margin-bottom: 8px; } .login-form-wrap { flex: 1; padding: 52px 44px 40px; display: flex; flex-direction: column; overflow-y: auto; } .login-header { margin-bottom: 18px; } .login-title-zh { font-family: var(--font-serif-zh); font-size: 24px; font-weight: 700; color: var(--color-ink); margin-bottom: 4px; } .login-title-en { font-family: var(--font-serif-en); font-size: 13px; color: var(--color-ink-faint); font-style: italic; } .form-tabs { display: flex; border-bottom: 2px solid var(--color-paper-dark); margin-bottom: 24px; gap: 32px; } .form-tab { background: none; border: none; padding: 10px 0; font-family: var(--font-serif-zh); font-size: 16px; font-weight: 600; color: var(--color-ink-faint); cursor: pointer; position: relative; transition: all 0.3s; } .form-tab::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--color-brick); transition: width 0.3s; } .form-tab.active { color: var(--color-brick); } .form-tab.active::after { width: 100%; } .form-panel { display: none; flex: 1; flex-direction: column; } .form-panel.active { display: flex; animation: fadeIn 0.3s ease; } @keyframes fadeIn { from {  opacity: 0;  transform: translateY(8px); }  to {  opacity: 1;  transform: translateY(0); } } /* 表单字段 —— 登录页和注册页统一大小 */.form-group { margin-bottom: 16px; } .form-label-zh { display: block; font-size: 18px; color: var(--color-ink); font-weight: 500; margin-bottom: 2px; } .form-label-en { display: block; font-size: 14px; color: var(--color-ink-faint); font-family: var(--font-serif-en); font-style: italic; margin-bottom: 6px; letter-spacing: 0.3px; } .form-input { width: 100%; padding: 11px 14px; border: 1px solid var(--color-paper-dark); border-radius: 8px; font-size: 14px; font-family: inherit; background: var(--color-paper); transition: all 0.3s; color: var(--color-ink); } .form-input:focus { outline: none; border-color: var(--color-brick); background: #fff; box-shadow: 0 0 0 3px rgba(181,73,59,0.08); } .error-msg { color: var(--color-brick); font-size: 12px; margin-bottom: 8px; min-height: 16px; } .form-btn { margin-top: auto; padding: 10px 13px; background: var(--color-brick); color: #fff; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: inherit; letter-spacing: 2px; } .form-btn:hover { background: var(--color-brick-dark); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(181,73,59,0.25); } .form-tip { margin-top: 14px; text-align: center; font-size: 14px; color: var(--color-ink-faint); } .form-tip span { color: var(--color-brick); cursor: pointer; font-weight: 500; } .form-tip span:hover { text-decoration: underline; } .guest-entry { margin-top: 16px; text-align: center; font-size: 13px; color: var(--color-ink-faint); cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: color 0.3s; } .guest-entry:hover { color: var(--color-brick); } @media (max-width: 768px) { .login-card {  flex-direction: column;  height: auto;  max-width: 420px; }  .login-illustration {  height: 200px; }  .login-form-wrap {  padding: 32px 24px 28px; }  .illustration-caption {  bottom: 20px;  left: 24px; }  .illustration-caption-zh {  font-size: 24px; } }</style>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 </head>
     <body>
         <div class="login-card">
@@ -92,10 +92,19 @@
             </div>
         </div>
         <script>
-// ===== Supabase 初始化 =====
+// 等DOM和defer的SDK都加载完成后再执行
+document.addEventListener('DOMContentLoaded', function() {
+// ===== Supabase 初始化（带容错）=====
 const supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
 const supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
-const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+let supabase = null;
+try {
+  if (window.supabase && window.supabase.createClient) {
+    supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+  }
+} catch(e) {
+  console.error('Supabase初始化失败', e);
+}
 
 function switchTab(tab) {
   document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
@@ -119,6 +128,7 @@ async function handleRegister() {
   if (!email) return error.textContent = '请输入邮箱地址';
   if (!pass) return error.textContent = '请输入密码';
   if (pass.length < 6) return error.textContent = '密码至少6位';
+  if (!supabase) return error.textContent = '系统初始化中，请刷新页面重试';
   
   error.textContent = '注册中...';
   
@@ -157,6 +167,7 @@ async function handleLogin() {
   const error = document.getElementById('loginError');
   if (!email) return error.textContent = '请输入邮箱';
   if (!pass) return error.textContent = '请输入密码';
+  if (!supabase) return error.textContent = '系统初始化中，请刷新页面重试';
   
   error.textContent = '登录中...';
   
@@ -200,6 +211,7 @@ document.getElementById('loginPass').addEventListener('keypress', e => {
 document.getElementById('regPass').addEventListener('keypress', e => {
   if (e.key === 'Enter') handleRegister();
 });
+}); // end DOMContentLoaded
 </script>
     </body>
 </html>
