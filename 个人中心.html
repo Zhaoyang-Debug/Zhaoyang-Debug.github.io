@@ -368,6 +368,7 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
 }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -539,8 +540,14 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
 // ===== 登录检查：未登录跳转到登录页 =====
 const currentUser = localStorage.getItem('quanzhou_login');
 if (!currentUser) {
-  window.location.href = 'login.html';
+  window.location.href = 'index.html';
 }
+
+// ===== Supabase 初始化 =====
+const supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
+const supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+const isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
 
 
 
@@ -716,12 +723,16 @@ function renderFavorites() {
   });
 }
 
-function removeFavorite(favId) {
+async function removeFavorite(favId) {
   const data = getInteractionData();
   const idx = data.favorites.indexOf(favId);
   if (idx !== -1) {
     data.favorites.splice(idx, 1);
     localStorage.setItem(INTERACTIONS_KEY, JSON.stringify(data));
+    // 已登录：从云端删除
+    if (isLoggedIn) {
+      try { await supabase.from('user_favorites').delete().eq('user_id', currentUser).eq('item_id', favId); } catch(e) {}
+    }
   }
   renderFavorites();
 }
@@ -792,7 +803,7 @@ const SEAL_DATA = [
   { key: 'seal_mintai', name: '闽台交流之城', nameEn: 'Cross-Strait', char: '归航', color: '#4A7C59' }
 ];
 
-function renderSeals() {
+async function renderSeals() {
   const grid = document.getElementById('sealsGrid');
   const countEl = document.getElementById('sealCount');
   const progressFill = document.getElementById('sealProgressFill');
@@ -800,11 +811,32 @@ function renderSeals() {
   const claimBtnEn = document.getElementById('claimBtnEn');
   
   let collected = 0;
+  let sealStates = {};
+  
+  // 已登录：从云端数据库读取印章状态
+  if (isLoggedIn) {
+    try {
+      const { data, error } = await supabase
+        .from('user_seals')
+        .select('seal_haisi, seal_feiyi, seal_gongye, seal_mintai')
+        .eq('user_id', currentUser)
+        .single();
+      if (data) {
+        sealStates = data;
+      }
+    } catch(e) { console.error('读取印章状态失败', e); }
+  }
+  
   grid.innerHTML = '';
   
   SEAL_DATA.forEach(function(seal) {
-    const userKey = seal.key + '_' + currentUser;
-    const isCollected = localStorage.getItem(userKey) === 'true';
+    let isCollected;
+    if (isLoggedIn) {
+      isCollected = sealStates[seal.key] === true;
+    } else {
+      const userKey = seal.key + '_' + currentUser;
+      isCollected = localStorage.getItem(userKey) === 'true';
+    }
     if (isCollected) collected++;
     
     const item = document.createElement('div');
@@ -881,11 +913,37 @@ function downloadCert() {
 
 
 
-// 页面加载初始化
-loadProfile();
-renderFavorites();
-renderMessages();
-renderSeals();
+// 页面加载初始化：已登录用户先从云端同步收藏到本地
+(async function() {
+  if (isLoggedIn) {
+    try {
+      const { data: favs, error } = await supabase
+        .from('user_favorites')
+        .select('item_id, item_name, item_type')
+        .eq('user_id', currentUser);
+      if (favs && favs.length > 0) {
+        var data = getInteractionData();
+        var info = JSON.parse(localStorage.getItem(FAVORITES_INFO_KEY) || '{}');
+        var oldInfo = JSON.parse(localStorage.getItem('quanzhou_favorites_info') || '{}');
+        favs.forEach(function(f) {
+          if (data.favorites.indexOf(f.item_id) === -1) {
+            data.favorites.push(f.item_id);
+          }
+          info[f.item_id] = { name: f.item_name, type: f.item_type };
+          oldInfo[f.item_id] = { name: f.item_name, type: f.item_type };
+        });
+        localStorage.setItem(INTERACTIONS_KEY, JSON.stringify(data));
+        localStorage.setItem(FAVORITES_INFO_KEY, JSON.stringify(info));
+        localStorage.setItem('quanzhou_favorites_info', JSON.stringify(oldInfo));
+      }
+    } catch(e) { console.error('同步收藏失败', e); }
+  }
+  // 渲染页面
+  loadProfile();
+  renderFavorites();
+  renderMessages();
+  renderSeals();
+})();
 </script>
 
 <!-- 奖状弹窗 -->
