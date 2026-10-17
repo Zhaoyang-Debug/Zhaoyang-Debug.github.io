@@ -1097,18 +1097,7 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
     <!-- ============================================================
      【页脚】
      ============================================================ -->
-    <footer class="footer" style="padding-top: 10px; padding-bottom: 10px; font-size: 16px; background: #EDE5D6; text-align: center; border-top: 1px solid rgba(44,36,22,0.08);"> 
-        <div class="footer-title" data-zh="" style="text-align: center; font-family: 'Noto Serif SC', 'Songti SC', 'SimSun', serif; font-size: 16px; font-weight: 700; color: #2C2416; margin-bottom: 0px;">《活态泉州&#8212;&#8212;一座中国城市的四重叙事》</div>         
-        <div class="footer-title" data-en style="text-align: center;">Living Quanzhou: A Four-Fold Narrative of a Chinese City</div>         
-        <div class="footer-sub" data-zh="" style="font-size: 13px; text-align: center; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #8A7E6C; letter-spacing: 1px; margin-bottom: 0px;">第十四届全国大学生数字媒体科技作品及创意竞赛&ldquo;科技+创意，讲好中国故事&rdquo;赛道</div>         
-        <div class="footer-sub" data-en style="text-align: center;">14th National College Student Digital Media Competition · "Technology + Creativity, Telling China's Story"</div>         
-        <div class="footer-sources" style="margin-top: 0px; font-size: 13px; text-align: center; font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: #8A7E6C; line-height: 1.8; max-width: 600px; margin: 0 auto; padding-top: 0;" data-zh> 
-            数据来源：泉州市统计局 · 联合国教科文组织 · 公开学术文献
-</div>         
-        <div class="footer-sources" style="margin-top:16px;" data-en> 
-            Data Sources: Quanzhou Municipal Bureau of Statistics · UNESCO · Public Academic Literature
-</div>         
-    </footer>
+    
     <!-- ============================================================
      【JavaScript】
      ============================================================ -->
@@ -1515,11 +1504,18 @@ async function collectSeal(sealKey) {
   if (seal.classList.contains('collected')) return;
   seal.classList.add('collected');
   
-  if (isLoggedIn) {
+  if (isLoggedIn && supabase) {
     try {
       const updateData = {};
       updateData[sealKey] = true;
-      await supabase.from('user_seals').update(updateData).eq('user_id', currentUser);
+      // 先查有没有记录，有就update，没有就insert
+      const { data: existing } = await supabase.from('user_seals').select('id').eq('user_id', currentUser);
+      if (existing && existing.length > 0) {
+        await supabase.from('user_seals').update(updateData).eq('user_id', currentUser);
+      } else {
+        updateData.user_id = currentUser;
+        await supabase.from('user_seals').insert(updateData);
+      }
     } catch(e) { console.error('印章同步失败', e); }
   } else {
     try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
