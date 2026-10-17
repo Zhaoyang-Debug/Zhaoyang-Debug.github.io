@@ -138,7 +138,8 @@
 }
 
 </style>
-    </head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
     <body>
         <!-- ============================================================
      【导航栏】
@@ -961,8 +962,14 @@
      ============================================================ -->
         <script>
 
+// ===== Supabase 初始化 =====
+const supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
+const supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+
 // 按账号隔离存储
 const currentUser = localStorage.getItem('quanzhou_login') || 'guest';
+const isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
 const INTERACTIONS_KEY = 'quanzhou_interactions_' + currentUser;
 const FAVORITES_INFO_KEY = 'quanzhou_favorites_info_' + currentUser;
 // ===== 互动功能：收藏、点赞、倒赞 =====
@@ -1006,19 +1013,25 @@ function updateIndustryModalButtons(key) {
   document.getElementById(prefix + 'DislikeBtn').style.borderColor = isDisliked ? '#8A7E6C' : '#ddd';
 }
 
-function toggleFavorite(type, key) {
+async function toggleFavorite(type, key) {
   var data = getInteractionData();
   var id = type + '_' + key;
   var idx = data.favorites.indexOf(id);
+  var name = document.getElementById('industryModalTitle') ? document.getElementById('industryModalTitle').textContent : key;
+  
   if (idx !== -1) {
     data.favorites.splice(idx, 1);
+    if (isLoggedIn) {
+      try { await supabase.from('user_favorites').delete().eq('user_id', currentUser).eq('item_id', id); } catch(e) {}
+    }
   } else {
     data.favorites.push(id);
-    // 保存收藏内容的元信息
     var info = JSON.parse(localStorage.getItem(FAVORITES_INFO_KEY) || '{}');
-    var name = document.getElementById('industryModalTitle').textContent;
     info[id] = { name: name, type: type };
     localStorage.setItem('quanzhou_favorites_info', JSON.stringify(info));
+    if (isLoggedIn) {
+      try { await supabase.from('user_favorites').insert({ user_id: currentUser, item_id: id, item_name: name, item_type: type }); } catch(e) {}
+    }
   }
   saveInteractionData(data);
   if (type === 'industry') updateIndustryModalButtons(key);
@@ -1479,13 +1492,68 @@ function closeIndustryModal() {
 })();
 
 
-// ===== 页面印章收集功能 =====
-function collectSeal(sealKey) {
+
+// ===== 页面加载时从云端同步收藏 =====
+(async function() {
+  if (!isLoggedIn) return;
+  try {
+    const { data: favs, error } = await supabase
+      .from('user_favorites')
+      .select('item_id, item_name, item_type')
+      .eq('user_id', currentUser);
+    if (favs && favs.length > 0) {
+      var data = getInteractionData();
+      var info = JSON.parse(localStorage.getItem(FAVORITES_INFO_KEY) || '{}');
+      favs.forEach(function(f) {
+        if (data.favorites.indexOf(f.item_id) === -1) {
+          data.favorites.push(f.item_id);
+        }
+        info[f.item_id] = { name: f.item_name, type: f.item_type };
+      });
+      saveInteractionData(data);
+      localStorage.setItem('quanzhou_favorites_info', JSON.stringify(info));
+    }
+  } catch(e) { console.error('同步收藏失败', e); }
+})();
+
+// ===== 页面印章收集功能（Supabase云端同步）=====
+async function collectSeal(sealKey) {
   const seal = document.getElementById('pageSeal');
   if (seal.classList.contains('collected')) return;
   seal.classList.add('collected');
-  try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
+  
+  if (isLoggedIn) {
+    try {
+      const updateData = {};
+      updateData[sealKey] = true;
+      await supabase.from('user_seals').update(updateData).eq('user_id', currentUser);
+    } catch(e) { console.error('印章同步失败', e); }
+  } else {
+    try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
+  }
 }
+
+// 页面加载时检查印章状态
+(async function() {
+  const seal = document.getElementById('pageSeal');
+  if (!seal) return;
+  if (isLoggedIn) {
+    try {
+      const { data, error } = await supabase
+        .from('user_seals')
+        .select('seal_gongye')
+        .eq('user_id', currentUser)
+        .single();
+      if (data && data.seal_gongye) {
+        seal.classList.add('collected');
+      }
+    } catch(e) { console.error('读取印章状态失败', e); }
+  } else {
+    if (localStorage.getItem('seal_gongye_' + currentUser) === 'true') {
+      seal.classList.add('collected');
+    }
+  }
+})();
 </script>
     
 </body>
