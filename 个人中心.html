@@ -368,7 +368,7 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
 }
 
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" async></script>
 </head>
 <body>
 
@@ -537,17 +537,29 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
 </footer>
 
 <script>
-// ===== 登录检查：未登录跳转到登录页 =====
-const currentUser = localStorage.getItem('quanzhou_login');
-if (!currentUser) {
-  window.location.href = 'index.html';
-}
+// ===== 登录检查：未登录跳转到登录页（游客允许访问）=====
+var currentUser = localStorage.getItem('quanzhou_login') || 'guest';
 
-// ===== Supabase 初始化 =====
-const supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
-const supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
-const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
-const isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
+// ===== Supabase 初始化（异步加载，不阻塞页面）=====
+var supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
+var supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
+var supabase = null;
+var isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
+
+// 轮询等待SDK加载
+function tryInitSupabase() {
+  if (window.supabase && window.supabase.createClient) {
+    try {
+      supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+      console.log('Supabase初始化成功');
+      // SDK加载完后初始化页面（同步收藏+渲染印章）
+      initPageData();
+    } catch(e) { console.error('Supabase初始化失败', e); }
+  } else {
+    setTimeout(tryInitSupabase, 300);
+  }
+}
+tryInitSupabase();
 
 
 
@@ -913,9 +925,9 @@ function downloadCert() {
 
 
 
-// 页面加载初始化：已登录用户先从云端同步收藏到本地
-(async function() {
-  if (isLoggedIn) {
+// 页面数据初始化：已登录用户先从云端同步收藏到本地，再渲染
+async function initPageData() {
+  if (isLoggedIn && supabase) {
     try {
       const { data: favs, error } = await supabase
         .from('user_favorites')
@@ -943,7 +955,9 @@ function downloadCert() {
   renderFavorites();
   renderMessages();
   renderSeals();
-})();
+}
+// 游客模式立即初始化（不依赖SDK）
+if (!isLoggedIn) { initPageData(); }
 </script>
 
 <!-- 奖状弹窗 -->
