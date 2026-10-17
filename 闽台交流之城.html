@@ -702,6 +702,9 @@ function collectSeal(sealKey) {
   if (seal.classList.contains('collected')) return;
   seal.classList.add('collected');
   
+  // 无论是否登录，都先写本地备份（防止SDK加载失败时印章丢失）
+  try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
+  
   if (isLoggedIn && supabase) {
     // 已登录：写入云端数据库（先查有没有记录，有就update，没有就insert）
     var updateData = {};
