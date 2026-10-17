@@ -536,19 +536,30 @@ var supabase = null;
 var isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
 
 // 轮询等待SDK加载
+var sdkLoadAttempts = 0;
 function tryInitSupabase() {
   if (window.supabase && window.supabase.createClient) {
     try {
       supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
       console.log('Supabase初始化成功');
-      // SDK加载完后初始化页面（同步收藏+渲染印章）
-      initPageData();
+      // SDK加载成功后，同步云端数据并重新渲染
+      if (isLoggedIn) {
+        syncCloudData();
+      }
     } catch(e) { console.error('Supabase初始化失败', e); }
   } else {
-    setTimeout(tryInitSupabase, 300);
+    sdkLoadAttempts++;
+    if (sdkLoadAttempts < 15) {
+      setTimeout(tryInitSupabase, 300);
+    } else {
+      console.warn('Supabase SDK加载超时，使用本地数据');
+    }
   }
 }
 tryInitSupabase();
+
+// 页面加载后立即用本地数据渲染（不依赖SDK）
+// 注意：必须在SEAL_DATA等常量定义之后调用
 
 
 
@@ -832,7 +843,10 @@ async function renderSeals() {
   SEAL_DATA.forEach(function(seal) {
     let isCollected;
     if (isLoggedIn) {
-      isCollected = sealStates[seal.key] === true;
+      // 已登录：云端优先，本地备份兜底（防止SDK加载失败时印章丢失）
+      const cloudCollected = sealStates[seal.key] === true;
+      const localCollected = localStorage.getItem(seal.key + '_' + currentUser) === 'true';
+      isCollected = cloudCollected || localCollected;
     } else {
       const userKey = seal.key + '_' + currentUser;
       isCollected = localStorage.getItem(userKey) === 'true';
@@ -944,8 +958,36 @@ async function initPageData() {
   renderMessages();
   renderSeals();
 }
-// 游客模式立即初始化（不依赖SDK）
-if (!isLoggedIn) { initPageData(); }
+
+// SDK延迟加载成功后，同步云端数据并重新渲染
+async function syncCloudData() {
+  if (!isLoggedIn || !supabase) return;
+  try {
+    // 同步收藏
+    const { data: favs } = await supabase
+      .from('user_favorites')
+      .select('item_id, item_name, item_type')
+      .eq('user_id', currentUser);
+    if (favs && favs.length > 0) {
+      var data = getInteractionData();
+      var info = JSON.parse(localStorage.getItem(FAVORITES_INFO_KEY) || '{}');
+      favs.forEach(function(f) {
+        if (data.favorites.indexOf(f.item_id) === -1) {
+          data.favorites.push(f.item_id);
+        }
+        info[f.item_id] = { name: f.item_name, type: f.item_type };
+      });
+      localStorage.setItem(INTERACTIONS_KEY, JSON.stringify(data));
+      localStorage.setItem(FAVORITES_INFO_KEY, JSON.stringify(info));
+    }
+  } catch(e) { console.error('同步收藏失败', e); }
+  // 重新渲染（印章和收藏会从云端读取）
+  renderFavorites();
+  renderSeals();
+}
+
+// 页面加载后立即用本地数据渲染（不依赖SDK，确保印章进度一定显示）
+initPageData();
 </script>
 
 <!-- 奖状弹窗 -->
