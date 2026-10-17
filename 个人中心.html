@@ -864,14 +864,14 @@ function downloadCert() {
     // 图片存在，创建下载链接
     const link = document.createElement('a');
     link.href = img.src;
-    link.download = '活态泉州_探索奖状.jpg';
+    link.download = 'https://cdn.jsdelivr.net/gh/zhaoyang-debug/zhaoyang-debug.github.io@main/活态泉州_探索奖状.jpg';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   } else {
     // 没有图片时提示
     const isEn = document.body.classList.contains('lang-en');
-    alert(isEn ? 'Please add a certificate image first.' : '请先添加奖状图片（命名为"奖状.jpg"放在同一目录）');
+    alert(isEn ? 'Please add a certificate image first.' : '请先添加奖状图片（命名为"https://cdn.jsdelivr.net/gh/zhaoyang-debug/zhaoyang-debug.github.io@main/奖状.jpg"放在同一目录）');
   }
 }
 
@@ -898,8 +898,8 @@ renderSeals();
       <img id="certImg" src="https://cdn.jsdelivr.net/gh/zhaoyang-debug/zhaoyang-debug.github.io@main/奖状.jpg" alt="奖状" onerror="this.style.display='none';this.parentNode.querySelector('.cert-placeholder').style.display='block';">
       <div class="cert-placeholder" style="display:none;">
         <div class="cert-placeholder-icon">📜</div>
-        <div data-zh>奖状图片占位<br>请将奖状图片命名为"奖状.jpg"放在同一目录<br>或修改 certImg 的 src 属性</div>
-        <div data-en>Certificate image placeholder<br>Name your image "奖状.jpg" and place it in the same folder<br>or modify the src of certImg</div>
+        <div data-zh>奖状图片占位<br>请将奖状图片命名为"https://cdn.jsdelivr.net/gh/zhaoyang-debug/zhaoyang-debug.github.io@main/奖状.jpg"放在同一目录<br>或修改 certImg 的 src 属性</div>
+        <div data-en>Certificate image placeholder<br>Name your image "https://cdn.jsdelivr.net/gh/zhaoyang-debug/zhaoyang-debug.github.io@main/奖状.jpg" and place it in the same folder<br>or modify the src of certImg</div>
       </div>
     </div>
     <div class="cert-actions">
