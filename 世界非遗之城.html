@@ -435,7 +435,7 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
   display: inline-block !important;
 }
 </style>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" async></script>
 </head>
     <body>
 <!-- ===== 弹窗容器：22世遗点详情 ===== -->
@@ -1114,14 +1114,27 @@ body.lang-en .footer-title { font-family: var(--font-serif-en); }
      ============================================================ -->
     <script>
 
-// ===== Supabase 初始化 =====
-const supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
-const supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
-const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+// ===== Supabase 初始化（异步加载，不阻塞页面）=====
+var supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
+var supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
+var supabase = null;
 
 // 按账号隔离存储
-const currentUser = localStorage.getItem('quanzhou_login') || 'guest';
-const isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
+var currentUser = localStorage.getItem('quanzhou_login') || 'guest';
+var isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
+
+// 轮询等待SDK加载
+function tryInitSupabase() {
+  if (window.supabase && window.supabase.createClient) {
+    try {
+      supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+      console.log('Supabase初始化成功');
+    } catch(e) { console.error('Supabase初始化失败', e); }
+  } else {
+    setTimeout(tryInitSupabase, 300);
+  }
+}
+tryInitSupabase();
 const INTERACTIONS_KEY = 'quanzhou_interactions_' + currentUser;
 const FAVORITES_INFO_KEY = 'quanzhou_favorites_info_' + currentUser;
 // ===== 互动功能：收藏、点赞、倒赞 =====
