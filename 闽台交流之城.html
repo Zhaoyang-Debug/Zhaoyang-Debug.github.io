@@ -143,7 +143,8 @@
 }
 
 </style>
-    </head>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
     <body>
         <!-- ============================================================
      【导航栏】
@@ -685,15 +686,54 @@ if (statsSection) observer.observe(statsSection);
 })();
 
 
-// ===== 页面印章收集功能 =====
+// ===== 页面印章收集功能（Supabase云端同步）=====
+const supabaseUrl = 'https://nceuksyqdrcutkvkrnef.supabase.co';
+const supabaseAnonKey = 'sb_publishable_JIP6ZG87yBuY6A4pqRzy-w_wt16fwx_';
+const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
 const currentUser = localStorage.getItem('quanzhou_login') || 'guest';
+const isLoggedIn = currentUser && currentUser !== 'guest' && currentUser.length > 20;
 
-function collectSeal(sealKey) {
+async function collectSeal(sealKey) {
   const seal = document.getElementById('pageSeal');
   if (seal.classList.contains('collected')) return;
   seal.classList.add('collected');
-  try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
+  
+  if (isLoggedIn) {
+    // 已登录：写入云端数据库
+    try {
+      const updateData = {};
+      updateData[sealKey] = true;
+      await supabase.from('user_seals').update(updateData).eq('user_id', currentUser);
+    } catch(e) { console.error('印章同步失败', e); }
+  } else {
+    // 游客：本地存储
+    try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
+  }
 }
+
+// 页面加载时检查印章状态
+(async function() {
+  const seal = document.getElementById('pageSeal');
+  if (!seal) return;
+  if (isLoggedIn) {
+    // 已登录：从云端读取
+    try {
+      const { data, error } = await supabase
+        .from('user_seals')
+        .select('seal_mintai')
+        .eq('user_id', currentUser)
+        .single();
+      if (data && data.seal_mintai) {
+        seal.classList.add('collected');
+      }
+    } catch(e) { console.error('读取印章状态失败', e); }
+  } else {
+    // 游客：从本地读取
+    if (localStorage.getItem('seal_mintai_' + currentUser) === 'true') {
+      seal.classList.add('collected');
+    }
+  }
+})();
 </script>
     
 </body>
