@@ -217,31 +217,31 @@
                     <div class="map-box" id="mapBox">
                         <img class="map-photo" src="https://aka.doubaocdn.com/s/XSyrjX64pA" alt="泉州市行政区划地图" data-zh>
                         <img class="map-photo" src="https://aka.doubaocdn.com/s/XSyrjX64pA" alt="Quanzhou Administrative Map" data-en>
-                        <div class="map-dot active" data-district="dehua" onclick="event.stopPropagation(); activateDistrict(\'dehua\')" onclick="activateDistrict(\'dehua\')" style="left:42%; top:26%; --dot-color: #7BA05B;">
+                        <div class="map-dot active" data-district="dehua" onclick="event.stopPropagation(); activateDistrict(\'dehua\')" style="left:42%; top:26%; --dot-color: #7BA05B;">
                             <div class="map-dot-inner" style="margin-top: 70px;"></div>
                         </div>
-                        <div class="map-dot" data-district="yongchun" onclick="event.stopPropagation(); activateDistrict(\'yongchun\')" onclick="activateDistrict(\'yongchun\')" style="left:45%; top:39%; --dot-color: #D4756A;">
+                        <div class="map-dot" data-district="yongchun" onclick="event.stopPropagation(); activateDistrict(\'yongchun\')" style="left:45%; top:39%; --dot-color: #D4756A;">
                             <div class="map-dot-inner" style="margin-top: 120px;"></div>
                         </div>
-                        <div class="map-dot" data-district="anxi" onclick="event.stopPropagation(); activateDistrict(\'anxi\')" onclick="activateDistrict(\'anxi\')" style="left:28%; top:53%; --dot-color: #E8C547;">
+                        <div class="map-dot" data-district="anxi" onclick="event.stopPropagation(); activateDistrict(\'anxi\')" style="left:28%; top:53%; --dot-color: #E8C547;">
                             <div class="map-dot-inner" style="margin-top: 120px;"></div>
                         </div>
-                        <div class="map-dot" data-district="nanan" onclick="event.stopPropagation(); activateDistrict(\'nanan\')" onclick="activateDistrict(\'nanan\')" style="left:48%; top:63%; --dot-color: #E8913A;">
+                        <div class="map-dot" data-district="nanan" onclick="event.stopPropagation(); activateDistrict(\'nanan\')" style="left:48%; top:63%; --dot-color: #E8913A;">
                             <div class="map-dot-inner" style="margin-top: 50px; margin-left: 30px;"></div>
                         </div>
-                        <div class="map-dot" data-district="quanzhou" onclick="event.stopPropagation(); activateDistrict(\'quanzhou\')" onclick="activateDistrict(\'quanzhou\')" style="left:62%; top:68%; --dot-color: #C9A961;">
+                        <div class="map-dot" data-district="quanzhou" onclick="event.stopPropagation(); activateDistrict(\'quanzhou\')" style="left:62%; top:68%; --dot-color: #C9A961;">
                             <div class="map-dot-inner" style="margin-right: 30px; margin-top: 35px; margin-left: 40px;"></div>
                         </div>
-                        <div class="map-dot" data-district="huian" onclick="event.stopPropagation(); activateDistrict(\'huian\')" onclick="activateDistrict(\'huian\')" style="left:75%; top:64%; --dot-color: #3D4F5F;">
+                        <div class="map-dot" data-district="huian" onclick="event.stopPropagation(); activateDistrict(\'huian\')" style="left:75%; top:64%; --dot-color: #3D4F5F;">
                             <div class="map-dot-inner" style="margin-top: 35px; margin-left: 20px;"></div>
                         </div>
-                        <div class="map-dot" data-district="quangang" onclick="event.stopPropagation(); activateDistrict(\'quangang\')" onclick="activateDistrict(\'quangang\')" style="left:80%; top:56%; --dot-color: #8E372C;">
+                        <div class="map-dot" data-district="quangang" onclick="event.stopPropagation(); activateDistrict(\'quangang\')" style="left:80%; top:56%; --dot-color: #8E372C;">
                             <div class="map-dot-inner" style="margin-top: 40px;"></div>
                         </div>
-                        <div class="map-dot" data-district="jinjiang" onclick="event.stopPropagation(); activateDistrict(\'jinjiang\')" onclick="activateDistrict(\'jinjiang\')" style="left:60%; top:76%; --dot-color: #B5493B;">
+                        <div class="map-dot" data-district="jinjiang" onclick="event.stopPropagation(); activateDistrict(\'jinjiang\')" style="left:60%; top:76%; --dot-color: #B5493B;">
                             <div class="map-dot-inner" style="margin-top: 30px; margin-left: 10px;"></div>
                         </div>
-                        <div class="map-dot" data-district="shishi" onclick="event.stopPropagation(); activateDistrict(\'shishi\')" onclick="activateDistrict(\'shishi\')" style="left:68%; top:80%; --dot-color: #7BA05B;">
+                        <div class="map-dot" data-district="shishi" onclick="event.stopPropagation(); activateDistrict(\'shishi\')" style="left:68%; top:80%; --dot-color: #7BA05B;">
                             <div class="map-dot-inner" style="margin-left: 20px; margin-top: 10px;"></div>
                         </div>
                     </div>
@@ -1535,11 +1535,18 @@ async function collectSeal(sealKey) {
   if (seal.classList.contains('collected')) return;
   seal.classList.add('collected');
   
-  if (isLoggedIn) {
+  if (isLoggedIn && supabase) {
     try {
       const updateData = {};
       updateData[sealKey] = true;
-      await supabase.from('user_seals').update(updateData).eq('user_id', currentUser);
+      // 先查有没有记录，有就update，没有就insert
+      const { data: existing } = await supabase.from('user_seals').select('id').eq('user_id', currentUser);
+      if (existing && existing.length > 0) {
+        await supabase.from('user_seals').update(updateData).eq('user_id', currentUser);
+      } else {
+        updateData.user_id = currentUser;
+        await supabase.from('user_seals').insert(updateData);
+      }
     } catch(e) { console.error('印章同步失败', e); }
   } else {
     try { localStorage.setItem(sealKey + '_' + currentUser, 'true'); } catch(e) {}
